@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "ee95c8ce-f8f7-49eb-ab36-c703f6e45944",
+		"name": "Sprint4-API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET/user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"newData\":{\n    \"name\":\"Anastasia\",\n    \"age\": \"28\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/users/6092eb8219b4d9113c97260b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"6092eb8219b4d9113c97260b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
