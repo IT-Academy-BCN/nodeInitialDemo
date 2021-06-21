@@ -7,7 +7,7 @@ const { Socket } = require('socket.io');
 module.exports = (io) => {
   io.on('connection', async (socket) => {
     console.log('Usuario conectado');
-    console.log(socket.id);
+    
 
     socket.on('adduser', async (data) => {
       //Storing users connected in a rooms in db

@@ -1,23 +1,25 @@
+# Node_Rest_Juedo_de_Dados
+Exercicies sprint 5 Chatof the IT Academy course
+Itinerary Nodejs
 
 
-## Node Initial Demo
 
-Estructura general de un proyecto node.js. Folder y files:
+# Initializa database
 
-- <b>\_\_tests__</b>. Folder para tests Jest. Véanse [Jest Docs](https://jestjs.io/es-ES/docs/configuration).
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. Véase [dotenv doc](https://www.npmjs.com/package/dotenv).
+# MongoDB
+Open a terminal and navigate  to the project folder<br>
+-`mongod`(start mongob daemon, mongodb starts listening)<br>
 
-- <b>.eslintrc</b>. Linter JS, análisis estático de código. Véase [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Formatter de código. Véanse [Prettier Config](https://prettier.io/docs/en/configuration.html) y [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Gestor de procesos en tiempo de ejecución. Véanse [PM2 Docs](https://pm2.keymetrics.io/).
+You will find them in the config folder in the dbconexion.js file.
 
-- <b>package.json</b>.
+
+
+# Running the server 
+Leave the previous terminal running and open a new one.<br>
+-`npm install`(install all node dependencies)<br>
+-`npm start` (start the app)<br>
+
+
+## Extra
+
+When you start the project you login with the name you want, you will enter the main chat, you can change the room with the upper buttons, when you change the room the messages of that room will be shown.
