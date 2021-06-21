@@ -15,7 +15,9 @@ Estructura general de un proyecto node.js. Folder y files:
     - <b>tmp</b>
     - <b>app.js</b>. Entry point.
 - <b>.env</b>. Environment descriptor. Véase [dotenv doc](https://www.npmjs.com/package/dotenv).
+
 - <b>.eslintrc</b>. Linter JS, análisis estático de código. Véase [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
 - <b>.prettierignore</b>. Formatter de código. Véanse [Prettier Config](https://prettier.io/docs/en/configuration.html) y [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
 - <b>.ecosystem.config.js</b>. Gestor de procesos en tiempo de ejecución. Véanse [PM2 Docs](https://pm2.keymetrics.io/).
+
 - <b>package.json</b>.
