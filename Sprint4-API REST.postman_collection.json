@@ -6,7 +6,36 @@
 	},
 	"item": [
 		{
-			"name": "GET/user",
+			"name": "upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/anastasia/Desktop/Captura de pantalla 2021-06-18 a las 11.34.08.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -21,18 +50,22 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"newData\":{\n    \"name\":\"Anastasia\",\n    \"age\": \"28\"\n  }\n}"
+					"raw": "{\n    \"name\": \"Anastasia\",\n    \"age\": \"18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/users/6092eb8219b4d9113c97260b",
+					"raw": "http://localhost:8000/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"users",
-						"6092eb8219b4d9113c97260b"
+						"user"
 					]
 				}
 			},
