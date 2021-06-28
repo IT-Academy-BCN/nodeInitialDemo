@@ -6,20 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="./css/main.css">
-  <script src="/js/main.js"charset="utf-8"></script>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="958038213628-eqrn87vh7a5rma5r9t26scnc7oja69k0.apps.googleusercontent.com">
+
 </head>
 <body>
-  <form action="/chat"  method="GET">
-  <h2>Login</h2>
-  <div class="section">
-    <div class="title">Username</div>
-    <div class="field"><input type="text" id="username"name="username"required></div>
-  </div>
  
-  <div class="section">
-    <div class="button"><input id="r"type="submit" value="Join Chat"> </div>
-  
-  </form>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <a href="#" onclick="signOut();">Sign out</a>
+ 
+     
   <script src="/js/main.js"charset="utf-8"></script>
 </body>
 </html>

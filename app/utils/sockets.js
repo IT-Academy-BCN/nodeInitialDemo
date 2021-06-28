@@ -15,7 +15,7 @@ module.exports = (io) => {
       socket.username = data.username;
       
       let id = socket.id;
-      await controller.createUser(data, id);
+      //await controller.createUser(data, id);
 
       //Joining the Socket Room
       socket.join(data.roomname);
@@ -42,7 +42,7 @@ module.exports = (io) => {
     });
 
     
-
+    
     socket.on('switchRoom',async  (data) => {
       socket.leave(socket.room);
       socket.join(data.roomname);

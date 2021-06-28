@@ -1,10 +1,10 @@
 const User = require('../models/user.js');
 
-const createUser = async (data, socket) => {
+const createUser = async (data) => {
   let user = new User({
     username: data.username,
-    roomname: data.roomname,
-    socket,
+    email: data.email,
+    
   });
 
   try {
@@ -36,4 +36,12 @@ const disconnect = async (socket) => {
   }
 };
 
-module.exports = { createUser, changeRoom, disconnect };
+// const checkUser = async (user) => {
+
+//   User.countDocuments({ username: user.name, email: user.email }, (err, count) =>{
+  
+// })
+// }
+
+
+module.exports = { createUser, changeRoom, disconnect,  };

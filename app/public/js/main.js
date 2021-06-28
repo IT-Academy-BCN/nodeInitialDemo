@@ -1,15 +1,43 @@
 socket = io();
+
 const feedback = document.getElementById('feedback');
 const message = document.getElementById('message');
 const write = document.getElementById('write');
 const output = document.getElementById('output');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const username = urlParams.get('username');
+const username = '';
 let roomname = 'Chat';
 
 document.getElementById('room').innerHTML = `Welcome to Chat room`;
 
+const onSignIn = (googleUser)=> {
+  // The ID token you need to pass to your backend:
+  //  var profile = googleUser.getBasicProfile();
+  // var name = profile.getName()
+  // username =name
+  var id_token = googleUser.getAuthResponse().id_token;
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+  console.log('Signed in as: ' + xhr.responseText);
+  if(xhr.responseText == 'success'){
+    signOut();
+    location.assign('/chat')
+  }
+};
+  xhr.send(JSON.stringify({ token: id_token }));
+
+}
+
+const  signOut = () => {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
 const todos = (valor, id) => {
   entrarALaSala(valor);
   active(id);
@@ -21,7 +49,6 @@ const active = (valor) => {
   document.getElementById('r3').disabled = false;
   document.getElementById('r4').disabled = false;
   document.getElementById(valor).disabled = true;
-  
 };
 
 const clearBox = () => {
@@ -39,16 +66,18 @@ function entrarALaSala(sala) {
 }
 
 function render(data) {
-    console.log(data)
-    let messages = data.map(function(data, index)  {
-      return (`<div><strong>${data.username}</strong>:
-      <strong>${data.message}</strong>`);
-    }).join(" ");
-    write.innerHTML = messages
+  console.log(data);
+  let messages = data
+    .map(function (data, index) {
+      return `<div><strong>${data.username}</strong>:
+      <strong>${data.message}</strong>`;
+    })
+    .join(' ');
+  write.innerHTML = messages;
 }
 socket.on('messages', (data) => {
-  render(data)
-})
+  render(data);
+});
 socket.emit('adduser', {
   username: username,
   roomname: roomname,
