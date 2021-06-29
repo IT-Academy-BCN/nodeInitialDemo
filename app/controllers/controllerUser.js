@@ -30,7 +30,7 @@ const changeRoom = async (socket, newroom) => {
 
 const disconnect = async (socket) => {
   try {
-    await User.deleteOne({ socket: socket.id });
+    await User.deleteOne({ username: socket.username });
   } catch (err) {
     console.log(err);
   }
