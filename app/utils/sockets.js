@@ -6,68 +6,68 @@ const { Socket } = require('socket.io');
 
 module.exports = (io) => {
   io.on('connection', async (socket) => {
+    let user = await controller.checkuser();
+    socket.username = user;
     console.log('Usuario conectado');
-    
-
     socket.on('adduser', async (data) => {
       //Storing users connected in a rooms in db
+
       socket.room = data.roomname;
-      socket.username = data.username;
-      
-      //let id = socket.id;
-      //await controller.createUser(data, id);
 
       //Joining the Socket Room
       socket.join(data.roomname);
 
       // echo to client they've connected
-      socket.emit('adduser', `${socket.username} you have connected to ${socket.room}`);
+      socket.emit('adduser', {
+        username: socket.username,
+        roomname: `you have connected to ${socket.room}`,
+      });
       //Emitting New Username to Clients
-     
-      socket.broadcast.to('Chat')
-        .emit('adduser', `${data.username} has connected to this room`);
 
-      let m = await messages.readMessages(data.roomname)
-      socket.emit('messages', m)
+      socket.broadcast.to('Chat').emit('adduser', {
+        username: socket.username,
+        roomname: 'has connected to this room',
+      });
 
-     
+      let m = await messages.readMessages(data.roomname);
+      socket.emit('messages', m);
     });
     // when the client emits 'sendchat', this listens and executes
     socket.on('sendchat', (data) => {
-      let roomname = socket.room;
-      messages.addMessage(data,roomname);
-      io.sockets
-        .in(socket.room)
-        .emit('updatechat', data.username, data.message);
+      let message = {
+        roomname: socket.room,
+        username: socket.username,
+        message: data,
+      };
+      messages.addMessage(message);
+      io.sockets.in(socket.room).emit('updatechat', socket.username, data);
     });
 
-    
-    
-    socket.on('switchRoom',async  (data) => {
+    socket.on('switchRoom', async (data) => {
       socket.leave(socket.room);
       socket.join(data.roomname);
-      await controller.changeRoom(socket.id, data.roomname)
-      socket.emit('adduser', `you have connected to ${data.roomname}`);
-      let m = await messages.readMessages(data.roomname)
-      socket.emit('messages', m)
-      socket.broadcast
-        .to(socket.room)
-        .emit('adduser', `${data.username} has left this room`);
+      await controller.changeRoom(socket.username, data.roomname);
+      socket.emit('adduser', {
+        username: socket.username,
+        roomname: `you have connected to ${data.roomname}`,
+      });
+      let m = await messages.readMessages(data.roomname);
+      socket.emit('messages', m);
+      socket.broadcast.to(socket.room).emit('adduser', {
+        username: socket.username,
+        roomname: 'has left this room',
+      });
       socket.room = data.roomname;
-      socket.broadcast.to(data.roomname)
-        .emit('adduser', `${data.username} has connected to this room`);
-
-    
+      socket.broadcast.to(data.roomname).emit('adduser', {
+        username: socket.username,
+        roomname: 'has connected to this room',
+      });
     });
 
     socket.on('disconnect', async () => {
       await controller.disconnect(socket);
-      socket.broadcast.emit(
-        'adduser',
-        socket.username + ' has disconnected'
-      );
+      socket.broadcast.emit('adduser', socket.username + ' has disconnected');
       socket.leave(socket.room);
-      
     });
-  })
+  });
 };

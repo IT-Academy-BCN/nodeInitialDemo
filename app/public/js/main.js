@@ -7,7 +7,6 @@ const output = document.getElementById('output');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
-username = 'no';
 let roomname = 'Chat';
 
 document.getElementById('room').innerHTML = `Welcome to Chat room`;
@@ -16,24 +15,14 @@ function onSignIn(googleUser) {
   // The ID token you need to pass to your backend:
 
   var id_token = googleUser.getAuthResponse().id_token;
-  //var profile = googleUser.getBasicProfile();
-  //username = profile.getName();
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
-    console.log('Signed in as: ' + xhr.responseText);
     if (xhr.responseText == 'success') {
-      var auth2 = gapi.auth2.init()
-      if (auth2.isSignedIn.get()) {
-        var profile = auth2.currentUser.get().getBasicProfile();
-       
-         //username =  profile.getName();
-        
-      }
       signOut();
-
-      location.assign('/chat');
+      location.href = '/chat';
     }
   };
   xhr.send(JSON.stringify({ token: id_token }));
@@ -86,7 +75,6 @@ socket.on('messages', (data) => {
   render(data);
 });
 socket.emit('adduser', {
-  username: username,
   roomname: roomname,
 });
 
@@ -98,15 +86,12 @@ socket.on('updatechat', (username, data) => {
 
 //Sending data when user clicks send
 send.addEventListener('click', () => {
-  socket.emit('sendchat', {
-    username: username,
-    message: message.value,
-    roomname: roomname,
-  });
+  socket.emit('sendchat', message.value);
+
   message.value = '';
 });
 
 //Displaying if new user has joined the room
 socket.on('adduser', (data) => {
-  output.innerHTML += `<p id="unido"> <strong>${data} </strong></p>`;
+  output.innerHTML += `<p id="unido"> <strong>${data.username} ${data.roomname}</strong></p>`;
 });

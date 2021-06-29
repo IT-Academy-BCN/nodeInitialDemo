@@ -4,7 +4,7 @@ const createUser = async (data) => {
   let user = new User({
     username: data.username,
     email: data.email,
-    
+    roomname: 'Chat',
   });
 
   try {
@@ -14,9 +14,9 @@ const createUser = async (data) => {
   }
 };
 
-const changeRoom = async (socket, newroom) => {
+const changeRoom = async (user, newroom) => {
   await User.findOneAndUpdate(
-    { socket: socket },
+    { username: user },
     { roomname: newroom },
     (error, data) => {
       if (error) {
@@ -36,12 +36,10 @@ const disconnect = async (socket) => {
   }
 };
 
-// const checkUser = async (user) => {
+const checkuser = async () => {
+  let us = await User.findOne().sort({ $natural: -1 });
+  console.log(us.username);
+  return us.username;
+};
 
-//   User.countDocuments({ username: user.name, email: user.email }, (err, count) =>{
-  
-// })
-// }
-
-
-module.exports = { createUser, changeRoom, disconnect,  };
+module.exports = { createUser, changeRoom, disconnect, checkuser };
