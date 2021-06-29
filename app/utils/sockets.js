@@ -14,7 +14,7 @@ module.exports = (io) => {
       socket.room = data.roomname;
       socket.username = data.username;
       
-      let id = socket.id;
+      //let id = socket.id;
       //await controller.createUser(data, id);
 
       //Joining the Socket Room

@@ -21,7 +21,7 @@ const validatetoken = (req, res) => {
   verify()
     .then(() => {
       controller.createUser(user);
-      //res.cookie('session-token', token);
+      res.cookie('session-token', token);
       res.send('success');
 
       res.status(200);

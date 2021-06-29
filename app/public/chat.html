@@ -1,56 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat</title>
-    <link rel="stylesheet" href="./css/chat.css">
-    <script src="/socket.io/socket.io.js"charset="utf-8"></script>
-    <script src="https://kit.fontawesome.com/811735505d.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="./css/chat.css" />
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script
+      src="https://kit.fontawesome.com/811735505d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <div id="general">
-        <div id="usuariosonline">
-            <h1 id="online">Users online</h1>
-            <p id="output"></p>
-          
-        </div>
-        <div id="titulo">
-         <h1 id="room" ></h1>
-         <div id="feedback"></div>
-         
-         <form action= "/chat">
-            <div id="rooms">
-                <button class="b" id="r1" type="button" value="Chat" onclick="todos(this.value,this.id)"disabled=true >Join to Chat</button>
-                <button class="b" id="r2" type="button" value="Python"onclick="todos(this.value,this.id) ">Join to Python</button>
-                <button class="b" id="r3" type="button" value="C#"onclick="todos(this.value,this.id) ">Join to C#</button>
-                <button class="b" id="r4" type="button"value="Java"onclick="todos(this.value,this.id) ">Join to Java</button>
-            </div>
-         </form>
-         
-          
-        </div>
-       
-  
-       <div id="body">
-           <p id="write"></p>
-        </div>
-       <div id="mensaje">
-        <input type="text"name="texto" id="message" placeholder="Tell me something...">
-        <button id="send" type="button">Send</button>
-       </div>
-        
-            
-            
-           
-       
-       
-       
-       
-   </div>
+      <div id="usuariosonline">
+        <h1 id="online">Users online</h1>
+        <p id="output"></p>
+      </div>
+      <div id="titulo">
+        <h1 id="room"></h1>
+        <div id="feedback"></div>
 
-   
-    <script src="/js/main.js"charset="utf-8"></script> 
-</body>
+        <form action="/chat">
+          <div id="rooms">
+            <button
+              class="b"
+              id="r1"
+              type="button"
+              value="Chat"
+              onclick="todos(this.value,this.id)"
+              disabled="true"
+            >
+              Join to Chat
+            </button>
+            <button
+              class="b"
+              id="r2"
+              type="button"
+              value="Python"
+              onclick="todos(this.value,this.id) "
+            >
+              Join to Python
+            </button>
+            <button
+              class="b"
+              id="r3"
+              type="button"
+              value="C#"
+              onclick="todos(this.value,this.id) "
+            >
+              Join to C#
+            </button>
+            <button
+              class="b"
+              id="r4"
+              type="button"
+              value="Java"
+              onclick="todos(this.value,this.id) "
+            >
+              Join to Java
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="body">
+        <p id="write"></p>
+      </div>
+      <div id="mensaje">
+        <input
+          type="text"
+          name="texto"
+          id="message"
+          placeholder="Tell me something..."
+        />
+        <button id="send" type="button">Send</button>
+      </div>
+    </div>
+
+    <script src="/js/main.js" charset="utf-8"></script>
+  </body>
 </html>

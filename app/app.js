@@ -6,7 +6,7 @@ const io = require('socket.io')(server);
 require('./utils/sockets')(io)
 const routes = require('./routes/routes');
 const db = require('./config/dbconexion');
-//const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 //Goggle auth
 
@@ -18,7 +18,7 @@ app.set('port', process.env.PORT || 8080);
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.use(cookieParser());
+app.use(cookieParser());
 
 //Routes
 app.use(routes);
