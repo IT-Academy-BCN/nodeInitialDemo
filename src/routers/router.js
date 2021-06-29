@@ -19,7 +19,7 @@ router.get('/', (req, res) =>{
 const upload = (multer({
     storage, // es lo mismo que poner storage: storage
     dest: path.join(__dirname, '../public/uploads/'),
-    limits: {fileSize: 100000},
+    //limits: {fileSize: 100000},
     fileFilter: (req, file, cb) => {
         const filetypes = /png|jpg|gif/;
         const mimetype = filetypes.test(file.mimetype); //comprobamos si el archivo coincide con las extensiones de arriba
@@ -34,8 +34,18 @@ const upload = (multer({
 //Upload file
  //para recibir lo que el formulario esta enviado a traves del metodo post
  router.post('/upload', upload, (req, res) => {
+     let picture = req.file;
      console.log(req.file);
-     res.send('uploaded');
+     if(req.file === null){
+         res.status(404).send('something went wrong');
+     }
+     res.send({
+         data:{
+             name: picture.originalname,
+             mimetype: picture.mimetype,
+             size: picture.size
+         }
+     });
  });
 
 function sendResponse(req, res, data){ //anadimos el objeto req para leerlo en el valor del parametro url
