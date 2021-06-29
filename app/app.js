@@ -19,6 +19,8 @@ app.use((req,res,next) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+/*app.use(express.json());
+app.use(express.urlencoded());*/
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
@@ -27,3 +29,4 @@ app.use('/upload', routes.upload);
 app.listen(process.env.PORT, () =>
     console.log(`Servidor obert desde el port ${process.env.PORT}!`),
 );
+

@@ -12,6 +12,6 @@ router.get('/:userId', (req,res) => {
     var user = req.context.models.users[req.params.userId];
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     return res.send({user,fullUrl});
-});
+})
 
 export default router;

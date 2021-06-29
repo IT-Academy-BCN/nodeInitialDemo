@@ -1,4 +1,4 @@
-let users = {
+let  users = {
     1: {
         id: '1',
         name: 'Arnau Calduch Rivas',
@@ -10,7 +10,7 @@ let users = {
         age: '45',
     },
     3: {
-        id: '3',
+        id:'3',
         name: 'Bruce Wayne Diaz',
         age: '38',
     }

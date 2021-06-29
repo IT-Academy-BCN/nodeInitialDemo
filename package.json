@@ -2,6 +2,7 @@
   "name": "nodeinitialdemo",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node app/app.js",
@@ -13,7 +14,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/helper-compilation-targets": "^7.14.5",
-    "@babel/node": "^7.14.5",
+    "@babel/node": "^7.14.7",
     "nodemon": "^2.0.7"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "multer": "^1.4.2",
     "uuid": "^8.3.2"
   }
 }
