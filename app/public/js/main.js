@@ -7,28 +7,36 @@ const output = document.getElementById('output');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
-let username = 'no';
+username = 'no';
 let roomname = 'Chat';
 
 document.getElementById('room').innerHTML = `Welcome to Chat room`;
 
 function onSignIn(googleUser) {
   // The ID token you need to pass to your backend:
-  
-  var id_token = googleUser.getAuthResponse().id_token;
 
+  var id_token = googleUser.getAuthResponse().id_token;
+  //var profile = googleUser.getBasicProfile();
+  //username = profile.getName();
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
+    console.log('Signed in as: ' + xhr.responseText);
     if (xhr.responseText == 'success') {
-      signOut()
-     
+      var auth2 = gapi.auth2.init()
+      if (auth2.isSignedIn.get()) {
+        var profile = auth2.currentUser.get().getBasicProfile();
+       
+         //username =  profile.getName();
+        
+      }
+      signOut();
+
       location.assign('/chat');
     }
   };
   xhr.send(JSON.stringify({ token: id_token }));
-  
 }
 
 function signOut() {
