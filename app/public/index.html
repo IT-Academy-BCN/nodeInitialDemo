@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="/js/main.js" charset="utf-8"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <meta
       name="google-signin-client_id"
       content="958038213628-eqrn87vh7a5rma5r9t26scnc7oja69k0.apps.googleusercontent.com"
     />
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+    <div id="google">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a id = "sign" href="#" onclick="signOut();">Sign out</a>
+      
+    </div>
   </body>
 </html>

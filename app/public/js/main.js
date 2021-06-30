@@ -56,7 +56,6 @@ function entrarALaSala(sala) {
   document.getElementById('room').innerHTML = `Welcome to ${sala} room`;
   roomname = sala;
   socket.emit('switchRoom', {
-    username: username,
     roomname: sala,
   });
 }
