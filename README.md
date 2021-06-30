@@ -23,3 +23,5 @@ Leave the previous terminal running and open a new one.<br>
 ## Extra
 
 When you start the project you login with the name you want, you will enter the main chat, you can change the room with the upper buttons, when you change the room the messages of that room will be shown.
+
+For level two a branch called google_token has been created, click on the google button to register.
