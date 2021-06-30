@@ -1,5 +1,5 @@
 # Chat
-Exercicies sprint 5 Chatof the IT Academy course
+Exercicies sprint 5 Chat of the IT Academy course
 Itinerary Nodejs
 
 
