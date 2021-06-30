@@ -1,7 +1,7 @@
 {
   "name": "ej5",
   "version": "1.0.0",
-  "description": "",
+  "description": "Estructura general de un proyecto node.js. Folder y files:",
   "type": "module",
   "main": "app.js",
   "scripts": {
@@ -15,14 +15,10 @@
     "bluebird": "^3.7.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-mysql-session": "^2.1.6",
     "express-session": "^1.17.2",
-    "mariadb": "^2.5.3",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
+    "mongoose": "^5.13.0",
     "npm": "^7.18.1",
-    "pm2": "^5.1.0",
-    "sequelize": "^6.6.2"
+    "pm2": "^5.1.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
@@ -31,5 +27,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "nodemon": "^2.0.7",
     "prettier": "2.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raulalhena/nodeInitialDemo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raulalhena/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/raulalhena/nodeInitialDemo#readme"
 }

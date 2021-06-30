@@ -1,21 +1,20 @@
-export default (sequelize, type) => {
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
-    return sequelize.define('player', {
-        id: {
-            type: type.INTEGER,
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true
-        },
-        name: {
-            type: type.STRING,
-            allowNull: false,
-            defaultValue: "Anònim"
+const playerSchema = new Schema ({
+    _id: Number,
+    name: { type: String, default: 'anonim' },
+    games: [
+        {
+            id: Number,
+            dice1: Number,
+            dice2: Number,
+            won: Number
         }
-    }, {
-        sequelize,
-        modelName: "Player"
-    });
+    ]
+});
 
-}
-  
+const playerModel = mongoose.model('Player', playerSchema);
+
+
+export default playerModel;

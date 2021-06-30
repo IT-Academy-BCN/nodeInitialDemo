@@ -1,43 +1,28 @@
-import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 import playerModel from '../models/players.js';
-import gameModel from '../models/games.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
-    dialect: 'mariadb'
+mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
-try {
-    await sequelize.authenticate();
-    console.log('Conexión a la base de datos correcta.');
-} catch (error) {
-    console.error('No se ha podido conectar con la base de datos:', error);
-}
+const db = mongoose.connection;
 
-const Player = playerModel(sequelize, Sequelize);
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () =>{
+    console.log('Conexión db correcta');
+});
 
-try {
-    await Player.sync({ force: false });
-} catch (error){
-    console.error('No se ha podido crear la tabla Players');
-}
+const player = new playerModel();
 
-const Game = gameModel(sequelize, Sequelize);
-
-try {
-    Player.hasMany(Game);
-    Game.belongsTo(Player);
-    await Game.sync({ force: false });
-} catch (error){
-    console.error('No se ha podido crear la tabla Games');
-}
+player._id = 1;
+await player.save();
 
 export { 
-    Player,
-    Game,
-    sequelize
+    player,
+    db
 }
 

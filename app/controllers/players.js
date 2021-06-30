@@ -1,4 +1,4 @@
-import { Player, Game, sequelize }from '../config/dbManager.js';
+import { player, db }from '../config/dbManager.js';
 import { checkError } from '../middlewares/errorHandler.js';
 
 const addPlayer = async (req, res, next) => {
