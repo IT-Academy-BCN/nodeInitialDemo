@@ -19,3 +19,18 @@ Estructura general de un proyecto node.js. Folder y files:
 - <b>.prettierignore</b>. Formatter de código. Véanse [Prettier Config](https://prettier.io/docs/en/configuration.html) y [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
 - <b>.ecosystem.config.js</b>. Gestor de procesos en tiempo de ejecución. Véanse [PM2 Docs](https://pm2.keymetrics.io/).
 - <b>package.json</b>.
+
+## Entrega d'exercici: Node REST Server
+### Instrucciones
+Esta API se desarrolló bajo NodeJS v10.16.2 y NPM v6.14.8. 
+
+### Instalación
+- Clonar proyecto
+- Ejecute npm i
+- Arranque el servidor con npm start, también puedes levantar el servidor con npm run dev, el cual hará uso de nodemon
+
+### Endpoints
+GET /: 
+GET /user: ver info usuario
+POST /upload: subir imagen .png, .jpg, .jpeg o .gif
+
