@@ -30,7 +30,8 @@ Esta API se desarrolló bajo NodeJS v10.16.2 y NPM v6.14.8.
 - Arranque el servidor con npm start, también puedes levantar el servidor con npm run dev, el cual hará uso de nodemon
 
 ### Endpoints
-GET /: 
 GET /user: ver info usuario
+
 POST /upload: subir imagen .png, .jpg, .jpeg o .gif
+
 
