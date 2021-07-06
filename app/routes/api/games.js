@@ -1,14 +1,14 @@
-// import express from 'express';
-// import { getPlayerGames, playGame, deletePlayerGames } from '../../controllers/games.js';
+import express from 'express';
+import { getPlayerGames, playGame, deletePlayerGames } from '../../controllers/games.js';
 
-// const router = express.Router({mergeParams: true});
+const router = express.Router({mergeParams: true});
 
-// // RUTAS
+// RUTAS
 
-// router.get('/', getPlayerGames);
+router.get('/', getPlayerGames);
 
-// router.post('/', playGame);
+router.post('/', playGame);
 
-// router.delete('/', deletePlayerGames);
+router.delete('/', deletePlayerGames);
 
-// export default router;
+export default router;

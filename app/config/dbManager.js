@@ -1,13 +1,17 @@
 import mongoose from 'mongoose';
-import playerModel from '../models/players.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+try{
 
 mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+} catch(e){
+    console.log(e);
+}
 
 const db = mongoose.connection;
 
@@ -16,13 +20,6 @@ db.once('open', () =>{
     console.log('Conexión db correcta');
 });
 
-const player = new playerModel();
+mongoose.set('useFindAndModify', false);
 
-player._id = 1;
-await player.save();
-
-export { 
-    player,
-    db
-}
-
+export default db;

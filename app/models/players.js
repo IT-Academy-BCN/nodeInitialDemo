@@ -1,20 +1,31 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
+const modelName = 'Player';
+
 const playerSchema = new Schema ({
-    _id: Number,
-    name: { type: String, default: 'anonim' },
+    name: { 
+        type: String,
+        required: true,
+        unique: true, 
+        default: 'anonim' 
+    },
     games: [
         {
-            id: Number,
-            dice1: Number,
-            dice2: Number,
-            won: Number
+            _id: false,
+            dice1: {
+                type: Number
+            }, 
+            dice2: {
+                type: Number
+            }, 
+            won:{
+                type: Number
+            } 
         }
     ]
 });
 
-const playerModel = mongoose.model('Player', playerSchema);
-
+const playerModel = mongoose.model(modelName, playerSchema);
 
 export default playerModel;

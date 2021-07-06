@@ -1,4 +1,4 @@
-import { player, db }from '../config/dbManager.js';
+import playerModel from '../models/players.js';
 import { checkError } from '../middlewares/errorHandler.js';
 
 const addPlayer = async (req, res, next) => {
@@ -6,11 +6,13 @@ const addPlayer = async (req, res, next) => {
 
     if(playerName === undefined || playerName === '') playerName = 'anonimo' + Date.now();
 
-    const newPlayer = await Player.create({ 
+    const newPlayer = await new playerModel({ 
         name: playerName
     });
 
-    if(newPlayer.length < 1) return checkError(500, next, ' No se ha podido crear el usuario.');
+    const player = await newPlayer.save()
+    
+    if (!player) return checkError(500, next, ' No se ha podido crear el usuario.');
 
     res.json({
         action: 'Player Created',
@@ -21,20 +23,12 @@ const addPlayer = async (req, res, next) => {
 }
 
 const showPlayers = async (req, res, next) => {
-    const allPlayers = Object.values(await Player.findAll( 
-        {
-            include: [
-                {
-                    model: Game,
-                    attributes: [],
-                    required: true
-                }
-            ], 
-            attributes: ['name', [sequelize.fn('avg', sequelize.literal('games.won * 100')), 'media']],
-            group: 'playerId',
-            raw: true
-        }
-     ));
+    
+    const allPlayers = await playerModel.aggregate([
+        {$project: {
+            _id: 1, name: 1
+        }}
+    ]);
 
     if(allPlayers.length < 1) checkError(204, next);
     
@@ -47,15 +41,9 @@ const changeNamePlayer = async (req, res, next) => {
         return checkError(400, next);
     }
    
-    const updatedItem = await Player.update({
-        name: req.body.newPlayerName
-    },{ 
-        where: { 
-            id: req.body.playerId 
-        } 
-    });
+    const numberUpdatedItems = await playerModel.findByIdAndUpdate(req.body.playerId,{ name: req.body.newPlayerName});
 
-    if(updatedItem[0] === 0) return checkError(204, next);
+    if(!numberUpdatedItems) return checkError(204, next);
 
     res.json({
         action: 'Player Updated',

@@ -1,6 +1,7 @@
 import express from 'express';
 import playersRouter from './routes/players.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import './config/dbManager.js';
 
 const app = express();
 

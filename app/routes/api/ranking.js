@@ -1,14 +1,14 @@
-// import express from 'express';
-// import { averagePlayers, getLoser, getWinner } from '../../controllers/ranking.js';
+import express from 'express';
+import { averagePlayers, getLoser, getWinner } from '../../controllers/ranking.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// // RUTAS
+// RUTAS
 
-// router.get('/', averagePlayers);
+router.get('/', averagePlayers);
 
-// router.get('/loser', getLoser);
+router.get('/loser', getLoser);
 
-// router.get('/winner', getWinner);
+router.get('/winner', getWinner);
 
-// export default router;
+export default router;

@@ -1,41 +1,64 @@
-// import { Game, sequelize } from '../config/dbManager.js';
-// import { checkError } from '../middlewares/errorHandler.js';
+import  playerModel  from '../models/players.js';
+import { checkError } from '../middlewares/errorHandler.js';
 
-// const averagePlayers = async (req, res, next) => {
-//     const allGames = await Game.findAll({
-//             attributes: [[sequelize.fn('avg', sequelize.literal('won * 100')), 'media']],
-//             raw: true
-//          });
+const averagePlayers = async (req, res, next) => {
 
-//     if(allGames[0].media === null) return checkError(204, next);
+    const allGames = await playerModel.aggregate([
+        {$unwind: "$games"},
+        {$group: { 
+            _id: null,
+            average: { $avg:  "$games.won" }}},
+        {$project: {_id:0, average: 1}}
+    ]);
 
-//      res.json(allGames);
-// }
+    if(allGames.average === null) return checkError(204, next);
 
-// const getLoser = async (req, res, next) => {
-//     const result = await sequelize.query('SELECT MIN(av) AS loser FROM (SELECT AVG(g.won), p.name AS av FROM games g JOIN players p ON p.id = g.playerId GROUP BY playerId) x', { raw: true });
+     res.json(allGames);
+}
 
-//     if(result[0][0].loser === null) return checkError(204, next);
+const getLoser = async (req, res, next) => {
 
-//     res.json(
-//         result[0]
-//     );
-//     next();
-// }
+    const loser = await playerModel.aggregate([
+        {$project: {
+            player: "$name",
+            average: { $avg: "$activePlayers.won"},
+            _id: 0
+        }},
+        {$sort: { average: 1 }},
+        {$limit: 1},
+    ]);
 
-// const getWinner = async (req, res, next) => {
-//     const result = await sequelize.query('SELECT MAX(av) AS winner FROM (SELECT AVG(g.won), p.name AS av FROM games g JOIN players p ON p.id = g.playerId GROUP BY playerId) x', { raw: true });
+    if(loser === null) return checkError(204, next);
 
-//     if(result[0][0].winner === null) return checkError(204, next);
+    res.json(
+        loser
+    );
+    next();
+}
 
-//     res.json(
-//         result[0]
-//     );
-//     next();
-// }
+const getWinner = async (req, res, next) => {
+    const winner = await playerModel.aggregate([
+        {$project: {
+            player: "$name",
+            average: {$avg: "$games.won"},
+            _id: 0
+        }},
+        {$sort: {
+            average: -1
+        }},
+            {$limit: 1}
+    ]);
 
-// export {
-//     averagePlayers,
-//     getLoser,
-//     getWinner
-// }
+    if(winner === null) return checkError(204, next);
+
+    res.json(
+        winner
+    );
+    next();
+}
+
+export {
+    averagePlayers,
+    getLoser,
+    getWinner
+}
