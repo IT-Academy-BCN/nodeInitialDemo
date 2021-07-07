@@ -1,20 +1,18 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
+const user = require("./models/user");
 const {
   checkMimeType,
   mediaError,
   isUpload,
   cacheControl,
   getCurrentTime,
+  basicAuth,
+  authErrorHandler,
 } = require("./middlewares/middlewares");
 
 const app = express();
-
-const user = {
-  name: "me",
-  edat: 22,
-};
 
 // Accept CORS
 app.use(cors());
@@ -26,13 +24,16 @@ app.use(
     createParentPath: true,
   })
 );
+// Set Cache Control
+app.use(cacheControl);
 
 // Middlewares to check correct uploading and handle upload errors
 app.use("/upload", isUpload);
 app.use("/upload", checkMimeType);
 app.use("/upload", mediaError);
-// Set Cache Control
-app.use(cacheControl);
+
+app.use("/secret", basicAuth);
+app.use("/secret", authErrorHandler);
 
 app.get("/users", (req, res) => {
   const { protocol, originalUrl: url } = req;
@@ -52,6 +53,14 @@ app.post("/upload", async (req, res) => {
 app.post("/register", async (req, res) => {
   const currentTime = await getCurrentTime();
   res.send(JSON.stringify(currentTime));
+});
+
+app.get("/secret", async (req, res) => {
+  try {
+    res.status(200).send("You have found many, many secrets");
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 app.listen(3000, () => {
