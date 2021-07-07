@@ -4,6 +4,8 @@
 
 Abans d'executar el projecte, s'ha d'executar el fitxer database.sql per tenir la base de dades creada!!!
 
+Per iniciar el projecte s'ha d'executar 'npm start'.
+
 ENDPOINTS
 
 Crear usuari (POST)
