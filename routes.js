@@ -1,6 +1,21 @@
 const express = require('express');
 const router = express.Router();
+
 const upload = require('./middleware/storage');
+
+const bodyParser = require('body-parser');
+
+const cors = require('cors');
+
+const auth = require('./middleware/auth');
+
+
+router.use(bodyParser.json());
+
+router.use((req, res, next) => {
+  res.set('Cache-Control', 'no-cache');
+  next();
+});
 
 router.get('/', function(req, res) {
     res.send('hello world');
@@ -8,11 +23,26 @@ router.get('/', function(req, res) {
 
 router.get('/user', function(req, res) {
     const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    res.json({ name: "tobi", age: 30, url: fullUrl});
+    const name = 'toby';
+    const age = 30;
+    res.json({ 'name': name, 'age': age, 'url': fullUrl});
 });
 
 router.post('/upload', upload.single('image'), function(req, res) {
     res.send('image uploaded');
+});
+
+router.use(auth);
+router.post('/time', cors(), function(req, res) {
+    const currentdate = new Date(); 
+    const datetime = currentdate.getHours() + ":"  
+                    + currentdate.getMinutes() + ":" 
+                    + currentdate.getSeconds();
+    const user_name = req.body.name;
+    console.log('This is CORS-enabled for a Single Route');
+    res.json({name: user_name, time: datetime, date: currentdate});
+    res.statusCode=200;
+    res.end("authenticated");
 });
 
 module.exports = router;

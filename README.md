@@ -34,4 +34,4 @@ GET /user: ver info usuario
 
 POST /upload: subir imagen .png, .jpg, .jpeg o .gif
 
-
+post /time
