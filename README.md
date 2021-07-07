@@ -35,3 +35,6 @@ GET /user: ver info usuario
 POST /upload: subir imagen .png, .jpg, .jpeg o .gif
 
 post /time
+
+### Postman collection link
+https://www.getpostman.com/collections/2d8b2666f38b5b060c04
