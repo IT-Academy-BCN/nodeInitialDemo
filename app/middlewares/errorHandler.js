@@ -2,6 +2,7 @@
 const errorMessage = {
     204: 'No hay contenido', //Dejo mensaje aunque no se mostrará, así mantengo coherencia con la emisión de errores.
     400: 'Los datos no existen o no son correctos.',
+    403: 'No tienes acceso a este recurso',
     500: 'Petición no completada.'
 }
 
