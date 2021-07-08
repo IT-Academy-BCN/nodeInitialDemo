@@ -8,10 +8,12 @@ const errorMessage = {
 const checkError = (errorCode, next, addMessage = "") => {
     const err = new Error(errorMessage[errorCode] + addMessage);
     err.statusCode = errorCode;
+    console.log('CHECK ERR', err.statusCode + ' ' + err.message)
     return next(err);
 }
 
 const errorHandler = (err, req, res, next) => {
+    console.log('HANDLER', err.statusCode + ' ' + err.message)
     res.status(err.statusCode).json({
         error: err.statusCode,
         message: err.message
