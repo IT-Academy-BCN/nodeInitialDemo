@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true
         },
         name: {
-            type: Sequelize.STRING, defaultValue: "Anònim"
+            type: Sequelize.STRING, defaultValue: "Anònim", unique: true
         }
     });
     return User;
