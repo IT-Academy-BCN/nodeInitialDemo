@@ -6,6 +6,10 @@ Abans d'executar el projecte, s'ha d'executar el fitxer database.sql per tenir l
 
 Per iniciar el projecte s'ha d'executar 'npm start'.
 
+POSTMAN
+
+<b>https://www.getpostman.com/collections/490c2fadd87115a597b2</b>
+
 ENDPOINTS
 
 Crear usuari (POST)
@@ -24,7 +28,7 @@ Postman (body form-data)
 
 -----------------------------------
 
-Modifica el mom de l'usuari (POST)
+Fer una tirada (POST)
 <b>http://localhost:8080/users/1/games</b>
 
 -----------------------------------
