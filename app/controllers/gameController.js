@@ -23,10 +23,14 @@ exports.play = (req,res) => {
 
     Game.create(game)
     .then(data => {
-        res.send(data);
+        res.json({
+            success: true,
+            message: data
+        });
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message:
             err.message || "Some error occurred while creating the game(throw)"
         });
@@ -38,10 +42,22 @@ exports.userGames = (req,res) => {
 
     Game.findAll({ where: { userId: userId } })
     .then(data => {
-        res.send(data);
+        if(Object.keys(data).length){
+            res.json({
+                success: true,
+                message: data
+            });
+        }else{
+            res.json({
+                success: true,
+                message: "Empty data"
+            });
+        }
+        
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message: "Error retrieving tutorial with id=" + userId
         });
     });
@@ -53,13 +69,15 @@ exports.delete = (req,res) => {
     Game.destroy({ where: { userId: userId } })
     .then(num => {
         if(true){
-            res.send({
+            res.json({
+                success: true,
                 message: `Games from user ${userId} deleted successfully`
             });
         }
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message: `Cannot delete games from user ${userId}`
         });
     });
