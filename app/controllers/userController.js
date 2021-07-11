@@ -3,10 +3,10 @@ const User = db.users;
 const Op = db.Sequelize.Op;
 
 exports.create = (req,res) => {
-    const userName = req.body.name;
+    let userName = req.body.name;
     
-    if(userName === undefined || userName === ''){
-        userName = 'Anònim';
+    if(userName === undefined || userName === ""){
+        userName = "Anònim";
     }
 
     const user = {
@@ -16,10 +16,14 @@ exports.create = (req,res) => {
 
     User.create(user)
     .then(data => {
-        res.send(data);
+        res.json({
+            success: true,
+            message: data
+        });
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message: 
             err.message || "Some error occurred while creating the user"
         });
@@ -32,10 +36,21 @@ exports.findAll = (req,res) => {
 
     User.findAll({ where: condition})
     .then(data => {
-        res.send(data);
+        if(Object.keys(data).length){
+            res.json({
+                success: true,
+                message: data
+            });
+        }else{
+            res.json({
+                success: true,
+                message: "No users found"
+            });
+        }
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message:
             err.message || "Some error occurred while retrieving users"
         });
@@ -50,17 +65,20 @@ exports.update = (req,res) => {
     })
     .then(num => {
         if(num == 1){
-            res.send({
+            res.json({
+                success: true,
                 message: "User was updated successfully"
             });
         }else{
-            res.send({
-                message: `Cannot update tutorial with id=${id}`
+            res.json({
+                success: false,
+                message: `Cannot update user with id=${id}`
             });
         }
     })
     .catch(err => {
-        res.status(500).send({
+        res.status(500).json({
+            success: false,
             message: `Error updating user (${id})`
         });
     });
