@@ -14,12 +14,20 @@ You will find them in the config folder in the dbconexion.js file.
 
 
 
-# Running the server 
-Leave the previous terminal running and open a new one.<br>
+# Running the servers 
+running server<br>
+cd app<br>
+cd server<br>
+-`npm install`(install all node dependencies)<br>
+-`npm start` (start the app)<br>
+
+running cliente<br>
+cd app<br>
+cd cliente<br>
 -`npm install`(install all node dependencies)<br>
 -`npm start` (start the app)<br>
 
 
 ## Extra
 
-When you start the project you login with the name you want, you will enter the main chat, you can change the room with the upper buttons, when you change the room the messages of that room will be shown.
+When you start the project you connect with the name you want and choose the name of the room, you can change the room with the upper buttons, when you change the room the messages of that room will be shown.
