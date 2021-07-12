@@ -1,9 +1,16 @@
-const router = require("express").Router();
-const getCurrentTime = require("../helpers/get-current-time");
+const express = require("express");
+const cors = require("cors");
+const { cacheControl } = require("../middlewares/middlewares");
+const registerUser = require("../controllers/register");
 
-router.post("/", async (req, res) => {
-  const currentTime = await getCurrentTime();
-  res.send(JSON.stringify(currentTime));
-});
+const router = express.Router();
+
+// Accept CORS
+router.use(cors());
+// Parse the body
+router.use(express.json());
+// Set Cache Control
+router.use(cacheControl);
+router.post("/", registerUser);
 
 module.exports = router;

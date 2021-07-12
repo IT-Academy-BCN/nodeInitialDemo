@@ -1,16 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const router = require("./routes/index");
 const { cacheControl } = require("./middlewares/middlewares");
+const router = require("./routes/index");
 
 const app = express();
-
-// Accept CORS
-app.use(cors());
-// Parse the body
-app.use(express.json());
-// Set Cache Control
-app.use(cacheControl);
 
 app.use("/users", router.users);
 app.use("/upload", router.upload);
@@ -34,10 +27,6 @@ eso debería estar en helpers (si no tiene un next() no es un middleware)
 // Middleware don't give the answer, it's just a validation-filter
 // If the controller receives the request he doesn't ask if it's good or not. The middleware has decided already.
 // Helpers son funciones tontas para hacer el código más modular
-
-El fichero app.js es muy largo! Aunque los puristas dicen que tiene que tener como 10 o 15 líneas,
-estaría bien que como mínimo separes las rutas a una carpeta routes
-// Rever routes y como exportar routes. 
 
 
 El servidor tiene que devolver un json en el body de la request (en algunos devuelves un string)
