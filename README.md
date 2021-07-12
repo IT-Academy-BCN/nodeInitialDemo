@@ -29,5 +29,5 @@ cd cliente<br>
 
 
 ## Extra
-
+Enter the path localhost:8080/login
 When you start the project you connect with the name you want and choose the name of the room, you can change the room with the upper buttons, when you change the room the messages of that room will be shown.
