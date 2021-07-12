@@ -19,14 +19,6 @@ pero el archivo no se sube al server en ningún momento!
 // Revisar
 
 
-en la carpeta middlewares tienes cosas como la función que devuelve el tiempo, 
-eso debería estar en helpers (si no tiene un next() no es un middleware)
-
-// Middleware don't give the answer, it's just a validation-filter
-// If the controller receives the request he doesn't ask if it's good or not. The middleware has decided already.
-// Helpers son funciones tontas para hacer el código más modular
-
-
 El servidor tiene que devolver un json en el body de la request (en algunos devuelves un string)
 // RES.JSON()
 */

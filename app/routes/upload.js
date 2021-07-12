@@ -1,12 +1,11 @@
 const router = require("express").Router();
-
 const fileUpload = require("express-fileupload");
 const {
   checkMimeType,
   mediaError,
   hasFile,
 } = require("../middlewares/middlewares");
-const sendFileInfo = require("../controllers/upload");
+const { sendFileInfo, uploadFileToServer } = require("../controllers/upload");
 
 router.use(
   fileUpload({
@@ -18,6 +17,6 @@ router.use("/", hasFile);
 router.use("/", checkMimeType);
 router.use("/", mediaError);
 
-router.post("/", sendFileInfo);
+router.post("/", uploadFileToServer, sendFileInfo);
 
 module.exports = router;
