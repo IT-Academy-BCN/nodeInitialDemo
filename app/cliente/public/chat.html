@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="./css/chat.css" />
+    <script
+      src="https://kit.fontawesome.com/811735505d.js"
+      crossorigin="anonymous"
+    ></script>
+    
+  </head>
+  <body onload="adduser();">
+    <div id="general">
+      <div id="usuariosonline">
+        <h1 id="online">Users online</h1>
+        <p id="output"></p>
+      </div>
+      <div id="titulo">
+        <h1 id="room"></h1>
+        <div id="feedback"></div>
+
+        <form action="/chat" method="GET">
+          <div id="rooms">
+      </div>
+      
+      <button class="b" id="r3" type="button" >New Room</button>
+            <input type="text" id="r4" placeholder="new room" />
+          </div>
+        </form>
+
+      <div id="body">
+        <p id="write"></p>
+      </div>
+      <div id="mensaje">
+        <input
+          type="text"
+          name="texto"
+          id="message"
+          placeholder="Tell me something..."
+        />
+        <input id="send" type="button" onclick="addMessage()"value="Send">
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
