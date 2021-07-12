@@ -4,8 +4,9 @@ const fileUpload = require("express-fileupload");
 const {
   checkMimeType,
   mediaError,
-  isUpload,
+  hasFile,
 } = require("../middlewares/middlewares");
+const sendFileInfo = require("../controllers/upload");
 
 router.use(
   fileUpload({
@@ -13,16 +14,10 @@ router.use(
   })
 );
 // Middlewares to check correct uploading and handle upload errors
-router.use("/", isUpload);
+router.use("/", hasFile);
 router.use("/", checkMimeType);
 router.use("/", mediaError);
 
-router.post("/", async (req, res) => {
-  res.status(201).send({
-    status: 201,
-    message: "File is uploaded",
-    mimetype: req.files.filesample.mimetype,
-  });
-});
+router.post("/", sendFileInfo);
 
 module.exports = router;

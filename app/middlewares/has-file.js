@@ -1,4 +1,4 @@
-function isUpload(req, res, next) {
+function hasFile(req, res, next) {
   // Check if any file has been uploaded, if there's a file call next middleware, if not call error handler.
   try {
     if (!req.files) {
@@ -11,4 +11,4 @@ function isUpload(req, res, next) {
   }
 }
 
-module.exports = isUpload;
+module.exports = hasFile;

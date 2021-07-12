@@ -1,11 +1,6 @@
 const router = require("express").Router();
-const user = require("../models/user");
+const sendUserInfo = require("../controllers/users");
 
-router.get("/", (req, res) => {
-  const { protocol, originalUrl: url } = req;
-  const host = req.get("host");
-  user.url = `${protocol}://${host}${url}`;
-  res.send(user);
-});
+router.get("/", sendUserInfo);
 
 module.exports = router;
