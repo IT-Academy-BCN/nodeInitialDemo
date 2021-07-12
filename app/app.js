@@ -1,7 +1,7 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
-const user = require("./models/user");
+const router = require("./routes/index");
 const getCurrentTime = require("./helpers/get-current-time");
 const {
   checkMimeType,
@@ -35,12 +35,7 @@ app.use("/upload", mediaError);
 app.use("/secret", basicAuth);
 app.use("/secret", authErrorHandler);
 
-app.get("/users", (req, res) => {
-  const { protocol, originalUrl: url } = req;
-  const host = req.get("host");
-  user.url = `${protocol}://${host}${url}`;
-  res.send(user);
-});
+app.use("/users", router.users);
 
 app.post("/upload", async (req, res) => {
   res.status(201).send({
