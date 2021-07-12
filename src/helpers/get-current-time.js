@@ -11,4 +11,5 @@ async function getCurrentTime() {
     return err.message;
   }
 }
+
 module.exports = getCurrentTime;
