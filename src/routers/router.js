@@ -2,7 +2,6 @@ const path = require('path');
 const { Router } = require('express');
 const router = Router();
 const multer = require('multer');
-const { runInNewContext } = require('vm');
 
 const storage = multer.diskStorage({
     //como colocar el nombre del archivo
@@ -33,20 +32,27 @@ const upload = (multer({
 
 //Upload file
  //para recibir lo que el formulario esta enviado a traves del metodo post
- router.post('/upload', upload, (req, res) => {
+ router.post('/upload', (req, res, next) => {
+     upload(req, res, err => {
+        if(err) {
+            res.status(400).json({error: 'extension incorrecta'})
+        }
+        next();
+ })}, (req, res) => {
      let picture = req.file;
      console.log(req.file);
-     if(req.file === null){
-         res.status(404).send('something went wrong');
-     }
-     res.send({
-         data:{
-             name: picture.originalname,
-             mimetype: picture.mimetype,
-             size: picture.size
-         }
-     });
- });
+     if(req.file === null || req.file === undefined){
+         res.status(404).json({error: 'something went wrong'});
+     } else {
+        res.send({
+            data:{
+                name: picture.originalname,
+                mimetype: picture.mimetype,
+                size: picture.size
+            }
+        });
+    }
+    });
 
 function sendResponse(req, res, data){ //anadimos el objeto req para leerlo en el valor del parametro url
     if(!data){
