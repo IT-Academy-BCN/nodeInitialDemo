@@ -1,6 +1,6 @@
 import { userModel } from '../models/users.js';
 import { checkError } from '../middlewares/errorHandler.js';
-import verifyPassword from '../helpers/verifyLogin.js';
+import verifyPassword from './verifyLogin.js';
 
 const loginUser = async (req, res, next) => {
     const {username, password} = req.body;
@@ -11,9 +11,15 @@ const loginUser = async (req, res, next) => {
 
     if(user === null) return checkError(400, next, ' Usuario y/o contraseña incorrectos.');
 
-    if(!await verifyPassword(password, user.password)) return checkError(400, next, ' Usuario y/o contraseña incorrectos.')
+    if(!await verifyPassword(password, user.password)) return checkError(400, next, ' Usuario y/o contraseña incorrectos.');
 
-    res.redirect('chat.html');
+    req.session.user = user.username;
+    req.session.pass = user.password;
+    res.locals.session = req.session;
+
+    console.log("#SESSION: ", res.locals.session);
+
+    res.redirect('/chat');
 }
 
 export default loginUser;
