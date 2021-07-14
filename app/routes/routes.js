@@ -8,7 +8,7 @@ import signupUser from '../helpers/signup.js';
 import authenticate from '../middlewares/authenticate.js';
 import setSession from '../helpers/varViews.js';
 import rutaNoExistente from '../helpers/rutas404.js';
-
+import loginGoogleUser from '../controllers/logingoogle.js';
 
 const router = express.Router();
 
@@ -16,6 +16,10 @@ const router = express.Router();
 
 router.get('/', showLogin);
 router.post('/login', loginUser);
+
+// GOOGLE LOGIN
+
+router.post('/glogin', loginGoogleUser);
 
 // SIGN UP
 

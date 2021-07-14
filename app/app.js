@@ -8,7 +8,6 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import './config/dbManager.js';
 import './models/users.js';
 
-
 // CONFIGURACION RUTAS LOCALES
 
 import path from 'path';
@@ -51,7 +50,7 @@ app.use(session({
 // GESTION DE ERRORES
 app.use(errorHandler);
 
-// #->> FIN MIDDLEWARES <<-
+// #->> END MIDDLEWARES <<-
 
 // ##->> DEFINICION DE RUTAS << -
 
@@ -76,11 +75,10 @@ const httpServer = app.listen(3000, () => {
 
 const io = new Server(httpServer);
 io.on('connection', (socket) => {
-    console.log('New connection', socket.id);
+    console.log('## => New connection: ', socket.id);
 
     socket.on('chat:message', (data) => {
         io.sockets.emit('chat:message-server', data);
-        console.log(data);
     });
 
     socket.on('chat:typing', (username) => {

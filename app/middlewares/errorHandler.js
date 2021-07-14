@@ -15,9 +15,9 @@ const checkError = (errorCode, next, addMessage = "") => {
 }
 
 const errorHandler = (err, req, res, next) => {
-        console.log('HANDLER', err.statusCode + ' ' + err.message)
-        res.status(err.statusCode);
+        console.log('HANDLER', err.statusCode + ' ' + err.message);
         res.locals.errorMessage = err.message;
+        res.status(err.statusCode);
         res.render('index');
 }
 

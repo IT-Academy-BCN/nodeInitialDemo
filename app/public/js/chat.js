@@ -1,7 +1,7 @@
 const socket = io();
 
 socket.on("connect", () => {
-    console.log("client", socket.id);
+    console.log("Connected, id:", socket.id);
 });
 
 let message = document.getElementById('message');
@@ -13,7 +13,6 @@ let output = document.getElementById('output');
 sendButton.addEventListener('click', function(){
     const time = Date.now();
     const today = new Date(time);
-    console.log("Fecha: ", today.toLocaleTimeString());
     socket.emit('chat:message', {
         time: today.toLocaleTimeString(),
         date: today.toLocaleDateString(),
@@ -29,12 +28,12 @@ message.addEventListener('keydown', (event) => {
     if(event.key === "Enter"){
         event.preventDefault();
         sendButton.click();
-        actions.innerHTML = '';
+        actions.innerHTML = '<p></p>';
     }
 });
 
 socket.on('chat:message-server', (data) => {
-    actions.innerHTML = '';
+    actions.innerHTML = '<p></p>';
     output.innerHTML += `<div id="output">
                             <div class="chat-date"> ${data.date}-${data.time}</div>
                             <div class="chat-line">

@@ -1,7 +1,7 @@
 import { checkError } from "./errorHandler.js";
 
 const authenticate = (req, res, next) => {
-    if(req.session && req.session.user){
+    if(req.session && req.session.user || req.session.payload.email_verified){
         return next();
     }
 
