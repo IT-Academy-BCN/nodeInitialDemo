@@ -41,9 +41,55 @@
 		{
 			"name": "Upload Image",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/formacio/Desktop/Captura.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/upload?",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		},
