@@ -33,14 +33,14 @@ module.exports = {
                 return;
             }
             console.log(error);
-            res.status(500).json({error: 'No se han tirado los dados'})
+            res.status(500).json({error: 'No game played'})
         }
     },  
     playerList: async (req, res) => {
        const playerId = req.params.id;
     try{
        const list = await model.playerList(playerId);
-       res.status(200).json(list);
+       res.status(200).json({list});
     }catch (error) {
         console.log(error);
         if(!list) {
@@ -68,7 +68,7 @@ module.exports = {
     playersList: async (req, res) => {
     try{
         const list = await model.playersList();
-        res.status(200).json(list);
+        res.status(200).json({list});
     }catch(error) {
         console.log(error);
         if(!list) {

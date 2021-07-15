@@ -41,7 +41,7 @@ module.exports = {
         }
     },
     playerList: async playerThrows => {
-        const player = await ThrowModel.find({_id: playerThrows}).exec();
+        const player = await ThrowModel.find({player: playerThrows}).exec();
         if (player.length > 0){
             return player;
         } else {
