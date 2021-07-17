@@ -17,7 +17,7 @@ const loginGoogleUser = async (req, res, next) => {
     res.locals.payload = payload;
 
     res.cookie('session-token', token);
-    res.send(true);
+    res.send(payload);
 }
 
 export default loginGoogleUser;

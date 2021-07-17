@@ -1,5 +1,6 @@
 import express from 'express';
 import { Server } from 'socket.io';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import hbs from 'express-handlebars';
 import session from 'express-session';
@@ -37,6 +38,7 @@ app.set('view engine', '.hbs');
 
 // ##->> DEFINICION DE MIDDLEWARES <<-
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -58,10 +60,13 @@ app.use(errorHandler);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API
+app.get('/hola', (req, res) => {
+	console.log('hola route');
+	res.json({
+		saludo:'hola'
+	});
+});
 app.use(router);
-
-// MANEJO DE ERRORES
-app.use(errorHandler);
 
 // #->> END DEFINICION RUTAS <<-
 
@@ -73,12 +78,18 @@ const httpServer = app.listen(3000, () => {
 
 // INICIACION SOCKETS
 
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+    cors: {
+	    origins: "*"
+    }
+});
+
 io.on('connection', (socket) => {
     console.log('## => New connection: ', socket.id);
 
     socket.on('chat:message', (data) => {
         io.sockets.emit('chat:message-server', data);
+	console.log("msg: ", data);	    
     });
 
     socket.on('chat:typing', (username) => {

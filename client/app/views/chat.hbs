@@ -1,0 +1,21 @@
+<div id="chat-container">
+    <div id="chat-window">
+        <div class="chat-text">
+            <div id="output"></div>
+        </div>
+       
+    </div class="container">
+         <div class="p-0" id="actions">
+             <p> </p>
+         </div>
+        <div class="p-1" id="userinfo"><strong>User name:</strong> {{session.user}} {{#if session.picture}}<img class="profile-pic" src="{{session.picture}}"/>{{/if}}</div>
+        <input type="hidden" id="username" value="{{session.user}}">
+    <div>
+        <input type="text" id="message" placeholder="Message" autofocus>
+        <div class="d-grid gap-2">
+            <button class="mt-3 mb-3 btn btn-dark" id="send" value="send">Send</button>
+        </div>
+    </div>
+</div>
+<script src="/js/socket.io.js"></script>
+<script src="/js/chat.js"></script>

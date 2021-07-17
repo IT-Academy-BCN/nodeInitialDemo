@@ -1,4 +1,3 @@
-
 const errorMessage = {
     204: 'No hay contenido. ', //Dejo mensaje aunque no se mostrará, así mantengo coherencia con la emisión de errores.
     400: 'Los datos no existen o no son correctos. ',
@@ -9,19 +8,10 @@ const errorMessage = {
 }
 
 const checkError = (errorCode, next, addMessage = "") => {
-    const err = new Error(errorMessage[errorCode] + addMessage);
-    err.statusCode = errorCode;
+    console.log(`==>> Error code: ${errorCode} and Message: ${addMessage}`)
+    const err = new Error(errorMessage[errorCode || 500] + addMessage);
+    err.statusCode = errorCode || 500;
     return next(err);
 }
 
-const errorHandler = (err, req, res, next) => {
-        console.log('HANDLER', err.statusCode + ' ' + err.message);
-        res.locals.errorMessage = err.message;
-        res.status(err.statusCode);
-        res.render('index');
-}
-
-export { 
-    errorHandler,
-    checkError
-}
+export default checkError;

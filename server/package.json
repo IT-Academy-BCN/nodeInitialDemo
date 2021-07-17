@@ -1,0 +1,44 @@
+{
+  "name": "ej5",
+  "version": "1.0.0",
+  "description": "Estructura general de un proyecto node.js. Folder y files:",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npx nodemon ./app/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "google-auth-library": "^7.3.0",
+    "mongoose": "^5.13.0",
+    "npm": "^7.18.1",
+    "npx": "^10.2.2",
+    "pm2": "^5.1.0",
+    "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.12",
+    "prettier": "2.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raulalhena/nodeInitialDemo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raulalhena/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/raulalhena/nodeInitialDemo#readme"
+}

@@ -7,7 +7,6 @@ const signupUser = async (req, res, next) => {
 
     const user = new userModel({username, password});
 
-    console.log("SIGNUP", user.username + ' ' + user.password)
     user.save(err => {
         if(err) {
             console.log("SIGNUP ERROR: ", err);
@@ -16,7 +15,7 @@ const signupUser = async (req, res, next) => {
             req.session.user = user.username;
             req.session.pass = user.password;
             res.locals.session = req.session;
-            res.redirect('/chat')
+            res.send(user);
         }
     });
 };

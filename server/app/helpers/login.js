@@ -15,7 +15,10 @@ const loginUser = async (req, res, next) => {
     req.session.pass = user.password;
     res.locals.session = req.session;
 
-    res.redirect('/chat');
+    res.json({
+	    code: 200,
+	    message: 'success'
+    });
 }
 
 export default loginUser;
