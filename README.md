@@ -11,6 +11,8 @@ ___
 > MySQL(ORM)
 #### Roll dice
 ```
+- At first you need to create Database Named (rest_api)
+- Once you have created your database you can start the server from app.js
 npm install -> [install all the dependency]
 npm run dev -> [start the server]
 
