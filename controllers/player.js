@@ -1,58 +1,75 @@
-const express = require("express");
-const router = express.Router();
 const Player = require("../models/Player");
 const Game = require("../models/Game");
 const { Sequelize } = require("sequelize");
-router.post("/", async (req, res) => {
-	try {
-		Player.create({
-			username: req.body.username,
-		}).then(user => {
-			res.json(user);
-		});
-	} catch (err) {
-		res.json(err);
-	}
-});
 
-router.put("/:id", async (req, res) => {
+exports.create = async (req, res) => {
+	let username = req.body.username;
+	if (username === undefined || username === "") username = "ANONYMOUS";
+	try {
+		const user = await Player.create({ username: username });
+		// you can now access the newly created user
+		res.status(201).json({ user: user });
+	} catch (err) {
+		// print the error details
+		res
+			.status(400)
+			.json({ error: err.original.sqlMessage, username: req.body.username });
+	}
+};
+exports.update = async (req, res) => {
 	const id = req.params.id;
+
 	try {
 		const player = await Player.update(req.body, {
 			where: { id },
 		});
+		console.log(player);
 		if (player == 1) {
-			res.send({
+			res.status(202).json({
 				message: "Player was updated successfully.",
 			});
 		} else {
-			res.send({
+			res.status(404).json({
 				message: `Cannot update Player with id=${id}. Maybe Player was not found or req.body is empty!`,
 			});
 		}
 	} catch (err) {
-		res.status(500).send({
+		res.status(500).json({
 			message: "Error updating Tutorial with id=" + id,
 		});
 	}
-});
-router.get("/", async (req, res) => {
-	let avgScore = await Game.findAll({
-		include: [{ model: Player, attributes: ["username"] }],
-		attributes: [[Sequelize.fn("AVG", Sequelize.col("won")), "avgScore"]],
-		group: ["PlayerID"],
-	});
-	res.json(avgScore);
-});
+};
+exports.getAvgScore = async (req, res) => {
+	try {
+		let avgScore = await Player.findAll({
+			include: [{ model: Game, attributes: [] }],
+			attributes: [
+				[Sequelize.fn("AVG", Sequelize.col("games.won")), "avgScore"],
+				[Sequelize.col("username"), "username"],
+			],
+			group: ["username"],
+			raw: true,
+		});
+		res.status(200).json(avgScore);
+	} catch (err) {
+		res.status(400).json({ error: err });
+	}
+};
 
-router.get("/:id/games", async (req, res) => {
-	const players = await Player.findOne({
-		where: { id: req.params.id },
+exports.getPlayerRolls = async (req, res) => {
+	const { id } = req.params;
+	const player = await Player.findOne({
+		where: { id: id },
 		include: [{ model: Game }],
 	});
-	res.json(players);
-});
-
-
-
-module.exports = router;
+	try {
+		if (!player) {
+			res
+				.status(404)
+				.json({ message: "Player not found with the given id " + id });
+		}
+		res.status(302).json(player);
+	} catch (err) {
+		res.json(err.message);
+	}
+};
