@@ -1,24 +1,23 @@
-
 const model = require('../models/player');
 
 module.exports = {
     create: async (req, res) => {
         const { nombre } = req.body;
-        if(nombre === 'ANONIM'){
+        if(nombre === 'ANONIM' || nombre === " "){
             try{
             let player = await model.createAnonim();
-            res.status(200).json({resultado: player});
+            res.status(201).json({player: player});
             }catch(erro){
-                console.log(error);
-            res.status(500).json({error: 'No se ha creado el jugador'});
+            console.log(error);
+            res.status(409).json({error: 'Player not created'});
             }
         }else{
         try {
-            await model.create(nombre);
-            res.status(200).json({resultado: 'ok'});
+            let newPlayer = await model.create(nombre);
+            res.status(200).json({player: newPlayer});
         } catch (error) {
             console.log(error);
-            res.status(500).json({error: 'No se ha creado el jugador'});
+            res.status(500).json({error: 'The player was not created'});
         }
       }
     },
@@ -113,7 +112,7 @@ module.exports = {
         let oldName = req.body.oldName;
         let newName = req.body.newName; //objeto completo con los datos actualizados
         const updatedName = await model.modifyName(oldName, newName);
-        res.status(200).json(updatedName);
+        res.status(200).json({success: true,message: 'Updated successfully', updatedName});
      }catch (error) {
         res.status(500).json({error: 'Does not exist such player'});
      }

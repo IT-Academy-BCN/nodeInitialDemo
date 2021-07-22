@@ -13,15 +13,14 @@ const ThrowModel = mongoose.model('Throws', throwsSchema);
 module.exports = {
 
     create: async playerName => {
-        const nombre = playerName;
-        const player = new PlayerModel({name: nombre, registeredDate: new Date()});
-        await player.save(); // hablar con la base de datos para crear al jugador. 
+        const player = new PlayerModel({name: playerName, registeredDate: new Date()});
+        return await player.save(); // hablar con la base de datos para crear al jugador. 
     },
     createAnonim: async () => {
         const id = uniqid();
         const nombre = `ANONIM-${id}`;
         const player = new PlayerModel({name: nombre, registeredDate: new Date()});
-        await player.save(); // hablar con la base de datos para crear al jugador. 
+        return await player.save(); // hablar con la base de datos para crear al jugador. 
     },
     throwDice: async playerId => {
         const player = await PlayerModel.findOne({id: playerId}).exec();
@@ -74,6 +73,7 @@ module.exports = {
               }
             }
           ]).exec();
+        let playersList = [];
         let totalWins = 0;
         list.forEach(playerThrows => {
             console.log('player: ', playerThrows._id);
@@ -86,9 +86,10 @@ module.exports = {
             }, 0);
             console.log('wins: ', totalWins *100 / playerThrows.throws.length, '%');
             totalWins = totalWins *100 /playerThrows.throws.length;
-            return  totalWins = 'the player: ' + playerThrows._id + ' won ' + totalWins + '%';
+            totalWins = 'the player: ' + playerThrows._id + ' won ' + totalWins + '%';
+            playersList.push(totalWins);
         });
-     return totalWins;
+     return playersList;
     },
     winnerRanking: async () => {
         const list = await ThrowModel.aggregate([
@@ -126,6 +127,7 @@ module.exports = {
             {
               '$group': {
                 '_id': '$player', 
+                'name': '$name',
                 'throws': {
                   '$push': {
                     'diceOne': '$diceOne', 
@@ -154,10 +156,10 @@ module.exports = {
     },
     modifyName: async (oldName, newName) => {
         try{
-            console.log(oldName, newName);
+        console.log(oldName, newName);
         const player = await PlayerModel.findOneAndUpdate({name: oldName}, { $set: {name:newName}}, { new: true }).exec();
-        console.log('AAA', player);
-        }catch(error){
+        console.log(player); 
+       }catch(error){
             return error;
         }
     },
