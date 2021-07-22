@@ -8,7 +8,7 @@ exports.create = async (req, res) => {
 	try {
 		const user = await Player.create({ username: username });
 		// you can now access the newly created user
-		res.status(201).json({ user: user });
+		res.status(201).json(user);
 	} catch (err) {
 		// print the error details
 		res
