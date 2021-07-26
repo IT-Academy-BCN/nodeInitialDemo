@@ -12,8 +12,8 @@ ___
 #### Roll dice
 ```
 ### Instruction
-- inside of config/config.js you need to create your credentialfor your database connection
-- At first you need to create Database Named (rest_api)
+- inside of config/template.env  you need to create your own credentialfor your database connection
+- At first you need to create Database Named example -> (rest_api)
 - Once you have created your database you can start the server from app.js
 npm install -> [install all the dependency]
 npm run dev -> [start the server]
