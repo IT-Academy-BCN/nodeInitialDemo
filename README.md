@@ -1,5 +1,7 @@
 
+# Node Initial Project
 
-## Node Initial Demo
+### Project Structure
 
 Per iniciar el projecte s'ha d'executar npm start!!
+
