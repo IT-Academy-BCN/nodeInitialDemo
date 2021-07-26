@@ -2,27 +2,30 @@
   "name": "nodeinitialdemo",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/app.js"
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "rest",
-    "api",
-    "sequelize",
-    "mysql"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^9.0.2",
+    "bcrypt-nodejs": "0.0.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.7",
-    "pm2": "^4.5.6",
-    "sequelize": "^6.6.4"
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport.socketio": "^3.7.0",
+    "sequelize": "^6.6.5",
+    "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
   }
 }
