@@ -15,7 +15,7 @@ ENDPOINTS
 Crear usuari (POST)
 <b>http://localhost:8080/users</b>
 
-Postman (body form-data)
+Postman (body raw JSON)
 <b>{"name": "Pepe"}</b>
 
 -----------------------------------
@@ -23,7 +23,7 @@ Postman (body form-data)
 Modifica el mom de l'usuari (PUT)
 <b>http://localhost:8080/users/1</b>
 
-Postman (body form-data)
+Postman (body raw JSON)
 <b>{"name": "Pepito"}</b>
 
 -----------------------------------
@@ -60,3 +60,4 @@ Mostra el usuari amb pitjor percentatge d'èxit (GET)
 
 Mostra el usuari amb millor percentatge d'èxit (GET)
 <b>http://localhost:8080/users/ranking/winner</b>
+
