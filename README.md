@@ -1,6 +1,7 @@
 
+# Node Initial Project
 
-## Node Initial Demo
+### Project Structure
 
 Abans d'executar el projecte, s'ha d'executar el fitxer database.sql per tenir la base de dades creada!!!
 
@@ -60,4 +61,3 @@ Mostra el usuari amb pitjor percentatge d'èxit (GET)
 
 Mostra el usuari amb millor percentatge d'èxit (GET)
 <b>http://localhost:8080/users/ranking/winner</b>
-
