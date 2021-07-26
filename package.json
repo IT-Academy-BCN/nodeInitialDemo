@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "nodemon app.js",
-		"dev": "env-cmd -f ./config/dev.env nodemon app.js",
+		"dev": "env-cmd -f ./config/dev.env  nodemon app.js",
 		"test": "env-cmd -f ./config/test.env jest --watch "
 	},
 	"jest": {
@@ -17,6 +17,7 @@
 		"env-cmd": "^10.1.0",
 		"express": "^4.17.1",
 		"jest": "^27.0.6",
+		"mysql": "^2.18.1",
 		"mysql2": "^2.2.5",
 		"nodemon": "^2.0.12",
 		"sequelize": "^6.6.5",

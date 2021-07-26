@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS rest_api;
+CREATE DATABASE rest_api CHARACTER SET utf8mb4;
+USE rest_api;
