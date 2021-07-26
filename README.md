@@ -13,6 +13,7 @@ ___
 ```
 ### Instruction
 - inside of config/template.env  you need to create your own credentialfor your database connection
+- you can run config/rest.sql to create database.
 - At first you need to create Database Named example -> (rest_api)
 - Once you have created your database you can start the server from app.js
 npm install -> [install all the dependency]
