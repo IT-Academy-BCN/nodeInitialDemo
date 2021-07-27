@@ -12,9 +12,8 @@ ___
 #### Roll dice
 ```
 ### Instruction
-- inside of config/template.env  you need to create your own credentialfor your database connection
+- inside of config/template.env  you can use this template as an example to configure your server..
 - you can run config/rest.sql to create database.
-- At first you need to create Database Named example -> (rest_api)
 - Once you have created your database you can start the server from app.js
 npm install -> [install all the dependency]
 npm run dev -> [start the server]
