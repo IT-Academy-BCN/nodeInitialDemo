@@ -11,20 +11,20 @@ exports.getRanking = async (req, res) => {
 			],
 		});
 
-		res.status(302).json(ranking);
+		res.status(302).json({ ranking: ranking });
 	} catch (err) {
 		res.status(400).json({ error: err.message });
 	}
 };
 
 exports.getWinner = async (req, res) => {
-	const loser = await Game.findOne({
+	const winner = await Game.findOne({
 		include: [{ model: Player, attributes: ["username"] }],
 		attributes: [[Sequelize.fn("AVG", Sequelize.col("won")), "avgScore"]],
 		group: ["PlayerID"],
 		order: [[Sequelize.fn("AVG", Sequelize.col("won")), "DESC"]],
 	});
-	res.status(302).json(loser);
+	res.status(302).json({ winner: winner });
 };
 
 exports.getLoser = async (req, res) => {
@@ -34,5 +34,5 @@ exports.getLoser = async (req, res) => {
 		group: ["PlayerID"],
 		order: [[Sequelize.fn("AVG", Sequelize.col("won"))]],
 	});
-	res.status(302).json(loser);
+	res.status(302).json({ loser: loser });
 };

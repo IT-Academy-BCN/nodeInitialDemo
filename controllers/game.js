@@ -1,7 +1,6 @@
 const Game = require("../models/Game");
 
 exports.createGame = async (req, res) => {
-	console.log(req.params.id);
 	const a = Math.floor(Math.random() * 7) + 1;
 	const b = Math.floor(Math.random() * 7) + 1;
 	const result = a + b;
@@ -23,7 +22,7 @@ exports.createGame = async (req, res) => {
 		}
 		res
 			.status(201)
-			.json({ game, message: "Game has been created successfully" });
+			.json({ game:game, message: "Game has been created successfully" });
 	} catch (err) {
 		res.status(400).json({ message: err.message });
 	}

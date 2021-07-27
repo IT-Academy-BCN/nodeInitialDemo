@@ -4,11 +4,18 @@ const { Sequelize } = require("sequelize");
 
 exports.create = async (req, res) => {
 	let username = req.body.username;
-	if (username === undefined || username === "") username = "ANONYMOUS";
+	if (username === undefined || username === "")
+		username = "ANONYMOUS" + Date.now();
 	try {
+		const findUser = await Player.findOne({ where: { username: username } });
+		if (findUser) {
+			if (findUser.username === username) {
+				return res.json({ username: `${username} Alreday in use` });
+			}
+		}
 		const user = await Player.create({ username: username });
 		// you can now access the newly created user
-		res.status(201).json(user);
+		res.status(201).json({ user: user });
 	} catch (err) {
 		// print the error details
 		res
@@ -50,7 +57,8 @@ exports.getAvgScore = async (req, res) => {
 			group: ["username"],
 			raw: true,
 		});
-		res.status(200).json(avgScore);
+
+		res.status(200).json({ playersAvgScore: avgScore });
 	} catch (err) {
 		res.status(400).json({ error: err });
 	}
@@ -68,7 +76,7 @@ exports.getPlayerRolls = async (req, res) => {
 				.status(404)
 				.json({ message: "Player not found with the given id " + id });
 		}
-		res.status(302).json(player);
+		res.status(302).json({ player_rolls: player });
 	} catch (err) {
 		res.json(err.message);
 	}
