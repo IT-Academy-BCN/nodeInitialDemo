@@ -20,6 +20,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config();
 const remoteServer = process.env.REMOTE_SERVER;
+console.log("$$$", remoteServer);
 
 // INICIALIZACION DEL SERVIDOR EXPRESS
 
@@ -56,13 +57,6 @@ app.use(session({
 // STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API
-app.get('/saludos', async (req, res) => {
-    const saludo = await axios.get('http://localhost:3000/hola');
-    res.json({
-        saludo: saludo.data.saludo
-    });
-});
 app.use(router);
 
 // GESTION DE ERRORES
