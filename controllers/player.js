@@ -10,7 +10,7 @@ exports.create = async (req, res) => {
 		const findUser = await Player.findOne({ where: { username: username } });
 		if (findUser) {
 			if (findUser.username === username) {
-				return res.json({ username: `${username} Alreday in use` });
+				return res.json({ username:` ${username} alreday in use` });
 			}
 		}
 		const user = await Player.create({ username: username });
