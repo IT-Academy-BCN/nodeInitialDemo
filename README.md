@@ -4,6 +4,7 @@
 ### Project Structure
 
 Abans d'executar el projecte, s'ha d'executar el fitxer database.sql per tenir la base de dades creada!!!
+Les credencials de la base de dades són: user "root" i password "root".
 
 Per iniciar el projecte s'ha d'executar 'npm start'.
 
