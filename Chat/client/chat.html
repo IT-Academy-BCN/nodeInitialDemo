@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Socket.io and Node.js</title>
+    <!--Esto permite cargar la libreria de socket y el fichero socket para permitir interactuar
+    con el socket que esta en el backend y el cliente-->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <style>
+        #messages{
+            width: 95%;
+            max-width: 400px;
+            height: 350px;
+            overflow-y: scroll;
+            border: 1px solid #eee;
+            box-shadow: 0px 0px 20px #ccc inset;
+        }
+        
+        .message{
+            margin: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: white;
+        }
+        </style>
+</head>
+<body>
+    <h1>Chat with Socket.io and Node.js</h1> 
+    <select id="roomSelector">
+        <option value="1">Sala 1</option>
+        <option value="2">Sala 2</option>
+        <option value="3">Sala 3</option>
+    </select>
+    <div id="messages"></div>
+    <form id="formularioChat">
+        <textarea id="text" placeholder="Message..."></textarea>
+        <input type="submit" value="Send"/>
+    </form>
+    <script src="chat.js"></script>
+</body>
+</html>

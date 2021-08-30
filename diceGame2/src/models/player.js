@@ -63,7 +63,8 @@ module.exports = {
         const list = await ThrowModel.aggregate([
             {
               '$group': {
-                '_id': '$player', 
+                '_id': '$player',
+                'name': {$last: '$name'}, 
                 'throws': {
                   '$push': {
                     'diceOne': '$diceOne', 

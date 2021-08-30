@@ -3,7 +3,7 @@ const model = require('../models/player');
 module.exports = {
     create: async (req, res) => {
         const { nombre } = req.body;
-        if(nombre === 'ANONIM' || nombre === " "){
+        if(nombre === 'ANONIM' || nombre === "" || !nombre){
             try{
             let player = await model.createAnonim();
             res.status(201).json({player: player});
