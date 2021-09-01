@@ -1,50 +1,87 @@
+## Simple API Rest exercise  
+To test these routes, have the Postman log in the repo
 
-# Node Initial Project
+### Get user data from JSON
+Create an express server that returns a json with a name, age, and requested url to a GET / user request.
 
-### Project Structure
+```
+http://localhost:3000/api/user
+```
 
-Main structure of node.js project. Folders / files:
-
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
-
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+API response: 
+```
+{
+    "user": {
+        "name": "Cristian",
+        "age": 31,
+        "url": "http://localhost:3000/api/user"
+    }
+}
+```
 
 
-### Import project for use with Visual Studio Code
+### Upload an image
+Add an endpoint / upload to upload a file to the png, jpg, or gif server and return an error message if it does not match these extensions.
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+```
+http://localhost:3000/api/upload
+```
+It needs a body with "file" as key and a picture as value.  
+This route only accepts .png, .jpg/jpeg and .gif images.  
+If you try to upload another type of file, the API will respond:
+```
+Only .png, .jpg/jpeg and .gif format allowed!
+```
 
+If the image type is correct, the API will respond:
 
-### Utilities
+```
+{
+    "message": "File uploaded successfully!",
+    "file": {
+        "fieldname": "file",
+        "originalname": "1544051376616.jpg",
+        "encoding": "7bit",
+        "mimetype": "image/jpeg",
+        "destination": "C:\\Users\\Cristian\\Desktop\\IT_ACADEMY_SPRINT_4\\nodeInitialDemo\\app\\middlewares\\multer/../../public/uploads/",
+        "filename": "2021-08-31T18-00-20.163Z1544051376616.jpg",
+        "path": "C:\\Users\\Cristian\\Desktop\\IT_ACADEMY_SPRINT_4\\nodeInitialDemo\\app\\public\\uploads\\2021-08-31T18-00-20.163Z1544051376616.jpg",
+        "size": 52146
+    }
+}
+```
+### No-cache, CORS
+Creates a POST endpoint that receives a JSON with the username as a parameter and returns a JSON object that contains the current time and date. Include middleware that adds the 'Cache-control: no-cache' header. Enable CORS in responses, either via Express or other middleware.
+```
+http://localhost:3000/api/getdate
+```
+Body:
+```
+{
+    "name": "Cristian"
+}
+```
+API response:
+```
+{
+    "date": "martes, 31 de agosto de 2021",
+    "time": "8:02 p. m."
+}
+```
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+### Basic authorization
+Add a middleware that returns an HTTP Status 401 - Unauthorized if the request header does not contain basic authentication.
+```
+http://localhost:3000/api/auth
+```
+Bad credentials:
+```
+Unauthorized
+```
+Success Auth:
+```
+{
+    "date": "martes, 31 de agosto de 2021",
+    "time": "8:03 p. m."
+}
+```
