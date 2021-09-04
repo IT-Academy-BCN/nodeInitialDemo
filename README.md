@@ -1,16 +1,16 @@
 ## **Simple API Rest exercise**
-***
+
 To test these routes, have the Postman log in the repo: "REST_API.postman_collection.json".  
 You can import it into Postman.
 
 ## How to run
-***
+
 ```
 npm start 
 ```
 
 It will start nodemon and the server will listen by default on port 3000 if it is not in use.
-***
+
 
 ## Features
 
