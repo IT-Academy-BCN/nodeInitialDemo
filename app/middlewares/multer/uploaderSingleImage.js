@@ -11,13 +11,13 @@ const upload = (req, res, next) => { return multer({
 
     // Handlering errors
     // FILE SIZE ERROR
-    if (err instanceof multer.MulterError) return res.status(500).end("Max file size 2MB allowed!");
+    if (err instanceof multer.MulterError) return res.status(500).json("Max file size 2MB allowed!");
 
     // INVALID FILE TYPE, message will return from fileFilter callback
-    if (err) return res.status(500).end(err.message);
+    if (err) return res.status(500).json(err.message);
 
     // FILE NOT SELECTED
-    if (!req.file) return res.status(500).end("File is required!");
+    if (!req.file) return res.status(500).json("File is required!");
 
     // SUCCESS
     next();

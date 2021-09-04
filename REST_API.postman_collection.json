@@ -56,7 +56,7 @@
 			"response": []
 		},
 		{
-			"name": "upload_n2_ex1",
+			"name": "getDate_n2_ex1",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {}
 			},
@@ -88,7 +88,7 @@
 			"response": []
 		},
 		{
-			"name": "upload_n3_ex1",
+			"name": "basicAuth_n3_ex1",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {}
 			},
@@ -112,12 +112,7 @@
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"formdata": []
 				},
 				"url": {
 					"raw": "http://localhost:3000/api/auth",

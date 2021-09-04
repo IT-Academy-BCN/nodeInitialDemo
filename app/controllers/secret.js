@@ -6,7 +6,7 @@ const secret = (req, res) => {
         "date" : currentTime("date"),
         "time" : currentTime("time"),
     }
-    res.status(200).send(date);
+    res.status(200).json(date);
 }
 
 export default secret;

@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
       cb(null, `${__dirname}/../../public/uploads/`);
     },
     filename: (req, file, cb) => {
-      cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+      cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
     }
 });
   
@@ -24,7 +24,7 @@ const fileFilter = (req, file, cb) => {
 
     if(mimes.some( mime => mime === file.mimetype )) return cb(null, true);
 
-    return cb(new Error('Only .png, .jpg/jpeg and .gif format allowed!'), false);
+    return cb(new Error("Only .png, .jpg/jpeg and .gif format allowed!"), false);
 };
 
 

@@ -7,14 +7,14 @@ import { uploaderSingleImage, noCacheHeader, authHeader, isAuthenticated } from 
 const router = express.Router();
 
 
-router.get('/user', getUser);
+router.get("/user", getUser);
 
-router.post('/upload', uploaderSingleImage, uploadImage);
+router.post("/upload", uploaderSingleImage, uploadImage);
 
-router.post('/getdate', cors(), noCacheHeader, secret);
+router.post("/getdate", cors(), noCacheHeader, secret);
 
-router.post('/auth', cors(), noCacheHeader, authHeader, isAuthenticated, secret);
+router.post("/auth", cors(), noCacheHeader, authHeader, isAuthenticated, secret);
 
 
 
-export  { router as indexRouter }
+export  { router as indexRouter };
