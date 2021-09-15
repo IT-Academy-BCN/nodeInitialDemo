@@ -5,19 +5,19 @@
 Per poder iniciar el projecte s'ha de tenir instal·lat mongodb!
 
 # Server
-Per poder inicialitzar el servidor primer necessitem, anar a la carpeta /app
-`cd app`
-Després a la carpeta /server
-`cd server`
-I executem el comando per iniciar el servidor
+Per poder inicialitzar el servidor primer necessitem, anar a la carpeta /app</br>
+`cd app`</br>
+Després a la carpeta /server</br>
+`cd server`</br>
+I executem el comando per iniciar el servidor</br>
 `npm start`
 
 # Client
-Per poder inicialitzar el client primer necessitem, anar a la carpeta /app
-`cd app`
-Després anem a la carpeta /client
-`cd client`
-I executem el comando per iniciar el client
+Per poder inicialitzar el client primer necessitem, anar a la carpeta /app</br>
+`cd app`</br>
+Després anem a la carpeta /client</br>
+`cd client`</br>
+I executem el comando per iniciar el client</br>
 `npm start`
 
 # Path
