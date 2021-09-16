@@ -9,3 +9,9 @@ package-lock.json
 
 #
 ecosystem.config.js
+
+#
+*.jpeg
+*.jpg
+*.png
+*.gif
