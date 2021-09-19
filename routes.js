@@ -25,11 +25,12 @@ router.get('/user', function(req, res) {
     const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     const name = 'toby';
     const age = 30;
-    res.json({ 'name': name, 'age': age, 'url': fullUrl});
+    const player = { 'name': name, 'age': age, 'url': fullUrl };
+    res.status(200).send(player);
 });
 
 router.post('/upload', upload.single('image'), function(req, res) {
-    res.send('image uploaded');
+    res.status(200).send({message: `Imagen subida`});
 });
 
 router.use(auth);
@@ -42,6 +43,7 @@ router.post('/time', cors(), function(req, res) {
     console.log('This is CORS-enabled for a Single Route');
     res.json({name: user_name, time: datetime, date: currentdate});
     res.statusCode=200;
+    res.render('error', { error: err });
     res.end("authenticated");
 });
 
