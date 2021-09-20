@@ -37,7 +37,7 @@ const clearBox = () => {
 };
 
 function enterRoom(r, user) {
-  document.getElementById('room').innerHTML = `Welcome to ${sala} room`;
+  document.getElementById('room').innerHTML = `Welcome to ${r} room`;
   roomname = r;
   socket.emit('switchRoom', {
     username: user,
