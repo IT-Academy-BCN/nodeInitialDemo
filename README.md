@@ -20,7 +20,7 @@ Estructura general de un proyecto node.js. Folder y files:
 - <b>.ecosystem.config.js</b>. Gestor de procesos en tiempo de ejecución. Véanse [PM2 Docs](https://pm2.keymetrics.io/).
 - <b>package.json</b>.
 
-Entrega d'exercici: Xat
+## Entrega d'exercici: Xat
 
 1. Clonar proyecto 
 
