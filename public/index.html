@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>ChatCord App</title>
+	</head>
+	<body>
+		<div class="join-container">
+			<header class="join-header">
+				<h1>Chat</h1>
+			</header>
+			<main class="join-main">
+				<form action="chat.html">
+					<div class="form-control">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="room">Room</label>
+						<select name="room" id="room">
+							<option selected="true" disabled="true">Choose a room or create one...</option>
+							<option value="New">Create new room</option>																		
+						</select>
+					</div>	
+					<button type="submit" class="btn" id="join-chat">Join Chat</button>
+				</form>
+					<div class="form-control hide" id="create-room">
+						<label for="newchat">Create new Room</label>
+						<input
+							type="text"
+							name="newroom"
+							id="newroom"
+							placeholder="Enter room name..."
+							required
+						/>
+					</div>
+					<button type="submit" class="btn hide" id="btn-create">Create Room</button>		
+			</main>
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			// const Room = require('../models/Room');
+
+			const selectRoom = document.getElementById('room');
+			const inputNew = document.getElementById('newroom');
+			const divNew = document.getElementById('create-room');
+			const joinChatBtn = document.getElementById('join-chat');
+			const createRoomBtn = document.getElementById('btn-create');	
+
+			const socket = io();																																												
+
+			// Show cretae room input
+			selectRoom.addEventListener('change', () => {
+				if(selectRoom.value == 'New') {
+					divNew.classList.remove('hide');
+					createRoomBtn.classList.remove('hide');		
+					joinChatBtn.classList.add('hide');								
+				} else {
+					divNew.classList.add('hide');
+					createRoomBtn.classList.add('hide');		
+					joinChatBtn.classList.remove('hide');	
+				}
+			}, false);
+
+			// Create new room
+			createRoomBtn.addEventListener('click', () => {
+				console.log(newroom.value);
+
+				// get room name
+				const roomName = newroom.value;
+
+				// emit message to server
+				socket.emit('chatRoom', roomName);
+
+				// add room to select options
+				const option = document.createElement('option');
+				option.setAttribute('value', roomName);
+  				option.innerHTML = `${roomName}`;
+				selectRoom.prepend(option);
+			});
+			
+			// output rooms to DOM
+			function outputRooms(room) {
+				const option = document.createElement('option');
+				option.setAttribute('value', room.name);
+  				option.innerHTML = `${room.name}`;
+				selectRoom.prepend(option);
+			};
+
+			// load rooms
+			socket.on('load rooms', rooms => {
+				for(let i = 0; i < rooms.length; i++) {
+			 		outputRooms(rooms[i]);
+			 	}
+			});
+
+		</script>
+	</body>
+</html>
