@@ -1,7 +1,9 @@
-const express = require('express');
-const router = express.Router();
+//const path = require("path");
+//const express = require('express');
+const router = require('express').Router();
 // we call the file of the milldeware
-const optionsFile = require('../middleware/upload.js')
+const optionsFile = require('../middleware/upload.js');
+const uploadEmpty = require("../controller/upload.js");
 
 //TODO creation of user.json//////////////
 const person = {
@@ -10,7 +12,7 @@ const person = {
   url: ''
 };
 
-// main route
+//main route
 router.get('/', (req, res) => {
   return res.send(`This is the home page(endpoint)`);
 });
@@ -25,17 +27,32 @@ router.get('/user', function (req, res) {
 });
 
 // upload route
-router.post('/upload', optionsFile, (req, res) => {
-  try {
-    const {
-      file
-    } = req
-    console.log(file)
-    console.log(`Storage location is in ${req.hostname} /${req.file.path}`)
-    return res.send(file)
-  } catch (err) {
-    console.error("Error", err);
-  }
-});
+router.post("/upload", optionsFile, uploadEmpty)
+
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//? evaluar error de ruta
+// try {
+//   const {
+//     file 
+//   } = req
+//   console.log(file)
+//   console.log(`Storage location is in ${req.hostname}/${req.file.path}`)
+//   return res.send(file)
+// } catch (err) {
+//   console.error("Error", err);
+// }
+//});

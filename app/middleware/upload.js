@@ -19,15 +19,16 @@ const optionsFile = (multer({
     fileSize: 20000000
   },
   fileFilter: (req, file, cb) => {
-    const filetypes = /jpeg|jpg|png|gif|svg/;
+    const filetypes = /jpeg|jpg|png|gif|svg|""/;
     const mimetype = filetypes.test(file.mimetype);
     const extname = filetypes.test(path.extname(file.originalname));
     if (mimetype && extname) {
+      console.log('The file uploaded successfully');
+      //res.send('The file uploaded successfully')
       return cb(null, true);
     }
     cb('Error: La extension del archivo no es correcta. Tiene que ser jpg, jpeg, png o gif');
   }
 }).single('file'));
-
 
 module.exports = optionsFile;
