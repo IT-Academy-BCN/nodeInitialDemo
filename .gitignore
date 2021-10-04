@@ -10,7 +10,7 @@ package-lock.json
 #
 ecosystem.config.js
 
-#
+# images files
 *.jpeg
 *.jpg
 *.png
