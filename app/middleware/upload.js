@@ -3,9 +3,8 @@ const multer = require("multer");
 
 // Destination of the archive upload
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './app/uploads')
-  },
+  destination: './app/uploads',
+
   filename: (req, file, cb) => {
     cb(null, file.fieldname + '-' + Date.now() + file.originalname);
   }
