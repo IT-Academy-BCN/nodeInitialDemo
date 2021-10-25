@@ -5,6 +5,11 @@ const router = require('express').Router();
 const optionsFile = require('../middleware/upload.js');
 const uploadEmpty = require("../controller/upload.js");
 
+const controlCache = require('../middleware/cacheControl');
+const dateUser = require('../controller/dateUser');
+
+const checkUser = require('../middleware/checkUser');
+
 //TODO creation of user.json//////////////
 const person = {
   name: 'Yoda',
@@ -14,45 +19,27 @@ const person = {
 
 //main route
 router.get('/', (req, res) => {
-  return res.send(`This is the home page(endpoint)`);
+  return res.json({
+    message: `This is the home page(endpoint)`
+  });
 });
 
 //user route
 router.get('/user', function (req, res) {
   person.url = req.protocol + '://' + req.get('host') + req.originalUrl
-  res.send(
+  res.json(
     person
   )
   console.log(`name: ${person.name} age: ${person.age} url: ${person.url}`)
 });
 
 // upload route
-router.post("/upload", optionsFile, uploadEmpty)
+router.post("/upload", optionsFile, uploadEmpty);
 
+//userDate
+router.post('/userDate', controlCache, dateUser);
+
+//checkUser
+router.post('/auth', checkUser);
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-//? evaluar error de ruta
-// try {
-//   const {
-//     file 
-//   } = req
-//   console.log(file)
-//   console.log(`Storage location is in ${req.hostname}/${req.file.path}`)
-//   return res.send(file)
-// } catch (err) {
-//   console.error("Error", err);
-// }
-//});
