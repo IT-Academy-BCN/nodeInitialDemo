@@ -30,6 +30,10 @@ router.get('/user', function(req, res) {
 });
 
 router.post('/upload', upload.single('image'), function(req, res) {
+    console.log(req.file);
+     if(!req.file){
+         res.status(404).send({message: 'There is no file'});
+     }
     res.status(200).send({message: `Imagen subida`});
 });
 
@@ -41,10 +45,9 @@ router.post('/time', cors(), function(req, res) {
                     + currentdate.getSeconds();
     const user_name = req.body.name;
     console.log('This is CORS-enabled for a Single Route');
+
     res.json({name: user_name, time: datetime, date: currentdate});
     res.statusCode=200;
-    res.render('error', { error: err });
-    res.end("authenticated");
 });
 
 module.exports = router;
