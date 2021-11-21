@@ -13,9 +13,20 @@ const PlayerSchema = new Schema({
     required:true,
     unique:true
   },
-  win: Number,
-  lose: Number
-
+  data: String,
+  totalGames: {
+    type: Number,
+    default: 0 
+  },
+  totalWins : {
+    type : Number,
+    default: 0
+  },
+  winRate : {
+    type: Number,
+    default: 0
+  },
+  rolls : [Object]
 })
 
 const Player = mongoose.model('players', PlayerSchema)
