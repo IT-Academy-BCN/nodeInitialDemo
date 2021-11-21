@@ -1,53 +1,58 @@
 const 
 mysql = require('mysql2'),
-Sequelize = require('sequelize');
+Sequelize = require('sequelize'),
+configDB = require('../config')
 
-//const sequelize = require('./dbc');
-const config = require('../config.json');
+console.log(configDB)
 
-const { host, user, password, database } = config.database;
-const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
+sequelize = new Sequelize(configDB.database, configDB.user, configDB.password, { dialect: 'mysql' });
 
-async function creadb(){
+async function connectMySQLDB(){
     
-    const conexion = await mysql.createConnection({ host, user, password });
-    conexion.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`, function(err, result) {
+    const connection = mysql.createConnection({ host:configDB.host, user:configDB.user, password:configDB.password });
+    connection.query(`CREATE DATABASE IF NOT EXISTS \`${configDB.database}\`;`, (err, result) =>{
         if(err) throw err;
         sequelize.sync()
-        .then(console.log('\n Bd sincronizada'))
-        .catch(function(err){ console.log(err)})       
+            .then(()=>console.log('db sync'))
+            .catch(err=>console.log(err))
     })  
-    conexion.end();          
+    connection.end();
 }
 
-creadb();
-
-const Sequelize = require('sequelize');
-
-const sequelize = require('../bd/creadb');
-
-const Tarea = sequelize.define('Tarea', {
+const Player = sequelize.define('Player', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        tarea: {
+        name: {
             type: Sequelize.STRING,
-            //allowNull: false,
+            allowNull: false,
+            unique: true
         }, 
-        usuario: {
-            type: Sequelize.STRING, 
-            //allowNull: false
+        totalGames:{
+            type: Sequelize.INTEGER,
+            defaultValue:0
+        },
+        totalWins:{
+            type: Sequelize.INTEGER,
+            defaultValue:0
         }, 
-        estado: Sequelize.STRING,  
-        dataInici: Sequelize.DATE,   
-        dataFinal: Sequelize.DATE  
+        winRate:{
+            type: Sequelize.FLOAT,
+            defaultValue:0
+        }, 
     }, {
-        timestamps: false,
+        timestamps: true,
+        updatedAt: false,
+        createdAt: 'data'
       })
 
 
-module.exports = Tarea;
+module.exports = {
+    Player,
+    sequelize,
+    connectMySQLDB
+}
 
-module.exports = sequelize
+

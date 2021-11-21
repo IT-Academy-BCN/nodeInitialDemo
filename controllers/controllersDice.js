@@ -33,6 +33,7 @@ const getAllPlayers = async ( req, res) =>{
   const players = await Player.find()
   const response = players.map(player => {
       const obj = {
+        _id : player._id,
         player : player.name,
         winRate :  player.winRate
       }
@@ -115,7 +116,7 @@ const getBetterPlayer = async (req, res)=>{
 const getWorstPlayer = async (req, res) =>{
   try {
     const players = await Player.find()
-    let min = 0
+    let min = 100
     players.forEach(player => player.winRate < min ? min = player.winRate : null )
     const worstPlayers = await Player.find({winRate:min})
     res.status(200).send({ worstPlayers })
