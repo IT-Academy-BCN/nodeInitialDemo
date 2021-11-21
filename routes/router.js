@@ -1,20 +1,20 @@
 const
-express = require('express'),
-jocAPI = express.Router(),
-controllersURL = process.env.NODE_ENV === 'mongo' ? '../controllers/controllersDice' : '../controllersDiceMysql',
-{ 
-  addNewPlayer,
-  getAllPlayers,
-  modifyPlayerName,
-  playerRollDices,
-  deleteGames,
-  playerGamesList,
-  generalRanking,
-  getBetterPlayer,
-  getWorstPlayer
-
- } = require(controllersURL)
-
+  express = require('express'),
+  jocAPI = express.Router(),
+  controllersURL = process.env.NODE_ENV === 'mongo' 
+  ? '../controllers/controllersDiceMongo' 
+  : '../controllers/controllersDiceMysql',
+  { 
+    addNewPlayer,
+    getAllPlayers,
+    modifyPlayerName,
+    playerRollDices,
+    deleteGames,
+    playerGamesList,
+    generalRanking,
+    getBetterPlayer,
+    getWorstPlayer
+  } = require(controllersURL)
 
 
 jocAPI.post('/players', addNewPlayer) //POST  crea un jugador   --Works
