@@ -33,7 +33,7 @@ const modifyPlayerName = async(req, res) =>{
 }
 
 const getAllPlayers = async(req, res) => {
-  const players = await Player.findAll({/* attributes:['id','name','winRate'], */
+  const players = await Player.findAll({ attributes:['id','name','winRate'],
     include:[Roll]
   })
    res.status(200).send({ players })

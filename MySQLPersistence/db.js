@@ -10,7 +10,7 @@ async function connectMySQLDB(){
     connection.query(`CREATE DATABASE IF NOT EXISTS \`${configDB.database}\`;`, (err, result) =>{
         if(err) throw err
         sequelize.sync()
-        .then(()=>console.log('db sync'))
+        .then(()=>console.log('MySQLDB connected'))
         .catch(err=>console.log(err))
     })
     connection.end();

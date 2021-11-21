@@ -1,7 +1,7 @@
 const
-{ Player } = require('../MongoPersistence/db'),
-uniqid = require('uniqid'),
-rollDices = require('../logicaDaus/daus')
+  { Player } = require('../MongoPersistence/db'),
+  uniqid = require('uniqid'),
+  rollDices = require('../logicaDaus/daus')
 
 const addNewPlayer = async (req, res)=>{
   try{
@@ -94,8 +94,8 @@ const generalRanking = async ( req, res ) => {
     const numPlayers = players.length
     let sumWinRates = 0
     players.forEach(player => sumWinRates += player.winRate )
-    const result = sumWinRates/numPlayers
-    res.status(200).send({result})
+    const generalWinRate = sumWinRates/numPlayers
+    res.status(200).send({generalWinRate})
   } catch ( e ) {
     res.status(500).send({message: e.message})
   }
