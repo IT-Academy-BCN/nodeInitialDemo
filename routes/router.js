@@ -14,9 +14,15 @@ const
     generalRanking,
     getBetterPlayer,
     getWorstPlayer
-  } = require(controllersURL)
+  } = require(controllersURL),
+  {
+    checkAdmin,
+    checkJWT
+  } = require('../jwtManagment/jwt')
 
-
+  
+jocAPI.post('/login',checkAdmin)
+jocAPI.use( checkJWT)
 jocAPI.post('/players', addNewPlayer) //POST  crea un jugador   --Works
 jocAPI.post('/players/:id/games', playerRollDices) //POST /players/{id}/games: un jugador específic realitza una tirada --Works
 jocAPI.put('/players/:id', modifyPlayerName) //PUT  modifica el nom del jugador --Works
@@ -26,7 +32,6 @@ jocAPI.get('/players/:id/games', playerGamesList)//GET /players/{id}/games: reto
 jocAPI.get('/players/ranking', generalRanking) //GET : retorna el percentatge mig d’èxits del conjunt de tots els jugadors --Works
 jocAPI.get('/players/ranking/loser', getWorstPlayer )//GET : retorna el jugador amb pitjor percentatge d’èxit --Works
 jocAPI.get('/players/ranking/winner', getBetterPlayer)//GET : retorna el jugador amb millor percentatge d’èxit  --Works
-
 
 
 module.exports = jocAPI
