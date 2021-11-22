@@ -115,6 +115,7 @@ const generalRanking = async(req, res) => {
 
 const getBetterPlayer = async(req, res) => {
   const betterWinRate = await Player.max('winRate')
+  console.log(betterWinRate)
   try {
     const player = await Player.findAll({where:{winRate:betterWinRate}})
     res.status(200).send({ player })
@@ -125,6 +126,7 @@ const getBetterPlayer = async(req, res) => {
 
 const getWorstPlayer = async(req, res) => {
   const worstWinRate = await Player.min('winRate')
+  console.log(worstWinRate)
   try {
     const player = await Player.findAll({where:{winRate:worstWinRate}})
     res.status(200).send({ player })

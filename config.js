@@ -1,7 +1,7 @@
 
 const configDB = {
   user:"root",
-  password:"",
+  password:"12345",
   database:"dice_game",
   database2:"rolls",
   host:"localhost",
