@@ -1,0 +1,6 @@
+1) Cache headers:
+    https://regbrain.com/article/cache-headers-express-js
+2) CORS (Cross-origin resource sharing):
+    https://stackabuse.com/handling-cors-with-node-js/
+3) Postman Link:
+    https://www.getpostman.com/collections/1c7f5639af74a36248ba
