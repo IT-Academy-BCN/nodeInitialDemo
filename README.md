@@ -3,11 +3,11 @@
 
 Simulació de un joc de daus. 
 
-Per iniciar l'API: Ubicats a la carpeta ./joc_daus > npm start 
+Per iniciar l'API: Ubicats a la carpeta ./ joc_daus > npm start 
 
 Recomanable instalar nodemon > npm i nodemon 
 
-Iniciar amb nodemon: ubicats a ./joc_daus > nodemon  
+Iniciar amb nodemon: ubicats a ./ joc_daus > nodemon  
 
 IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament. 
            es necessari teclejar amb un terminal adicional > mongod
@@ -20,7 +20,11 @@ https://www.postman.com/xaviercomi/workspace/public/collection/17998947-10220b4a
 COM UTILITZAR: 
 
 NOTA * LLeguir la documentació de les peticions fent clic al menú "view documentaction", i un cop creats el jugadors
-utilizar el llistat (get all players), facilita l'ùs de les peticions i obtenció del "id" per a utilitzar l'API. 
+       utilizar el llistat (get all players), facilita l'ùs de les peticions i obtenció del "id" per a utilitzar l'API. 
+       totes les peticions dirigides a un jugador en especial requereixen afegir el "id" del jugador al final de la ruta. 
+
+![image](https://user-images.githubusercontent.com/85874705/143659824-9713e854-443c-48ea-9236-cc5280750935.png)
+
 
 1. add a player: requereix entrar el nom del jugador a la pestanya de Body de POSTMAN
 2. utilitzant el id del jugador crearem tirades de daus a rollDices. 
