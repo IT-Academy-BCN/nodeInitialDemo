@@ -36,7 +36,7 @@ const showPlayers = async (req, res, next) => {
         }
      ));
 
-    if(allPlayers.length < 1) checkError(204, next);
+    if(allPlayers.length < 1) return checkError(204, next);
     
     res.json(allPlayers);
     next();

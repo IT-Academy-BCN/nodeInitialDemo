@@ -2,17 +2,14 @@ import { Game } from '../config/dbManager.js';
 import { checkError } from '../middlewares/errorHandler.js';
 
 const playGame = async (req, res, next) => {
+
+    if(isNaN(Number(req.params.id))) return checkError(400, next);
+
     const playerGames = Object.values(await Game.findAll({
         where: {
             playerId: req.params.id
         }
     }));
-
-    if(isNaN(Number(req.params.id))){
-        return checkError(400, next);
-    }else if(playerGames.length < 1){
-        return checkError(204, next);
-    }
 
     let won = 0;
     const dice1 = parseInt(6 * Math.random() + 1);
