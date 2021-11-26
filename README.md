@@ -1,50 +1,19 @@
 
-# Node Initial Project
+# DICES GAME
 
-### Project Structure
+Per iniciar l'API Ubicats a la carpeta ./joc_daus > npm start 
 
-Main structure of node.js project. Folders / files:
+Recomanable instalar nodemon > npm i nodemon 
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+Iniciar amb nodemon: ubicats a ./joc_daus > nodemon  
 
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament. 
+           es necessari teclejar amb un terminal adicional > mongod
+           
+A la carpeta ./joc_daus trobareu l'arxiu de la col·lecció POSTMAN per a realitzar les peticions.
+També podeu utilitzar el vincle que comparteix la col·lecció.
+https://www.postman.com/xaviercomi/workspace/public/collection/17998947-10220b4a-a607-456e-85e7-cf3c7953a7c8
 
 
-### Import project for use with Visual Studio Code
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
 
 
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
