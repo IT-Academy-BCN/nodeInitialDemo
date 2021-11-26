@@ -9,7 +9,7 @@ Recomanable instalar nodemon > npm i nodemon
 
 Iniciar amb nodemon: ubicats a ./ joc_daus > nodemon  
 
-IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament. 
+IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament
            es necessari teclejar amb un terminal adicional > mongod
            
 A la carpeta ./joc_daus trobareu l'arxiu de la col·lecció POSTMAN per a realitzar les peticions.
