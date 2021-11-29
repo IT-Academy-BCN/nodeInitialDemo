@@ -1,22 +1,19 @@
 const express = require('express');
-const exhb = require('express-handlebars')
-const bodyParser = require('body-parser')
-const path = require('path');
-const db = require('../database/db.js')
-const apiRouter = require('../routes/api')
-
 const app = express();
+const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 3001;
+
 
 require('../database/db');
-
-const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+const apiRouter = require('../routes/api')
+
 app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
-    console.log(` ✔️  Server ready! & listening on port: ${PORT}`)
+    console.log(`✔️  Server ready! & listening on port:${PORT}`)
 });
 

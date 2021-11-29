@@ -7,7 +7,7 @@ const userModel = (db, type) => {
         },
         name: type.STRING,
         username: type.STRING,
-        password: type.STRING
+        password: type.STRING(150)
     });
 };
 
