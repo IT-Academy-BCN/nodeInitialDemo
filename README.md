@@ -1,50 +1,45 @@
+Sprint 4. Node REST Server
 
-# Node Initial Project
+Instalar los paquetes npm:
 
-### Project Structure
+    npm install
 
-Main structure of node.js project. Folders / files:
+Ejecutar la aplicacion, se iniciara el servidor en el puerto 3000(con nodemon):
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+    npm run dev
 
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+Nivel1 
 
 
-### Import project for use with Visual Studio Code
+-Ejercicio1
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+    http://localhost:3000/user
 
+-Ejercicio2
 
-### Utilities
+    http://localhost:3000/upload
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+Los archivos subidos son almacenados en la carpeta:
+    
+    app/filesuploads
+
+    
+
+Nivel2 
+
+-Ejercicio1
+
+    http://localhost:3000/time
+
+Nivel3 
+
+-Ejercicio1
+
+En el archivo app/user.json se encuentra el usuario y password de autenticacion basica
+
+    http://localhost:3000/time
+    
+ Las correspientes pruebas de los endpoints se en encuentran en el archivo
+    
+    app/postman_collection
+
