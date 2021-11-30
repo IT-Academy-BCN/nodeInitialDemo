@@ -14,3 +14,24 @@
     "pm2": "^4.5.6"
   }
 }
+{
+  "name": "nodeinitialdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./app/app.js",
+  "scripts": {
+    "dev": "nodemon app/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.14",
+    "pm2": "^4.5.6"
+  }
+}
