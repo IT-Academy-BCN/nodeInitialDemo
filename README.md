@@ -8,3 +8,4 @@ en config.js esta la config de mysql
 para hacer el login : 
 
 POST '/login' con basic auth , usuario: admin , contraseña: 12345
+
