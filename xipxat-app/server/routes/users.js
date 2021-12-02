@@ -1,7 +1,7 @@
 
-const router = require('express').Router()
+const router = require('express').Router();
+const User = require('../database/tableUsers.js');
 const bcrypt = require('bcryptjs');
-const User = require('../database/db')
 const { check, validationResult } = require('express-validator');
 
 
@@ -44,20 +44,6 @@ router.delete('/', async (req, res) => {
     await User.destroy({ where:{} });
     res.send('✔️  all users deleted!')
 });
-
-router.post('/login', async (req, res) => {
-    const user = await User.findOne({ where: { username: req.body.username} });
-    if (user) {
-        const match = bcrypt.compareSync(req.body.password, user.password);
-        if (match) {
-            res.json({ success: 'You are in'});
-        } else {
-            res.json({ error: 'password or username incorrect'})
-        }
-    } else {
-        res.json({ error: 'password or username incorrect'})
-    }
-})
 
 
 module.exports = router;
