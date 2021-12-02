@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const bodyParser = require('body-parser');
 const helpers = require('../helpers');
 
 const app = express();
