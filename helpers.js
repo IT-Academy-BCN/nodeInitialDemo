@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 const imageFilter = function (req, file, cb) {
   // Accept images only
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
