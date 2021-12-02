@@ -11,9 +11,6 @@
         "ecmaVersion": 13
     },
     "rules": {
-        // "indent": [
-        //     "error",
-        //     4
-        // ]
+        "consistent-return": 0
     }
 }
