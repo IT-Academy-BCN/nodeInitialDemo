@@ -10,5 +10,10 @@
     "parserOptions": {
         "ecmaVersion": 13
     },
-    "rules": {}
+    "rules": {
+        // "indent": [
+        //     "error",
+        //     4
+        // ]
+    }
 }

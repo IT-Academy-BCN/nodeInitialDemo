@@ -5,7 +5,7 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-
+const helpers = require('../helpers');
 const app = express();
 const port = 3000;
 
@@ -33,7 +33,7 @@ app.get('/upload', (req, res) => {
 
 app.post('/upload', (req, res) => {
   // 'profile_pic' is the name of our file input field in the HTML form
-  let upload = multer({ storage: storage}).single('some_pic');
+  let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).single('some_pic');
 
   upload(req, res, function(err) {
       // req.file contains information of uploaded file
@@ -67,4 +67,4 @@ app.listen(port, () => {
 
 
 // http://localhost:3000/uploads/some_pic-1638460754629.jpeg
-//                       uploads/some_pic-1638460754629.jpeg
+// uploads/some_pic-1638460754629.jpeg
