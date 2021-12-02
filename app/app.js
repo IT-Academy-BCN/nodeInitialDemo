@@ -2,9 +2,11 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
+const cors = require('cors');
 const helpers = require('../helpers');
 
 const app = express();
+app.use(cors());
 const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -74,8 +76,5 @@ app.post('/time', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`CORS-enabled web server listening at http://localhost:${port}`);
 });
-
-// Habilite CORS ( Cross-Origin Resource Sharing ) en las respuestas,
-// ya sea mediante Express o mediante otro middleware.
