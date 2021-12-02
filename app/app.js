@@ -52,13 +52,19 @@ app.post('/upload', (req, res) => {
           return res.send(err);
       }
 
+      console.log('req.file.path::: ', req.file.path)
       // Display uploaded image for user validation
       res.send(`You have uploaded this image: <hr/><img src="${req.file.path}" width="500"><hr /><a href="./upload">Upload another image</a>`);
   });
-
+//
 });
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
     
+
+
+
+// http://localhost:3000/uploads/some_pic-1638460754629.jpeg
+//                       uploads/some_pic-1638460754629.jpeg
