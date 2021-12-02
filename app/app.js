@@ -2,10 +2,13 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
+const bodyParser = require('body-parser');
 const helpers = require('../helpers');
 
 const app = express();
 const port = 3000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -17,6 +20,8 @@ const storage = multer.diskStorage({
     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
   },
 });
+
+//* ***Se puede probar el upload de la imagen desde http://localhost:3000/upload en el navegador */
 
 app.use(express.static('uploads'));
 
@@ -55,6 +60,19 @@ app.post('/upload', (req, res) => {
 //
 });
 
+app.post('/time', (req, res) => {
+  const username = req.body.name;
+
+  const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+  const dateObject = new Date().toLocaleString('es-ES', {
+    timeZone,
+  });
+
+  res.json({ username, dateObject });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+// Cree un endpoint /time que reciba por POST como parámetro un JSON con el nombre de usuario y devuelva un objeto JSON que contenga la hora y fecha actual. Incluya un middleware que añada la cabecera Cache-control: no-cache . Habilite CORS ( Cross-Origin Resource Sharing ) en las respuestas, ya sea mediante Express o mediante otro middleware.
