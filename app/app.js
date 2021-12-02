@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
@@ -11,7 +12,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
 
-  // By default, multer removes file extensions so let's add them back
+  // By default, multer removes file extensions this will add them back
   filename(req, file, cb) {
     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
   },
@@ -48,7 +49,6 @@ app.post('/upload', (req, res) => {
       return res.send(err);
     }
 
-    console.log('req.file.path::: ', req.file.filename);
     // Display uploaded image for user validation
     res.send(`You have uploaded this image: <hr/><img src="${req.file.filename}" width="500"><hr /><a href="./">Upload another image</a>`);
   });
