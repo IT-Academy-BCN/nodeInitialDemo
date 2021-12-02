@@ -33,8 +33,6 @@ app.get('/upload', (req, res) => {
   res.sendFile(path.join(__dirname, '../upload.html'));
 });
 
-//--------------------------------------------------
-
 app.post('/upload', (req, res) => {
   // 'some_pic' is the name of our file input field in the HTML form
   const upload = multer({ storage, fileFilter: helpers.imageFilter }).single('some_pic');
@@ -59,19 +57,25 @@ app.post('/upload', (req, res) => {
 //
 });
 
+app.use('/time', (req, res, next) => {
+  res.set('Cache-control', 'no-cache');
+  console.log('resCacheHeaderInMiddleware: ', res.getHeader('Cache-control'));
+  next();
+});
+
 app.post('/time', (req, res) => {
   const username = req.body.name;
-
   const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
   const dateObject = new Date().toLocaleString('es-ES', {
     timeZone,
   });
-
   res.json({ username, dateObject });
+  console.log('resCacheHeaderAfterSent: ', res.getHeader('Cache-control'));
 });
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
-// Cree un endpoint /time que reciba por POST como parámetro un JSON con el nombre de usuario y devuelva un objeto JSON que contenga la hora y fecha actual. Incluya un middleware que añada la cabecera Cache-control: no-cache . Habilite CORS ( Cross-Origin Resource Sharing ) en las respuestas, ya sea mediante Express o mediante otro middleware.
+// Habilite CORS ( Cross-Origin Resource Sharing ) en las respuestas,
+// ya sea mediante Express o mediante otro middleware.
