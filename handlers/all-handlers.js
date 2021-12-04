@@ -14,7 +14,6 @@ const localDate = (req, res) => {
     timeZone,
   });
   res.json({ username, dateObject });
-  console.log('resCacheHeaderAfterSent: ', res.getHeader('Cache-control'));
 };
 
 const uploadImage = (req, res) => {
