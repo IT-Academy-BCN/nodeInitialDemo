@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 app.use(noCacheMiddleware);
 
-app.get('/user', userRouter);
+app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
 app.use('/time', timeRouter);
 
