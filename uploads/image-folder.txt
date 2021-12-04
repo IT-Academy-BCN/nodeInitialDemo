@@ -1,0 +1,10 @@
+2021/09/09 11:37:56:088 Postman-1631127608951 Swapping the old app with new one
+2021/09/09 11:37:56:092 Postman-1631127608951 Swapping done
+2021/09/09 11:37:56:108 Postman-1631127608951 Parent process is alive, killing it now
+2021/12/02 19:43:10:283 Postman-1638470478324 Swapping the old app with new one
+2021/12/02 19:43:10:289 Postman-1638470478324 Swapping done
+2021/12/02 19:43:10:304 Postman-1638470478324 Parent process is alive, killing it now
+2021/12/02 19:43:10:306 Postman-1638470478324 Launching app with command /home/atom/Desktop/Postman/app/Postman --updated --eID=Postman-1638470478324
+2021/12/02 20:03:48:553 Postman-1638470607106 Swapping the old app with new one
+2021/12/02 20:03:48:558 Postman-1638470607106 Swapping done
+2021/12/02 20:03:48:568 Postman-1638470607106 Parent process is alive, killing it now
