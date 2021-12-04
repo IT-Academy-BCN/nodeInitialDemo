@@ -8,3 +8,5 @@ const imageFilter = function (req, file, cb) {
   cb(null, true);
 };
 exports.imageFilter = imageFilter;
+
+// TODO ponerlo en una carpeta propia
