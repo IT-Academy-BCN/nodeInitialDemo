@@ -6,7 +6,8 @@ const cors = require('cors');
 const port = 3000;
 const timeRouter = require('../routes/time-router');
 const uploadRouter = require('../routes/upload-router');
-const { noCacheMiddleware, nameAndAge } = require('../handlers/all-handlers');
+const userRouter = require('../routes/user-router');
+const { noCacheMiddleware } = require('../handlers/all-handlers');
 
 app.use(cors());
 app.use(express.json());
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 app.use(noCacheMiddleware);
 
-app.get('/', nameAndAge);
+app.get('/user', userRouter);
 app.use('/upload', uploadRouter);
 app.use('/time', timeRouter);
 
