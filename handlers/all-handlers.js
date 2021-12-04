@@ -1,21 +1,11 @@
 // Como la aplicacion es pequeña, todos los route handlers estan en un mismo archivo
 const multer = require('multer');
-const path = require('path');
-const helpers = require('../helpers');
+const { imageFilter, storage } = require('../helpers');
 
-// TODO ver como poner esto en helpers
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, 'uploads/');
-  },
-
-  // By default, multer removes file extensions this will add them back
-  filename(req, file, cb) {
-    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
-  },
-});
-
-//----------
+const nameAndAge = (req, res) => {
+  const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+  res.json({ name: 'Mariano', age: '33', 'req url': `${fullUrl}` });
+};
 
 const localDate = (req, res) => {
   const username = req.body.name;
@@ -28,9 +18,8 @@ const localDate = (req, res) => {
 };
 
 const uploadImage = (req, res) => {
-  console.log('entra al upload post router');// TODO borrar
   // 'some_pic' is the name of our file input field in the HTML form
-  const upload = multer({ storage, fileFilter: helpers.imageFilter }).single('some_pic');
+  const upload = multer({ storage, fileFilter: imageFilter }).single('some_pic');
 
   upload(req, res, (err) => {
     // req.file contains information of uploaded file
@@ -58,4 +47,6 @@ const noCacheMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { localDate, uploadImage, noCacheMiddleware };
+module.exports = {
+  nameAndAge, localDate, uploadImage, noCacheMiddleware,
+};
