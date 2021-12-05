@@ -7,7 +7,7 @@ const port = 3000;
 const timeRouter = require('../routes/time-router');
 const uploadRouter = require('../routes/upload-router');
 const userRouter = require('../routes/user-router');
-const { noCacheMiddleware } = require('../handlers/all-handlers');
+const { noCacheMiddleware, authentication } = require('../handlers/all-handlers');
 
 app.use(cors());
 app.use(express.json());
@@ -18,9 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 app.use(noCacheMiddleware);
 
+app.use('/', authentication);
 app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
-app.use('/time', timeRouter);
+app.use('/time', authentication, timeRouter);
 
 app.listen(port, () => {
   console.log(`CORS-enabled web server listening at http://localhost:${port}`);
