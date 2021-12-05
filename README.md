@@ -1,50 +1,19 @@
+# Entrega 4.1: Node REST Server Instructions
 
-# Node Initial Project
+La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base `http://localhost:3000/`. Se adjunta un archivo los las peticiones hechas en postman para testear los distintos endpoints [aquí](https://github.com/duke33/nodeInitialDemo/blob/main/postman_collection.json).
 
-### Project Structure
+## Nivel 1
 
-Main structure of node.js project. Folders / files:
+### Ejercicio 1
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+`http://localhost:3000/user` o en postman bajo el nombre `JSON with username`
 
-### Import project for use with WebStorm
+### Ejercicio 2
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+Para subir una imagen al servidor, se puede dirigir a `http://localhost:3000/upload` que posee un frontend para tal fin. También desde las peticiones de postman, bajo el nombre `Upload image`, hay que proporcionar la imagen que se desea subir en la pestaña `Body`, bajo la `key some_pic` de la request. Las imágenes subidas al servidor se almacenan en la carpeta `upload`. Para testear el mensaje de error, proporcionar un archivo con una extensión que no corresponda a imagen.
 
+## Nivel 2 y Nivel 3
 
-### Import project for use with Visual Studio Code
+### Ejercicio 1
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
-
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+Desde postman, la petición con el nombre `To /time as authorized user`. En el `body` de la misma se encuentra la información a enviar en formato JSON. Desde la consola se va a loguear el valor del header `Cache-control`, la contraseña y nombre de usuarios necesarios para loguearse se encuentran bajo la pestaña `Authorization` de Postman. Por otro lado, para ingresar sin autorización y poder ver el mensaje de error, se puede utilizar la petición llamada `To /time as UN-authorized`
