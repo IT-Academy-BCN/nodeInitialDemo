@@ -42,13 +42,12 @@ const uploadImage = (req, res) => {
 
 const noCacheMiddleware = (req, res, next) => {
   res.set('Cache-control', 'no-cache');
-  console.log('resCacheHeaderInMiddleware: ', res.getHeader('Cache-control'));
+  console.log('Cache-control-header: ', res.getHeader('Cache-control'));
   next();
 };
 
 const authentication = (req, res, next) => {
   const authheader = req.headers.authorization;
-  console.log(req.headers);
 
   if (!authheader) {
     const err = new Error('You are not authenticated!');
