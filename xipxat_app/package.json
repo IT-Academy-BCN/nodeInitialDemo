@@ -1,11 +1,10 @@
 {
   "name": "vuexat",
   "version": "1.0.0",
-  "description": "realtime chat multi client",
+  "description": "realtime chat",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "node src/server/index.js",
-    "dev": "nodemon src/server/index.js"
+    "start": "node src/server/index.js"
   },
   "keywords": [],
   "author": "",
