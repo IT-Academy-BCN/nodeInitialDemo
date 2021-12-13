@@ -1,5 +1,5 @@
 {
-  "name": "vuexat",
+  "name": "xipxat",
   "version": "1.0.0",
   "description": "realtime chat",
   "main": "src/server/index.js",
