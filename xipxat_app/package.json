@@ -1,0 +1,18 @@
+{
+  "name": "vuexat",
+  "version": "1.0.0",
+  "description": "realtime chat multi client",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "dev": "nodemon src/server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.1.1",
+    "socket.io": "^4.4.0"
+  }
+}
