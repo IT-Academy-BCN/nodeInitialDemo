@@ -1,7 +1,7 @@
 {
   "name": "joc_daus",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "joc_daus/index.js",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.12"
@@ -10,8 +10,8 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node joc_daus/index.js",
+    "dev": "nodemon joc_daus/index.js"
   },
   "repository": {
     "type": "git",
