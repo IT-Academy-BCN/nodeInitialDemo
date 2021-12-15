@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test",
+    "start": "node app/app.js",
+    "nodemon": "nodemon app/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "multer": "^1.4.4",
     "nodemon": "^2.0.7",
     "pm2": "^4.5.6"
   }
