@@ -1,0 +1,184 @@
+[{
+  
+  "name": "Arnold",
+  "gameLog": [
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 2
+    },
+    {
+      "gameWon": false,
+      "dice1": 4,
+      "dice2": 6
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 3
+    },
+    {
+      "gameWon": false,
+      "dice1": 2,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 6,
+      "dice2": 6
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 5
+    },
+    {
+      "gameWon": true,
+      "dice1": 1,
+      "dice2": 6
+    }
+  ],
+  
+  "successRate": 12.5
+},{
+ 
+  "name": "Francina2",
+  "gameLog": []
+  
+},{
+
+  "name": "Maria",
+  "gameLog": [
+    {
+      "gameWon": true,
+      "dice1": 3,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 3,
+      "dice2": 6
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 3
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 3
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 4,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 4,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 2,
+      "dice2": 2
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 1
+    },
+    {
+      "gameWon": false,
+      "dice1": 3,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 1,
+      "dice2": 2
+    },
+    {
+      "gameWon": false,
+      "dice1": 4,
+      "dice2": 1
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 2,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 3,
+      "dice2": 1
+    },
+    {
+      "gameWon": false,
+      "dice1": 3,
+      "dice2": 6
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 4
+    },
+    {
+      "gameWon": false,
+      "dice1": 6,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 5,
+      "dice2": 1
+    },
+    {
+      "gameWon": true,
+      "dice1": 1,
+      "dice2": 6
+    },
+    {
+      "gameWon": false,
+      "dice1": 6,
+      "dice2": 5
+    },
+    {
+      "gameWon": false,
+      "dice1": 2,
+      "dice2": 3
+    },
+    {
+      "gameWon": false,
+      "dice1": 3,
+      "dice2": 3
+    }
+  ],
+  "successRate": 8.333333333333332
+},{
+  
+  "name": "Joseli",
+  "gameLog": [],
+  "successRate": 0
+}]

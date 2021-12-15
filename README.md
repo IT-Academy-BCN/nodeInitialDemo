@@ -1,50 +1,31 @@
+# Dice Game API
 
-# Node Initial Project
+## Instrucciones
 
-### Project Structure
+- Crear un archivo `.env` en el directorio root con el siguiente contenido:
 
-Main structure of node.js project. Folders / files:
+```
+PORT=3000
+MONGODB_URI=mongodb://localhost:[27017]/dice-game
+MYSQL_PORT=[3306]
+MYSQL_HOST=localhost
+MYSQL_USERNAME=[username]
+MYSQL_PASSWORD=[password]
+SECRET=banana
+```
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+- Reemplazar los corchetes y su contenido con los valores propios (no incluir [ ]).
+- La aplicación se puede ejecutar desde consola, con persistencia en MongoDB o MySQL, usando los scripts:
 
-### Import project for use with WebStorm
+```
+npm run mongo-persistence
+```
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+```
+npm run mysql-persistence
+```
 
+- Los endpoints y la funcionalidad se pueden testear con [esta](https://github.com/mariano-farace/SPRINT4-ITAcademey-DiceGame/blob/main/postman_collection.json) colección de postman.
+- El nombre de usuario y contraseña para loguearse como administrador son `admin` y `12345` respectivamente. Por defecto, se encuentran guardados en el body de la request llamada Login en postman
 
-### Import project for use with Visual Studio Code
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
-
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+> Notar que en postman, el token generado en el login es guardado automáticamente por una función, en una variable de entorno propia de postman (ver pestaña `Test` del la request `Login`). Este token es pasado a todos al header `Authorization` de todas las request de la colección, mediante herencia de configuración. Esta configuración heredada esta seteada en la pestaña que corresponde al nombre de la colección. Por lo tanto, por defecto, una vez logueado, todos los endpoints son autenticados, ya que poseen el token correcto. Esto fue hecho así para facilitar el testeo. Para ver como la aplicación maneja los errores de logueo, se puede desactivar esta configuración desde la pestaña dicha, o también pasar un nombre de usuario o contraseña incorrectos desde el endpoint /login.
