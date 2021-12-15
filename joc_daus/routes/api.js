@@ -1,5 +1,4 @@
 const express = require('express');
-const { aggregate } = require('../models/player');
 const router = express.Router();
 const Player = require('../models/player');
 const CP = require('../percentage');
@@ -22,7 +21,7 @@ router.get('/getPlayer/:id', function(req, res, next) {
 
 // get a list of players
 router.get('/getPlayers', function(req, res, next) {
-    Player.find({}, {id: 1, name: 1}).then(function(player) {
+    Player.find({}, {name:1}).then(function(player) {
         res.send(player);
     }).catch(next);
 });
