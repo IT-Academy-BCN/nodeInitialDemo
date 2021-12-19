@@ -48,7 +48,6 @@ const uploadImage = (req, res, next) => {
 const noCacheMiddleware = (req, res, next) => {
   try {
     res.set('Cache-control', 'no-cache');
-    console.log('Cache-control-header: ', res.getHeader('Cache-control'));
     next();
   } catch (err) { next(err); }
 };
@@ -59,8 +58,7 @@ const authentication = (req, res, next) => {
     if (!authheader) {
       const err = new Error('You are not authenticated!');
       res.setHeader('WWW-Authenticate', 'Basic');
-      err.status = 401;
-      return next(err);
+      res.status(401).send({ errorMessage: err.message });
     }
 
     // eslint-disable-next-line new-cap
@@ -76,8 +74,7 @@ const authentication = (req, res, next) => {
     } else {
       const err = new Error('You are not authenticated!');
       res.setHeader('WWW-Authenticate', 'Basic');
-      err.status = 401;
-      return next(err);
+      res.status(401).send({ errorMessage: err.message });
     }
   } catch (err) { next(err); }
 };
