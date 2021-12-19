@@ -20,7 +20,6 @@ app.use(noCacheMiddleware);
 
 app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
-app.use('/', authentication);
 app.use('/time', authentication, timeRouter);
 
 app.listen(port, () => {
