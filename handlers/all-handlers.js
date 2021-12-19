@@ -29,17 +29,18 @@ const uploadImage = (req, res, next) => {
     // req.body contains information of text fields, if there were any
 
       if (req.fileValidationError) {
-        return res.send(req.fileValidationError);
+        return res.send({ errorMessage: err.message });
       } if (!req.file) {
-        return res.send('Please select an image to upload');
+        const errNoImage = new Error('Please select an image to upload!');
+        return res.send({ errorMessage: errNoImage.message });
       } if (err instanceof multer.MulterError) {
         return res.send(err);
       } if (err) {
         return res.send(err);
       }
 
-      // Display uploaded image for user validation
-      res.send(`You have uploaded this image: <hr/><img src="${req.file.filename}" width="500"><hr /><a href="./">Upload another image</a>`);
+      // Display uploaded image for user validation //TODO cambiar esto
+      res.send({ uploadedFile: req.file.filename });
     });
   } catch (err) { next(err); }
 //
