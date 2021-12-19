@@ -18,9 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 app.use(noCacheMiddleware);
 
-app.use('/', authentication);
 app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
+app.use('/', authentication);
 app.use('/time', authentication, timeRouter);
 
 app.listen(port, () => {
