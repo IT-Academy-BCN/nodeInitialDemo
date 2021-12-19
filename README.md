@@ -10,7 +10,7 @@ La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base 
 
 ### Ejercicio 2
 
-Para subir una imagen al servidor, se puede dirigir a `http://localhost:3000/upload` que posee un frontend para tal fin. También desde las peticiones de postman, bajo el nombre `Upload image`, hay que proporcionar la imagen que se desea subir en la pestaña `Body`, bajo la `key some_pic` de la request. Las imágenes subidas al servidor se almacenan en la carpeta `upload`. Para testear el mensaje de error, proporcionar un archivo con una extensión que no corresponda a imagen.
+Para subir, desde las peticiones de postman, bajo el nombre `Upload image`, hay que proporcionar la imagen que se desea subir en la pestaña `Body`, bajo la `key some_pic` de la request. Las imágenes subidas al servidor se almacenan en la carpeta `upload`. Para testear el mensaje de error, proporcionar un archivo con una extensión que no corresponda a imagen.
 
 ## Nivel 2 y Nivel 3
 
