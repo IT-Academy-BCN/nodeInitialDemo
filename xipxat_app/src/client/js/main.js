@@ -1,7 +1,6 @@
-
 $(document).ready(function () {
 
-    const socket = io();
+    const socket = io('http://localhost:3000');
 
     // obtaining DOM elements from chat
     const messageForm = $('#message-form');
