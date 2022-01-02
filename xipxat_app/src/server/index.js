@@ -2,7 +2,7 @@
 const express = require('express'); 
 const app = require('express')();
 const http = require('http').Server(app);   
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {cors: {origin: "*"} });
 const mongoose = require('mongoose');
 
 
@@ -15,9 +15,6 @@ mongoose.connect('mongodb://localhost/xipxat')
 
 // settings
 const PORT = process.env.PORT || 3000;
-
-// sending static files
-app.use(express.static('src/client'));
 
 // starting server
 http.listen(PORT, () => {
