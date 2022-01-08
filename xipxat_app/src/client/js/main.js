@@ -1,11 +1,12 @@
 $(document).ready(function () {
 
     const socket = io('http://localhost:3000');
-
+    
     // obtaining DOM elements from chat
     const messageForm = $('#message-form');
     const chat = $('#chat');
     const message = $('#message');
+    const logout = $('#linkLogout')
 
     // obtaining DOM elements from nickname
     const nickForm = $('#nickForm');
@@ -14,7 +15,7 @@ $(document).ready(function () {
     const users = $('#usernames');
     const userbanner = $('#user-banner')
 
-    // login
+    // new user
     nickForm.submit( e => {
         e.preventDefault();
         socket.emit('new user', nickname.val(), data => {
@@ -32,6 +33,16 @@ $(document).ready(function () {
             nickname.val('');
         });
     });
+
+    // TODO ENVIAR AL SERVIDOR LA DESCONEXION DEL USUARIO
+    // user log out
+    logout.submit( e=> {
+        socket.emit('disconect', nickname.val(), data => {
+            if (data) {
+                swal("see you soon!")
+            }
+        } )
+    })
 
     // events
     chat.on('new message', () => {

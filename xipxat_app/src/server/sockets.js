@@ -1,4 +1,6 @@
 const msgSchema  = require('./models/message')
+const userSchema = require('./models/user')
+const bcrypt = require('bcrypt');
 
 module.exports = function(io) {
 
@@ -50,11 +52,15 @@ module.exports = function(io) {
                     io.sockets.emit('new message', {
                         msg: data,
                         nick: socket.nickname
-                    });
-
-                   
+                    });              
                    
                 } 
+        });
+
+        socket.on('new register', (data, cb) => {
+            if (data) {
+                console.log("ok")
+            }
         });
 
         socket.on('new user', (data, cb) => {
@@ -72,6 +78,7 @@ module.exports = function(io) {
             if (!socket.nickname) return;
             delete users[socket.nickname];
             updateNicknames();
+            console.log(`❗️   user disconected`)
         });
 
         function updateNicknames() {

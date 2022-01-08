@@ -1,31 +1,27 @@
+*{box-sizing: border-box;}
+
 body {
     background: #bdc3c7;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#contentWrap {
-    display: none
+#login, #register {
+    margin: 50px auto;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    width: 250px;
+    padding: 10px;
+    background-color: #6e777c;
+    text-align: center;
 }
 
-.error {
-    color:red
-}
-
-.secret {
-    color:gray;
-    font-style: italic;
-}
-
-#chat, #connected-users {
-    min-height: 370px;
-    max-height: 370px;
-    overflow-y: auto;
-}
-
-#linkLogout {
+#linkSignup, #linkLogout, #linkLogin {
     text-decoration: none;
     margin: 30px;
     font-size: 14px;
     color: #ffffff;
 }
+
+
+
