@@ -20,12 +20,13 @@ npm start
 npm run test
 ```
 
-## Author
+## Authors
 
 👤 **Mauricio, Pere Ruiz, Bianca Inga**
 
 - Github: [@molivaresr] (https://github.com/molivaresr), [En\_Pere] (https://github.com/En_Pere), [Blanket25] (https://github.com/Blanket25)
-
+## Our Organization sheet
+[Trello](https://trello.com/b/2ujcduIe/developer-team)
 ## Show your support
 
 Give a ⭐️ if this project helped you!
