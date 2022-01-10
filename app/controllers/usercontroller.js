@@ -6,7 +6,7 @@ const user = (req, res) => {
         "url": "http://localhost:3000/user"
     }
     
-    res.json(user)
+    res.status(200).json({ user })
 }
 
 
