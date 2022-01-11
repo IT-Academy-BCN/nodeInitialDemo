@@ -16,7 +16,8 @@ HOW TO USE:
 in your terminal type npm start at the directory /xipxat_app 
 to start the server and the connection to the database.
 
-open your browser and type this adress: http://localhost:3000
+open your browser and type this adress: http://localhost:3001/xipxat_app/src/client/signup.html
+or use extension Live Server to 
 
 USEFULL COMANDS FOR THE CHAT:
 
