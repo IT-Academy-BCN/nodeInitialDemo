@@ -75,7 +75,6 @@ module.exports = function(io) {
         });  
         
         socket.on('disconnect', data => {
-            if (!socket.nickname) return;
             delete users[socket.nickname];
             updateNicknames();
             console.log(`❗️   user disconected`)

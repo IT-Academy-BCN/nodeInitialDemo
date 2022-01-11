@@ -34,15 +34,13 @@ $(document).ready(function () {
         });
     });
 
-    // TODO ENVIAR AL SERVIDOR LA DESCONEXION DEL USUARIO
+
     // user log out
     logout.submit( e=> {
-        socket.emit('disconect', nickname.val(), data => {
-            if (data) {
-                swal("see you soon!")
-            }
-        } )
-    })
+        e.preventDefault();
+        socket.emit('disconect', data => {
+        });
+    });
 
     // events
     chat.on('new message', () => {
