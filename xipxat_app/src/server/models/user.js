@@ -28,17 +28,4 @@ userSchema.pre("save", function(next) {
 
 });
 
-// userSchema.methods.comparePassword = function(password, cb) {
-//     console.log('3',password)
-//     console.log('4', this.password)
-//     bcrypt.compare( password, this.password, (err, isMatch) => {
-//         if (err) {
-//             cb(err)
-//         } else {
-//             cb(err, isMatch)
-//         }
-//     });
-// };
-
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)
