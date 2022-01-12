@@ -8,13 +8,14 @@ Para probar el modulo inquirer:
 `node createTest.js`-> Prueba de como crear una tarea por consola.  
 
 Propuesta de la tarea, la idea es que todos usemos el mismo objeto para que sea más fácil integrar cada funcionalidad:  
-{   
+const toDo = {   
 taskName: 'Nombre de tarea',  
 taskStartDate: 'Fecha de Inicio',  
 taskEndDate: 'Fecha de Fin',  
 taskDescription:'Descripción y/o detalles',  
-taskUser:'Usuario Asignado'. 
-}`   
+taskUser:'Usuario Asignado'  
+}
+     
 ## Install
 Para instalar inquirer -> 
 ```sh
