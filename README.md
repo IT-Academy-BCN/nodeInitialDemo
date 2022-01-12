@@ -1,11 +1,14 @@
 <h1 align="center">Welcome to Developers Team - Todo App👋</h1>
 
 > Pequeño programa en node.js para hacer y administrar &#34;to-dos&#34;
+Para probar el modulo inquirer:  
+`npm install inquirer`  
+`node inquirerTest.js` -> Prueba de como ingresar datos por consola.
 
 ## Install
-
+Para instalar inquirer -> 
 ```sh
-npm install
+npm install inquirer 
 ```
 
 ## Usage
