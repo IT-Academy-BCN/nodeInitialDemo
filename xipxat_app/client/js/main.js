@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
     const socket = io('http://localhost:3000');
@@ -8,12 +9,12 @@ $(document).ready(function () {
     const message = $('#message');
     const logout = $('#linkLogout')
 
-    // obtaining DOM elements from nickname
+    // obtaining DOM elements from nickname & room
     const nickForm = $('#nickForm');
     const nickError = $('#nickError');
     const nickname = $('#nickname'); 
     const users = $('#usernames');
-    const userbanner = $('#user-banner')
+    const userbanner = $('#user-banner');
 
     // new user
     nickForm.submit( e => {
@@ -22,7 +23,7 @@ $(document).ready(function () {
             if (data) {
                 $('#nickWrap').hide();
                 $('#contentWrap').show();
-                userbanner.html(`<g4><i class="fas fa-user"></i> ${nickname.val()}</g4>`);
+                userbanner.html(`<g4><i class="fas fa-user"></i> ${nickname.val()}</g4></br>`);     
             } else {
                 nickError.html(`
                 <div class="alert alert-danger">

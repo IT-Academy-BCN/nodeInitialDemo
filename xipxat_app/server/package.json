@@ -4,7 +4,7 @@
   "description": "realtime chat",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "node src/server/index.js"
+    "start": "node server/index.js"
   },
   "keywords": [],
   "author": "",
