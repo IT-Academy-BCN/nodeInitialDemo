@@ -1,0 +1,26 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "App para gestionar Tareas pendientes por consola, creada como ejercicio de la It Academy / Barcelona ",
+  "main": "index.js",
+  "scripts": {
+    "test": "No"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/molivaresr/nodeInitialDemo.git"
+  },
+  "keywords": [
+    "ToDoApp","Commander", "Inquirer", "CLI"
+  ],
+  "author": "Mauricio Olivares R, Bianca, Pere",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/molivaresr/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/molivaresr/nodeInitialDemo#readme",
+  "dependencies": {
+    "commander": "^8.3.0",
+    "inquirer": "^8.2.0"
+  }
+}
