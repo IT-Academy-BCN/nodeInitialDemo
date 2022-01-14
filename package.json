@@ -11,7 +11,10 @@
     "url": "git+https://github.com/molivaresr/nodeInitialDemo.git"
   },
   "keywords": [
-    "ToDoApp","Commander", "Inquirer", "CLI"
+    "ToDoApp",
+    "Commander",
+    "Inquirer",
+    "CLI"
   ],
   "author": "Mauricio O., Bianca I., Pere R.",
   "license": "MIT",
