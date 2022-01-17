@@ -14,7 +14,6 @@ const todolist = require('./todolist.js')
 
 const nuevaLista = todolist.listaTareas;
 
-
 inquirer
   .prompt([
     {
