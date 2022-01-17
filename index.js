@@ -8,6 +8,11 @@ program
   .description(message)
 
 program
+  .option('-j, --json', 'Utilizar Json')
+  .option('-s, --sql', 'Utilizar SQL')
+  .option('-m, --mongo', 'Utilizar Mongo');
+
+program
   .command('add')
   .alias('a')
   .description('Create a task')
