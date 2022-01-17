@@ -10,6 +10,7 @@
 
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
+const { create } = require('../src/questions') // Importa las preguntas de creación
 
 // Inicia lectura de Json <--
 let rawtodo = fs.readFileSync('./database/tasks.json'); 
@@ -26,33 +27,7 @@ const dbcache = db.tasks
 
 // Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
 inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'nameTask',
-      message: 'Ingresa el nombre de la tarea:'
-    },
-    {
-        type: 'input',
-        name: 'startDate',
-        message: 'Fecha de Inicio:'
-      },
-      {
-        type: 'input',
-        name: 'endDate',
-        message: 'Fecha de Fin:'
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Descripción de la tarea:'
-      },
-      {
-        type: 'input',
-        name: 'user',
-        message: 'Usuario Asignado:'
-      }
-  ])
+  .prompt(create)
   .then( answers => { 
   // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
     console.info('Tarea creada:', answers); // En este momento no hay presistencia

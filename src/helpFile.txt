@@ -1,9 +1,0 @@
-Listado de Comandos:
-help - Para abrir el archivo de ayuda.
-create - Para crear una tarea.
-create-sql - Para crear en SQL
-create-mongo - Para crear en Mongo
-update-sql - Para modificar una tarea.
-del- Para borrar una tarea.
-show - Para mostrar todas las tareas.
-find - Para buscar una o mas tareas por requisitos.

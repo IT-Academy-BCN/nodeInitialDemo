@@ -10,6 +10,7 @@
 
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
+const {remove} = require('../src/questions') // Importa preguntas para borrar
 
 // Inicia lectura de Json <--
 let rawtodo = fs.readFileSync('./database/tasks.json'); 
@@ -27,33 +28,7 @@ const dbcache = db.tasks
 const inquirer = require('inquirer');
 // Código que te permite crear la pregunta sobre el campo que quieres crear
 inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'taskName',
-        message: 'Qué tarea vas a eliminar?:' //Decidir como identificar la tarea a eliminar 
-      },
-      {
-          type: 'input',
-          name: 'taskStartDate',
-          message: 'Fecha de Inicio:'
-        },
-        {
-          type: 'input',
-          name: 'taskEndDate',
-          message: 'Fecha de Fin:'
-        },
-        {
-          type: 'input',
-          name: 'taskDescription',
-          message: 'Descripción de la tarea:'
-        },
-        {
-          type: 'input',
-          name: 'taskUser',
-          message: 'Usuario Asignado:'
-        }
-    ])
+    .prompt(remove)
     .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
       console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
     });

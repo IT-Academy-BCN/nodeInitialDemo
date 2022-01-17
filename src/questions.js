@@ -1,7 +1,7 @@
 const create = [
     {
       type: 'input',
-      name: 'nameTask',
+      name: 'name',
       message: 'Ingresa el nombre de la tarea:'
     },
     {
@@ -29,7 +29,7 @@ const create = [
 const remove = [
     {
       type: 'input',
-      name: 'name',
+      name: 'nameTask',
       message: 'Qué tarea vas a eliminar?:' //Decidir como identificar la tarea a eliminar 
     },
     {
@@ -43,27 +43,27 @@ const remove = [
 const find = [
    {
       type: 'input',
-      name: 'taskName',
+      name: 'name',
       message: 'Donde quieres buscar?:'
     },
     {
       type: 'input',
-      name: 'taskStartDate',
+      name: 'startDate',
       message: 'Fecha de Inicio:'
     },
     {
       type: 'input',
-      name: 'taskEndDate',
+      name: 'endDate',
       message: 'Fecha de Fin:'
     },
     {
       type: 'input',
-      name: 'taskDescription',
+      name: 'description',
       message: 'Descripción de la tarea:'
     },
     {
       type: 'input',
-      name: 'taskUser',
+      name: 'user',
       message: 'Usuario Asignado:'
     }
 ];
@@ -71,27 +71,27 @@ const find = [
 const update = [
     {
         type: 'input',
-        name: 'taskName',
+        name: 'name',
         message: 'Qué tarea quieres modificar?'
     },
     {
         type: 'input',
-        name: 'taskStartDate',
+        name: 'startDate',
         message: 'Fecha de Inicio:'
     },
     {
         type: 'input',
-        name: 'taskEndDate',
+        name: 'endDate',
         message: 'Fecha de Fin:'
     },
     {
         type: 'input',
-        name: 'taskDescription',
+        name: 'description',
         message: 'Descripción de la tarea:'
     },
     {
         type: 'input',
-        name: 'taskUser',
+        name: 'user',
         message: 'Usuario Asignado:'
     }
 ];
