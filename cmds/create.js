@@ -55,5 +55,5 @@ inquirer
   ])
   .then( answers => { 
   // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
+    console.info('Tarea creada:', answers); // En este momento no hay presistencia
   });
