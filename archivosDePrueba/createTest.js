@@ -9,6 +9,11 @@
 // Pej: Si falla a leer el archivo, Error: File not found o si falla al escribir Error: File can not write.
 
 const inquirer = require('inquirer');
+const database = require('../database/tasks.json')
+
+var newArray = database.tasks;
+
+console.log(newArray);
 
 // Código que te permite crear la pregunta sobre el campo que quieres crear
 inquirer
@@ -34,6 +39,10 @@ inquirer
         message: 'Usuario Asignado:'
       }
   ])
-  .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
+  .then( answers => { 
+    newArray.push(answers);
+    console.info('Nombre de la tarea:', newArray); // En este momento no hay presistencia
   });
+
+  
+
