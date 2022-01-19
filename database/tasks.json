@@ -1,18 +1,1 @@
-{
-  "tasks":[
-    {
-      "name": "comprar pan",
-      "startDate": "01-01-2022",
-      "endDate": "02-02-2022",
-      "description": "comprar pan bimbo",
-      "user": "pere"
-    },
-    {
-      "name": "beber agua",
-      "startDate": "01-01-2022",
-      "endDate": "02-02-2022",
-      "description": "beber agua clara",
-      "user": "pere2"
-    }
-  ]
-}
+[]
