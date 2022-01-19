@@ -1,5 +1,5 @@
 {
-  "name": "todoapp",
+  "name": "todo",
   "version": "1.0.0",
   "description": "App para gestionar Tareas pendientes por consola, creada como ejercicio de la It Academy / Barcelona ",
   "main": "index.js",
