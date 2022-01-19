@@ -1,3 +1,9 @@
+Per a instal·lar i arrancar el servidor sols es necessita executar els següents comandaments: 
+
+```bash
+npm install
+npm start
+```
 
 # Node Initial Project
 
