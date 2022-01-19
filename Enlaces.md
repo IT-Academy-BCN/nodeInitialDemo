@@ -4,4 +4,6 @@
 4. [Enlace Node Readline (Como crear interfaz de consola e interactuar con ella)](https://nodejs.org/dist/latest-v17.x/docs/api/readline.html)
 5. [Enlace Node File System (Manejar archivos en local o en remoto)](https://nodejs.org/dist/latest-v17.x/docs/api/fs.html)
 6. [Enlace Como crear una App de Consola (Sólo saqué la idea de organización)](https://medium.com/@maniakhitoccori/cómo-crear-una-aplicación-real-de-node-cli-con-node-db1338fa1d9b)
-
+7. [Enlace Repositorio con una APP de consola (CLI)](https://github.com/theamazinglesson/nodejs-cli)
+8. [Tutorial de como creo la app del enlace anterior](https://www.youtube.com/watch?v=CF_ZFydxxxs)
+9. [Leer y escribir en un Json](https://pharos.sh/leer-y-escribir-archivos-json-con-node-js/)
