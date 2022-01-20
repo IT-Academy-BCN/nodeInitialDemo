@@ -2,16 +2,11 @@ const program = require('commander');
 const {prompt} = require('inquirer');
 const message = require('./src/bienvenida')
 const colors = require('colors')
-const {create, remove, find, update} = require('./src/questions')
+const {create, remove, findOne, update} = require('./src/questions')
 
 program
   .version('1.0.0')
   .description(message.yellow)
-
-program
-  .option('-j, --json', 'Utilizar Json')
-  .option('-s, --sql', 'Utilizar SQL')
-  .option('-m, --mongo', 'Utilizar Mongo');
 
 program
   .command('add')
