@@ -32,8 +32,24 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
 // -->
 
 // Código que te permite crear la pregunta sobre el campo que quieres crear
-inquirer
-  .prompt(update)
-  .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
-  });
+class Update {
+    json = async () => { //  
+      await inquirer// Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
+        .prompt(update)
+        .then( answers => {
+          //<!---- Poner función que elimina aquí 
+          
+          let resultado = [answers]
+          console.table(resultado)
+          
+          // Poner función que elimina aquí ---->
+        });
+    }
+    sql = async () => {
+      await console.log('SQL no soportado... Estamos trabajando en ello!')
+    }
+    mongo = async () => {
+      await console.log('Mongo no soportado... Estamos trabajando en ello!')
+    }
+}
+module.exports = Update;

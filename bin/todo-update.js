@@ -1,21 +1,21 @@
 const program = require('commander');
-//const Add = require('../cmds/add');
-//const add = new Set();
+const Update = require('../cmds/update');
+const update = new Update();
 
   program
     .command('json')
     .alias('j')
     .description('Modificar en Json')
-    .action(() => console.log('Modificando desde Json'))
+    .action(update.json)
   program
     .command('sql')
     .alias('s')
     .description('Modificar en SQL')
-    .action(() => console.log('Modificando desde SQL'))
+    .action(update.sql)
   program
     .command('mongo')
     .alias('m')
     .description('Modificar en Mongo')
-    .action(() => console.log('Modificando desde MONGO'))
+    .action(update.mongo)
 
 program.parse(process.argv);

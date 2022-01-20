@@ -10,7 +10,7 @@
 
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
-const { find } = require('../src/questions')
+const { findOne } = require('../src/questions')
 let dbcache = []
 
 // Inicia lectura de Json <--
@@ -33,8 +33,25 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
 // -->
 
 // Código que te permite crear la pregunta sobre el campo que quieres crear
-inquirer
-  .prompt(find)
-  .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
-  });
+
+  class Find {
+    json = async () => { //  
+      await inquirer// Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
+        .prompt(findOne)
+        .then( answers => {
+          //<!---- Poner función que elimina aquí 
+          
+          let resultado = [answers]
+          console.table(resultado)
+          
+          // Poner función que elimina aquí ---->
+        });
+    }
+    sql = async () => {
+      await console.log('SQL no soportado... Estamos trabajando en ello!')
+    }
+    mongo = async () => {
+      await console.log('Mongo no soportado... Estamos trabajando en ello!')
+    }
+}
+module.exports = Find;

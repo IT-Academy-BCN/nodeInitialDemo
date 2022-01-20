@@ -27,15 +27,26 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
 // Fin de lectura del Json
 // -->
 
-// Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
-inquirer
-  .prompt(create)
-  .then( answers => {
-    dbcache.push(answers)
-    let todos = JSON.stringify(dbcache, null, 2);
-    fs.writeFile('./database/tasks.json', todos, err => {
-      if(err) throw err; // error checking
-    });
-    console.log('Tarea Creada');
-    console.table(dbcache);
-  });
+class Add {
+  json = async () => {
+    await inquirer// Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
+      .prompt(create)
+      .then( answers => {
+        dbcache.push(answers)
+        let todos = JSON.stringify(dbcache, null, 2);
+        fs.writeFile('./database/tasks.json', todos, err => {
+          if(err) throw err; // error checking
+        });
+        console.log('Tarea Creada');
+        console.table(dbcache);
+      });
+  }
+  sql = async () => {
+    await console.log('SQL no soportado... Estamos trabajando en ello!')
+  }
+  mongo = async () => {
+    await console.log('Mongo no soportado... Estamos trabajando en ello!')
+  }
+}
+
+module.exports = Add;

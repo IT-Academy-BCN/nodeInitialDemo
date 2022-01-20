@@ -1,20 +1,20 @@
 const program = require('commander');
-//const Remove = require('../cmds/delete');
-//const remove = new Set() 
+const Del = require('../cmds/delete');
+const del = new Del() 
 program
     .command('json')
     .alias('j')
     .description('Eliminar en Json')
-    .action(() => console.log('Eliminando de Json'))
+    .action(del.json)
 program
     .command('sql')
     .alias('s')
     .description('Eliminar en SQL')
-    .action(() => console.log('Eliminando de SQL'))
+    .action(del.sql)
 program
     .command('mongo')
     .alias('m')
     .description('Eliminar en Mongo')
-    .action(() => console.log('Eliminando de MONGO'))
+    .action(del.mongo)
 
 program.parse(process.argv);
