@@ -100,4 +100,4 @@ const update = [ // Revisar
     }
 ];
 
-module.exports = {create, remove, find, update}  
+module.exports = {create, remove, findOne, update}  
