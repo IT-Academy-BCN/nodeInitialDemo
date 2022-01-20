@@ -1,9 +1,9 @@
 const fs = require('fs');
 
-let rawtodo = fs.readFileSync('./database/tasks.json');
+//mauricio ->
+let rawtodo = fs.readFileSync('../database/tasks.json');
 const db = JSON.parse(rawtodo);
 console.table(db.tasks)
 
 let dbcache  = db.tasks
-// console.log(typeof(dbcache));
-
+//console.log(typeof(dbcache));
