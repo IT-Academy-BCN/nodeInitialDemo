@@ -1,5 +1,5 @@
 {
-  "name": "todoapp",
+  "name": "todo",
   "version": "1.0.0",
   "description": "App para gestionar Tareas pendientes por consola, creada como ejercicio de la It Academy / Barcelona ",
   "main": "index.js",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/molivaresr/nodeInitialDemo#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "commander": "^8.3.0",
     "inquirer": "^8.2.0"
   }

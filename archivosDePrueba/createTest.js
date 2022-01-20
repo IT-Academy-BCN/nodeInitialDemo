@@ -9,6 +9,10 @@
 // Pej: Si falla a leer el archivo, Error: File not found o si falla al escribir Error: File can not write.
 
 const inquirer = require('inquirer');
+const fs = require('fs');
+
+//var newArray = database.tasks;
+//console.log(newArray);
 
 // Código que te permite crear la pregunta sobre el campo que quieres crear
 inquirer
@@ -34,6 +38,22 @@ inquirer
         message: 'Usuario Asignado:'
       }
   ])
-  .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
+  .then( answers => { 
+    
+    var data = fs.readFileSync('./tasksTest.json');
+    var myObject = JSON.parse(data);
+
+    myObject.push(answers);
+
+    var answers = JSON.stringify(myObject, null, 2);
+    fs.writeFile('./tasksTest.json', answers, err => {
+      // error checking
+      if(err) throw err;
+      
+      console.log("New data added");
+  }); 
+
   });
+
+  
+
