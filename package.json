@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/molivaresr/nodeInitialDemo#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "commander": "^8.3.0",
     "inquirer": "^8.2.0"
   }
