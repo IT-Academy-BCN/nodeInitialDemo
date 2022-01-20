@@ -1,5 +1,5 @@
 const program = require('commander');
-//const Add = require('../cmds/add');
+//const Add = require('../cmds/create');
 //const add = new Set();
 program
   .command('json')
