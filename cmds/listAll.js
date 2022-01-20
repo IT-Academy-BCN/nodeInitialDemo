@@ -9,17 +9,23 @@
 // Pej: Si falla a leer el archivo, Error: File not found o si falla al escribir Error: File can not write.
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
+let dbcache = []
 
 // Inicia lectura de Json <--
-let rawtodo = fs.readFileSync('./database/tasks.json'); 
-const db = JSON.parse(rawtodo);
-const dbcache = db.tasks 
-//console.table(db.tasks) // Opcional para comprobar
-//console.table(dbcache) //  Opcional para comprobar 
-//db es un "objeto" con objetos
-//db.tasks permite acceder al contenido del array dentro de db.
-//dbcache es el objeto que utilizaremos y manejaremos
-
+fs.readFile('./database/tasks.json', (err, rawdata) => {
+    if (!err) {
+     dbcache = JSON.parse(rawdata)
+     //console.log(dbcache)
+    } 
+    else {
+      //console.log('No se ha podido leer el archivo')
+      let emptyFile = JSON.stringify([{}],null,2);
+      fs.writeFile('./database/tasks.json', emptyFile, err => {
+          if(err) throw err; // error checking 
+      });
+      //console.error(err)
+    }
+}) 
 // Fin de lectura del Json
 // -->
 

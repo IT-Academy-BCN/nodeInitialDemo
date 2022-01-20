@@ -2,12 +2,12 @@ const program = require('commander');
 const {prompt} = require('inquirer');
 const message = require('./src/bienvenida')
 const colors = require('colors')
+
 const {create, remove, findOne, update} = require('./src/questions')
 
 program
   .version('1.0.0')
   .description(message.yellow)
-
 program
   .command('add')
   .alias('a')
@@ -35,9 +35,9 @@ program
 program
   .command('find')
   .alias('f')
-  .description('Find one or more task')
+  .description('Find one or more tasks')
   .action(() => {
-    prompt(find).then(answers => console.info(answers))
+    prompt(findOne).then(answers => console.info(answers))
   })
 
 program.parse(process.argv);
