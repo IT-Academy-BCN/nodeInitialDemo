@@ -61,42 +61,36 @@ const findOne = [ // Pendiente de definir
     }
 ];
 
-const update = [ // Revisar
-    {
-      type: 'list',
-      name: 'name',
-      message: 'Donde quieres buscar?:',
-      choices:['json','sql','mongo']
-    },
+const update = [ // Revisado Pere OK.
     {
       type: 'input',
-      name: 'name',
+      name: 'taskindex',
       message: 'Ingresa el indice de la tarea que quieres modificar?'
     },
     {
       type: 'input',
       name: 'name',
-      message: 'Ingresa el nombre de la tarea:'
+      message: 'Ingresa el NUEVO nombre de la tarea:'
     },
     {
-        type: 'input',
-        name: 'startDate',
-        message: 'Fecha de Inicio:'
+      type: 'input',
+      name: 'startDate',
+      message: 'NUEVA Fecha de Inicio:'
     },
     {
-        type: 'input',
-        name: 'endDate',
-        message: 'Fecha de Fin:'
+      type: 'input',
+      name: 'endDate',
+      message: 'NUEVA Fecha de Fin:'
     },
     {
-        type: 'input',
-        name: 'description',
-        message: 'Descripción de la tarea:'
+      type: 'input',
+      name: 'description',
+      message: 'NUEVA Descripción de la tarea:'
     },
     {
-        type: 'input',
-        name: 'user',
-        message: 'Usuario Asignado:'
+      type: 'input',
+      name: 'user',
+      message: 'NUEVO Usuario Asignado:'
     }
 ];
 

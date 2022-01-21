@@ -10,30 +10,59 @@
 
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
-const { update } = require('../src/questions')
+const {update} = require('../src/questions') // Importa preguntas para borrar
 let dbcache = []
 
-// Inicia lectura de Json <--
-fs.readFile('./database/tasks.json', (err, rawdata) => {
-    if (!err) {
-     dbcache = JSON.parse(rawdata)
-     //console.log(dbcache)
-    } 
-    else {
-      //console.log('No se ha podido leer el archivo')
-      let emptyFile = JSON.stringify([{}],null,2);
-      fs.writeFile('./database/tasks.json', emptyFile, err => {
-          if(err) throw err; // error checking 
-      });
-      //console.error(err)
-    }
-}) 
-// Fin de lectura del Json
-// -->
+  function lanzapreguntas(){
+      return new Promise((resolve,reject)=>{
+          // Código que te permite crear la pregunta sobre el campo que quieres crear
+        setTimeout(()=>{
+          console.log("Cargando preguntas....\n");
+              inquirer
+              .prompt(update)
+              .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
+                console.log('\nHas elegido modificar la tarea: ' + answers.taskindex);
+                var index = answers.taskindex;
+                // var indexAcambiar = dbcache[answers.taskindex];
+                // console.log(indexAcambiar);
+                dbcache[index] = answers
+                //console.log(dbcache);
 
-// Código que te permite crear la pregunta sobre el campo que quieres crear
-inquirer
-  .prompt(update)
-  .then( answers => { // Aquí va la función que guarda el Nombre en el Objeto (Json, Sql o Mongo)
-    console.info('Nombre de la tarea:', answers); // En este momento no hay presistencia
-  });
+                let todos = JSON.stringify(dbcache, null, 2);
+                fs.writeFile('../database/tasks.json', todos, err => {
+                  if(err) throw err; // error checking
+                });
+                console.log('\nTarea Modificada, aquí tienes todas las tareas.');
+                console.table(dbcache);
+                
+              });
+           } , 2000
+       );
+        resolve()
+      });
+  };
+
+  async function leeJson(){
+      // Inicia lectura de Json <--
+      fs.readFile('../database/tasks.json', (err, rawdata) => {
+        if (!err) {
+        dbcache = JSON.parse(rawdata)
+        console.log('\n Listando tareas disponibles:')
+        console.table(dbcache)
+        } 
+        else {
+          console.log('No existen tareas en la Base de Datos.')
+          let emptyFile = JSON.stringify([{}],null,2);
+          fs.writeFile('../database/tasks.json', emptyFile, err => {
+              if(err) throw err; // error checking 
+          });
+          //console.error(err)
+        }
+      }) 
+      // Fin de lectura del Json
+      // -->
+          await lanzapreguntas();
+      }
+  leeJson();
+
+

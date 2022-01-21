@@ -13,7 +13,7 @@ const fs = require('fs'); // Necesario para leer Json
 const {remove} = require('../src/questions') // Importa preguntas para borrar
 let dbcache = []
 // Inicia lectura de Json <--
-fs.readFile('./database/tasks.json', (err, rawdata) => {
+fs.readFile('../database/tasks.json', (err, rawdata) => {
   if (!err) {
    dbcache = JSON.parse(rawdata)
    //console.log(dbcache)
@@ -21,7 +21,7 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
   else {
     //console.log('No se ha podido leer el archivo')
     let emptyFile = JSON.stringify([{}],null,2);
-    fs.writeFile('./database/tasks.json', emptyFile, err => {
+    fs.writeFile('../database/tasks.json', emptyFile, err => {
         if(err) throw err; // error checking 
     });
     //console.error(err)
@@ -30,7 +30,6 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
 // Fin de lectura del Json
 // -->
 
-const inquirer = require('inquirer');
 // Código que te permite crear la pregunta sobre el campo que quieres crear
 inquirer
     .prompt(remove)
