@@ -25,6 +25,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^8.3.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "mongoose": "^6.1.7"
   }
 }

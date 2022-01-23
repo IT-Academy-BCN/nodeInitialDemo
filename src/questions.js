@@ -27,12 +27,12 @@ const create = [
 ];
 
 const remove = [
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
+  // {
+  //   type: "list",
+  //   name: "dataBase",
+  //   message: "Donde quieres buscar?:",
+  //   choices: ["json", "sql", "mongo"],
+  // },
   {
     type: "input",
     name: "taskIndex",
@@ -47,13 +47,12 @@ const remove = [
 ];
 
 const findOne = [
-  // Pendiente de definir
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
+  // {
+  //   type: "list",
+  //   name: "dataBase",
+  //   message: "Donde quieres buscar?:",
+  //   choices: ["json", "sql", "mongo"],
+  // },
   {
     type: "input",
     name: "taskIndex",
@@ -62,21 +61,21 @@ const findOne = [
 ];
 
 const listAll = [
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
+  // {
+  //   type: "list",
+  //   name: "dataBase",
+  //   message: "Donde quieres buscar?:",
+  //   choices: ["json", "sql", "mongo"],
+  // },
 ];
 
 const update = [
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
+  // {
+  //   type: "list",
+  //   name: "dataBase",
+  //   message: "Donde quieres buscar?:",
+  //   choices: ["json", "sql", "mongo"],
+  // },
   {
     type: "input",
     name: "taskindex",
