@@ -23,16 +23,16 @@ const create = [
       type: 'input',
       name: 'user',
       message: 'Usuario Asignado:'
+    },
+    {
+      type: 'list',
+      name: 'state',
+      message: 'introduce el NUEVO estado',
+      choices: ['pendiente', 'finalizada', 'en proceso'],
     }
   ];
 
 const remove = [
-  {
-    type: 'list',
-    name: 'dataBase',
-    message: 'Donde quieres buscar?:',
-    choices:['json','sql','mongo']
-  },
   {
     type: 'input',
     name: 'taskIndex',
@@ -91,7 +91,26 @@ const update = [ // Revisado Pere OK.
       type: 'input',
       name: 'user',
       message: 'NUEVO Usuario Asignado:'
+    },
+    {
+      type: 'list',
+      name: 'state',
+      message: 'introduce el NUEVO estado',
+      choices: ['pendiente', 'finalizada', 'en proceso'],
     }
+]
+const state = [ // Revisado Pere OK.
+  {
+    type: 'input',
+    name: 'taskindex',
+    message: 'Ingresa el indice de la tarea que quieres modificar?'
+  },
+  {
+    type: 'list',
+    name: 'state',
+    message: 'introduce el NUEVO estado',
+    choices: ['pendiente', 'finalizada', 'en proceso'],
+  }
 ];
 
-module.exports = {create, remove, findOne, update}  
+module.exports = {create, remove, findOne, update, state}  

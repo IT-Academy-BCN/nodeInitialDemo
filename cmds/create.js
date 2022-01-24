@@ -17,7 +17,7 @@ fs.readFile('../database/tasks.json', (err, rawdata) => {
     } 
     else {
       //console.log('No se ha podido leer el archivo')
-      let emptyFile = JSON.stringify([{}],null,2);
+      let emptyFile = JSON.stringify([],null,2);
       fs.writeFile('../database/tasks.json', emptyFile, err => {
           if(err) throw err; // error checking 
       });
