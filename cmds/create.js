@@ -14,7 +14,7 @@ const { writeJson} = require('../controllers/json')
       //console.log('No se ha podido leer el archivo')
       let emptyFile = JSON.stringify([{}],null,2);
       writeJson(emptyFile);
-      //console.error(err)
+      //console.error(err) - test
     }
   })
 // Fin de lectura del Json
