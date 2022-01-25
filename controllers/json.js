@@ -1,4 +1,5 @@
-const fs = require('fs') 
+const fs = require('fs')
+
 // Inicia lectura de Json <--
 const readJson = (path) => { 
   fs.readFile(path, (err, rawdata) => {
