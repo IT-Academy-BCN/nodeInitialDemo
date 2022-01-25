@@ -9,6 +9,7 @@
 // Pej: Si falla a leer el archivo, Error: File not found o si falla al escribir Error: File can not write.
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs'); // Necesario para leer Json
+const {writeJson} = require('../controllers/json')
 let dbcache = []
 
 // Inicia lectura de Json <--
@@ -20,9 +21,7 @@ fs.readFile('./database/tasks.json', (err, rawdata) => {
     else {
       //console.log('No se ha podido leer el archivo')
       let emptyFile = JSON.stringify([{}],null,2);
-      fs.writeFile('./database/tasks.json', emptyFile, err => {
-          if(err) throw err; // error checking 
-      });
+      writeJson(emptyFile);
       //console.error(err)
     }
 }) 

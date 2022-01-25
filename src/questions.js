@@ -28,12 +28,6 @@ const create = [
 
 const remove = [
   {
-    type: 'list',
-    name: 'dataBase',
-    message: 'Donde quieres buscar?:',
-    choices:['json','sql','mongo']
-  },
-  {
     type: 'input',
     name: 'taskIndex',
     message: 'Ingresa el indice de la que tarea vas a eliminar?:' //Decidir como identificar la tarea a eliminar 
@@ -47,12 +41,6 @@ const remove = [
 ];
 
 const findOne = [ // Pendiente de definir
-   {
-      type: 'list',
-      name: 'dataBase',
-      message: 'Donde quieres buscar?:',
-      choices:['json','sql','mongo']
-    },
     {
       type: 'list',
       name: 'confirmation',
@@ -62,12 +50,6 @@ const findOne = [ // Pendiente de definir
 ];
 
 const update = [ // Revisar
-    {
-      type: 'list',
-      name: 'name',
-      message: 'Donde quieres buscar?:',
-      choices:['json','sql','mongo']
-    },
     {
       type: 'input',
       name: 'name',

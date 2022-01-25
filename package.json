@@ -2,7 +2,7 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "App para gestionar Tareas pendientes por consola, creada como ejercicio de la It Academy / Barcelona ",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "scripts": {
     "test": "No"
   },

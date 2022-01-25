@@ -1,23 +1,9 @@
 [
   {
     "name": "Comer",
-    "startDate": "20-01-2022",
-    "endDate": "20-01-2022",
-    "description": "Comer pasta con queso",
-    "user": "mauricio "
-  },
-  {
-    "name": "D",
-    "startDate": "D",
-    "endDate": "dD",
-    "description": "D",
-    "user": "D"
-  },
-  {
-    "name": "Mostrar",
-    "startDate": "12-01-2022",
-    "endDate": "12-01-2023",
-    "description": "Finalizada",
-    "user": "Mauricio "
+    "startDate": "12-12-12",
+    "endDate": "12-12-12",
+    "description": "comer bocatas de panceta",
+    "user": "Mauricio"
   }
 ]
