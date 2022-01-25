@@ -40,14 +40,7 @@ const remove = [
   },
 ];
 
-const findOne = [
-  // Pendiente de definir
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
+const findOne = [// Pendiente de definir
   {
     type: "input",
     name: "taskIndex",
@@ -103,7 +96,7 @@ const state = [ // Revisado Pere OK.
     type: 'list',
     name: 'state',
     message: 'introduce el NUEVO estado',
-    choices: ['pendiente', 'finalizada', 'en proceso'],
+    choices: ['Pendiente', 'Finalizada', 'En Proceso'],
   }
 ];
 
