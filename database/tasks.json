@@ -1,41 +1,26 @@
 [
   {
-    "name": "Comer",
-    "startDate": "20-01-2022",
-    "endDate": "20-01-2022",
-    "description": "Comer pasta con queso",
-    "user": "mauricio "
+    "name": "dfa",
+    "startDate": "dfasd",
+    "endDate": "dfa",
+    "description": "dfa",
+    "user": "dfsa",
+    "state": "en proceso"
   },
   {
-    "taskindex": "1",
-    "name": "pere3",
-    "startDate": "sdkfja",
-    "endDate": "fadskfj",
-    "description": "fdskj",
-    "user": "dfkaj"
+    "name": "dfsfdsa",
+    "startDate": "gfds",
+    "endDate": "htdsg",
+    "description": "yyrt4546",
+    "user": "6543",
+    "state": "en proceso"
   },
   {
-    "name": "fdsf",
-    "startDate": "dfad",
-    "endDate": "fasdf",
-    "description": "dfasd",
-    "user": "dfa"
-  },
-  {
-    "taskindex": "3",
-    "name": "dflkasd",
-    "startDate": "fdsa",
-    "endDate": "dfsa",
-    "description": "",
-    "user": ""
-  },
-  {
-    "taskindex": "4",
-    "name": "55",
-    "startDate": "55",
-    "endDate": "55",
-    "description": "55",
-    "user": "55",
-    "state": "pendiente"
+    "name": "erfdsa",
+    "startDate": "5463",
+    "endDate": "dfgsv",
+    "description": "gdfs",
+    "user": "hf",
+    "state": "finalizada"
   }
 ]
