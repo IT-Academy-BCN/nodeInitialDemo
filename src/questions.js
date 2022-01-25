@@ -28,15 +28,9 @@ const create = [
 
 const remove = [
   {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
-  {
-    type: "input",
-    name: "taskIndex",
-    message: "Ingresa el indice de la tarea que quieres eliminar?:",
+    type: 'input',
+    name: 'taskIndex',
+    message: 'Ingresa el indice de la que tarea vas a eliminar?:' //Decidir como identificar la tarea a eliminar 
   },
   {
     type: "list",
@@ -61,52 +55,56 @@ const findOne = [
   },
 ];
 
-const listAll = [
+const update = [ // Revisado Pere OK.
+    {
+      type: 'input',
+      name: 'taskindex',
+      message: 'Ingresa el indice de la tarea que quieres modificar?'
+    },
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Ingresa el NUEVO nombre de la tarea:'
+    },
+    {
+      type: 'input',
+      name: 'startDate',
+      message: 'NUEVA Fecha de Inicio:'
+    },
+    {
+      type: 'input',
+      name: 'endDate',
+      message: 'NUEVA Fecha de Fin:'
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: 'NUEVA Descripción de la tarea:'
+    },
+    {
+      type: 'input',
+      name: 'user',
+      message: 'NUEVO Usuario Asignado:'
+    },
+    {
+      type: 'list',
+      name: 'state',
+      message: 'introduce el NUEVO estado',
+      choices: ['pendiente', 'finalizada', 'en proceso'],
+    }
+]
+const state = [ // Revisado Pere OK.
   {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
+    type: 'input',
+    name: 'taskindex',
+    message: 'Ingresa el indice de la tarea que quieres modificar?'
   },
+  {
+    type: 'list',
+    name: 'state',
+    message: 'introduce el NUEVO estado',
+    choices: ['pendiente', 'finalizada', 'en proceso'],
+  }
 ];
 
-const update = [
-  {
-    type: "list",
-    name: "dataBase",
-    message: "Donde quieres buscar?:",
-    choices: ["json", "sql", "mongo"],
-  },
-  {
-    type: "input",
-    name: "taskindex",
-    message: "Ingresa el indice de la tarea que quieres modificar?",
-  },
-  {
-    type: "input",
-    name: "name",
-    message: "Ingresa el NUEVO nombre de la tarea:",
-  },
-  {
-    type: "input",
-    name: "startDate",
-    message: "NUEVA Fecha de Inicio:",
-  },
-  {
-    type: "input",
-    name: "endDate",
-    message: "NUEVA Fecha de Fin:",
-  },
-  {
-    type: "input",
-    name: "description",
-    message: "NUEVA Descripción de la tarea:",
-  },
-  {
-    type: "input",
-    name: "user",
-    message: "NUEVO Usuario Asignado:",
-  },
-];
-
-module.exports = { create, remove, findOne, listAll, update };
+module.exports = {create, remove, findOne, update, state}  

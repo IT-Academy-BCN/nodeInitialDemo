@@ -18,6 +18,7 @@ inquirer.prompt(create).then((newTodo) => {
   dbcache.push(newTodo);
   let todos = JSON.stringify(dbcache, null, 2);
 
+
   fs.writeFile("../database/tasks.json", todos, (err) => {
     if (err) throw err;
   });

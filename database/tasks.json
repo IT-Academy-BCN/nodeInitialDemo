@@ -21,5 +21,37 @@
     "endDate": "z",
     "description": "z",
     "user": "z"
+  },
+  {
+    "taskindex": "1",
+    "name": "pere3",
+    "startDate": "sdkfja",
+    "endDate": "fadskfj",
+    "description": "fdskj",
+    "user": "dfkaj"
+  },
+  {
+    "name": "fdsf",
+    "startDate": "dfad",
+    "endDate": "fasdf",
+    "description": "dfasd",
+    "user": "dfa"
+  },
+  {
+    "taskindex": "3",
+    "name": "dflkasd",
+    "startDate": "fdsa",
+    "endDate": "dfsa",
+    "description": "",
+    "user": ""
+  },
+  {
+    "taskindex": "4",
+    "name": "55",
+    "startDate": "55",
+    "endDate": "55",
+    "description": "55",
+    "user": "55",
+    "state": "pendiente"
   }
 ]
