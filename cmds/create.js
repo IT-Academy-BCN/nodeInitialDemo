@@ -1,28 +1,16 @@
 const inquirer = require('inquirer'); // Para iniicar  preguntas por consola
 const fs = require('fs');
 const { create } = require('../src/questions') // Importa las preguntas de creación
-const { writeJson} = require('../controllers/json')
+const { writeJson, readJson } = require('../controllers/json')
 
 
 // Inicia lectura de Json <--
-  fs.readFile('./database/tasks.json', (err, rawdata) => {
-    if (!err) {
-     dbcache = JSON.parse(rawdata)
-     //console.table(dbcache)
-    } 
-    else {
-      //console.log('No se ha podido leer el archivo')
-      let emptyFile = JSON.stringify([{}],null,2);
-      writeJson(emptyFile);
-      //console.error(err) - test
-    }
-  })
-// Fin de lectura del Json
-// -->
+let dbcache = readJson()
+//Fin de lectura del Json -->
 
-class Add {
-  json = async () => {
-    await inquirer// Código que te permite crear las pregunta sobre el campo que quieres crear/modificar
+// Código que te permite crear la tarea y escribir en Json
+const questionRun = () => {
+  inquirer
       .prompt(create)
       .then( answers => {
         dbcache.push(answers)
@@ -31,6 +19,11 @@ class Add {
         console.log('Tarea Creada');
         console.table(dbcache);
       });
+}
+
+class Add {
+  json = async () => {
+    await questionRun() 
   }
   sql = async () => {
     await console.log('SQL no soportado... Estamos trabajando en ello!')

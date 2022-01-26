@@ -1,16 +1,44 @@
 [
   {
-    "name": "M",
-    "startDate": "m",
-    "endDate": "m",
-    "description": "m",
-    "user": "m"
+    "name": "Comer castañas",
+    "startDate": "31/10/2021",
+    "endDate": "31/12/2022",
+    "description": "Hacer castañas al horno",
+    "user": "Mauricio"
   },
   {
-    "name": "M",
-    "startDate": "4",
-    "endDate": "8",
-    "description": "9",
-    "user": "0"
+    "name": "D",
+    "startDate": "D",
+    "endDate": "D",
+    "description": "D",
+    "user": "D"
+  },
+  {
+    "name": "Comer pasta ",
+    "startDate": "20-01-2022",
+    "endDate": "20-01-2023",
+    "description": "Hacer pasta con tomate y queso",
+    "user": "Mauricio "
+  },
+  {
+    "name": "Hacer la cama",
+    "startDate": "12-12-12",
+    "endDate": "12-12-21",
+    "description": "Construir mi cama a mano ",
+    "user": "Mauricio"
+  },
+  {
+    "name": "Limpiar",
+    "startDate": "31-12-2022",
+    "endDate": "1-01-2023",
+    "description": "Desintoxicar el cuerpo post resaca",
+    "user": "Mauricio"
+  },
+  {
+    "name": "Terminar Sprint3",
+    "startDate": "16/01/2022",
+    "endDate": "14/02/2022",
+    "description": "Acabar sprint 3 y devteams",
+    "user": "Mauricio"
   }
 ]
