@@ -85,7 +85,7 @@ const update = [ // Revisado Pere OK.
       message: 'introduce el NUEVO estado',
       choices: ['pendiente', 'finalizada', 'en proceso'],
     }
-]
+];
 const state = [ // Revisado Pere OK.
   {
     type: 'input',
