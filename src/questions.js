@@ -47,24 +47,17 @@ const remove = [
 ];
 
 const findOne = [ // Pendiente de definir
-   {
-      type: 'list',
-      name: 'dataBase',
-      message: 'Donde quieres buscar?:',
-      choices:['json','sql','mongo']
-    },
-    {
-      type: 'list',
-      name: 'confirmation',
-      message: 'Quieres buscar todas?',
-      choices:['Yes','No']
-    }
+  {
+    type: 'input',
+    name: 'taskIndex',
+    message: 'Ingresa el indice de la tarea que quieres ver?'
+  },
 ];
 
 const state = [ // Revisado Pere OK.
   {
     type: 'input',
-    name: 'taskindex',
+    name: 'taskIndex',
     message: 'Ingresa el indice de la tarea que quieres modificar?'
   },
   {

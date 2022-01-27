@@ -21,6 +21,7 @@ const questionRun = () => {
       });
 }
 
+// Clase que exporta resultados y permite ser llamados mediante la app
 class Add {
   json = async () => {
     await questionRun() 
