@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colorette": "^2.0.16",
     "dotenv": "^9.0.2",
+    "inquirer": "^8.2.0",
     "node": "^17.4.0",
     "pm2": "^4.5.6"
   },
