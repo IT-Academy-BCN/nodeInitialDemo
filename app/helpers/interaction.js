@@ -41,7 +41,7 @@ const questions = [
     }
 ];
 
-const interactiveMenu = async ()=>{
+const interactiveMenu = async () => {
     console.clear();
     console.log(`${colorette.greenBright('\n----------------------------')}`);
     console.log(`     ${colorette.bgMagentaBright(' Select an option ')}`);
@@ -52,7 +52,7 @@ const interactiveMenu = async ()=>{
     return option
 };
 
-const pause = async ()=>{
+const pause = async () => {
     const question = [
         {
             type: 'input',
@@ -62,9 +62,31 @@ const pause = async ()=>{
     ]
     console.log('\n');
     await inquirer.prompt(question);
+};
+
+const readInput = async (message) => {
+    const question = [
+        {
+            type: 'input',
+            name: 'desc',
+            message,
+
+            validate(value) {
+                if (value.length === 0) {
+                    return 'Please enter a value'
+                }
+                return true;
+            }
+        }
+    ];
+
+    const { desc } = await inquirer.prompt(question);
+    return desc;
 }
+
 
 module.exports = {
     interactiveMenu,
-    pause
-}
+    pause,
+    readInput
+};
