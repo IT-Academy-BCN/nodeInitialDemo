@@ -57,11 +57,14 @@ const pause = async ()=>{
         {
             type: 'input',
             name: 'enter',
-            message: 'Press enter to continue'
+            message: `Press ${colorette.greenBright('ENTER')} to continue`
         }
     ]
+    console.log('\n');
+    await inquirer.prompt(question);
 }
 
 module.exports = {
-    interactiveMenu
+    interactiveMenu,
+    pause
 }
