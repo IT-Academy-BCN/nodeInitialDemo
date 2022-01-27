@@ -7,7 +7,7 @@ const questions = [
     {
         type: 'list',
         name: 'option',
-        message: 'What would you like to do?',
+        message: `${colorette.redBright(colorette.underline('What would you like to do?\n'))}`,
         choices: [
             {
                 value: '1',
@@ -32,6 +32,10 @@ const questions = [
             {
                 value: '6',
                 name: `${colorette.greenBright('6.')} Delete task`
+            },
+            {
+                value: '0',
+                name: `${colorette.greenBright('0.')} Exit`
             }
         ]
     }
@@ -39,9 +43,25 @@ const questions = [
 
 const interactiveMenu = async ()=>{
     console.clear();
-    console.log(`${colorette.greenBright('-----------------------')}`);
-    console.log(`${colorette.magentaBright('    Select an option')}`);
-    console.log(`${colorette.greenBright('-----------------------')}`);
+    console.log(`${colorette.greenBright('\n----------------------------')}`);
+    console.log(`     ${colorette.bgMagentaBright(' Select an option ')}`);
+    console.log(`${colorette.greenBright('----------------------------\n')}`);
 
     const { option } = await inquirer.prompt(questions);
+
+    return option
+};
+
+const pause = async ()=>{
+    const question = [
+        {
+            type: 'input',
+            name: 'enter',
+            message: 'Press enter to continue'
+        }
+    ]
+}
+
+module.exports = {
+    interactiveMenu
 }
