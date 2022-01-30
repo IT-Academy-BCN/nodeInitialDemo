@@ -2,14 +2,18 @@ const crypto = require('crypto');
 
 class Task {
 
-    id = '';
-    desc = '';
-    completedIn = null;
+    // Initialize task and checking for some fields to be filled if value not provided
+    constructor(id, title, desc, isCompleted, createdAt, completedAt){
+        if (!title) {
+            throw new Error('Title is required');
+        }
 
-    constructor(){
-        this.id = crypto.randomUUID();
+        this.id = id ? id : crypto.randomUUID();
+        this.title = title;
         this.desc = desc;
-        this.completedIn = null
+        this.isCompleted = isCompleted ? isCompleted : false;
+        this.createdAt = createdAt ? createdAt : new Date();
+        this.completedAt = completedAt ? completedAt : null;
     }
 };
 
