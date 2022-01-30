@@ -1,3 +1,8 @@
+const DB_PROVIDER = process.env.DATABASE_PROVIDER;
+
+if (DB.PROVIDER.toUpperCase() === "JSON") {
+    
+}
 
 function getTask(taskId) {
 
