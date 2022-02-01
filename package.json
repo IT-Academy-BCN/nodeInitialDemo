@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^9.0.2",
-    "nodemon": "^2.0.7",
+    "dotenv": "^15.0.0",
+    "nodemon": "^2.0.15",
     "pm2": "^4.5.6"
   }
 }
