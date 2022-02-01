@@ -55,7 +55,7 @@ Follow the steps below:
 
 Arquitectura típica de 3 capes, repartides entre les 3 integrants del grup:
 
-<img src="img/app_architecture.png" alt="App Architecture" width=140>
+![App Architecture](img/app_architecture.png)
 
 |  **Component**   | **Integrant** |
 |:----------------:|:-------------:|
