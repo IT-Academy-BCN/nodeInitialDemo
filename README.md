@@ -114,3 +114,6 @@ Arquitectura típica de 3 capes, repartides entre les 3 integrants del grup:
 - Proposta: fer servir dotenv ([Documentació](#project-structure)) per carregar variable d'entorn que determini el tipus de permanència.
 - Per no afectar la resta de capes de l'app, les 3 implementacions haurien de tenir la mateixa interfície d'ús.
 - Començo implementant la integració amb MongoDB fent ús de Mongoose: seran les implementacions en JSON i MySQL les que s'acabin exposant a la resta de l'app amb la manera de fer de mongoose i no al revés.
+
+### Suport al desenvolupament
+- Webstorm no incorpora dotenv d'entrada als run configurations (per exemple debug no funciona), cal editar les configuracions del run: https://ihsanmjdeci.medium.com/webstorm-load-env-file-run-debug-test-configuration-904f343814da. A la nostra app: `-r dotenv/config`, `DOTENV_CONFIG_PATH=../.env`.
