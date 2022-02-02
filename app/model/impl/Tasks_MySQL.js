@@ -22,15 +22,11 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 });
 
-async function demo() {
-
-}
-
 async function executaQuery(query, args){
     return new Promise((resolve, reject) => {
         // Formata i afegeix args
         if(args)
-            query = mysql.format(query, ...args);
+            query = mysql.format(query, args);
         else
             query = mysql.format(query);
         // Executa i resol promise amb resultat
@@ -77,11 +73,12 @@ async function sqlDelete(from, where, args){
     return await executaQuery(query, args);
 }
 
+
 async function getTask(id) {
     if (id) {
         return await sqlSelect(
             "*",
-            "task t JOIN user u ON t.author = u.id",
+            "task t JOIN user u ON t.author_id = u.id",
             "t.id = ?",
             [id]
         )
@@ -96,7 +93,7 @@ async function getUserId(user_name) {
         return await sqlSelect(
             "id",
             "user",
-            "name=??",
+            "name = ?",
             [user_name]
         )
     }
@@ -108,56 +105,56 @@ async function getUserId(user_name) {
 async function getAllTasks() {
     return await sqlSelect(
         "*",
-        "task t JOIN user u ON t.author = u.id"
+        "task t JOIN user u ON t.author_id = u.id"
     );
 }
 
 async function saveNewTask(task) {
     // Inicialitza els valors per defecte que calgui
-    if(task.state === null)
+    if(task.state == null)
         task.state = 'pending';
-    if(task.start_time === null)
+    if(task.start_time == null)
         task.start_time = new Date();
 
     // Troba id d'usuari si existeix
-    let author_id = await getUserId(task.author);
+    let author_id = (await getUserId(task.author)).id;
 
     // Si no exiteix, crea'l
     if(!author_id)
-        author_id = await sqlInsert(
+        author_id = (await sqlInsert(
             "user(id, name)",
-            "(??, ??)",
+            "(?, ?)",
             [null, task.author]
-        )
+        )).insertId; // Inserted id retornada
 
     // Afegeix FK task
     task.author_id = author_id;
 
     // Crea task
-    task.id = await sqlInsert(
-        "task(id, description, state, start_time, end_time, author)",
-        "(null, ??, ??, ??, ??, ??, ??)",
-        [task.description, task.state, task.start_time, task.end_time(), task.author_id]
-    )
+    task.id = (await sqlInsert(
+        "task(id, description, state, start_time, end_time, author_id)",
+        "(null, ?, ?, ?, ?, ?)",
+        [task.text, task.state, task.start_time, task.end_time, task.author_id]
+    )).insertId; // Guarda la id autogenerada a l'insert
 }
 
 async function updateTask(id, task) {
     // Recupera FK d'author
-    task.author_id = await getUserId(task.author);
+    task.author_id = await getUserId(task.author_id);
 
     // Si no existeix, crea'l
     if(!task.author_id)
         task.author_id = await sqlInsert(
             "user(id, name)",
-            "(null, ??)",
+            "(null, ?)",
             [task.author]
         )
 
     // Update task
     await sqlUpdate(
-        `description=??,state=??,start_time=??,end_time=??,author=??`,
+        `description=?,state=?,start_time=?,end_time=?,author_id=?`,
         `id=?`,
-        [task.description, task.state, task.start_time, task.end_time, task.author_id, task.id]
+        [task.text, task.state, task.start_time, task.end_time, task.author_id, task.id]
     )
 }
 
@@ -183,11 +180,120 @@ async function deleteTask(object) {
         )
     }
 }
-/*
 
-async function dropCreate() {
-    //TODO: executar mysql_schema.sql per eliminar i tornar a crear taules
+
+async function deleteAll() {
+/*
+// NO FUNCIONA
+    // FONT: https://www.npmjs.com/package/execsql
+    // FONT: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comma_Operator#processing_and_then_returning
+    const execsql = require('execsql'),
+        dbConfig = {
+            host: `${process.env.MYSQL_HOST}`,///${process.env.MYSQL_DATABASE}`,
+            user: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+        },
+        sql = `use ${process.env.MYSQL_DATABASE};`,
+        sqlFile ='./mysql_scripts/mysql_schema.sql';
+    execsql.config(dbConfig)
+        .exec(sql)
+        .execFile(sqlFile, (err, results) => {
+            console.log(results);
+        }).end();
+
+ */
+    /*
+    // NO FUNCIONA
+    return new Promise((resolve, reject) => {
+        // FONT: https://stackoverflow.com/a/31710270
+        const fs = require('fs');
+        const readline = require('readline');
+
+        const rl = readline.createInterface({
+            input: fs.createReadStream('./mysql_scripts/mysql_schema.sql'),
+            terminal: false
+        });
+        rl.on('line', chunk => {
+            pool.query(chunk.toString(), err => {
+                if(err)     reject();
+                else        resolve();
+            });
+        });
+        rl.on('close', function(){
+            console.log('mysql_schema.sql closed');
+        });
+    })
+
+     */
+    // FUNCIONA
+    await sqlDelete("task");
+    await sqlDelete("user");
 }
 
-*/
+
+async function demo(){
+    console.log("Demo MySQL App Running...");
+
+    // Restart de database a cada rerun de demo
+    await deleteAll();
+
+    // Crea task
+    let task1 = {
+        text: 'Crear TO-DO app',
+        author: 'Guillem Parrado'
+        // No cal state: és required però s'inicialitza sol a 'pending'
+        // No cal start_date: és required però s'inicialitza sol a current time
+    }
+
+    // Guarda task
+    const task1_id = await saveNewTask(task1);
+
+
+
+    // Crea second task
+    let task2 = {
+        text: '2nd Task',
+        author: 'Laura O'
+    };
+
+    // Save task
+    const task2_id = await saveNewTask(task2);
+
+    // Crea third task
+    let task3 = {
+        text: '3rd Task',
+        author: 'Anon.'
+    };
+
+    // Save task
+    const task3_id = await saveNewTask(task3);
+
+    // Recupera tots els tasks
+    const tasks = await getAllTasks();
+    console.log(tasks);
+
+    // Recupera un task a partir d'una id
+    const recovered_1st_task = await getTask(task1.id);      // recupera 1r task
+    console.log(recovered_1st_task);
+
+    /*
+    // Modifica un task
+    const recovered_2nd_task = await getTask(task2_id);             // recupera 2n task
+    recovered_2nd_task.author = "Patricia Gonzalez";                // treballem sobre task i el modifiquem
+    await updateTask(recovered_2nd_task._id, recovered_2nd_task);   // Guardem canvis de tornada a DB
+
+    // Elimina tasks
+    await deleteTask(task1_id);    // A partir d'una id
+    await deleteTask(task3);       // A partir d'un task
+
+    // Finalment, torno a fer un getAll per comprovar que s'han aplicat els canvis. Hi hauria d'haver només la 2a tasca i amb l'autor modificat.
+    console.log(await getAllTasks());
+
+    // Acabo Demo
+    process.exit(0);
+ */
+}
+
+
+
 module.exports = {getTask, getAllTasks, saveNewTask, updateTask, deleteTask, demo}

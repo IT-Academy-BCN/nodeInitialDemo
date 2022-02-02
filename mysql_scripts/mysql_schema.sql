@@ -15,6 +15,6 @@ CREATE TABLE task
     state       ENUM ('pending', 'open', 'finalized') NOT NULL,
     start_time  TIMESTAMP,                                      # 'start' és reserved word
     end_time    TIMESTAMP,                                      # 'end' és reserved word
-    author      INT                                   NOT NULL,
-    CONSTRAINT fk_task_user FOREIGN KEY (author) REFERENCES user (id)
+    author_id   INT                                   NOT NULL,
+    CONSTRAINT fk_task_user FOREIGN KEY (author_id) REFERENCES user (id)
 );

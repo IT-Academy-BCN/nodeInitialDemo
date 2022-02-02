@@ -117,6 +117,7 @@ Arquitectura típica de 3 capes, repartides entre les 3 integrants del grup:
 
 ### Suport al desenvolupament
 - Webstorm no incorpora dotenv d'entrada als run configurations (per exemple debug no funciona), cal editar les configuracions del run: https://ihsanmjdeci.medium.com/webstorm-load-env-file-run-debug-test-configuration-904f343814da. A la nostra app: `-r dotenv/config`, `DOTENV_CONFIG_PATH=../.env`.
+- Per executar app.js des de Webstorm i que tots els paths funcionin com fent `npm start` o `npm run dev`, també cal establir el working directory com el root del repositori i no la carpeta `app` que és el que ve per defecte.
 
 ### Instruccions d'ús
 - El que conté la branca a nivell d'app, com a lliurament de la meva activitat i fins que no s'integri amb el codi d'altres membres de l'equip, és una demo per provar les diferents implementacions de Tasks.
