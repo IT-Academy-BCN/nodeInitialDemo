@@ -14,8 +14,11 @@ const main = async () => {
     let opt = '';
     const tasksJsonDB = readJsonDB();
 
-    //! Add tasksJsonDB() to the tasks service persistence method (It could be a conditional for example).
-
+    // If a json with tasks exists, it will load it into the app (Persistence).
+    
+    // if (tasksJsonDB){
+    //     getTasks(tasksJsonDB);
+    // };
 
     do {
         // Print the menu and return an option.
@@ -29,19 +32,20 @@ const main = async () => {
                 break;
 
             case '2': // Read all tasks
-
+                getTasks()
                 break;
 
             case '3': // Read completed tasks
-
+                //! Tasks isCompleted(true); Create the function with the boolean
                 break;
 
             case '4': // Read uncompleted tasks
-
+                //! Tasks isCompleted(false); Create the function with the boolean
                 break;
 
             case '5': // Update task
-
+                const ids = await showChecklist();
+                //! Add completed/pending tasks toggle
                 break;
 
             case '6': // Delete task with check
