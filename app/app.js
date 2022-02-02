@@ -1,6 +1,9 @@
 const { interactiveMenu,
     pause,
-    readInput
+    readInput,
+    taskListDelete,
+    confirm,
+    showChecklist
 } = require('./helpers/interaction');
 
 const { saveJsonDB,
@@ -40,9 +43,16 @@ const main = async () => {
             case '5': // Update task
 
                 break;
-                
-            case '6': // Delete task with check
 
+            case '6': // Delete task with check
+                const id = await taskListDelete(); //! Add to the parameter a function with all tasks in an array.
+                if (id !== '0') {
+                    const ok = await confirm('Are you sure?');
+                    if (ok) {
+                        deleteTask(taskId);
+                        console.log('deleted task');
+                    }
+                }
                 break;
         }
 
