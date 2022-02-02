@@ -128,3 +128,6 @@ Arquitectura típica de 3 capes, repartides entre les 3 integrants del grup:
   - Crear les taules el primer cop que executem l'app (script `/mysql_scripts/mysql_schema.sql`).
   - Un cop executat l'script anterior, també caldrà crear l'usuari de l'app i donar-li els privilegis que calgui (script `/mysql_scripts/mysql_user.sql`). 
   - En producció, canviar el password perquè sigui segur (a `mysql_user.sql`i a `.env`) i canviar també la direcció del host de MySQLa `.env` pel real.
+
+### Integració a la resta de l'app
+- **COMPTE**: hi ha petites diferències en l'ús de Task si és per implementació MongoDB o MySQL, trieu sempre la mateixa i quan acabi les implementacions faré una repassada a les tres acabar-les d'unificar.

@@ -48,6 +48,14 @@ async function sqlSelect(select, from, where, args){
     return await executaQuery(query, args);
 }
 
+async function sqlSingleSelect(select, from, where, args){
+    const queryResult = await sqlSelect(select, from, where, args);
+    if(queryResult.length > 1)
+        throw new Error('Single Select returned more than one element')
+    else
+        return queryResult[0];
+}
+
 async function sqlInsert(into, values, args){
     // Crea query
     let query = `INSERT INTO ${into} VALUES ${values}`;
@@ -55,9 +63,9 @@ async function sqlInsert(into, values, args){
     return await executaQuery(query, args);
 }
 
-async function sqlUpdate(set, where, args){
+async function sqlUpdate(table, set, where, args){
     // Crea query
-    let query = `UPDATE SET ${set}`;
+    let query = `UPDATE ${table} SET ${set}`;
     if(where)
         query += ` WHERE ${where}`;
     // Executa i retorna
@@ -73,32 +81,54 @@ async function sqlDelete(from, where, args){
     return await executaQuery(query, args);
 }
 
-
 async function getTask(id) {
     if (id) {
-        return await sqlSelect(
+        let result = await sqlSingleSelect(
             "*",
             "task t JOIN user u ON t.author_id = u.id",
             "t.id = ?",
             [id]
         )
+        // Hi ha un bug a 'mysql' package: la id d'objecte retornat fent join no és la de task sinó la de user (???), reassigno la de task.
+        result.id = id;
+        return result;
     }
     else
         // Podem estalviar la consulta si s'ha cridat sense id
         throw new Error("getTask hasn't been given an id");
 }
 
-async function getUserId(user_name) {
-    if (user_name) {
-        return await sqlSelect(
+/**
+ * Busca user by name i retorna id si existeix. En cas que no existeixi, el crea i en retorna l'id.
+ * @param name
+ * @returns {Promise<*>}
+ */
+async function getUserId(name) {
+    // Si s'ha rebut un nom
+    if(name){
+        // Troba id d'usuari si existeix
+        let user_id;
+        const user = sqlSingleSelect(
             "id",
             "user",
             "name = ?",
-            [user_name]
+            [name]
         )
+        if(user)
+            user_id = user.id;
+
+        // Si no exiteix, crea'l
+        if(!user_id)
+            user_id = (await sqlInsert(
+                "user(id, name)",
+                "(?, ?)",
+                [null, name]
+            )).insertId; // Inserted id retornada
+
+        return user_id;
     }
+    // Podem estalviar la consulta si s'ha cridat sense user_name
     else
-        // Podem estalviar la consulta si s'ha cridat sense user_name
         throw new Error("getTask hasn't been given an id");
 }
 
@@ -116,19 +146,8 @@ async function saveNewTask(task) {
     if(task.start_time == null)
         task.start_time = new Date();
 
-    // Troba id d'usuari si existeix
-    let author_id = (await getUserId(task.author)).id;
-
-    // Si no exiteix, crea'l
-    if(!author_id)
-        author_id = (await sqlInsert(
-            "user(id, name)",
-            "(?, ?)",
-            [null, task.author]
-        )).insertId; // Inserted id retornada
-
-    // Afegeix FK task
-    task.author_id = author_id;
+    // Afegeix FK d'author a task (el crea si no existeix)
+    task.author_id = await getUserId(task.author);
 
     // Crea task
     task.id = (await sqlInsert(
@@ -139,22 +158,15 @@ async function saveNewTask(task) {
 }
 
 async function updateTask(id, task) {
-    // Recupera FK d'author
-    task.author_id = await getUserId(task.author_id);
-
-    // Si no existeix, crea'l
-    if(!task.author_id)
-        task.author_id = await sqlInsert(
-            "user(id, name)",
-            "(null, ?)",
-            [task.author]
-        )
+    // task.author pot haver canviat. Actualitza la id associada al nom (crea nou user en cas que no existeixi)
+    task.author_id = await getUserId(task.author);
 
     // Update task
     await sqlUpdate(
+        `task`,
         `description=?,state=?,start_time=?,end_time=?,author_id=?`,
         `id=?`,
-        [task.text, task.state, task.start_time, task.end_time, task.author_id, task.id]
+        [task.description, task.state, task.start_time, task.end_time, task.author_id, task.id]
     )
 }
 
@@ -162,13 +174,13 @@ async function deleteTask(object) {
     // Se li pot passar l'objecte a eliminar o directament la _id
     let id;
 
-    // Cas: se li passa un objecte a eliminar
-    if ('id' in object) {
-        id = object.id;
-    }
     // Cas: se li passa directament una _id
-    if (typeof object === 'string') {
+    if (typeof object === 'number') {
         id = object;
+    }
+    // Cas: se li passa un objecte a eliminar
+    else if ('id' in object) {
+        id = object.id;
     }
 
     // Si input vàlid, elimina
@@ -183,49 +195,6 @@ async function deleteTask(object) {
 
 
 async function deleteAll() {
-/*
-// NO FUNCIONA
-    // FONT: https://www.npmjs.com/package/execsql
-    // FONT: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comma_Operator#processing_and_then_returning
-    const execsql = require('execsql'),
-        dbConfig = {
-            host: `${process.env.MYSQL_HOST}`,///${process.env.MYSQL_DATABASE}`,
-            user: process.env.MYSQL_USER,
-            password: process.env.MYSQL_PASSWORD,
-        },
-        sql = `use ${process.env.MYSQL_DATABASE};`,
-        sqlFile ='./mysql_scripts/mysql_schema.sql';
-    execsql.config(dbConfig)
-        .exec(sql)
-        .execFile(sqlFile, (err, results) => {
-            console.log(results);
-        }).end();
-
- */
-    /*
-    // NO FUNCIONA
-    return new Promise((resolve, reject) => {
-        // FONT: https://stackoverflow.com/a/31710270
-        const fs = require('fs');
-        const readline = require('readline');
-
-        const rl = readline.createInterface({
-            input: fs.createReadStream('./mysql_scripts/mysql_schema.sql'),
-            terminal: false
-        });
-        rl.on('line', chunk => {
-            pool.query(chunk.toString(), err => {
-                if(err)     reject();
-                else        resolve();
-            });
-        });
-        rl.on('close', function(){
-            console.log('mysql_schema.sql closed');
-        });
-    })
-
-     */
-    // FUNCIONA
     await sqlDelete("task");
     await sqlDelete("user");
 }
@@ -246,9 +215,7 @@ async function demo(){
     }
 
     // Guarda task
-    const task1_id = await saveNewTask(task1);
-
-
+    await saveNewTask(task1);
 
     // Crea second task
     let task2 = {
@@ -257,7 +224,7 @@ async function demo(){
     };
 
     // Save task
-    const task2_id = await saveNewTask(task2);
+    await saveNewTask(task2);
 
     // Crea third task
     let task3 = {
@@ -266,7 +233,7 @@ async function demo(){
     };
 
     // Save task
-    const task3_id = await saveNewTask(task3);
+    await saveNewTask(task3);
 
     // Recupera tots els tasks
     const tasks = await getAllTasks();
@@ -276,24 +243,22 @@ async function demo(){
     const recovered_1st_task = await getTask(task1.id);      // recupera 1r task
     console.log(recovered_1st_task);
 
-    /*
+
     // Modifica un task
-    const recovered_2nd_task = await getTask(task2_id);             // recupera 2n task
+    const recovered_2nd_task = await getTask(task2.id);             // recupera 2n task
     recovered_2nd_task.author = "Patricia Gonzalez";                // treballem sobre task i el modifiquem
-    await updateTask(recovered_2nd_task._id, recovered_2nd_task);   // Guardem canvis de tornada a DB
+    await updateTask(recovered_2nd_task.id, recovered_2nd_task);   // Guardem canvis de tornada a DB
 
     // Elimina tasks
-    await deleteTask(task1_id);    // A partir d'una id
+    await deleteTask(task1.id);    // A partir d'una id
     await deleteTask(task3);       // A partir d'un task
+
 
     // Finalment, torno a fer un getAll per comprovar que s'han aplicat els canvis. Hi hauria d'haver només la 2a tasca i amb l'autor modificat.
     console.log(await getAllTasks());
 
     // Acabo Demo
     process.exit(0);
- */
 }
-
-
 
 module.exports = {getTask, getAllTasks, saveNewTask, updateTask, deleteTask, demo}
