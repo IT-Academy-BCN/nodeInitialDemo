@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^15.0.0",
     "mongoose": "^6.1.9",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "pm2": "^4.5.6"
   }
