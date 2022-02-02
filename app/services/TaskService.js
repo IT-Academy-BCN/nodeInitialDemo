@@ -6,7 +6,11 @@ switch (DB_PROVIDER.toUpperCase()) {
         provider = require("../repositories/JSONRepository");
         break;
     case "MONGO":
-        provider = require("../repositories/MongoRepository");
+         try {
+             provider = require("../repositories/MongoRepository");
+         } catch (error) {
+                console.log("MongoDB is not installed. Please install it to use MongoDB as a database provider.");
+            }
         break;
     case "MYSQL":
         provider = require("../repositories/MySqlRepository");
@@ -24,15 +28,15 @@ function getTasks() {
 }
 
 function createTask(task) {
-    return provider.createTask(task);
+    return provider.createElement(task);
 }
 
 function updateTask(task) {
-    return provider.updateTask(task);
+    return provider.updateElementById(task);
 }
 
 function deleteTask(taskId) {
-    return provider.deleteTask(taskId);
+    return provider.deleteElementById(taskId);
 }
 
 module.exports = {  getTask, getTasks, createTask, updateTask, deleteTask };
