@@ -4,7 +4,7 @@ const { interactiveMenu,
 } = require('./helpers/interaction');
 
 const { saveJsonDB,
-        readJsonDB
+    readJsonDB
 } = require('./repositories/JSONRepository');
 
 const main = async () => {
@@ -20,8 +20,29 @@ const main = async () => {
 
         //? In this switch case we will introduce the implementation of the task service in each of the options.
         switch (opt) {
-            case '1':
-                const desc = await readInput('Description: ')
+            case '1': // Create task
+                const desc = await readInput('Description: ');
+                createTask(task);
+                break;
+
+            case '2': // Read all tasks
+
+                break;
+
+            case '3': // Read completed tasks
+
+                break;
+
+            case '4': // Read uncompleted tasks
+
+                break;
+
+            case '5': // Update task
+
+                break;
+                
+            case '6': // Delete task with check
+
                 break;
         }
 
