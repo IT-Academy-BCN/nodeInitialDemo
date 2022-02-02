@@ -136,6 +136,18 @@ const showChecklist = async (tasks = []) => {
             checked: (task.completedAt) ? true : false
         };
     });
+
+    const question = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'selections',
+            choices
+        }
+    ]
+
+    const { ids } = await inquirer.prompt(question);
+    return ids;
 };
 
 
