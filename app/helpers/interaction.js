@@ -122,7 +122,21 @@ const confirm = async (message) => {
     ];
     const { ok } = await inquirer.prompt(question);
     return ok;
-}
+};
+
+const showChecklist = async (tasks = []) => {
+
+    const choices = tasks.map((task, i) => {
+
+        const idx = `${i + 1}.`.brightGreen;
+
+        return {
+            value: task.id,
+            name: `${idx} ${task.desc}`,
+            checked: (task.completedAt) ? true : false
+        };
+    });
+};
 
 
 
@@ -132,5 +146,7 @@ module.exports = {
     interactiveMenu,
     pause,
     readInput,
-    taskListDelete
+    taskListDelete,
+    confirm,
+    showChecklist
 };
