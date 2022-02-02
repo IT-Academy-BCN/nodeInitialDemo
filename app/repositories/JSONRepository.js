@@ -27,7 +27,7 @@ const readJsonDB = () => {
     const data = JSON.parse(info);
 
     // Filling the array with Task model objects.
-    const tasks = data.map(task => new Task(...task));
+    const tasks = data.map(task => new Task(task));
 
     return tasks;
 }
