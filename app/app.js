@@ -12,7 +12,7 @@ const { saveJsonDB,
 
 const main = async () => {
     let opt = '';
-    const tasksJsonDB = readJsonDB();
+    // const tasksJsonDB = readJsonDB();
 
     // If a json with tasks exists, it will load it into the app (Persistence).
     
