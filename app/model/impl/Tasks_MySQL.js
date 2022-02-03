@@ -15,6 +15,8 @@ Mecanisme:
 
 const {sqlSelect, sqlSingleSelect, sqlInsert, sqlUpdate, sqlDelete} = require('./utils/MySQL_queries');
 
+async function connect(){}  // No cal: Connexió gestionada a MySQL_queries.js
+
 async function getTask(id) {
     if (id) {
         let result = await sqlSingleSelect(
@@ -87,7 +89,7 @@ async function saveNewTask(task) {
     task.id = (await sqlInsert(
         "task(id, description, state, start_time, end_time, author_id)",
         "(null, ?, ?, ?, ?, ?)",
-        [task.text, task.state, task.start_time, task.end_time, task.author_id]
+        [task.description, task.state, task.start_time, task.end_time, task.author_id]
     )).insertId; // Guarda la id autogenerada a l'insert
 }
 
@@ -127,72 +129,9 @@ async function deleteTask(object) {
     }
 }
 
-
 async function deleteAll() {
     await sqlDelete("task");
     await sqlDelete("user");
 }
 
-
-async function demo(){
-    console.log("Demo MySQL App Running...");
-
-    // Restart de database a cada rerun de demo
-    await deleteAll();
-
-    // Crea task
-    let task1 = {
-        text: 'Crear TO-DO app',
-        author: 'Guillem Parrado'
-        // No cal state: és required però s'inicialitza sol a 'pending'
-        // No cal start_date: és required però s'inicialitza sol a current time
-    }
-
-    // Guarda task
-    await saveNewTask(task1);
-
-    // Crea second task
-    let task2 = {
-        text: '2nd Task',
-        author: 'Laura O'
-    };
-
-    // Save task
-    await saveNewTask(task2);
-
-    // Crea third task
-    let task3 = {
-        text: '3rd Task',
-        author: 'Anon.'
-    };
-
-    // Save task
-    await saveNewTask(task3);
-
-    // Recupera tots els tasks
-    const tasks = await getAllTasks();
-    console.log(tasks);
-
-    // Recupera un task a partir d'una id
-    const recovered_1st_task = await getTask(task1.id);      // recupera 1r task
-    console.log(recovered_1st_task);
-
-
-    // Modifica un task
-    const recovered_2nd_task = await getTask(task2.id);             // recupera 2n task
-    recovered_2nd_task.author = "Patricia Gonzalez";                // treballem sobre task i el modifiquem
-    await updateTask(recovered_2nd_task.id, recovered_2nd_task);   // Guardem canvis de tornada a DB
-
-    // Elimina tasks
-    await deleteTask(task1.id);    // A partir d'una id
-    await deleteTask(task3);       // A partir d'un task
-
-
-    // Finalment, torno a fer un getAll per comprovar que s'han aplicat els canvis. Hi hauria d'haver només la 2a tasca i amb l'autor modificat.
-    console.log(await getAllTasks());
-
-    // Acabo Demo
-    process.exit(0);
-}
-
-module.exports = {getTask, getAllTasks, saveNewTask, updateTask, deleteTask, demo}
+module.exports = { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll }

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//const AutoIncrement = require('mongoose-sequence')(mongoose);
 const {Schema} = mongoose;
 
 /*
@@ -14,6 +15,7 @@ FONTS
  - Mongoose drop collection: https://kb.objectrocket.com/mongo-db/drop-collection-mongoose-607
  - A terminal cal fer servir exec després de find perquè mostri l'objecte sense el model: https://stackoverflow.com/a/30058711
  - Object.assign: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ - Autoincrement: https://github.com/ramiel/mongoose-sequence
  */
 
 // DISCUSSIÓ: he intentat extendre la classe 'TaskModel' a 'Task' però no me'n surto en crear una sola interfície per fer servir a la resta d'implementacions com a Mongo. Penso que l'abstracció més general per les tres seria la del repositori amb tots els mètodes estàtics: Tasks.get(), Tasks.get(id), Tasks.update(object), Tasks.delete(object). Els objectes retornats els desacoblo de la lògica de database i que aquesta quedi tota a la classe Tasks.
@@ -21,7 +23,7 @@ FONTS
 // UPDATE: per fer tots els mètodes estàtics no cal crear classe >> refactor aproximació funcional.
 
 const schema = new Schema({
-    text: {
+    description: {
         type: String,
         required: true
     },
@@ -43,48 +45,62 @@ const schema = new Schema({
     }
 })
 
+//schema.plugin(AutoIncrement, {inc_field: 'id'});
+
 const TaskModel = mongoose.model("Task", schema);
+
+async function connect() {
+    await mongoose.connect(process.env.MONGO_URI);
+}
 
 async function getTask(id) {
     if(id){
-        return await TaskModel.findById(id).exec();
+        const result = await TaskModel.findById(id).exec();
+        result._doc.id = id;
+        return result._doc;
     }
 }
 
 async function getAllTasks() {
-    return await TaskModel.find().exec();
+    const results =  await TaskModel.find().exec();
+    let docs = [];
+    for (const result of results) {
+        result._doc.id = result._doc._id;
+        docs.push(result._doc);
+    }
+    return docs;
 }
 
-async function saveNewTask(object){
+async function saveNewTask(object) {
     return await new Promise(async resolve => {
         let task;
         task = await new TaskModel(object);
         await task.save(error => {
-            if(error)
+            if (error)
                 console.log(`Error guardant task: ${error}`)
         });
-        console.log(`Task Saved: ${task}`)
-        object._id = task._id;
-        resolve(task._id);
+        object.id = task._id;
+        object.start_time = task.start_time;
+        object.state = task.state;
+        console.log(`Task Saved: ${JSON.stringify(object, null, 4)}`)
+        resolve();
     })
 }
 
-async function updateTask(_id, object){
-    await TaskModel.findByIdAndUpdate(object._id, object).exec();
-
+async function updateTask(id, object){
+    await TaskModel.findOneAndUpdate({_id: id}, object).exec();
 }
 
 async function deleteTask(object){
     // Se li pot passar l'objecte a eliminar o directament la _id
     let _id;
-
-    // Cas: se li passa un objecte a eliminar
-    if('_id' in object) {
-        _id = object._id;
-    }
     // Cas: se li passa directament una _id
-    if(typeof object === 'string'){
+    if(object.constructor.name === "ObjectId"){
         _id = object;
+    }
+    // Cas: se li passa un objecte a eliminar
+    else if('id' in object) {
+        _id = object.id;
     }
 
     // Si input vàlid, elimina
@@ -98,7 +114,7 @@ async function deleteTask(object){
     }
 }
 
-async function dropTasksCollection() {
+async function deleteAll() {
     await new Promise(resolve => {
         try {
             mongoose.connection.db.dropCollection("tasks", () => {
@@ -109,74 +125,7 @@ async function dropTasksCollection() {
             resolve(); // No faig reject pq no vull llençar l'excepció de nou
         }
     })
-
 }
 
-async function demo(){
-    console.log("Demo MongoDB App Running...");
 
-    // Restart de database a cada rerun de demo
-    await dropTasksCollection();
-
-    // Crea task
-    let task1 = {
-        text: 'Crear TO-DO app',
-        author: 'Guillem Parrado'
-        // No cal state: és required però s'inicialitza sol a 'pending'
-        // No cal start_date: és required però s'inicialitza sol a current time
-    }
-
-    // Guarda task
-    const task1_id = await saveNewTask(task1);
-
-
-    // Crea second task
-    let task2 = {
-        text: '2nd Task',
-        author: 'Laura O'
-    };
-
-    // Save task
-    const task2_id = await saveNewTask(task2);
-
-    // Crea third task
-    let task3 = {
-        text: '3rd Task',
-        author: 'Anon.'
-    };
-
-    // Save task
-    const task3_id = await saveNewTask(task3);
-
-    // Espero 100ms a que estiguin disponibles a la base de dades, si es fa immediatament no ho estan
-    setTimeout(async ()=> {
-
-        // Recupera tots els tasks
-        const tasks = await getAllTasks();
-        console.log(tasks);
-
-        // Recupera un task a partir d'una id
-        const recovered_1st_task = await getTask(task1_id);      // recupera 1r task
-        console.log(recovered_1st_task);
-
-        // Modifica un task
-        const recovered_2nd_task = await getTask(task2_id);             // recupera 2n task
-        recovered_2nd_task.author = "Patricia Gonzalez";                // treballem sobre task i el modifiquem
-        await updateTask(recovered_2nd_task._id, recovered_2nd_task);   // Guardem canvis de tornada a DB
-
-        // Elimina tasks
-        await deleteTask(task1_id);    // A partir d'una id
-        await deleteTask(task3);       // A partir d'un task
-
-        // Finalment, torno a fer un getAll per comprovar que s'han aplicat els canvis. Hi hauria d'haver només la 2a tasca i amb l'autor modificat.
-        console.log(await getAllTasks());
-
-        // Acabo Demo
-        process.exit(0);
-
-    }, 100)
-
-    // COMENTARIS FINALS: si ja es té l'objecte en memòria no cal anar-lo recuperant cada cop. Per exemple en aquesta demo task1 i task2 ja estaven en memòria (en aquest cas no calia recuperar-los altre cop per treballar-hi). A UI segurament caldrà recuperar-ho tot per mostrar a usuari i quan aquest seleccioni, es pot passar l'objecte sencer sobre el que treballar en comptes de passar només la id per evitar haver de tornar a recuperar quan es treballi a business logic.
-}
-
-module.exports = { getTask, getAllTasks, saveNewTask, updateTask, deleteTask, demo }
+module.exports = { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll }

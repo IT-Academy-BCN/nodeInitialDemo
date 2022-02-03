@@ -13,23 +13,23 @@ const fs = require('fs');
 function Factory() {
     const filepath = `./appdata.json`;
     let tasks = [];
-    if (fs.existsSync(filepath)) {
-        loadFile();
-    }
     let max_id = -1;
-    if(tasks.length > 0) {
-        /*
-        // Versió async
-        max_id = await (tasks.reduce((previous, current) => Math.max(previous.value, current.value)));
-         */
-        for (const task of tasks) {
-            max_id = Math.max(task.id, max_id);
+
+    async function connect() {
+        if (fs.existsSync(filepath)) {
+            loadFile();
+        }
+
+        if (tasks.length > 0) {
+            for (const task of tasks) {
+                max_id = Math.max(task.id, max_id);
+            }
         }
     }
 
     function loadFile() {
         let data = JSON.parse(fs.readFileSync(filepath).toString());
-        if('tasks' in data)
+        if ('tasks' in data)
             tasks = data.tasks;
     }
 
@@ -50,11 +50,11 @@ function Factory() {
 
     function saveFile() {
         return new Promise((resolve, reject) => {
-            const data = { tasks };
+            const data = {tasks};
             const json = JSON.stringify(data, null, 4);
-            fs.writeFile(filepath, json, 'utf8', (err)=>{
-                if(err)     reject();
-                else        resolve();
+            fs.writeFile(filepath, json, 'utf8', (err) => {
+                if (err) reject();
+                else resolve();
             })
         })
     }
@@ -76,6 +76,12 @@ function Factory() {
         // Assigna id amb autoincrement
         max_id += 1;
         task.id = max_id;
+        // Assigna default values per camps obligatoris si nulls
+        if (task.start_time == null)
+            task.start_time = new Date();
+        if (task.state == null)
+            task.state = 'pending';
+
         tasks.push(task);
         await saveFile();
     }
@@ -96,75 +102,7 @@ function Factory() {
         await saveFile();
     }
 
-    return {getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll};
+    return {connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll};
 }
 
-async function demo(){
-    console.log("Demo JSON App Running...");
-
-    const {getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll} = await Factory();
-
-
-    // Restart de database a cada rerun de demo
-    await deleteAll();
-
-
-    // Crea task
-    let task1 = {
-        text: 'Crear TO-DO app',
-        author: 'Guillem Parrado'
-        // No cal state: és required però s'inicialitza sol a 'pending'
-        // No cal start_date: és required però s'inicialitza sol a current time
-    }
-
-    // Guarda task
-    await saveNewTask(task1);
-
-
-    // Crea second task
-    let task2 = {
-        text: '2nd Task',
-        author: 'Laura O'
-    };
-
-    // Save task
-    await saveNewTask(task2);
-
-    // Crea third task
-    let task3 = {
-        text: '3rd Task',
-        author: 'Anon.'
-    };
-
-    // Save task
-    await saveNewTask(task3);
-
-    // Recupera tots els tasks
-    const tasks = await getAllTasks();
-    console.log(tasks);
-
-    // Recupera un task a partir d'una id
-    const recovered_1st_task = await getTask(task1.id);      // recupera 1r task
-    console.log(recovered_1st_task);
-
-
-
-    // Modifica un task
-    const recovered_2nd_task = await getTask(task2.id);             // recupera 2n task
-    recovered_2nd_task.author = "Patricia Gonzalez";                // treballem sobre task i el modifiquem
-    await updateTask(recovered_2nd_task.id, recovered_2nd_task);   // Guardem canvis de tornada a DB
-
-
-    // Elimina tasks
-    await deleteTask(task1.id);    // A partir d'una id
-    await deleteTask(task3);       // A partir d'un task
-
-    // Finalment, torno a fer un getAll per comprovar que s'han aplicat els canvis. Hi hauria d'haver només la 2a tasca i amb l'autor modificat.
-    console.log(await getAllTasks());
-
-    // Acabo Demo
-    process.exit(0);
-
-}
-
-module.exports = {...Factory(), demo}
+module.exports = Factory();
