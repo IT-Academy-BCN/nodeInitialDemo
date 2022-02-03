@@ -9,8 +9,8 @@ switch (process.env.STORAGE_TYPE) {
     case "MONGODB": startMongoDBApp(); break;
 }
 
-function startJSONApp() {
-
+async function startJSONApp() {
+    await require("./model/Tasks").demo();
 }
 
 async function startMySQLApp() {

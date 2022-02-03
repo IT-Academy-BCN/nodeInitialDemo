@@ -1,3 +1,6 @@
+# --- JSON Storage
+appdata.json
+
 # --- IDE
 .idea
 
