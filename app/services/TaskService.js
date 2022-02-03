@@ -19,25 +19,44 @@ switch (DB_PROVIDER.toUpperCase()) {
         provider = require("../repositories/JSONRepository");
 }
 
-function getTask(taskId) {
+async function getTask(taskId) {
     return provider.getElementById(taskId);
 }
 
-function getTasks() {
+async function getTasks() {
     return provider.getElements();
 }
 
-function createTask(task) {
+async function getCompletedTasks() {
+    const rawTasks = await provider.getElements();
+    return rawTasks.find(task => task.isCompleted);
+}
+
+async function getPendingTasks() {
+    const rawTasks = await provider.getElements();
+    return rawTasks.find(task => !task.isCompleted);
+}
+
+
+async function createTask(task) {
     return provider.createElement(task);
 }
 
-function updateTask(task) {
-    return provider.updateElementById(task);
+async function updateTask(id, dataToUpdate) {
+    return provider.updateElementById(id, dataToUpdate);
 }
 
-function deleteTask(taskId) {
+async function deleteTask(taskId) {
     return provider.deleteElementById(taskId);
 }
 
-module.exports = {  getTask, getTasks, createTask, updateTask, deleteTask };
+module.exports = {  
+    getTask, 
+    getTasks, 
+    getCompletedTasks, 
+    getPendingTasks,
+    createTask, 
+    updateTask, 
+    deleteTask
+  };
 

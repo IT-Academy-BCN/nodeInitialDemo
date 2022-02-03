@@ -7,59 +7,59 @@ const {TaskInterface, Task} = require('../models/TaskModel');
 
 const TaskModel = mongoose.model('Task', new Schema(TaskInterface));
 
-const getElementById = (id) => {
-    TaskModel.findById(id, (err, task) => {
-        if (err) {
-            console.log(err);
-        }
-        return task;
-    });
+mongoose.connect('mongodb://localhost/tasks').then(() => console.log('Connected to MongoDB localhost'));
+
+const getElementById = async (id) => {
+
+    const task = await TaskModel.findById(id);
+
+    return modelToClass(Task, task);
+    
 }
 
-const getElements = () => {
-    TaskModel.find({}, (err, tasks) => {
-        if (err) {
-            console.log(err);
-        }
-        return tasks;
-    });
+const getElements = async () => {
+
+    const tasks = await TaskModel.find({});
+
+    return tasks.map(task => modelToClass(Task, task));
 }
 
 const createElement = async (data) => {
 
-    await mongoose.connect('mongodb://localhost/tasks');
-
-    const dataModeled = classToModel(TaskInterface, data);
+    // const dataModeled = classToModel(TaskInterface, data);
 
     const taskDoc = await TaskModel.create(dataModeled);
     
     return modelToClass(Task, taskDoc);
 }
 
-const deleteElementById = (id) => {
+const deleteElementById = async (id) => {
 
-
-    // return tasks;
+    await TaskModel.findByIdAndDelete(id);
+    
 }
 
-const updateElementById = (id, data) => {
+const updateElementById = async (id, data) => {
 
-
-    // return tasks[index];
+    
+    const taskDoc = await TaskModel.findByIdAndUpdate(id, data);
+    
+    return modelToClass(Task, taskDoc); 
+    
 }
 
 
 
-const classToModel = (modelInterface, classTarget) => {
-    let modelToFill = {};
-    for (let key in modelInterface) {
-        if (key === 'id') {continue;}
+// const classToModel = (modelInterface, classTarget) => {
+//     let modelToFill = {};
+//     for (let key in modelInterface) {
+//         if (key === 'id') {continue;}
 
-        modelToFill[key] = classTarget[key];
-    }
+//         modelToFill[key] = classTarget[key];
+//     }
 
-    return modelToFill;
-}
+//     return modelToFill;
+// }
 
 const modelToClass = (classToFill, modelTarget) => {
     let rawObjectFromModel = modelTarget.toObject();
