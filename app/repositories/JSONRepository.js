@@ -1,7 +1,7 @@
 const fs = require('fs');
-const Task = require('../models/TaskModel');
+const { Task } = require('../models/TaskModel');
 
-const archive = './db/data.json';
+const archive = './data.json';
 
 /* This file goal's is recreate an ORM like reading a JSON file placed in project db folder.
     The JSON file is used to store the tasks that the user has created. 
@@ -27,7 +27,7 @@ const readJsonDB = () => {
     const data = JSON.parse(info);
 
     // Filling the array with Task model objects.
-    const tasks = data.map(task => new Task(...task));
+    const tasks = data.map(task => new Task(task));
 
     return tasks;
 }
@@ -36,20 +36,20 @@ const readJsonDB = () => {
 // These methods can be expanded with another type of interaction with the JSON file.
 // For example we can create another reading method that get entire task as param (w/o ID)
 // and search a task that match with all fields. 
-const getElementById = (id) => {
+const getElementById = async (id) => {
     const tasks = readJsonDB();
 
     return tasks.find(task => task.id === id);
 }
 
-const getElements = () => {
+const getElements = async () => {
     return readJsonDB();
 }
 
-const createElement = (data) => {
+const createElement = async (data) => {
     const tasks = readJsonDB();
 
-    const task = new Task(...data);
+    const task = new Task(data);
 
     tasks.push(task);
 
@@ -58,7 +58,7 @@ const createElement = (data) => {
     return task;
 }
 
-const deleteElementById = (id) => {
+const deleteElementById = async (id) => {
     const tasks = readJsonDB();
 
     const index = tasks.findIndex(task => task.id === id);
@@ -70,12 +70,14 @@ const deleteElementById = (id) => {
     return tasks;
 }
 
-const updateElementById = (id, data) => {
+const updateElementById = async (id, data) => {
     const tasks = readJsonDB();
 
     const index = tasks.findIndex(task => task.id === id);
 
-    tasks[index] = new Task(...data);
+    for (let key in data) {
+        tasks[index][key] = data[key];
+    }
 
     saveJsonDB(tasks);
 

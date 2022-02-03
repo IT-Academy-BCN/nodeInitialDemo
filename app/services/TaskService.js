@@ -6,7 +6,11 @@ switch (DB_PROVIDER.toUpperCase()) {
         provider = require("../repositories/JSONRepository");
         break;
     case "MONGO":
-        provider = require("../repositories/MongoRepository");
+         try {
+             provider = require("../repositories/MongoRepository");
+         } catch (error) {
+                console.log("MongoDB is not installed. Please install it to use MongoDB as a database provider.");
+            }
         break;
     case "MYSQL":
         provider = require("../repositories/MySqlRepository");
@@ -15,25 +19,44 @@ switch (DB_PROVIDER.toUpperCase()) {
         provider = require("../repositories/JSONRepository");
 }
 
-function getTask(taskId) {
+async function getTask(taskId) {
     return provider.getElementById(taskId);
 }
 
-function getTasks() {
+async function getTasks() {
     return provider.getElements();
 }
 
-function createTask(task) {
-    return provider.createTask(task);
+async function getCompletedTasks() {
+    const rawTasks = await provider.getElements();
+    return rawTasks.find(task => task.isCompleted);
 }
 
-function updateTask(task) {
-    return provider.updateTask(task);
+async function getPendingTasks() {
+    const rawTasks = await provider.getElements();
+    return rawTasks.find(task => !task.isCompleted);
 }
 
-function deleteTask(taskId) {
-    return provider.deleteTask(taskId);
+
+async function createTask(task) {
+    return provider.createElement(task);
 }
 
-module.exports = {  getTask, getTasks, createTask, updateTask, deleteTask };
+async function updateTask(id, dataToUpdate) {
+    return provider.updateElementById(id, dataToUpdate);
+}
+
+async function deleteTask(taskId) {
+    return provider.deleteElementById(taskId);
+}
+
+module.exports = {  
+    getTask, 
+    getTasks, 
+    getCompletedTasks, 
+    getPendingTasks,
+    createTask, 
+    updateTask, 
+    deleteTask
+  };
 

@@ -1,15 +1,26 @@
-const { interactiveMenu,
+const { 
+    interactiveMenu,
     pause,
     readInput
 } = require('./helpers/interaction');
 
-const { saveJsonDB,
-        readJsonDB
-} = require('./repositories/JSONRepository');
+const TaskService = require('./services/TaskService');
 
 const main = async () => {
     let opt = '';
-    const tasksJsonDB = readJsonDB();
+    let tasks;
+    try {
+        // USAGE OF THE SERVICE
+        // tasks = await TaskService.createTask({title:'Task 1', desc:'Task 1 description'});
+        // tasks = await TaskService.getTasks();
+        // tasks = await TaskService.getTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7')
+        // tasks = await TaskService.updateTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7', {title:'Task updated', desc:'Task 1 description updated'});
+        // tasks = await TaskService.deleteTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7');
+        // tasks = await TaskService.getCompletedTasks();
+        // tasks = await TaskService.getPendingTasks();
+    } catch (error) {
+        console.log(error);
+    }
 
     //! Add tasksJsonDB() to the tasks service persistence method (It could be a conditional for example).
 
