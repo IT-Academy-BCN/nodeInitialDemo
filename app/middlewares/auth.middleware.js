@@ -1,4 +1,4 @@
-function basicAuth(req, res, next) {
+const basicAuth = (req, res, next) => {
     const auth = req.headers.authorization;
     if (!auth) {
         res.send(401, {

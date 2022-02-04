@@ -1,4 +1,4 @@
-function notCached(req, res, next) {
+const notCached = (req, res, next) => {
     res.set('Cache-Control', 'no-cache');
     next();
 }
