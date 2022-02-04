@@ -1,11 +1,16 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload');
+
+const { notCached } = require('./middlewares/CacheMiddleware');
 
 const app = express()
 
 // Middlewares
 app.use(bodyParser.json());
+app.use(cors());
+app.use(notCached);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload({
     createParentPath: true
@@ -46,8 +51,15 @@ app.post('/upload', (req, res) => {
     });
 });
 
+app.post('/time', (req, res) => {
+    const date = new Date();
+    res.send({
+        time: date.toLocaleString()
+    });
+});
+
 app.listen(3000, () => console.log('App listening on port 3000!'))
 
 module.exports = {
-  app
+    app
 }
