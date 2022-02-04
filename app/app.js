@@ -4,13 +4,14 @@ const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload');
 
 const { notCached } = require('./middlewares/CacheMiddleware');
-
+const { basicAuth } = require('./middlewares/AuthMiddleware');
 const app = express()
 
 // Middlewares
 app.use(bodyParser.json());
 app.use(cors());
 app.use(notCached);
+app.use(basicAuth);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload({
     createParentPath: true
