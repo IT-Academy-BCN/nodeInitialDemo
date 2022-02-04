@@ -9,7 +9,13 @@
 			"name": "Exercise 1",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "admin:admin",
+						"type": "default"
+					}
+				],
 				"url": {
 					"raw": "localhost:3000/user",
 					"host": [
@@ -27,7 +33,23 @@
 			"name": "Exercise 2",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "admin:admin",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/dmorales/Pictures/Camera Roll/WIN_20220124_12_58_49_Pro.jpg"
+						}
+					]
+				},
 				"url": {
 					"raw": "localhost:3000/upload",
 					"host": [
@@ -36,6 +58,39 @@
 					"port": "3000",
 					"path": [
 						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exercise 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "admin:admin",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"MagicUser\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/time",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
 					]
 				}
 			},
