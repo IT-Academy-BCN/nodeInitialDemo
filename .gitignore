@@ -3,3 +3,7 @@
 .env
 
 *lock*
+
+data.json
+
+.vscode/
