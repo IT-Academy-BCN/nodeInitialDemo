@@ -1,4 +1,4 @@
-const { 
+const {
     interactiveMenu,
     pause,
     readInput,
@@ -25,14 +25,6 @@ const main = async () => {
         console.log(error);
     }
 
-    //! Add tasksJsonDB() to the tasks service persistence method (It could be a conditional for example).
-
-    // If a json with tasks exists, it will load it into the app (Persistence).
-    
-    // if (tasksJsonDB){
-    //     getTasks(tasksJsonDB);
-    // };
-
     do {
         // Print the menu and return an option.
         opt = await interactiveMenu();
@@ -41,32 +33,33 @@ const main = async () => {
         switch (opt) {
             case '1': // Create task
                 const desc = await readInput('Description: ');
-                createTask(task);
+                tasks = await TaskService.createTask({ desc });
                 break;
 
             case '2': // Read all tasks
-                getTasks()
+                tasks = await TaskService.getTasks(desc);
                 break;
 
             case '3': // Read completed tasks
-                //! Tasks isCompleted(true); Create the function with the boolean
+                tasks = await TaskService.getCompletedTasks();
                 break;
 
             case '4': // Read uncompleted tasks
-                //! Tasks isCompleted(false); Create the function with the boolean
+                tasks = await TaskService.getPendingTasks();
                 break;
 
             case '5': // Update task
                 const ids = await showChecklist();
-                //! Add completed/pending tasks toggle
+                tasks = await TaskService.updateTask();
                 break;
 
             case '6': // Delete task with check
-                const id = await taskListDelete(); //! Add to the parameter a function with all tasks in an array.
+                tasks = await TaskService.deleteTask();
+                const id = await taskListDelete(tasks);
                 if (id !== '0') {
                     const ok = await confirm('Are you sure?');
                     if (ok) {
-                        deleteTask(taskId);
+                        TaskService.deleteTask();
                         console.log('deleted task');
                     }
                 }
