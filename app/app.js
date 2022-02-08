@@ -32,12 +32,14 @@ const main = async () => {
         //? In this switch case we will introduce the implementation of the task service in each of the options.
         switch (opt) {
             case '1': // Create task
+                const title = await readInput('Title: ')
                 const desc = await readInput('Description: ');
-                tasks = await TaskService.createTask({ desc });
+                tasks = await TaskService.createTask({ title, desc });
                 break;
 
             case '2': // Read all tasks
-                tasks = await TaskService.getTasks(desc);
+                tasks = await TaskService.getTasks();
+                console.log(tasks)
                 break;
 
             case '3': // Read completed tasks
