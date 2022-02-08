@@ -1,8 +1,10 @@
+const colorette = require('colorette');
 const {
     interactiveMenu,
     pause,
     readInput,
     taskListDelete,
+    showTasks,
     confirm,
     showChecklist
 } = require('./helpers/interaction');
@@ -10,7 +12,7 @@ const {
 const TaskService = require('./services/TaskService');
 
 const main = async () => {
-    let opt = '';
+    let opt;
     let tasks;
     try {
         // USAGE OF THE SERVICE
@@ -39,37 +41,40 @@ const main = async () => {
 
             case '2': // Read all tasks
                 tasks = await TaskService.getTasks();
-                console.log(tasks)
+                opt = await showTasks(tasks);
                 break;
 
             case '3': // Read completed tasks
                 tasks = await TaskService.getCompletedTasks();
+                opt = await showTasks(tasks);
                 break;
 
             case '4': // Read uncompleted tasks
                 tasks = await TaskService.getPendingTasks();
+                opt = await showTasks(tasks);
                 break;
 
             case '5': // Update task
                 const ids = await showChecklist();
-                tasks = await TaskService.updateTask();
+                tasks = await TaskService.updateTask({ids, });
                 break;
 
             case '6': // Delete task with check
-                tasks = await TaskService.deleteTask();
+                tasks = await TaskService.getTasks();
                 const id = await taskListDelete(tasks);
                 if (id !== '0') {
                     const ok = await confirm('Are you sure?');
                     if (ok) {
                         TaskService.deleteTask();
-                        console.log('deleted task');
+                        console.log(colorette.blackBright('deleted task'));
                     }
                 }
+                await pause();
                 break;
         }
 
 
-        await pause();
+        
     } while (opt !== '0')
 };
 

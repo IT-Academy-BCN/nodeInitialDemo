@@ -43,9 +43,18 @@ const questions = [
 
 const interactiveMenu = async () => {
     console.clear();
-    console.log(`${colorette.greenBright('\n----------------------------')}`);
-    console.log(`     ${colorette.bgMagentaBright(' Select an option ')}`);
-    console.log(`${colorette.greenBright('----------------------------\n')}`);
+    console.log(`${colorette.greenBright('\n----------------------------------------------------------------------------')}`);
+    console.log(`     ${colorette.magentaBright(`
+'########::'########:'##::::'##:::'########:'########::::'###::::'##::::'##:
+ ##.... ##: ##.....:: ##:::: ##:::... ##..:: ##.....::::'## ##::: ###::'###:
+ ##:::: ##: ##::::::: ##:::: ##:::::: ##:::: ##::::::::'##:. ##:: ####'####:
+ ##:::: ##: ######::: ##:::: ##:::::: ##:::: ######:::'##:::. ##: ## ### ##:
+ ##:::: ##: ##...::::. ##:: ##::::::: ##:::: ##...:::: #########: ##. #: ##:
+ ##:::: ##: ##::::::::. ## ##:::::::: ##:::: ##::::::: ##.... ##: ##:.:: ##:
+ ########:: ########:::. ###::::::::: ##:::: ########: ##:::: ##: ##:::: ##:
+........:::........:::::...::::::::::..:::::........::..:::::..::..:::::..::
+    `)}`);
+    console.log(`${colorette.greenBright('----------------------------------------------------------------------------\n')}`);
 
     const { option } = await inquirer.prompt(questions);
 
@@ -84,20 +93,43 @@ const readInput = async (message) => {
     return desc;
 };
 
-const taskListDelete = async (tasks = []) => {
+const showTasks = async (tasks = []) => {
     const choices = tasks.map((task, i) => {
 
-        const idx = `${i + 1}.`.brightGreen;
+        const idx = `${colorette.greenBright(i + 1 + '.')}`;
 
         return {
             value: task.id,
-            name: `${idx} ${task.desc}`
+            name: `${idx} ${task.title} - ${task.desc}`,
+        };
+    });
+
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Show',
+            choices
+        }
+    ]
+    const { id } = await inquirer.prompt(questions);
+    return id;
+};
+
+const taskListDelete = async (tasks = []) => {
+    const choices = tasks.map((task, i) => {
+
+        const idx = `${colorette.greenBright(i + 1)}.`;
+
+        return {
+            value: task.id,
+            name: `${idx} ${task.title}`
         };
     });
 
     choices.unshift({
         value: '0',
-        name: '0.'.brightGreen + ' Cancel'
+        name: colorette.greenBright('0.') + ' Cancel'
     });
 
     const questions = [
@@ -128,11 +160,11 @@ const showChecklist = async (tasks = []) => {
 
     const choices = tasks.map((task, i) => {
 
-        const idx = `${i + 1}.`.brightGreen;
+        const idx = `${i + 1}.`;
 
         return {
             value: task.id,
-            name: `${idx} ${task.desc}`,
+            name: `${idx} ${task.tile}`,
             checked: (task.completedAt) ? true : false
         };
     });
@@ -158,6 +190,7 @@ module.exports = {
     interactiveMenu,
     pause,
     readInput,
+    showTasks,
     taskListDelete,
     confirm,
     showChecklist
