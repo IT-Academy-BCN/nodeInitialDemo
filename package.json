@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "joc_daus/index.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "mongoose": "^6.0.12"
   },
   "devDependencies": {
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node joc_daus/index.js",
-    "dev": "nodemon joc_daus/index.js"
+    "dev": "nodemon REST Server/server.js"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,6 @@ const Player = require('../models/player');
 const CP = require('../percentage');
 const Throw = require('../rollDices');
 
-
 // add a new player 
 router.post('/newPlayer', function(req, res, next) {
     Player.create(req.body).then(function(player) {
