@@ -2,7 +2,8 @@
  const app        = express();
  const fileUpload = require('express-fileupload');
  const bodyParser = require('body-parser');
- const addHeader = require('./middleware')
+ const addHeader = require('./middlewareHeader')
+ const checkHeader = require('./middlewareCheck')
 
 
 app.use(fileUpload());
@@ -31,7 +32,7 @@ app.post('/upload', (req, res) => {
     };
 });
 
-app.post('/time', addHeader, (req, res) => {
+app.post('/time', addHeader, checkHeader, (req, res) => {
 
     const username = req.body.name;
     const timeEnlapsed = Date.now();
