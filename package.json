@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node joc_daus/index.js",
-    "dev": "nodemon REST Server/server.js"
+    "dev": "nodemon joc_daus/index.js"
   },
   "repository": {
     "type": "git",
