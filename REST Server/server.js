@@ -1,8 +1,12 @@
- const express = require('express');
- const app = express();
- const fileUpload = require('express-fileupload')
+ const express    = require('express');
+ const app        = express();
+ const fileUpload = require('express-fileupload');
+ const bodyParser = require('body-parser');
+ const addHeader = require('./middleware')
+
 
 app.use(fileUpload());
+app.use(bodyParser.json());
 
 app.get('/user', (req, res) => {
     const url = req.url;
@@ -26,6 +30,18 @@ app.post('/upload', (req, res) => {
         });
     };
 });
+
+app.post('/time', addHeader, (req, res) => {
+
+    const username = req.body.name;
+    const timeEnlapsed = Date.now();
+    const now = new Date(timeEnlapsed);
+    const date = now.toUTCString();
+
+
+    res.status(200).send({ name: username, date: date })
+
+})
 
 app.listen(3000, () => {
     console.log('ServerOk!')
