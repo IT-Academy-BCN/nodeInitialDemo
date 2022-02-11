@@ -173,18 +173,7 @@ const { id } = await inquirer.prompt(questions);
 return id;
 };
 
-const confirm = async (message) => {
-    const question = [
-        {
-            type: 'confirm',
-            name: 'ok',
-            message
-        }
-    ];
-    const { ok } = await inquirer.prompt(question);
-    return ok;
-};
-
+// Menu to change tasks from pending to completed.
 const showChecklist = async (tasks = []) => {
 
     const choices = tasks.map((task, i) => {
@@ -211,7 +200,18 @@ const showChecklist = async (tasks = []) => {
     return ids;
 };
 
-
+// Menu for the confirmation when deleting a task.
+const confirm = async (message) => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+    const { ok } = await inquirer.prompt(question);
+    return ok;
+};
 
 
 

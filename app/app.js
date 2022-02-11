@@ -74,14 +74,13 @@ const main = async () => {
                 await showChecklist(tasks);
                 break;
 
-                //! Por corregir: Borra la última tarea y no la que le digo 
             case '7': // Delete task with check
                 tasks = await TaskService.getTasks();
                 const id = await showTasks(tasks);
                 if (id !== '0') {
                     const ok = await confirm('Are you sure?');
                     if (ok) {
-                        TaskService.deleteTask(Task.id);
+                        TaskService.deleteTask(id);
                         console.log(colorette.blackBright('deleted task!'));
                     }
                 }
