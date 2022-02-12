@@ -17,11 +17,11 @@ const saveJsonDB = (data) => {
 const readJsonDB = () => {
 
     // This conditional is used to check if the file exists. If it doesn't exist, we create an empty file to work with.
-    if (!fs.existsSync(archive)){
+    if (!fs.existsSync(archive)) {
         saveJsonDB([]);
     }
 
-    const info = fs.readFileSync(archive, {encoding: 'utf-8'});
+    const info = fs.readFileSync(archive, { encoding: 'utf-8' });
 
     // I use JSON.parse() so that when reading it it returns an array and not a string.
     const data = JSON.parse(info);

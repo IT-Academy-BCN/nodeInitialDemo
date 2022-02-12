@@ -12,9 +12,9 @@ class Task {
         createdAt=Date(), 
         completedAt}){
         
-        if (!title) {
-            throw new Error('Title is required');
-        }
+        // if (!title) {
+        //     throw new Error('Title is required');
+        // }
 
         this.id = id;
         this.title = title;
