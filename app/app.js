@@ -29,7 +29,7 @@ function crear_tasca() {
             let tasca0 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
             tasca0.crear_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat)
 
-           await data.saveNewTask(tasca0);
+           data.saveNewTask(tasca0).then();
 
         });
 }
