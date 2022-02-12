@@ -15,7 +15,7 @@ _Este archivo README también está disponible en otros idiomas:_
 ### Requisitos previos 📋
 
 _Para que el proyecto funcione correctamente, se recomienda tener una serie de programas instalados y configurados adecuadamente:_
-- [Visual Studio Code] (https://code.visualstudio.com/download)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 - [Node.js y npm](https://nodejs.org/es/)
 - [MongoDB](https://docs.mongodb.com/manual/installation/)
 - [MySQL Server](https://dev.mysql.com/downloads/)
@@ -29,7 +29,7 @@ npm install
 
 ### Variables de entorno .env 🪛
 
-Para que funcione correctamente la base de datos de MySQL se requiere un usuario y una contraseña que son propios de cada máquina. Para ello hay que crear un archivo llamado .env y configurar las variables de entorno MYSQL_USER y MYSQL_PASSWORD definiendo el usuario y la contraseña respectivamente.
+Para que la base de datos de MySQL funcione correctamente se requiere un usuario y una contraseña que son propios de cada máquina. Para ello hay que crear un archivo llamado .env y configurar las variables de entorno MYSQL_USER y MYSQL_PASSWORD definiendo el usuario y la contraseña respectivamente.
 
 ![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
 
@@ -95,9 +95,10 @@ _Una vez que hayas elegido la base de datos que quieres utilizar, podrás visual
 * [MongoDB](https://docs.mongodb.com/) - Base de datos no relacional utilizada para el proyecto.
 * [Mongoose](https://mongoosejs.com/docs/guide.html) - ODM de MongoDB.
 * [MySQL](https://dev.mysql.com/) - Base de datos relacional utilizada para el proyecto.
-* [Sequelize](https://sequelize.org/) - ORM de MySQL.
+* [MySQL 2](https://www.npmjs.com/package/mysql2) - ORM de MySQL.
 * [Inquirer](https://github.com/SBoudrias/Inquirer.js) - Biblioteca para crear una consola interactiva.
 * [Colorette](https://github.com/jorgebucaran/colorette) - Biblioteca para agregar colores a la consola.
+* [Dotenv](https://www.npmjs.com/package/dotenv) - Biblioteca para utilizar variables de entorno.
 
 ## Versionado 📌
 _Hemos utilizado versiones semánticas [SemVer](http://semver.org/) para esta aplicación. Para todas las versiones disponibles, consulte las [etiquetas en este repositorio](https://github.com/DanielEspanadero/nodeInitialDemo/tree/dev-teams) (Tenga en cuenta que hay otras ramas con diferentes tareas en este mismo repositorio)._
@@ -119,6 +120,6 @@ _En la primera reunión acordamos seguir todos el mismo camino a la hora de llev
 
 _Para aplicar la [metodología de gitflow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) usamos dev-teams como rama de producción y dev-teams-develop como rama de desarrollo. Desde la rama de desarrollo hemos ido creando las ramas para llevar a cabo las diferentes tareas asignadas (Para nombrar las ramas de 'features' usamos 'feature/#n' siendo 'n' el número de tarea asignado por github project tool) y una vez que la tarea fue completada y revisada, hicimos una solicitud de pull request desde la rama 'feature/#n' a la rama 'dev-teams-develop'._
 
-_Para realizar la estructura del proyecto teníamos en mente varias opciones, pero nos decantamos por esta ya que era la que mejor se adaptaba al tipo de proyecto que teníamos que realizar. En app > helpers > interaction.js está toda la lógica de la interacción con el usuario realizada con inquirer. En app > models > taskModel.js está el modelo de tareas que hemos usado para luego hacer los esquemas y modelos de las bases de datos, que están en la carpeta de repositories. En app > services > taskServices.js es donde se encuentran las funciones que se encargan de realizar un CRUD a través de los providers de las bases de datos. Y app > app.js es el archivo inicial, donde unimos el Task Service con la interacción con el usuario ejecutándolo a través de la función main()._
+_Para realizar la estructura del proyecto teníamos en mente varias opciones, pero nos decantamos por esta ya que era la que mejor se adaptaba al tipo de proyecto que teníamos que realizar. En app > helpers > interaction.js está toda la lógica de la interacción con el usuario realizada con [inquirer](https://www.npmjs.com/package/inquirer). En app > models > taskModel.js está el modelo de tareas que hemos usado para luego hacer los esquemas y modelos de las bases de datos, que están en la carpeta de repositories. En app > services > taskServices.js es donde se encuentran las funciones que se encargan de realizar un CRUD a través de los providers de las bases de datos. Y app > app.js es el archivo inicial, donde unimos el Task Service con la interacción con el usuario ejecutándolo a través de la función main()._
 
 _Por último mencionar que hemos estado supervisando en todo momento que todo funcione correctamente y en las diferentes reuniones que hemos tenido hemos expresado nuestras dudas, inquietudes e ideas para mejorar el proyecto._

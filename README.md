@@ -9,8 +9,8 @@ _These instructions will allow you to get a working copy of the project on your 
 ### Translations 💬
 
 _This README file is also available in other languages:_
-- [Spanish](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-es.md)
 - [Catalan](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README-cat.md)
+- [Spanish](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-es.md)
 
 ### Pre requirements 📋
 
@@ -95,9 +95,10 @@ _Once you have chosen the database you want to use, you will be able to view the
 * [MongoDB](https://docs.mongodb.com/) - Non-relational database used for the project.
 * [Mongoose](https://mongoosejs.com/docs/guide.html) - MongoDB ODM.
 * [MySQL](https://dev.mysql.com/) - Relational database used for the project.
-* [Sequelize](https://sequelize.org/) - MySQL ORM.
+* [MySQL 2](https://www.npmjs.com/package/mysql2) - MySQL ORM.
 * [Inquirer](https://github.com/SBoudrias/Inquirer.js) - Library for creating an interactive console.
 * [Colorette](https://github.com/jorgebucaran/colorette) - Library to add colors to the console.
+* [Dotenv](https://www.npmjs.com/package/dotenv) - Library to use environment variables.
 
 ## Versioned 📌
 _We have used semantic versioning [SemVer](http://semver.org/) for this application. For all available versions, check out the [tags in this repository](https://github.com/DanielEspanadero/nodeInitialDemo/tree/dev-teams) (Note that there are other branches with different tasks in this same repository)._
@@ -119,6 +120,6 @@ _In the first meeting we agreed to all follow the same path when carrying out th
 
 _To apply the [gitflow methodology](https://datasift.github.io/gitflow/IntroducingGitFlow.html), we use dev-teams as the production branch and dev-teams-develop as the development branch. From the development branch we have been creating the branches to carry out the different assigned tasks (To name the feature branches we used 'feature/#n' being 'n' the task number assigned by github project tool) and once Once the task was completed and reviewed, we made a pull request from the 'feature/#n' branch to the 'dev-teams-develop' branch._
 
-_To carry out the structure of the project, we had several options in mind, but we opted for this one since it was the one that best suited the type of project we had to carry out. In app > helpers > interaction.js is all the logic of the interaction with the user made with inquirer. In app > models > taskModel.js there is the task model that we have used to later make the schemas and models of the databases, which are in the repositories folder. In app > services > taskServices.js is where the functions that are responsible for performing a CRUD through the database providers are. And app > app.js is the initial file, where we join the Task Service with the interaction with the user executing it through the main() function._
+_To carry out the structure of the project, we had several options in mind, but we opted for this one since it was the one that best suited the type of project we had to carry out. In app > helpers > interaction.js is all the logic of the interaction with the user made with [inquirer](https://www.npmjs.com/package/inquirer). In app > models > taskModel.js there is the task model that we have used to later make the schemas and models of the databases, which are in the repositories folder. In app > services > taskServices.js is where the functions that are responsible for performing a CRUD through the database providers are. And app > app.js is the initial file, where we join the Task Service with the interaction with the user executing it through the main() function._
 
 _Finally, mention that we have been supervising at all times that everything works correctly and in the different meetings that we have had we have expressed our doubts, concerns and ideas to improve the project._
