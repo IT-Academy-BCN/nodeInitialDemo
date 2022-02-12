@@ -43,7 +43,6 @@ const main = async () => {
             case '1': // Create task
                 const title = await readInput('Title: ')
                 const desc = await readInput('Description: ');
-                const comment = await readInput('Comment: ');
                 tasks = await TaskService.createTask({ title, desc, comment });
                 break;
 
@@ -73,6 +72,8 @@ const main = async () => {
             case '6': //Change Pending/Completed
                 tasks = await TaskService.getTasks();
                 const isCompleted = await showChecklist(tasks);
+                const comment = await readInput('Comment: ');
+
 
                 break;
 
