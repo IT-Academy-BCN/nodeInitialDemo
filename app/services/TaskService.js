@@ -1,7 +1,7 @@
 const DB_PROVIDER = process.env.DATABASE_PROVIDER;
 let provider;
 
-switch (DB_PROVIDER.toUpperCase()) {
+switch (DB_PROVIDER) {
     case "JSON":
         provider = require("../repositories/JSONRepository");
         break;
