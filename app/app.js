@@ -8,7 +8,6 @@ const {
     confirm,
     showChecklist
 } = require('./helpers/interaction');
-const { Task } = require('./models/TaskModel');
 
 const TaskService = require('./services/TaskService');
 
@@ -21,8 +20,8 @@ const main = async () => {
         // tasks = await TaskService.getTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7')
         //! tasks = await TaskService.updateTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7', {title:'Task updated', desc:'Task 1 description updated'});
         //* tasks = await TaskService.deleteTask('d28d9a35-7d79-46ef-ab24-fa2c2f079bb7');
-        //! tasks = await TaskService.getCompletedTasks();
-        //! tasks = await TaskService.getPendingTasks();
+        //* tasks = await TaskService.getCompletedTasks();
+        //* tasks = await TaskService.getPendingTasks();
     } catch (error) {
         console.log(error);
     }
@@ -63,15 +62,18 @@ const main = async () => {
                 await showTasks(tasks);
                 break;
 
+            //! Missing to implement the update of the tasks
             case '5': // Update task
-                tasks = await TaskService.updateTask();
+                tasks = await TaskService.getTasks();
                 await showTasks(tasks);
+                TaskService.updateTask(tasks, {})
                 break;
 
-                //! Por corregir: Falta la persistencia de true o false en isCompleted.
+            //! To be fixed: Missing true or false persistence on isCompleted.
             case '6': //Change Pending/Completed
                 tasks = await TaskService.getTasks();
-                await showChecklist(tasks);
+                const isCompleted = await showChecklist(tasks);
+
                 break;
 
             case '7': // Delete task with check

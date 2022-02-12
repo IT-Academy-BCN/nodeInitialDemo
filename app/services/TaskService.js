@@ -1,9 +1,8 @@
 // const DB_PROVIDER = process.env.DATABASE_PROVIDER;
-let DB_PROVIDER;
 let provider;
 
 // I have put all this in app.js so that the user can select the database through the menu, I don't know if it will work, but it is a good improvement.
-const selectDB = async () => {
+const selectDB = async (DB_PROVIDER) => {
     switch (DB_PROVIDER) {
         case "JSON":
             provider = require("../repositories/JSONRepository");
