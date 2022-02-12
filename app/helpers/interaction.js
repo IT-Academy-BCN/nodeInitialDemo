@@ -29,6 +29,7 @@ const questions = [
     {
         type: 'list',
         name: 'option',
+        pageSize: 8,
         message: `${colorette.redBright(colorette.underline('What would you like to do?\n'))}`,
         choices: [
             {
@@ -49,19 +50,19 @@ const questions = [
             },
             {
                 value: '5',
-                name: `${colorette.greenBright('5.')} Update task`
+                name: `${colorette.greenBright('5.')} Change Pending/Completed`
             },
             {
                 value: '6',
-                name: `${colorette.greenBright('6.')} Change Pending/Completed`
+                name: `${colorette.greenBright('6.')} Delete task`
             },
             {
                 value: '7',
-                name: `${colorette.greenBright('7.')} Delete task`
+                name: `${colorette.greenBright('7.')} Comment task`
             },
             {
                 value: '0',
-                name: `${colorette.greenBright('0.')} Exit`
+                name: `${colorette.redBright('Exit')}`
             }
         ]
     }
@@ -99,18 +100,7 @@ const mainMenu = async () => {
     return option;
 };
 
-// This function is used so that when we select an option, lock the screen and issue a message.
-const pause = async () => {
-    const question = [
-        {
-            type: 'input',
-            name: 'enter',
-            message: `Press ${colorette.greenBright('ENTER')} to continue`
-        }
-    ]
-    console.log('\n');
-    await inquirer.prompt(question);
-};
+
 
 // This function is used to add an element to the database, it must be passed through each of the values that we want to add.
 const readInput = async (message) => {
@@ -133,44 +123,70 @@ const readInput = async (message) => {
     return desc;
 };
 
+const showTaskDetail = async(task) => {
+
+    
+    const choices = [{
+        value: '0',
+        name: colorette.redBright('Back')
+    }];
+    
+    const updated = task.updatedAt ? `Updated -> ${task.updatedAt}\n` : ''
+    const comment = task.comment ? `Comment -> ${task.comment}\n` : ''
+
+    const taskToText = () => `
+        Title -> ${task.title}
+        Description -> ${task.desc}
+        Completed -> ${task.isCompleted}
+        Created -> ${task.createdAt}
+        ${updated}${comment}
+    `
+
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: taskToText(),
+            choices
+        }
+    ];
+    await inquirer.prompt(questions);
+}
+
 // This function returns a list of all tasks, the parameter (tasks = [ ]) is what it uses by default if no argument is passed.
 const showTasks = async (tasks = []) => {
     const choices = tasks.map((task, i) => {
-        const isCompleted = () => { 
-            if(task.isCompleted === true) {
+        const isCompleted = () => {
+            if (task.isCompleted === true) {
                 return colorette.greenBright('Completed');
-            } else{
+            } else {
                 return colorette.redBright('Pending');
             }
         };
 
-const idx = `${colorette.greenBright(i + 1)}.`;
+        const idx = `${colorette.greenBright(i + 1)}.`;
 
-return {
-    value: task.id,
-    name: `${idx} 
-            ${colorette.magentaBright('Title:')} ${task.title} 
-            ${colorette.magentaBright('Description:')} ${task.desc}
-            ${colorette.magentaBright('Comment:')} ${task.comment}
-            ${colorette.magentaBright('Pending/Completed:')} ${isCompleted()}`
-};
+        return {
+            value: task.id,
+            name: `${colorette.magentaBright(idx)} -> ${task.title}`
+        };
     });
 
-choices.push({
-    value: '0',
-    name: colorette.greenBright('0.') + ' Cancel'
-});
+    choices.push({
+        value: '0',
+        name: colorette.redBright('Back')
+    });
 
-const questions = [
-    {
-        type: 'list',
-        name: 'id',
-        message: 'Task',
-        choices
-    }
-]
-const { id } = await inquirer.prompt(questions);
-return id;
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Task',
+            choices
+        }
+    ]
+    const { id } = await inquirer.prompt(questions);
+    return id;
 };
 
 // Menu to change tasks from pending to completed.
@@ -182,7 +198,7 @@ const showChecklist = async (tasks = []) => {
 
         return {
             value: task.id,
-            name: `${idx} ${task.title} - ${task.desc}`,
+            name: `${idx} ${task.title}`,
             checked: (task.isCompleted) ? true : false
         };
     });
@@ -193,6 +209,20 @@ const showChecklist = async (tasks = []) => {
             name: 'ids',
             message: 'selections',
             choices
+        }
+    ]
+
+    const { ids } = await inquirer.prompt(question);
+    return ids;
+};
+
+const showCommentTask = async (taskComment) => {
+
+    const question = [
+        {
+            type: 'input',
+            name: 'ids',
+            message: 'Comment'
         }
     ]
 
@@ -218,9 +248,10 @@ const confirm = async (message) => {
 module.exports = {
     menuDB,
     mainMenu,
-    pause,
     readInput,
     showTasks,
     confirm,
-    showChecklist
+    showChecklist,
+    showTaskDetail,
+    showCommentTask
 };
