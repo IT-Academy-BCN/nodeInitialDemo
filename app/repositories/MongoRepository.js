@@ -26,7 +26,7 @@ const getElements = async () => {
 
 const createElement = async (data) => {
 
-    // const dataModeled = classToModel(TaskInterface, data);
+    const dataModeled = classToModel(TaskInterface, data);
 
     const taskDoc = await TaskModel.create(dataModeled);
     
@@ -50,16 +50,16 @@ const updateElementById = async (id, data) => {
 
 
 
-// const classToModel = (modelInterface, classTarget) => {
-//     let modelToFill = {};
-//     for (let key in modelInterface) {
-//         if (key === 'id') {continue;}
+const classToModel = (modelInterface, classTarget) => {
+    let modelToFill = {};
+    for (let key in modelInterface) {
+        if (key === 'id') {continue;}
 
-//         modelToFill[key] = classTarget[key];
-//     }
+        modelToFill[key] = classTarget[key];
+    }
 
-//     return modelToFill;
-// }
+    return modelToFill;
+}
 
 const modelToClass = (classToFill, modelTarget) => {
     let rawObjectFromModel = modelTarget.toObject();
