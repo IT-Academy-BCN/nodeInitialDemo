@@ -27,6 +27,12 @@ _Remember to execute the following command in the terminal to install the depend
 npm install
 ```
 
+### Environment variables .env 🪛
+
+For the MySQL database to work correctly, a username and password are required for each machine. To do this, you must create a file called .env and configure the environment variables MYSQL_USER and MYSQL_PASSWORD, defining the user and the password, respectively.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+
 ## Commands to run ⌨️
 
 ⚠️ BEFORE STARTING, REMEMBER TO HAVE THE MONGODB AND MYSQL SERVER STARTED ⚠️
@@ -44,17 +50,43 @@ _If you have carried out the previous steps correctly, you will see an interacti
 
 _The first menu you will see is the one that will allow you to select the database you want to use, you can choose JSON, MONGODB or MYSQL, remember that to use MONGODB or MYSQL you have to have the respective server activated._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+
 ### Main menu 🗂
 
 _Once you have chosen the database you want to use, you will be able to view the main menu, where you can move through the different options, such as creating tasks, reading tasks, deleting tasks..._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+
 #### Create task 📝
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+
 #### Read all tasks 📖
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+
 #### Read completed tasks ✔️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+
 #### Read pending tasks ❌
-#### Update task 📖✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+
 #### Change pending/completed 🚥
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+
 #### Delete task 🗑🔥🧨
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+
+#### Comment task ✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
 
 ## Built with 🛠️
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Programming language used.
@@ -82,7 +114,11 @@ _This project is licensed under the MIT License - see the file [LICENSE](https:/
 ## How did we do this project? 📝
 
 _To carry out this project we have organized ourselves with the [github project tool](https://github.com/DanielEspanadero/nodeInitialDemo/projects/1), we have been holding weekly follow-up meetings, assigning tasks and maintaining contact practically every day._
+
 _In the first meeting we agreed to all follow the same path when carrying out the project, we also distributed the tasks that each of the team members was going to carry out and we started the repository structure._
+
 _To apply the [gitflow methodology](https://datasift.github.io/gitflow/IntroducingGitFlow.html), we use dev-teams as the production branch and dev-teams-develop as the development branch. From the development branch we have been creating the branches to carry out the different assigned tasks (To name the feature branches we used 'feature/#n' being 'n' the task number assigned by github project tool) and once Once the task was completed and reviewed, we made a pull request from the 'feature/#n' branch to the 'dev-teams-develop' branch._
+
 _To carry out the structure of the project, we had several options in mind, but we opted for this one since it was the one that best suited the type of project we had to carry out. In app > helpers > interaction.js is all the logic of the interaction with the user made with inquirer. In app > models > taskModel.js there is the task model that we have used to later make the schemas and models of the databases, which are in the repositories folder. In app > services > taskServices.js is where the functions that are responsible for performing a CRUD through the database providers are. And app > app.js is the initial file, where we join the Task Service with the interaction with the user executing it through the main() function._
+
 _Finally, mention that we have been supervising at all times that everything works correctly and in the different meetings that we have had we have expressed our doubts, concerns and ideas to improve the project._

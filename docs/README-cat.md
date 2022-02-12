@@ -27,6 +27,12 @@ _Recorda executar la següent ordre a la terminal per instal·lar les dependènc
 npm install
 ````
 
+### Variables d'entorn .env 🪛
+
+Perquè funcioni correctament la base de dades de MySQL es requereix un usuari i una contrasenya que són propis de cada màquina. Per això cal crear un fitxer anomenat .env i configurar les variables d'entorn MYSQL_USER i MYSQL_PASSWORD definint l'usuari i la contrasenya respectivament.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+
 ## Comandes per executar ⌨️
 
 ⚠️ ABANS DE COMENÇAR, RECORDA TENIR INICIAT EL SERVIDOR DE MONGODB I MYSQL ⚠️
@@ -44,17 +50,44 @@ _Si has realitzat correctament els passos anteriors, veuràs un menú interactiu
 
 _El primer menú que veuràs és el que et permetrà seleccionar la base de dades que vols utilitzar, pots triar JSON, MONGODB o MYSQL, recorda que per utilitzar MONGODB o MYSQL has de tenir activat el servidor respectiu._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+
 ### Menú principal 🗂
 
 _Una vegada que hagueu triat la base de dades que voleu utilitzar, podreu visualitzar el menú principal, on us podreu moure per les diferents opcions, com crear tasques, llegir tasques, esborrar tasques..._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+
 #### Crear tasca 📝
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+
 #### Llegir totes les tasques 📖
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+
 #### Llegir tasques completades ✔️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+
 #### Llegir tasques pendents ❌
-#### Actualització de tasques 📖✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+
 #### Canvi pendent/completat 🚥
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+
 #### Esborrar tasca 🗑🔥🧨
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+
+#### Comentar tasca ✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
+
 
 ## Construït amb 🛠️
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Llenguatge de programació utilitzat.
@@ -82,7 +115,11 @@ _Aquest projecte està llicenciat sota la Llicència MIT - vegeu l'arxiu [LLICÈ
 ## Com vam fer aquest projecte? 📝
 
 _Per dur a terme aquest projecte ens hem organitzat amb la [github project tool](https://github.com/DanielEspanadero/nodeInitialDemo/projects/1), hem estat fent reunions setmanals de seguiment, assignant tasques i mantenint contacte pràcticament cada dia a través de discord._
+
 _A la primera reunió vam acordar seguir tots el mateix camí a l'hora de dur a terme el projecte, també vam repartir les tasques que realitzaria cadascun dels membres de l'equip i vam començar a definir l'estructura._
+
 _Per aplicar la [metodologia de gitflow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) usem dev-teams com a branca de producció i dev-teams-develop com a branca de desenvolupament. Des de la branca de desenvolupament hem anat creant les branques per dur a terme les diferents tasques assignades (Per anomenar les branques de 'features' hem fet servir 'feature/#n' sent 'n' el nombre de tasca assignat per github project tool) i quan la tasca va ser completada i revisada, vam fer una sol·licitud de pull request des de la branca 'feature/#n' a la branca 'dev-teams-develop'._
+
 _Per realitzar l'estructura del projecte teníem al cap diverses opcions, però ens vam decantar per aquesta ja que era la que millor s'adaptava al tipus de projecte que havíem de realitzar. A app > helpers > interaction.js hi ha tota la lògica de la interacció amb l'usuari realitzada amb inquirer. A app > models > taskModel.js hi ha el model de tasques que hem fet servir per després fer els esquemes i models de les bases de dades, que estan a la carpeta de repositories. A app > services > taskServices.js és on es troben les funcions que s'encarreguen de realitzar un CRUD a través dels providers de les bases de dades. I app > app.js és el fitxer inicial, on unim el Task Service amb la interacció amb l'usuari executant-lo a través de la funció main()._
+
 _Per últim esmentar que hem estat supervisant en tot moment que tot funcioni correctament i en les diferents reunions que hem tingut hem expressat els nostres dubtes, inquietuds i idees per millorar el projecte._

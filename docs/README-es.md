@@ -27,6 +27,12 @@ _Recuerda ejecutar el siguiente comando en la terminal para instalar las depende
 npm install
 ```
 
+### Variables de entorno .env 🪛
+
+Para que funcione correctamente la base de datos de MySQL se requiere un usuario y una contraseña que son propios de cada máquina. Para ello hay que crear un archivo llamado .env y configurar las variables de entorno MYSQL_USER y MYSQL_PASSWORD definiendo el usuario y la contraseña respectivamente.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+
 ## Comandos para ejecutar ⌨️
 
 ⚠️ ANTES DE COMENZAR, RECUERDA TENER INICIADO EL SERVIDOR DE MONGODB Y MYSQL ⚠️
@@ -44,17 +50,43 @@ _Si has realizado correctamente los pasos anteriores, verás un menú interactiv
 
 _El primer menú que verás es el que te permitirá seleccionar la base de datos que deseas utilizar, puedes elegir JSON, MONGODB o MYSQL, recuerda que para utilizar MONGODB o MYSQL tienes que tener activado el servidor respectivo._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+
 ### Menú principal 🗂
 
 _Una vez que hayas elegido la base de datos que quieres utilizar, podrás visualizar el menú principal, donde podrás moverte por las diferentes opciones, como crear tareas, leer tareas, borrar tareas..._
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+
 #### Crear tarea 📝
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+
 #### Leer todas las tareas 📖
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+
 #### Leer tareas completadas ✔️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+
 #### Leer tareas pendientes ❌
-#### Actualización de tarea 📖✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+
 #### Cambio pendiente/completado 🚥
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+
 #### Eliminar tarea 🗑🔥🧨
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+
+#### Comentar tarea ✍️
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
 
 ## Construido con 🛠️
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Lenguaje de programación utilizado.
@@ -82,7 +114,11 @@ _Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENCIA]
 ## ¿Cómo hicimos este proyecto? 📝
 
 _Para llevar a cabo este proyecto nos hemos organizado con la [github project tool](https://github.com/DanielEspanadero/nodeInitialDemo/projects/1), hemos estado haciendo reuniones semanales de seguimiento, asignando tareas y manteniendo contacto prácticamente cada dia a través de discord._
+
 _En la primera reunión acordamos seguir todos el mismo camino a la hora de llevar a cabo el proyecto, también repartimos las tareas que iba a realizar cada uno de los miembros del equipo y empezamos a definir la estructura._
+
 _Para aplicar la [metodología de gitflow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) usamos dev-teams como rama de producción y dev-teams-develop como rama de desarrollo. Desde la rama de desarrollo hemos ido creando las ramas para llevar a cabo las diferentes tareas asignadas (Para nombrar las ramas de 'features' usamos 'feature/#n' siendo 'n' el número de tarea asignado por github project tool) y una vez que la tarea fue completada y revisada, hicimos una solicitud de pull request desde la rama 'feature/#n' a la rama 'dev-teams-develop'._
+
 _Para realizar la estructura del proyecto teníamos en mente varias opciones, pero nos decantamos por esta ya que era la que mejor se adaptaba al tipo de proyecto que teníamos que realizar. En app > helpers > interaction.js está toda la lógica de la interacción con el usuario realizada con inquirer. En app > models > taskModel.js está el modelo de tareas que hemos usado para luego hacer los esquemas y modelos de las bases de datos, que están en la carpeta de repositories. En app > services > taskServices.js es donde se encuentran las funciones que se encargan de realizar un CRUD a través de los providers de las bases de datos. Y app > app.js es el archivo inicial, donde unimos el Task Service con la interacción con el usuario ejecutándolo a través de la función main()._
+
 _Por último mencionar que hemos estado supervisando en todo momento que todo funcione correctamente y en las diferentes reuniones que hemos tenido hemos expresado nuestras dudas, inquietudes e ideas para mejorar el proyecto._
