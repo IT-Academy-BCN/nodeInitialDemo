@@ -1,0 +1,12 @@
+{
+    "tasks": [
+        {
+            "id": 0,
+            "usuari": "pol",
+            "nombre": "p",
+            "data_inicial": "22/02/2000",
+            "data_final": "",
+            "estat": "p"
+        }
+    ]
+}
