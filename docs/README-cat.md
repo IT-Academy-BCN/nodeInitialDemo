@@ -9,8 +9,13 @@ _Aquestes instruccions us permetran obtenir una còpia de treball del projecte a
 ### Traduccions 💬
 
 _Aquest fitxer README també està disponible en altres idiomes:_
+- [Alemany](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-de.md)
 - [Anglès](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README.md)
-- [Castellà](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README.md)
+- [Castellà](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-es.md)
+- [Francès](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-fr.md)
+- [Italià](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-it.md)
+- [Portuguès](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-pt.md)
+- [Suec](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-se.md)
 
 ### Requisits previs 📋
 
@@ -31,7 +36,7 @@ npm install
 
 Perquè la base de dades de MySQL funcioni correctament es requereix un usuari i una contrasenya que són propis de cada màquina. Per això cal crear un fitxer anomenat .env i configurar les variables d'entorn MYSQL_USER i MYSQL_PASSWORD definint l'usuari i la contrasenya respectivament.
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-mysql-env.png)
 
 ## Comandes per executar ⌨️
 
@@ -50,43 +55,43 @@ _Si has realitzat correctament els passos anteriors, veuràs un menú interactiu
 
 _El primer menú que veuràs és el que et permetrà seleccionar la base de dades que vols utilitzar, pots triar JSON, MONGODB o MYSQL, recorda que per utilitzar MONGODB o MYSQL has de tenir activat el servidor respectiu._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-db.png)
 
 ### Menú principal 🗂
 
 _Una vegada que hagueu triat la base de dades que voleu utilitzar, podreu visualitzar el menú principal, on us podreu moure per les diferents opcions, com crear tasques, llegir tasques, esborrar tasques..._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-main-menu.png)
 
 #### Crear tasca 📝
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-create-task.png)
 
 #### Llegir totes les tasques 📖
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-1.png)
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-2.png)
 
 #### Llegir tasques completades ✔️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-completed-tasks.png)
 
 #### Llegir tasques pendents ❌
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-pending-tasks.png)
 
 #### Canvi pendent/completat 🚥
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-pending-completed.png)
 
 #### Esborrar tasca 🗑🔥🧨
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-tem-delete-task.png)
 
 #### Comentar tasca ✍️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-comment-task.png)
 
 
 ## Construït amb 🛠️

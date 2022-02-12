@@ -9,8 +9,13 @@ _De här instruktionerna låter dig få en arbetskopia av projektet på din loka
 ### Översättningar 💬
 
 _Denna README-fil är även tillgänglig på andra språk:_
-- [katalanska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README-cat.md)
-- [engelska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README.md)
+- [Franska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-fr.md)
+- [Engelsk](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README.md)
+- [Italienska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-it.md)
+- [Katalanska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README-cat.md)
+- [Portugisiska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-pt.md)
+- [Spanska](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-es.md)
+- [Tysk](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-de.md)
 
 ### Förutsättningar 📋
 
@@ -31,7 +36,7 @@ npm install
 
 För att MySQL-databasen ska fungera korrekt krävs ett användarnamn och lösenord för varje maskin. För att göra detta måste du skapa en fil som heter .env och konfigurera miljövariablerna MYSQL_USER och MYSQL_PASSWORD, som definierar användaren respektive lösenordet.
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-mysql-env.png)
 
 ## Kommandon att köra ⌨️
 
@@ -50,43 +55,43 @@ _Om du har utfört de föregående stegen korrekt kommer du att se en interaktiv
 
 _Den första menyn du kommer att se är den som låter dig välja den databas du vill använda, du kan välja JSON, MONGODB eller MYSQL, kom ihåg att för att använda MONGODB eller MYSQL måste du ha respektive server aktiverad._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-db.png)
 
 ### Huvudmeny 🗂
 
 _När du har valt den databas du vill använda kommer du att kunna se huvudmenyn, där du kan gå igenom de olika alternativen, som att skapa uppgifter, läsa uppgifter, ta bort uppgifter..._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-main-menu.png)
 
 #### Skapa uppgift 📝
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-create-task.png)
 
 #### Läs alla uppgifter 📖
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-1.png)
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-2.png)
 
 #### Läs utförda uppgifter ✔️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-completed-tasks.png)
 
 #### Läs väntande uppgifter ❌
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-pending-tasks.png)
 
 #### Ändring väntar/slutförd 🚥
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-pending-completed.png)
 
 #### Ta bort uppgift 🗑🔥🧨
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-tem-delete-task.png)
 
 #### Kommentera läxor ✍️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-comment-task.png)
 
 ## Byggd med 🛠️
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Programmeringsspråk som används.

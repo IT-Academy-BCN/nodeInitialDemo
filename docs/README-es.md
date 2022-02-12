@@ -9,8 +9,13 @@ _Estas instrucciones le permitirán obtener una copia de trabajo del proyecto en
 ### Traducciones 💬
 
 _Este archivo README también está disponible en otros idiomas:_
+- [Alemán](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-de.md)
 - [Catalán](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README-cat.md)
+- [Francés](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-fr.md)
 - [Inglés](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README.md)
+- [Italiano](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-it.md)
+- [Portugués](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-pt.md)
+- [Sueco](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-se.md)
 
 ### Requisitos previos 📋
 
@@ -31,7 +36,7 @@ npm install
 
 Para que la base de datos de MySQL funcione correctamente se requiere un usuario y una contraseña que son propios de cada máquina. Para ello hay que crear un archivo llamado .env y configurar las variables de entorno MYSQL_USER y MYSQL_PASSWORD definiendo el usuario y la contraseña respectivamente.
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-mysql-env.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-mysql-env.png)
 
 ## Comandos para ejecutar ⌨️
 
@@ -50,43 +55,43 @@ _Si has realizado correctamente los pasos anteriores, verás un menú interactiv
 
 _El primer menú que verás es el que te permitirá seleccionar la base de datos que deseas utilizar, puedes elegir JSON, MONGODB o MYSQL, recuerda que para utilizar MONGODB o MYSQL tienes que tener activado el servidor respectivo._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-db.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-db.png)
 
 ### Menú principal 🗂
 
 _Una vez que hayas elegido la base de datos que quieres utilizar, podrás visualizar el menú principal, donde podrás moverte por las diferentes opciones, como crear tareas, leer tareas, borrar tareas..._
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-main-menu.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-main-menu.png)
 
 #### Crear tarea 📝
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-create-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-create-task.png)
 
 #### Leer todas las tareas 📖
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-1.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-1.png)
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-all-tasks-2.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-all-tasks-2.png)
 
 #### Leer tareas completadas ✔️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-completed-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-completed-tasks.png)
 
 #### Leer tareas pendientes ❌
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-read-pending-tasks.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-read-pending-tasks.png)
 
 #### Cambio pendiente/completado 🚥
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-pending-completed.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-pending-completed.png)
 
 #### Eliminar tarea 🗑🔥🧨
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-tem-delete-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-tem-delete-task.png)
 
 #### Comentar tarea ✍️
 
-![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/feature/%2317/docs/dev-team-comment-task.png)
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/dev-team-comment-task.png)
 
 ## Construido con 🛠️
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Lenguaje de programación utilizado.
