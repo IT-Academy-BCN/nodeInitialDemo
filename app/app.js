@@ -32,7 +32,9 @@ const main = async () => {
             case '1': // Create task
                 const title = await readInput('Title: ')
                 const desc = await readInput('Description: ');
+
                 tasks = await TaskService.createTask({ title, desc });
+
                 break;
 
             case '2': // Read all tasks
@@ -86,6 +88,7 @@ const main = async () => {
                         await TaskService.updateTask(task.id, { isCompleted: true, updatedAt: new Date() });
                     }
                 })
+
                 break;
 
             case '6': // Delete task with check
