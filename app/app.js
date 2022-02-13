@@ -29,63 +29,54 @@ function crear_tasca() {
             let tasca0 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
             tasca0.crear_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat)
 
-            data.saveNewTask(tasca0).then();
+         data.saveNewTask(tasca0).then();
 
         });
 }
 
-function esborrar_tasca() {
-    inquirer.prompt({
-        name: 'nom_tasca',
-        message: 'Nom de la tasca'
+inquirer.prompt({
+    type: 'rawlist',
+    name: 'Aplicacio',
+    message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
+    choices: ['Crear tasca', 'Esborrar tasca', 'Editar tascar', 'Llistar totes les tasques', 'Mostrar una tasca', 'Sortir']
 
-    })
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-            /*
-                        for (let index = 0; index < this.tasks.length; index++) {
-                            if (this.tasks[index].opcio.nom_tasca .equalsIgnoreCase) { */
-        });
+})
+    .then(opcio => {
+        console.log('Opció escollida: ', opcio.Aplicacio);
 
-    inquirer.prompt({
-        type: 'rawlist',
-        name: 'Aplicacio',
-        message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-        choices: ['Crear tasca', 'Esborrar tasca', 'Editar tascar', 'Llistar totes les tasques', 'Mostrar una tasca', 'Sortir']
+        switch (opcio.Aplicacio) {
+            case 'Crear tasca':
+                crear_tasca();
+                break;
 
-    })
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio.Aplicacio);
+            case 'Esborrar tasca':
+                esborrar_tasca();
+                break;
 
-            switch (opcio.Aplicacio) {
-                case 'Crear tasca':
-                    crear_tasca();
-                    break;
+            default:
+                break;
+        }
 
-                case 'Esborrar tasca':
-                    esborrar_tasca();
-                    break;
+    });
 
-
-                case 'Llistar tasques':
-                    llistar_tasques();
-                    break;
-
-
-                case 'Mostrar tasca':
-                    mostrar_tasca();
-                    break;
-
-
-                case 'Actualitzar tasca':
-                    actualitzar_tasca();
-                    break;
-
-
-                default:
-                    break;
-            }
-
-        });
-
-}     
+/*
+        function esborrar_tasca() {
+            inquirer.prompt([{
+                name: 'Nom de la tasca',
+                message: 'Nom de la tasca',
+            }, {
+                name: 'Inici',
+                message: "Introdueix data i hora d'inici:",
+            }, {
+                name: 'Final',
+                message: "Introdueix data i hora finals:",
+            }, {
+                name: 'Estat',
+                message: "Introdueix estat de la tasca:"
+            }])
+                .then(opcio => {
+                    console.log('Opció escollida: ', opcio);
+                });
+        }
+    });
+*/
