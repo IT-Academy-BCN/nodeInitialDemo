@@ -34,6 +34,17 @@ function crear_tasca() {
         });
 }
 
+function esborrar_tasca() {
+    inquirer.prompt({
+        name: 'nom_tasca',
+        message: 'Nom de la tasca'
+
+    })
+        .then(opcio => {
+            console.log('Opció escollida: ', opcio);
+
+        });
+        
 inquirer.prompt({
     type: 'rawlist',
     name: 'Aplicacio',
@@ -59,30 +70,4 @@ inquirer.prompt({
 
     });
 
-/*
-        function esborrar_tasca() {
-            inquirer.prompt([{
-                name: 'Nom de la tasca',
-                message: 'Nom de la tasca',
-
-            }, {
-                name: 'Inici',
-                message: "Introdueix data i hora d'inici:",
-            }, {
-                name: 'Final',
-                message: "Introdueix data i hora finals:",
-            }, {
-                name: 'Estat',
-                message: "Introdueix estat de la tasca:"
-
-            }])
-                .then(opcio => {
-                    console.log('Opció escollida: ', opcio);
-                });
-        }
-
-
-    });
-
-
-*/
+}     
