@@ -2,12 +2,12 @@
     "tasks": [
         {
             "id": 0,
-            "usuari": "pol",
-            "nombre": "pol",
-            "data_inicial": "",
-            "data_final": "",
+            "usuari": "p",
+            "nombre": "p",
+            "data_inicial": "p",
+            "data_final": "p",
             "tasks": [],
-            "estat": ""
+            "estat": "p"
         }
     ]
 }

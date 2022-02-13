@@ -52,7 +52,7 @@ inquirer.prompt({
             case 'Esborrar tasca':
                 esborrar_tasca();
                 break;
-            /*
+            
             
                             case 'Llistar tasques':
                                 llistar_tasques();
@@ -67,7 +67,7 @@ inquirer.prompt({
                             case 'Actualitzar tasca':
                                 actualitzar_tasca();
                                 break;
-            */
+            
 
             default:
                 break;
