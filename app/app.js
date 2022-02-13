@@ -29,7 +29,7 @@ function crear_tasca() {
             let tasca0 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
             tasca0.crear_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat)
 
-         data.saveNewTask(tasca0).then();
+            data.saveNewTask(tasca0).then();
 
         });
 }
@@ -52,6 +52,22 @@ inquirer.prompt({
             case 'Esborrar tasca':
                 esborrar_tasca();
                 break;
+            /*
+            
+                            case 'Llistar tasques':
+                                llistar_tasques();
+                                break;
+            
+            
+                            case 'Mostrar tasca':
+                                mostrar_tasca();
+                                break;
+            
+            
+                            case 'Actualitzar tasca':
+                                actualitzar_tasca();
+                                break;
+            */
 
             default:
                 break;
