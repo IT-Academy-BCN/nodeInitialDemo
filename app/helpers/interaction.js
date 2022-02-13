@@ -88,7 +88,6 @@ const banner = async () => {
 // menuDB
 const menuDB = async () => {
     await banner();
-    await banner();
     const { option } = await inquirer.prompt(db);
     return option;
 };
@@ -156,13 +155,6 @@ const showTaskDetail = async(task) => {
 // This function returns a list of all tasks, the parameter (tasks = [ ]) is what it uses by default if no argument is passed.
 const showTasks = async (tasks = []) => {
     const choices = tasks.map((task, i) => {
-        const isCompleted = () => {
-            if (task.isCompleted === true) {
-                return colorette.greenBright('Completed');
-            } else {
-                return colorette.redBright('Pending');
-            }
-        };
 
         const idx = `${colorette.greenBright(i + 1)}.`;
 
@@ -248,6 +240,7 @@ const confirm = async (message) => {
 module.exports = {
     menuDB,
     mainMenu,
+    banner,
     readInput,
     showTasks,
     confirm,

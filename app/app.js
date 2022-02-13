@@ -3,6 +3,7 @@ const {
     menuDB,
     mainMenu,
     readInput,
+    banner,
     showTasks,
     confirm,
     showChecklist,
@@ -46,8 +47,10 @@ const main = async () => {
                         const task = await TaskService.getTask(selectedTaskId);
                         await showTaskDetail(task);
                     }
-                    } while (selectedTaskId !== '0');
-                
+                    console.clear();
+                    await banner();
+                } while (selectedTaskId !== '0');
+
                 break;
 
             case '3': // Read completed tasks
@@ -60,8 +63,10 @@ const main = async () => {
                         const task = await TaskService.getTask(selectedCompletedTaskId);
                         await showTaskDetail(task);
                     }
+                    console.clear();
+                    await banner();
                 } while (selectedCompletedTaskId !== '0');
-                
+
                 break;
 
             case '4': // Read pending tasks
@@ -73,15 +78,16 @@ const main = async () => {
                         const task = await TaskService.getTask(selectedPendingTaskId);
                         await showTaskDetail(task);
                     }
+                    console.clear();
+                    await banner();
                 } while (selectedPendingTaskId !== '0');
-                
+
                 break;
 
-            //! To be fixed: Missing true or false persistence on isCompleted.
             case '5': //Change Pending/Completed
                 tasks = await TaskService.getTasks();
                 const isCompleted = await showChecklist(tasks);
-                tasks.forEach(async(task) => {
+                tasks.forEach(async (task) => {
                     if (task.isCompleted && !isCompleted.includes(task.id)) {
                         await TaskService.updateTask(task.id, { isCompleted: false, updatedAt: new Date() });
                     } else if (!task.isCompleted && isCompleted.includes(task.id)) {
@@ -113,12 +119,14 @@ const main = async () => {
                         const taskComment = await showCommentTask(task.comment);
                         TaskService.updateTask(task.id, { comment: taskComment, updatedAt: new Date() });
                     }
-                    } while (selectedCommentTaskId !== '0');
-                
+                    console.clear();
+                    await banner();
+                } while (selectedCommentTaskId !== '0');
+
                 break;
 
         }
-        
+
 
     } while (opt !== '0')
 };
