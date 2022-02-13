@@ -7,7 +7,7 @@ class tasca {
         this.nombre = nombre;
         this.data_inicial = data_inicial;
         this.data_final = null;
-        this.tasks = [];
+      
 
     }
 
@@ -20,7 +20,7 @@ class tasca {
         this.estat = estat
     }
 
-    esborrar_tasca(usuari, nombre, data_inicial, data_final) {
+    esborrar_tasca(usuari, nombre, data_inicial, data_final, estat) {
         this.id = 0;
         this.usuari = usuari;
         this.nombre = nombre;
@@ -29,7 +29,7 @@ class tasca {
         this.estat = estat
     }
 
-    llistar_tasques(usuari, nombre, data_inicial, data_final) {
+    llistar_tasques(usuari, nombre, data_inicial, data_final, estat) {
         this.id = 0;
         this.usuari = usuari;
         this.nombre = nombre;
@@ -38,7 +38,7 @@ class tasca {
         this.estat = estat
     }
 
-    mostrar_tasca(usuari, nombre, data_inicial, data_final) {
+    mostrar_tasca(usuari, nombre, data_inicial, data_final, estat) {
         this.id = 0;
         this.usuari = usuari;
         this.nombre = nombre;
