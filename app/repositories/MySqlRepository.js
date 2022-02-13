@@ -1,8 +1,8 @@
 const mysql = require('mysql2/promise');
 const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
 const { Task } = require('../models/TaskModel');
-
 
 
 let Model;
