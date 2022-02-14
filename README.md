@@ -9,7 +9,7 @@ _These instructions will allow you to get a working copy of the project on your 
 ### Translations 💬
 
 _This README file is also available in other languages:_
-- [Catalan](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/README-cat.md)
+- [Catalan](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-cat.md)
 - [French](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-fr.md)
 - [German](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-de.md)
 - [Italian](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/docs/README-it.md)
