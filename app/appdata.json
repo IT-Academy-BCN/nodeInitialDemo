@@ -1,12 +1,3 @@
 {
-    "tasks": [
-        {
-            "id": 0,
-            "usuari": "laura",
-            "nombre": "pintar",
-            "data_inicial": "14-02-2022 12:03",
-            "data_final": "",
-            "estat": "pendent"
-        }
-    ]
+    "tasks": []
 }

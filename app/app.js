@@ -56,15 +56,13 @@ function esborrar_tasca() {
 
 function llistar_tasques() {
     inquirer.prompt({
-        name: 'nom_tasca',
-        message: 'Nom de la tasca'
-
-        // pensar com fem pq puguem veure totes les tasques
+        name: 'nom_usuari',
+        message: "Introdueix el nom de l'usuari",
+      
     })
 
         .then(opcio => {
             console.log('Opció escollida: ', opcio);
-
            
         })
 }
