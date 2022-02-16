@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app/app.js",
     "dev": "nodemon --trace-warnings app/app.js",
+    "demo": "node app/data-layer_demo-app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
