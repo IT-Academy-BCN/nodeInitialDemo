@@ -1,16 +1,34 @@
 {
   "name": "nodeinitialdemo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "### Project Structure",
+  "main": "ecosystem.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app",
+    "start": "node src/app"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielEspanadero/nodeInitialDemo.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielEspanadero/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/DanielEspanadero/nodeInitialDemo#readme",
   "dependencies": {
-    "dotenv": "^9.0.2",
-    "nodemon": "^2.0.7",
-    "pm2": "^4.5.6"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "d": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.1",
+    "sequelize": "^6.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
