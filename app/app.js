@@ -1,7 +1,57 @@
 
 const inquirer = require('inquirer');
-const tasca = require('./models/tasca');
-const data = require('./data/json');
+
+require('dotenv').config()
+const { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll } = require('./model/Tasks')
+
+
+connect().then(() => {
+
+    // fer que el programa no surti a menys que agafis l'opció de sortir
+
+    inquirer.prompt({
+        type: 'rawlist',
+        name: 'Aplicacio',
+        message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
+        choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
+    
+    }).then(opcio => triaOpcio(opcio))
+})
+
+
+function triaOpcio(opcio) {
+    console.log('Opció escollida: ', opcio.Aplicacio);
+
+    switch (opcio.Aplicacio) {
+        case 'Crear tasca':
+            crear_tasca();
+            break;
+
+        case 'Esborrar tasca':
+            esborrar_tasca();
+            break;
+
+
+        case 'Llistar tasques':
+            llistar_tasques();
+            break;
+
+
+        case 'Mostrar tasca':
+            mostrar_tasca();
+            break;
+
+
+        case 'Actualitzar tasca':
+            actualitzar_tasca();
+            break;
+
+
+        default:
+            break;
+    }
+}
+
 
 function crear_tasca() {
     inquirer.prompt([{
@@ -102,47 +152,5 @@ function actualitzar_tasca() {
             
             console.log(`Tasca ${opcio.nom_tasca} actualitzada.`);
         })
-}
 
-// fer que el programa no surti a menys que agafis l'opció de sortir
-
-inquirer.prompt({
-    type: 'rawlist',
-    name: 'Aplicacio',
-    message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-    choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
-
-})
-    .then(opcio => {
-        console.log('Opció escollida: ', opcio.Aplicacio);
-
-        switch (opcio.Aplicacio) {
-            case 'Crear tasca':
-                crear_tasca();
-                break;
-
-            case 'Esborrar tasca':
-                esborrar_tasca();
-                break;
-
-
-            case 'Llistar tasques':
-                llistar_tasques();
-                break;
-
-
-            case 'Mostrar tasca':
-                mostrar_tasca();
-                break;
-
-
-            case 'Actualitzar tasca':
-                actualitzar_tasca();
-                break;
-
-
-            default:
-                break;
-        }
-
-    });
+    }

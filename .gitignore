@@ -1,5 +1,5 @@
 # --- JSON Storage
-appdata.json
+**/appdata.json
 
 # --- IDE
 .idea
