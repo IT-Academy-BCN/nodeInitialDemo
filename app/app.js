@@ -55,102 +55,62 @@ function triaOpcio(opcio) {
 
 function crear_tasca() {
     inquirer.prompt([{
-        name: 'nom_usuari',
-        message: "Introdueix el nom de l'usuari",
+        name: 'author',
+        message: "Introdueix el nom de l'autor:",
 
     }, {
-        name: 'nom_tasca',
-        message: 'Nom de la tasca',
-
-    }, {
-        name: 'inici',
-        message: "Introdueix data i hora d'inici:",
-    }, {
-        name: 'final',
-        message: "Introdueix data i hora finals:",
-    }, {
-        name: 'estat',
-        message: "Introdueix estat de la tasca:"
+        name: 'description',
+        message: 'Nom de la tasca:',
 
     }])
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-
-            let tasca0 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
-            tasca0.crear_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat)
-
-            data.saveNewTask(tasca0).then();
-            console.log(`Tasca ${opcio.nom_tasca} creada.`);
-
+        .then(task => {
+            saveNewTask(task);
+            console.log(`Tasca creada:`);
+            console.log(task);
         });
 }
 
 function esborrar_tasca() {
     inquirer.prompt({
-        name: 'nom_tasca',
-        message: 'Nom de la tasca'
+        name: 'id',
+        message: 'id de la tasca:'
     })
 
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-
-            let tasca1 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
-            tasca1.esborrar_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat);
-
-            data.deleteTask(tasca1).then(); // al json.js la funció com a paràmetre te l'id, jo aqui li passo l'objecte tasca1
-            
-            console.log(`Tasca ${opcio.nom_tasca} eliminada.`);
+        .then(task => {
+            deleteTask(task).then(task => {
+                console.log(`Tasca eliminada`);
+            })
         })
 }
 
 
 function llistar_tasques() {
-    inquirer.prompt({
-        name: 'nom_usuari',
-        message: "Introdueix el nom de l'usuari",
-      
-    })
-
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-           
-        })
+    getAllTasks.then(tasks => console.log(tasks))
 }
 
 
 function mostrar_tasca() {
     inquirer.prompt({
-        name: 'nom_tasca',
-        message: 'Nom de la tasca'
+        name: 'id',
+        message: 'id de la tasca:'
 
     })
     
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-            let tasca2 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
-            tasca2.mostrar_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat);
-
-            data.getTask(tasca2).then(); // al json.js la funció com a paràmetre te l'id, jo aqui li passo l'objecte tasca2
-             // funcio no funciona       
+        .then(task => {
+            getTask(task.id).then(task => {
+                console.log(task);
+            })
         })
 }
 
 function actualitzar_tasca() {
     inquirer.prompt({
-        name: 'nom_tasca',
-        message: 'Nom de la tasca'
+        name: 'id',
+        message: 'id de la tasca:'
     })
 
-        .then(opcio => {
-            console.log('Opció escollida: ', opcio);
-            let tasca3 = new tasca((opcio.nom_usuari, opcio.nom_tasca, opcio.inici));
-            tasca3.mostrar_tasca(opcio.nom_usuari, opcio.nom_tasca, opcio.inici, opcio.final, opcio.estat);
-
-            data.updateTask(tasca3).then(); // al json.js la funció com a paràmetre te l'id, jo aqui li passo l'objecte tasca3
-        //
-        
-            
-            console.log(`Tasca ${opcio.nom_tasca} actualitzada.`);
+        .then(task => {
+            // TODO aquesta deixeu-me-la per mi que posaré un update per cada camp
         })
 
     }
