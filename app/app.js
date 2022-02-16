@@ -4,46 +4,55 @@ const inquirer = require('inquirer');
 require('dotenv').config()
 const { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll } = require('./model/Tasks')
 
+// Run app
+start()
 
-connect().then(() => {
-
-    // fer que el programa no surti a menys que agafis l'opció de sortir
-
-    inquirer.prompt({
-        type: 'rawlist',
-        name: 'Aplicacio',
-        message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-        choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
+async function start(){
     
-    }).then(opcio => triaOpcio(opcio))
-})
+    await connect();
+
+    while(true){
+        // fer que el programa no surti a menys que agafis l'opció de sortir
+
+        opcio = await inquirer.prompt({
+            type: 'rawlist',
+            name: 'Aplicacio',
+            message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
+            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
+        
+        })
+
+        await triaOpcio(opcio)
+    }
+
+}
 
 
-function triaOpcio(opcio) {
+async function triaOpcio(opcio) {
     console.log('Opció escollida: ', opcio.Aplicacio);
 
     switch (opcio.Aplicacio) {
         case 'Crear tasca':
-            crear_tasca();
+            await crear_tasca();
             break;
 
         case 'Esborrar tasca':
-            esborrar_tasca();
+            await esborrar_tasca();
             break;
 
 
         case 'Llistar tasques':
-            llistar_tasques();
+            await llistar_tasques();
             break;
 
 
         case 'Mostrar tasca':
-            mostrar_tasca();
+            await mostrar_tasca();
             break;
 
 
         case 'Actualitzar tasca':
-            actualitzar_tasca();
+            await actualitzar_tasca();
             break;
 
 
@@ -53,8 +62,8 @@ function triaOpcio(opcio) {
 }
 
 
-function crear_tasca() {
-    inquirer.prompt([{
+async function crear_tasca() {
+    task = await inquirer.prompt([{
         name: 'author',
         message: "Introdueix el nom de l'autor:",
 
@@ -63,47 +72,42 @@ function crear_tasca() {
         message: 'Nom de la tasca:',
 
     }])
-        .then(task => {
-            saveNewTask(task);
-            console.log(`Tasca creada:`);
-            console.log(task);
-        });
+    await saveNewTask(task);
+    console.log(`Tasca creada:`);
+    console.log(task);
+        
 }
 
-function esborrar_tasca() {
-    inquirer.prompt({
+async function esborrar_tasca() {
+    task = await inquirer.prompt({
         name: 'id',
         message: 'id de la tasca:'
     })
-
-        .then(task => {
-            deleteTask(task).then(task => {
-                console.log(`Tasca eliminada`);
-            })
-        })
+    task = await getTask(task.id);
+    console.log("Tasca esborrada: ");
+    console.log(task);
+    await deleteTask(task);
 }
 
 
-function llistar_tasques() {
-    getAllTasks.then(tasks => console.log(tasks))
+async function llistar_tasques() {
+    tasks = await getAllTasks()
+    console.log(tasks);
 }
 
 
-function mostrar_tasca() {
-    inquirer.prompt({
+async function mostrar_tasca() {
+    await inquirer.prompt({
         name: 'id',
         message: 'id de la tasca:'
 
     })
-    
-        .then(task => {
-            getTask(task.id).then(task => {
-                console.log(task);
-            })
-        })
+    task = await getTask(task.id)
+    console.log(task);
 }
 
-function actualitzar_tasca() {
+
+async function actualitzar_tasca() {
     inquirer.prompt({
         name: 'id',
         message: 'id de la tasca:'
