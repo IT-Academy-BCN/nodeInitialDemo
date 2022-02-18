@@ -1,5 +1,7 @@
 
 const inquirer = require('inquirer');
+const { red, blue, bold, green } = require("colorette");
+
 
 require('dotenv').config()
 const { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll } = require('./model/Tasks')
@@ -17,8 +19,8 @@ async function start(){
         opcio = await inquirer.prompt({
             type: 'rawlist',
             name: 'Aplicacio',
-            message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
+            message: (red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:")),
+            choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir'))]
         
         })
 
@@ -65,15 +67,15 @@ async function triaOpcio(opcio) {
 async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
-        message: "Introdueix el nom de l'autor:",
+        message: (green("Introdueix el nom de l'autor:")),
 
     }, {
         name: 'description',
-        message: 'Nom de la tasca:',
+        message: (green('Nom de la tasca:')),
 
     }])
     await saveNewTask(task);
-    console.log(`Tasca creada:`);
+    console.log((red(`Tasca creada:`)));
     console.log(task);
         
 }
@@ -81,10 +83,10 @@ async function crear_tasca() {
 async function esborrar_tasca() {
     task = await inquirer.prompt({
         name: 'id',
-        message: 'id de la tasca:'
+        message: (green('id de la tasca:')),
     })
     task = await getTask(task.id);
-    console.log("Tasca esborrada: ");
+    console.log(red("Tasca esborrada: "));
     console.log(task);
     await deleteTask(task);
 }
@@ -99,7 +101,7 @@ async function llistar_tasques() {
 async function mostrar_tasca() {
     await inquirer.prompt({
         name: 'id',
-        message: 'id de la tasca:'
+        message: (green('id de la tasca:'))
 
     })
     task = await getTask(task.id)
@@ -110,7 +112,7 @@ async function mostrar_tasca() {
 async function actualitzar_tasca() {
     inquirer.prompt({
         name: 'id',
-        message: 'id de la tasca:'
+        message: (green('id de la tasca:'))
     })
 
         .then(task => {
