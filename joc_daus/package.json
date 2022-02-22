@@ -6,9 +6,6 @@
     "express": "^4.17.2",
     "mongoose": "^6.0.12"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
   "scripts": {
     "start": "node joc_daus/index.js",
     "dev": "nodemon joc_daus/index.js"
@@ -20,5 +17,8 @@
   "keywords": [],
   "author": "xaviercomi@gmail.com",
   "license": "ISC",
-  "description": "API que simula joc de daus"
+  "description": "API que simula joc de daus",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
