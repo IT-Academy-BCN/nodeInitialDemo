@@ -1,10 +1,9 @@
 module.exports = (req, res, next) => {
-
-    const auth = req.headers.auth;
-    console.log(auth)
-    if (!auth) {
+    
+    if (req.headers.authorization) {
+        next()    
+    } else {
         res.status(401).send({ missatge: "Unauthorized" })
     }
-    next(); 
 
 }

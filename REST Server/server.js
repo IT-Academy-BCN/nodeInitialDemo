@@ -67,7 +67,6 @@ app.post('/time', checkHeader, addHeader, (req, res) => {
 
 })
 
-app.post('/')
 
 app.listen(3000, () => {
     console.log('ServerOk!')
