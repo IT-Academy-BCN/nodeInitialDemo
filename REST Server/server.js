@@ -1,10 +1,9 @@
- const express    = require('express');
- const app        = express();
- const fileUpload = require('express-fileupload');
- const bodyParser = require('body-parser');
- const addHeader = require('./middlewareHeader')
+ const express     = require('express');
+ const app         = express();
+ const fileUpload  = require('express-fileupload');
+ const bodyParser  = require('body-parser');
+ const addHeader   = require('./middlewareHeader')
  const checkHeader = require('./middlewareCheck')
-
 
 app.use(fileUpload());
 app.use(bodyParser.json());
@@ -25,7 +24,7 @@ app.post('/upload', (req, res) => {
    
     switch (extension) {
         case "png":
-            EDFile.mv(`../uploadFile ${EDFile.name}`, err => {
+            EDFile.mv(`.m/upload_file/ ${EDFile.name}`, err => {
                 if (err) {
                     return res.status(500).send({ message: "upload error"});
                 } else {
@@ -34,7 +33,7 @@ app.post('/upload', (req, res) => {
             });
         break;
         case "jpg":
-            EDFile.mv(`../uploadFile ${EDFile.name}`, err => {
+            EDFile.mv(`./upload_file/ ${EDFile.name}`, err => {
                 if (err) {
                     return res.status(500).send({ message: "upload error"});
                 } else {
@@ -43,7 +42,7 @@ app.post('/upload', (req, res) => {
             });
         break;
         case "gif":
-            EDFile.mv(`../uploadFile ${EDFile.name}`, err => {
+            EDFile.mv(`./upload_file/ ${EDFile.name}`, err => {
                 if (err) {
                     return res.status(500).send({ message: "upload error"});
                 } else {
@@ -57,17 +56,18 @@ app.post('/upload', (req, res) => {
     
 });
 
-app.post('/time', addHeader, checkHeader, (req, res) => {
+app.post('/time', checkHeader, addHeader, (req, res) => {
 
     const username = req.body.name;
     const timeEnlapsed = Date.now();
     const now = new Date(timeEnlapsed);
     const date = now.toUTCString();
 
-
     res.status(200).send({ name: username, date: date })
 
 })
+
+app.post('/')
 
 app.listen(3000, () => {
     console.log('ServerOk!')
