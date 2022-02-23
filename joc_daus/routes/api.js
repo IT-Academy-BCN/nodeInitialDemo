@@ -6,10 +6,20 @@ const Throw = require('../rollDices');
 
 // add a new player 
 router.post('/newPlayer', function(req, res, next) {
-    Player.create(req.body).then(function(player) {
-        res.send(player)
-    }).catch(next);
-});
+    var body = req.body;
+    Player.findOne({}, { name: req.body.name }, (err, user) => {
+        if (user.name) {
+            console.log(user)
+            res.send({ message: "player all ready exists!"})
+        } else if (err) {
+                res.status(400).send("Error on database")
+        } else {
+            Player.create(req.body).then(function(player) {
+                res.send(player)
+            }).catch(next);
+        }
+    });
+});  
 
 // get a player by ID
 router.get('/getPlayer/:id', function(req, res, next) {

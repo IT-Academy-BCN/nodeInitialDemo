@@ -9,8 +9,8 @@
     "mongoose": "^6.0.12"
   },
   "scripts": {
-    "start": "node joc_daus/index.js",
-    "dev": "nodemon joc_daus/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
