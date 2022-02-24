@@ -88,6 +88,9 @@ function Factory() {
     }
 
     async function updateTask(id, task) {
+        id = parseInt(id)
+        originalTask = await getTask(id)
+        task = {...originalTask, ...task, ...{id: id}}
         tasks[getTaskIndex(id)] = task;
         await saveFile();
     }

@@ -29,7 +29,8 @@ async function start(){
 
 
 async function triaOpcio(opcio) {
-    console.log('Opció escollida: ', opcio.Aplicacio);
+    // Silencio perquè inquirer ja fa print del missatge d'opció triat
+    // console.log('Opció escollida: ', opcio.Aplicacio);
 
     switch (opcio.Aplicacio) {
         case 'Crear tasca':
@@ -110,13 +111,86 @@ async function mostrar_tasca() {
 
 
 async function actualitzar_tasca() {
-    inquirer.prompt({
+    task = await inquirer.prompt({
         name: 'id',
         message: 'id de la tasca:'
     })
+    
+    console.log('Actualitzar Tasca:');
+    console.log(await getTask(task.id));
+    opcio = await inquirer.prompt({
+        type: 'rawlist',
+        name: 'update',
+        message: "Quin camp vols modificar?",
+        choices: ['Autor', 'Descripció', 'Estat', 'Data d\'inici', 'Data de finalització', 'Torna enrera']
+    })
 
-        .then(task => {
-            // TODO aquesta deixeu-me-la per mi que posaré un update per cada camp
-        })
+    async function updateAndLog(task){
+        await updateTask(task.id, task);
+        console.log("Modificat tasca:")
+        console.log(await getTask(task.id));
+    }
+
+    switch(opcio.update){
+        case 'Autor':
+            task2 = await inquirer.prompt([{
+                name: 'author',
+                message: 'nom de l\'autor:'
+            }])
+
+            task.author = task2.author;
+            await updateAndLog(task);
+            break;
+
+        case 'Descripció':
+            task2 = await inquirer.prompt([{
+                name: 'description',
+                message: 'Nova descripció:'
+            }])
+
+            task.description = task2.description;
+            await updateAndLog(task);
+            break;
+
+        case 'Estat':
+            task2 = await inquirer.prompt([{
+                name: 'state',
+                message: 'Nou estat (opcions vàlides: pending, open, finalized):'
+            }])
+
+            task.state = task2.state;
+            await updateAndLog(task);
+            break;
+
+        case 'Data d\'inici':
+            task2 = await inquirer.prompt([{
+                name: 'start_time',
+                message: 'Nova data d\'inici (Exemple format d\'entrada: 2020-04-10T17:14:00):'
+            }])
+
+            task.start_time = new Date(task2.start_time);
+            await updateAndLog(task);
+            break;
+
+
+        case 'Data de finalització':
+            task2 = await inquirer.prompt([{
+                name: 'end_time',
+                message: 'Nova data de finalització (Exemple format d\'entrada: 2020-04-10T17:14:00):'
+            }])
+
+            task.end_time = new Date(task2.end_time);
+            await updateAndLog(task);
+            break;
+
+        case 'Torna Enrera':
+            break;
+
+        default:
+            console.log('Error: opció no vàlida');
+        
+        }
+    
+
 
     }
