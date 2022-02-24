@@ -61,7 +61,8 @@ function Factory() {
 
 
     function getTaskIndex(id) {
-        return tasks.findIndex(task => task.id === id);
+        taskIndex = tasks.findIndex(task => task.id === parseInt(id));
+        return taskIndex
     }
 
     async function getTask(id) {
