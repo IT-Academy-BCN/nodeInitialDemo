@@ -1,4 +1,5 @@
 const express = require('express');
+const { find } = require('../models/player');
 const router = express.Router();
 const Player = require('../models/player');
 const CP = require('../percentage');
@@ -9,11 +10,13 @@ router.post('/newPlayer', function(req, res, next) {
     Player.findOne({ name: req.body.name },(err, user) => {
         if (user) {
             res.send({ message: "Player already exists!"})
+        } else {
+            Player.create(req.body).then(function(player) {
+                res.send(player)
+            }).catch(next);
         }
     } )
-    Player.create(req.body).then(function(player) {
-        res.send(player)
-    }).catch(next);
+    
 });
 
 // get a player by ID
@@ -39,12 +42,14 @@ router.get('/getFullListPlayers', function(req, res, next) {
 
 //? update a player
 router.put('/updatePlayer/:id', function(req, res, next) {
-    Player.findOneAndUpdate({_id: req.params.id}, req.body).then(function(player) {
-        Player.findOne({
-            _id: req.params.id}).then(function(player) {
-            res.send(player);
-        });
-    });
+    Player.findOneAndUpdate({_id: req.params.id}, req.body,)
+    .then( (player) => {
+        if (player.name = "null") {
+            Player.findOneAndUpdate( {_id: req.params.id}, { $set: {name: "ANONIM"} })
+        }
+    }).then( (player) => {
+             res.send(player)    
+    }).catch(next)     
 });   
 
 //! delete a player
