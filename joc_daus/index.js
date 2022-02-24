@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/players');
+mongoose.connect('mongodb://127.0.0.1/players');
 mongoose.Promise = global.Promise;
 console.log("✔️  Connect to mongoDB");
 

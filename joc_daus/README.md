@@ -3,10 +3,9 @@
 
 Simulació de un joc de daus. 
 
-Per iniciar l'API: Ubicats a la carpeta nodeInitialDemo > npm start o npm run dev per a la versió desenvolupament (nodemon)
+Per iniciar l'API: Ubicats a la carpeta nodeInitialDemo7joc_daus> npm index o nodemon versió desenvolupament.
 
-IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament
-           es necessari teclejar amb un terminal adicional > mongod
+IMPORTANT! En cas de no tenir instal·lat mongo com a servei o en cas que no s'inicie el servei automaticament es necessari teclejar amb un terminal adicional > mongod
            
 A la carpeta arrel trobareu l'arxiu de la col·lecció POSTMAN per a realitzar les peticions.
 També podeu utilitzar el vincle que comparteix la col·lecció.
@@ -15,7 +14,7 @@ https://www.postman.com/xaviercomi/workspace/public/collection/17998947-10220b4a
 
 COM UTILITZAR: 
 
-NOTA * LLeguir la documentació de les peticions fent clic al menú "view documentaction", i un cop creats el jugadors
+NOTA * LLeguir la documentació de les peticions fent clic al menú "view documentation", i un cop creats el jugadors
        utilizar el llistat (get all players), facilita l'ùs de les peticions i obtenció del "id" per a utilitzar l'API. 
        totes les peticions dirigides a un jugador en especial requereixen afegir el "id" del jugador al final de la ruta. 
 
@@ -30,4 +29,4 @@ NOTA * LLeguir la documentació de les peticions fent clic al menú "view docume
 6. També podrem eliminar de forma individual o global els jugador i les tirades
 7. Finalment podrem obtenir un llistat de jugadors amb totes les seves tirades (full content) i un llista simplificats dels jugadors.
 
-* ATENCIO! Si el jugador no te les victories i les tirades actualitzades la peticio de percentatge fara exlotar l'ordinador.
+* ATENCIO! Si el jugador no te les victories i les tirades actualitzades la peticio de percentatge fara exlotar    l'ordinador.
