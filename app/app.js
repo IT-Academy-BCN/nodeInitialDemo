@@ -41,12 +41,12 @@ async function triaOpcio(opcio) {
             break;
 
 
-        case 'Llistar tasques':
+        case 'Llistar totes les tasques':
             await llistar_tasques();
             break;
 
 
-        case 'Mostrar tasca':
+        case 'Mostrar una tasca':
             await mostrar_tasca();
             break;
 
@@ -54,6 +54,9 @@ async function triaOpcio(opcio) {
         case 'Actualitzar tasca':
             await actualitzar_tasca();
             break;
+
+        case 'Sortir':
+            process.exit(0)
 
 
         default:
@@ -66,7 +69,6 @@ async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
         message: "Introdueix el nom de l'autor:",
-
     }, {
         name: 'description',
         message: 'Nom de la tasca:',
@@ -97,11 +99,11 @@ async function llistar_tasques() {
 
 
 async function mostrar_tasca() {
-    await inquirer.prompt({
+    task = await inquirer.prompt([{
         name: 'id',
         message: 'id de la tasca:'
 
-    })
+    }])
     task = await getTask(task.id)
     console.log(task);
 }
