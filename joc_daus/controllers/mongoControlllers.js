@@ -1,4 +1,5 @@
 const Player = require('../models/player')
+const Throw = require('../rollDices');
 
 const createPlayer = async (req, res) => {
     
@@ -17,6 +18,7 @@ const createPlayer = async (req, res) => {
 };
 
 const updatePlayer = async (req, res) => {
+
     try {
         const id = req.params.id;
         const name = req.body;
@@ -27,6 +29,28 @@ const updatePlayer = async (req, res) => {
     }
 };
 
+const rollDices = async (req, res) => {
+
+    try {
+        const id = req.params.id;
+        const player = await Player.findOneAndUpdate( {_id:id}, { $push: { rolls: [Throw.roll()] } } )
+        res.send(player);
+    } catch (err) {
+        console.log({ message: err.message})
+    }
+};
+
+const deleteThrows = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const player = await Player.findOneAndUpdate({_id:id}, { $pull: { rolls: {} } } )
+        res.send(`All throws from ${player.name} are deleted!`)
+    } catch(err) {
+        console.log({ message: err.message});
+    }
+}
 
 module.exports = { createPlayer,
-                   updatePlayer }
+                   updatePlayer,
+                   rollDices,
+                   deleteThrows }

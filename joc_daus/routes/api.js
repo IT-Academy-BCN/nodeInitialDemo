@@ -2,15 +2,28 @@ const express = require('express');
 const router = express.Router();
 const Player = require('../models/player');
 const CP = require('../utils/percentage');
-const Throw = require('../rollDices');
 const { createPlayer,
-        updatePlayer } = require('../controllers/mongoControlllers')
+        updatePlayer,
+        rollDices,
+        deleteThrows } = require('../controllers/mongoControlllers')
 
 // add a new player 
 router.post('/newPlayer', createPlayer);
 
 // update a player
 router.put('/updatePlayer/:id', updatePlayer);
+
+// rollDices! a player throws the dices amb get a new game throw
+router.post('/rollDices/:id', rollDices);
+
+// delete all throws from a player
+router.delete('/deleteAllThrows/:id', deleteThrows);
+
+
+
+
+
+
 
 // get a player by ID
 router.get('/getPlayer/:id', function(req, res, next) {
@@ -33,7 +46,6 @@ router.get('/getFullListPlayers', function(req, res, next) {
     }).catch(next);
 });
 
- 
 
 //! delete a player
 router.delete('/deletePlayer/:id', function(req, res, next) {
@@ -59,12 +71,6 @@ router.get('/getRanking', (req, res, next) => {
 });
 
 
-// rollDices! a player throws the dices amb get a new game throw
-router.put('/rollDices/:id', (req, res, next) => {
-    Player.findOneAndUpdate( {_id: req.params.id}, { $push: { rolls: [Throw.roll()] } } ).then( (player) => {
-        res.send(player);
-    })
-});
 
 // get the number of throws from a player
 router.get('/numberOfThrows/:id', (req, res, next) => {
@@ -95,16 +101,7 @@ router.get('/numberOfWins/:id', (req, res, next) => {
 });
 
 
-//! delete all throws from a player
-router.put('/deleteAllThrows/:id', (req, res, next) => { 
-        Player.findOneAndUpdate({_id: req.params.id}, { $pull: { rolls: {} } } )
-        .then( (player) => {
-            Player.findOne({_id: req.params.id})
-        .then( (player) => {
-            res.send(player)
-        }).catch(next)
-    });
-});
+
 
 //? update winning percentage
 router.put('/updatePercentage/:id', (req, res, next) => {
