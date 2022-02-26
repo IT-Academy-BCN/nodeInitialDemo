@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "joc_daus/index.js",
   "dependencies": {
-    "body-parser": "^1.19.1",
     "express": "^4.17.2",
-    "express-fileupload": "^1.3.1",
     "mongoose": "^6.2.3"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon",
+    "startMongo": "set NODE_ENV = mongoDB && node index.js",
+    "startSQL": "set NODE_ENV = mySQL && node index.js",
+    "DEVstartMongo": "set NODE_ENV = mongoDB && nodemon",
+    "DEVstartSQL": "set NODE_ENV = mySQL && nodemon"
   },
   "repository": {
     "type": "git",

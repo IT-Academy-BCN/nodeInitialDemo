@@ -1,23 +1,16 @@
 const express = require('express');
-const { find } = require('../models/player');
 const router = express.Router();
 const Player = require('../models/player');
-const CP = require('../percentage');
+const CP = require('../utils/percentage');
 const Throw = require('../rollDices');
+const { createPlayer,
+        updatePlayer } = require('../controllers/mongoControlllers')
 
 // add a new player 
-router.post('/newPlayer', function(req, res, next) {
-    Player.findOne({ name: req.body.name },(err, user) => {
-        if (user) {
-            res.send({ message: "Player already exists!"})
-        } else {
-            Player.create(req.body).then(function(player) {
-                res.send(player)
-            }).catch(next);
-        }
-    } )
-    
-});
+router.post('/newPlayer', createPlayer);
+
+// update a player
+router.put('/updatePlayer/:id', updatePlayer);
 
 // get a player by ID
 router.get('/getPlayer/:id', function(req, res, next) {
@@ -40,17 +33,7 @@ router.get('/getFullListPlayers', function(req, res, next) {
     }).catch(next);
 });
 
-//? update a player
-router.put('/updatePlayer/:id', function(req, res, next) {
-    Player.findOneAndUpdate({_id: req.params.id}, req.body,)
-    .then( (player) => {
-        if (player.name = "null") {
-            Player.findOneAndUpdate( {_id: req.params.id}, { $set: {name: "ANONIM"} })
-        }
-    }).then( (player) => {
-             res.send(player)    
-    }).catch(next)     
-});   
+ 
 
 //! delete a player
 router.delete('/deletePlayer/:id', function(req, res, next) {

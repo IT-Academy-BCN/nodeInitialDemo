@@ -1,26 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
-
-//set up our expre app
 const app = express();
+const routes = require('./routes/api');
 
-//connect to mongodb
-mongoose.connect('mongodb://127.0.0.1/players');
-mongoose.Promise = global.Promise;
-console.log("✔️  Connect to mongoDB");
+//connect to database
+require('./database/DBConnection');
 
+//middlewares
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 //initialize routes
-app.use('/', require('./routes/api'));
-
-// error handling middleware
-app.use(function (err, req, res, next) {
-    res.status(422).send({error: err.message}); 
-});
+app.use('/', routes);
 
 //start server
-app.listen(process.env.port || 4000, function() {
+app.listen(4000, () => {
     console.log('✔️  Server listening...')
 });
 

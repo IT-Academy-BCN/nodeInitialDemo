@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 //create player schema and model
 const PlayerSchema = new Schema(
-    {
-        name: {type: String, default: 'Anonim', required: true},
+    {   
+        name: { type: String, default: "ANONIM" },
         percentage: Number,
         totalThrows: Number,
         winThrows: Number,
@@ -15,7 +15,7 @@ const PlayerSchema = new Schema(
             win: Boolean,
         }]
     }, 
-    {timestamps: true}
+    {timestamps: true},
 );
 
 const Player = mongoose.model('player', PlayerSchema)
