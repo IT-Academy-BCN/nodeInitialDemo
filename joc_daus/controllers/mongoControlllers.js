@@ -90,7 +90,7 @@ const getThrows = async (req, res) => {
 const getPlayersPercentage = async (req, res) => {
 
     try {
-        const listPercentage = await Player.find({}, { percentage: 1})
+        const listPercentage = await Player.find({}, {percentage: 1})
         const averageGame = await average.averagePercentage(listPercentage);
         res.status(200).send(`Average percentage of wins from all actual players: [${averageGame}%]`)
     } catch (err) {
@@ -99,10 +99,31 @@ const getPlayersPercentage = async (req, res) => {
 
 };
 
+const getBestPlayer = async (req, res) => {
+    try {
+        const player = await Player.findOne({}, {_id: 0, name:1, percentage: 1}).sort({percentage:-1}).limit(1);
+        res.send(`The best player on the ranking: [${player}]`);
+    } catch (err) {
+        console.log({ message: err.message})
+    }
+};
+
+const getWorstPlayer = async (req, res) => {
+    try {
+        const player = await Player.findOne({}, {_id: 0, name:1, percentage: 1}).sort({percentage:1}).limit(1);
+        res.send(`The worst player on the ranking: [${player}]`);
+    } catch (err) {
+        console.log({ message: err.message})
+    }
+};
+
+
 module.exports = { createPlayer,
                    updatePlayer,
                    rollDices,
                    deleteThrows,
                    getPercentage,
                    getThrows,
-                   getPlayersPercentage }
+                   getPlayersPercentage,
+                   getBestPlayer,
+                   getWorstPlayer }

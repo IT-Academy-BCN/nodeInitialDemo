@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "10220b4a-a607-456e-85e7-cf3c7953a7c8",
+		"name": "joc_daus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add a player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yoda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/newPlayer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"newPlayer"
+					]
+				},
+				"description": "create a new player"
+			},
+			"response": []
+		},
+		{
+			"name": "update a player",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Han Solo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/updatePlayer/6218c6c75df411c1da6aa706",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"updatePlayer",
+						"6218c6c75df411c1da6aa706"
+					]
+				},
+				"description": "update and return a player"
+			},
+			"response": []
+		},
+		{
+			"name": "rollDices",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/rollDices/621b26f47883c618e2acfd35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"rollDices",
+						"621b26f47883c618e2acfd35"
+					]
+				},
+				"description": "appends a throw dices game to the player"
+			},
+			"response": []
+		},
+		{
+			"name": "delete all throws",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/deleteAllThrows/621a1c22cff0af74bcbfa63a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"deleteAllThrows",
+						"621a1c22cff0af74bcbfa63a"
+					]
+				},
+				"description": "removes all the dices throws from a player  "
+			},
+			"response": []
+		},
+		{
+			"name": "all players win percentage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/getPercentage/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"getPercentage",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all throws from a player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/getThrows/621b28ba7883c618e2acfd3e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"getThrows",
+						"621b28ba7883c618e2acfd3e"
+					]
+				},
+				"description": "get all throws from a player"
+			},
+			"response": []
+		},
+		{
+			"name": "percentage average",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/getPlayersPercentage/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"getPlayersPercentage",
+						""
+					]
+				},
+				"description": "get the average percentage from all player"
+			},
+			"response": []
+		},
+		{
+			"name": "worst player ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/getPlayers/loser/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"getPlayers",
+						"loser",
+						""
+					]
+				},
+				"description": "get the worst player on the ranking"
+			},
+			"response": []
+		},
+		{
+			"name": "best player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/getPlayers/winner/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"getPlayers",
+						"winner",
+						""
+					]
+				},
+				"description": "get the worst player on the ranking"
+			},
+			"response": []
+		}
+	]
+}
