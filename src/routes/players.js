@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const { playersGet } = require('../controllers/players');
+import { Router } from 'express';
+import { playersGet } from '../controllers/players';
 
 const router = Router();
 

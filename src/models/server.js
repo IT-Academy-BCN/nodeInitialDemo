@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 class Server {
     constructor() {
@@ -20,4 +20,4 @@ class Server {
     };
 };
 
-module.exports = Server;
+export default Server;
