@@ -1,5 +1,5 @@
 const Player = require('../models/player');
-const percent = require('./percentage');
+const percent = require('../utilities/percentage');
 
 async function updatePercentage(id, player) {
     try {
