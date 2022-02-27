@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Player = require('../models/player');
-const CP = require('../utils/percentage');
 const { createPlayer,
         updatePlayer,
         rollDices,
-        deleteThrows } = require('../controllers/mongoControlllers')
+        deleteThrows,
+        getPercentage } = require('../controllers/mongoControlllers')
 
 // add a new player 
 router.post('/newPlayer', createPlayer);
@@ -18,6 +18,9 @@ router.post('/rollDices/:id', rollDices);
 
 // delete all throws from a player
 router.delete('/deleteAllThrows/:id', deleteThrows);
+
+// get winning percentage from all players
+router.get('/getPercentage', getPercentage);
 
 
 
@@ -103,17 +106,6 @@ router.get('/numberOfWins/:id', (req, res, next) => {
 
 
 
-//? update winning percentage
-router.put('/updatePercentage/:id', (req, res, next) => {
-    Player.findById({_id: req.params.id}).then( (player) => {
-        let wins = player.winThrows;
-        let throws = player.totalThrows;
-        Player.findOneAndUpdate( {_id: req.params.id}, { $set: { percentage: CP.calculatePercentage(wins, throws)} } ) 
-        .then( (player) => {
-            res.send( "Player "+player.name+" has a: "+ player.percentage +" % of wins");
-        });
-    });
-});
 
 //? Update player number of throws
 router.put('/insertThrows/:id', (req, res, next) => {

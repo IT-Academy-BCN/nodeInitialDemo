@@ -1,5 +1,8 @@
-const Player = require('../models/player')
+const Player = require('../models/player');
 const Throw = require('../rollDices');
+const percentage = require('../utils/updatePercentage');
+const throws = require('../utils/updateThrows')
+const wins = require('../utils/updateWins')
 
 const createPlayer = async (req, res) => {
     
@@ -34,6 +37,9 @@ const rollDices = async (req, res) => {
     try {
         const id = req.params.id;
         const player = await Player.findOneAndUpdate( {_id:id}, { $push: { rolls: [Throw.roll()] } } )
+        await throws.updateThrows(id, player);
+        await wins.updateWins(id);
+        await percentage.updatePercentage(id, player);
         res.send(player);
     } catch (err) {
         console.log({ message: err.message})
@@ -48,9 +54,28 @@ const deleteThrows = async (req, res) => {
     } catch(err) {
         console.log({ message: err.message});
     }
-}
+};
+
+const getPercentage = async (req, res) => {
+    
+    try {
+        const players = await Player.find().sort({percentage: 1})
+        const playerList = players.map( player => {
+            const obj = {
+                _id: player.id,
+                player: player.name,
+                percentage: player.percentage
+            }
+            return obj
+        })
+        res.status(200).send({ players: playerList})
+    } catch (err) {
+        console.log({ message: err.message});
+    }  
+};
 
 module.exports = { createPlayer,
                    updatePlayer,
                    rollDices,
-                   deleteThrows }
+                   deleteThrows,
+                   getPercentage }

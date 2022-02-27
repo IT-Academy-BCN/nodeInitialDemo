@@ -5,17 +5,17 @@ const Schema = mongoose.Schema;
 const PlayerSchema = new Schema(
     {   
         name: { type: String, default: "ANONIM" },
-        percentage: Number,
-        totalThrows: Number,
-        winThrows: Number,
         rolls: [{
             diceA: Number,
             diceB: Number,
             total: Number,
-            win: Boolean,
-        }]
+            win: Boolean
+        }],
+        totalThrows: Number,
+        winThrows: Number,
+        percentage: Number
     }, 
-    {timestamps: true},
+        {timestamps: true},
 );
 
 const Player = mongoose.model('player', PlayerSchema)
