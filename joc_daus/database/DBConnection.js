@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
 
-if (process.env.NODE_ENV = "mongoDB") {
-        mongoose.connect('mongodb://127.0.0.1/players')
-        .then( () => console.log("✔️  Connect to mongoDB"))
-        .catch( err => console.log(`❌ NOT connected to mongoDB ${err.message}`))
+if (process.env.NODE_ENV === 'MONGO') {
+  const mongoPlug = require('./mongoPlug');
+  mongoPlug.mongoConnect()
 };
 
-if (process.env.NODE_ENV = "mySQL") {
- 
+
+if (process.env.NODE_ENV === 'SQL') {
+  const mysqlPlug = require('./mysqlPlug')
+  mysqlPlug.mysqlConnect()
 };

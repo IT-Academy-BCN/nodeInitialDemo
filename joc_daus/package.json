@@ -3,16 +3,20 @@
   "version": "1.0.0",
   "main": "joc_daus/index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
-    "mongoose": "^6.2.3"
+    "mongoose": "^6.2.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0",
+    "uniqid": "^5.4.0"
   },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon",
-    "startMongo": "set NODE_ENV = mongoDB && node index.js",
-    "startSQL": "set NODE_ENV = mySQL && node index.js",
-    "DEVstartMongo": "set NODE_ENV = mongoDB && nodemon",
-    "DEVstartSQL": "set NODE_ENV = mySQL && nodemon"
+    "startMongo": "set NODE_ENV=MONGO&& node index.",
+    "startSQL": "set NODE_ENV=SQL&& node index.js",
+    "DEVstartMongo": "set NODE_ENV=MONGO&&  nodemon",
+    "DEVstartSQL": "set NODE_ENV=SQL&& nodemon"
   },
   "repository": {
     "type": "git",
