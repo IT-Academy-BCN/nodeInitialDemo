@@ -9,7 +9,7 @@ const { createPlayer,
         getThrows,
         getPlayersPercentage,
         getBestPlayer,
-        getWorstPlayer } = require('../controllers/sqlControllers')
+        getWorstPlayer } = require('../controllers/mongoControllers')
 
 // add a new player 
 router.post('/newPlayer', createPlayer);
