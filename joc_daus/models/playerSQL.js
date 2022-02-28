@@ -4,7 +4,7 @@ module.exports = (sequelize, type) => {
         id: {
             type: type.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         name: {
             type: type.STRING,
@@ -23,12 +23,11 @@ module.exports = (sequelize, type) => {
         percentage: {
             type: type.DECIMAL(10,2), 
             defaultValue:0,
-        }
+        },
     }, 
         {
-            timestamps: true
+            timestamps: true,
+            updatedAt: true
         }
     )
-}
-
-Player.hasMany(Throws,{onDelete:'cascade'})
+};

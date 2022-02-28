@@ -4,7 +4,7 @@ module.exports = (sequelize, type) => {
         id: {
             type: type.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true 
         },
         diceA: type.INTEGER,
         diceB: type.INTEGER,
@@ -14,4 +14,5 @@ module.exports = (sequelize, type) => {
         updatedAt: false
     }
     )
-}
+};
+
