@@ -28,9 +28,13 @@ function Factory() {
     }
 
     function loadFile() {
-        let data = JSON.parse(fs.readFileSync(filepath).toString());
-        if ('tasks' in data)
+        try {
+            let data = JSON.parse(fs.readFileSync(filepath).toString());
             tasks = data.tasks;
+        } catch(e){
+            // Error en parsing, desa nou file buit
+            saveFile()
+        }
     }
 
     /*
