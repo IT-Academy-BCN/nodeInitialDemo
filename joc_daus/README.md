@@ -1,5 +1,5 @@
 
-# <div align="center" font-style="color:red;">**DICES🎲GAME**</div>
+# <div align="center" style="color:red;">**DICES🎲GAME**</div>
 
 Simulació de un joc de daus. 
 	
@@ -36,7 +36,8 @@ ___
 * NOTA  
  Podeu lleguir la documentació de les peticions fent clic al menú *view documentation*. Totes les peticions dirigides a un jugador en especial requereixen afegir un  *id* de jugador al final de la ruta. 
 
-![image](https://user-images.githubusercontent.com/85874705/143659824-9713e854-443c-48ea-9236-cc5280750935.png)
+![image](/joc_daus/media/postmanPeticion.png)
+
 
 1. Afegir un jugador al joc amb un nom de jugador. En el cas de no utilitzar nom el sistema asignara el nom **ANONIM**. El jugador podrá cambiar el seu nom sempre que vulgui.
 2. El jugador pot fer totes les tirades de daus que desitgi utilitzant l'opció **rollDices** i així acumular un registre de jugades.
@@ -46,4 +47,7 @@ ___
 6. Per tal de fer el **REGISTRE** és necessari entrar un nom d'usuari, una adreça de correu electronic valida i una contrasenya.
 ___
 ## <div align="center">Throw the craps!</div>
+
+copyright © 2020 download free![dicesImage](/joc_daus/media/craps.png)
+
 <div align="center"><img src="/joc_daus/media/craps.png"></div>
