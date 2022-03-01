@@ -1,5 +1,5 @@
 
-# <center><b style='color: red;'>**DICES🎲GAME**  </b></center>
+# <div align="center" font-style="color:red;">**DICES🎲GAME**</div>
 
 Simulació de un joc de daus. 
 	
@@ -45,5 +45,5 @@ ___
 5. Sempre que es faci el ***LOGIN*** El jugador també podrá eliminar les seves jugades afegint el token proporcionat a la capçalera de la petició amb el nom de clau **user-token**. És necessari estar registrat.
 6. Per tal de fer el **REGISTRE** és necessari entrar un nom d'usuari, una adreça de correu electronic valida i una contrasenya.
 ___
-## <center>Throw the craps!</center>
-<a><center>![imagen](/joc_daus/media/craps.png)</center></a>
+## <div align="center">Throw the craps!</div>
+<div align="center"><img src="/joc_daus/media/craps.png"></div>
