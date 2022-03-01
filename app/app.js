@@ -20,7 +20,7 @@ async function start(){
             type: 'rawlist',
             name: 'Aplicacio',
             message: (red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:")),
-            choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir'))]
+            choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir'))]
         
         })
 
@@ -55,6 +55,10 @@ async function triaOpcio(opcio) {
 
         case 'Actualitzar tasca':
             await actualitzar_tasca();
+            break;
+
+        case 'Esborrar totes les tasques':
+            await esborrar_tot();
             break;
 
 
@@ -120,3 +124,6 @@ async function actualitzar_tasca() {
         })
 
     }
+
+async function esborrar_tot();
+    await deleteAll();
