@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const token = require('../middleware/checkToken');
 
+if (process.env.NODE_ENV === 'SQL') {
+    controller = '../controllers/sqlControllers'
+} else if (process.env.NODE_ENV === 'MONGO') {
+    controller = '../controllers/mongoControllers'
+}
 const { createPlayer,
         updatePlayer,
         rollDices,
@@ -12,7 +17,7 @@ const { createPlayer,
         getBestPlayer,
         getWorstPlayer,
         register,
-        login } = require('../controllers/sqlControllers')
+        login } = require(controller);
 
 // add a new player 
 router.post('/newPlayer', createPlayer);
