@@ -46,4 +46,4 @@ ___
 6. Per tal de fer el **REGISTRE** és necessari entrar un nom d'usuari, una adreça de correu electronic valida i una contrasenya.
 ___
 ## <center>Throw the craps!</center>
-<a><center>![imagen](/joc_daus/media/craps.png)</a>
+<a><center>![imagen](/joc_daus/media/craps.png)</center></a>
