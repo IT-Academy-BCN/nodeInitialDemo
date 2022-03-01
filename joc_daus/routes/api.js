@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const token = require('../middleware/checkToken');
 
 const { createPlayer,
         updatePlayer,
@@ -9,7 +10,9 @@ const { createPlayer,
         getThrows,
         getPlayersPercentage,
         getBestPlayer,
-        getWorstPlayer } = require('../controllers/sqlControllers')
+        getWorstPlayer,
+        register,
+        login } = require('../controllers/sqlControllers')
 
 // add a new player 
 router.post('/newPlayer', createPlayer);
@@ -21,7 +24,7 @@ router.put('/updatePlayer/:id', updatePlayer);
 router.post('/rollDices/:id', rollDices);
 
 // delete all throws from a player
-router.delete('/deleteAllThrows/:id', deleteThrows);
+router.delete('/deleteAllThrows/:id', token.checkToken, deleteThrows);
 
 // get winning percentage from all players
 router.get('/getPercentage', getPercentage);
@@ -38,5 +41,10 @@ router.get('/getPlayers/winner', getBestPlayer);
 // get the worst player of ranking
 router.get('/getPlayers/loser', getWorstPlayer);
 
+// register a new user
+router.post('/register', register);
+
+// user login
+router.post('/login', login);
 
 module.exports = router;

@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "joc_daus/index.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.1",
     "mongoose": "^6.2.3",
     "mysql2": "^2.3.3",
     "sequelize": "^6.17.0",

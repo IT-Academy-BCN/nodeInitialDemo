@@ -1,12 +1,14 @@
-const configSQL= require('../config');
+const configSQL= require('./configSQL');
 const Sequelize = require('sequelize');
 const ThrowsModel = require('../models/throwsSQL')
 const PlayerModel = require('../models/playerSQL')
+const UserModel = require('../models/usersSQL');
 const sequelize = new Sequelize(configSQL.database, configSQL.user, configSQL.password, { dialect: 'mysql' });
 const mysql2 = require('mysql2');
 
 const Throws = ThrowsModel(sequelize, Sequelize);
 const Player = PlayerModel(sequelize, Sequelize);
+const User = UserModel(sequelize, Sequelize);
 
 Player.hasMany(Throws, {foreignKey: 'playerId', sourceKey: 'id'}, {onDelete: "cascade"})
 Throws.belongsTo(Player, {foreignKey: 'playerId', targetKey: 'id'});
@@ -26,4 +28,5 @@ async function mysqlConnect() {
 
 module.exports = { "mysqlConnect": mysqlConnect,
                    "Throws": Throws,
-                   "Player": Player }
+                   "Player": Player,
+                   "User": User }

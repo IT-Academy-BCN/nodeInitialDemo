@@ -1,6 +1,10 @@
 const uniqid = require('uniqid')
-const { Player, Throws } = require('../database/mysqlPlug');
-const Throw = require('../rollDices');
+const { Player, Throws, User } = require('../database/mysqlPlug');
+const Throw = require('../logicDices/rollDices');
+const { check, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const { createToken } = require('../utilities/createToken')
+
 
 const createPlayer = async (req, res) => {
   try {
@@ -11,7 +15,7 @@ const createPlayer = async (req, res) => {
   } catch (e){
     res.status(500).send({message: "Player already exists - " + e.message})
   }
-}
+};
 
 const updatePlayer = async (req, res) =>{
   const id = req.params.id
@@ -22,7 +26,7 @@ const updatePlayer = async (req, res) =>{
   } catch (e){
     res.status(404).message({message: 'player not found'})
   }
-}
+};
 
 const getPercentage = async(req, res) => {
   const players = await Player.findAll({ attributes:['id','name','percentage'] });
@@ -71,7 +75,7 @@ const rollDices = async (req, res) => {
   } catch (e) {
     res.status(500).send({message:e.message})
   }
-}
+};
 
 const deleteThrows = async(req, res) => {
   const id = req.params.id
@@ -87,7 +91,7 @@ const deleteThrows = async(req, res) => {
   } catch (e){
     res.status(500).send({message: e.message})
   }
-}
+};
 
 const getThrows = async(req, res) => {
   const id = req.params.id
@@ -101,7 +105,7 @@ const getThrows = async(req, res) => {
   } catch (e) {
     res.status(404).send({message:'player throws NOT found'})
   }
-}
+};
 
 
 const getPlayersPercentage = async(req, res) => {
@@ -113,7 +117,7 @@ const getPlayersPercentage = async(req, res) => {
   } catch(e){
     res.status(500).send({message:e.message})
   }
-}
+};
 
 const getBestPlayer = async(req, res) => {
   const bestWinRate = await Player.max('percentage')
@@ -124,7 +128,7 @@ const getBestPlayer = async(req, res) => {
   } catch (e) {
     res.status(500).send({message:e.message})
   }
-}
+};
 
 const getWorstPlayer = async(req, res) => {
   const worstWinRate = await Player.min('percentage')
@@ -135,7 +139,42 @@ const getWorstPlayer = async(req, res) => {
   } catch (e) {
     res.status(500).send({message:e.message})
   }
-}
+};
+
+const register = async (req, res) => {
+  [
+    check('username', 'username is mandatory').not().isEmpty(),
+    check('password', 'password is mandatory').not().isEmpty(),
+    check('email', 'email most be valid').isEmail()
+  ]
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() })
+    }
+
+    req.body.password = bcrypt.hashSync(req.body.password, 10)
+    const user = await User.create(req.body);
+    res.json(user);
+
+};
+
+const login = async (req, res) => {
+
+  const user = await User.findOne({ where: { email: req.body.email } });
+
+  if (user) {
+      const iguales = bcrypt.compareSync(req.body.password, user.password)
+      if (iguales) {
+          res.json({ access_granted:createToken(user) })
+      } else {
+          res.json({ error: "username o password incorrect"})
+      }
+  } else {
+      res.json({ error: "username o password incorrect"})
+  }
+};
+
 
 module.exports = {
   createPlayer,
@@ -146,5 +185,7 @@ module.exports = {
   getThrows,
   getPlayersPercentage,
   getBestPlayer,
-  getWorstPlayer
+  getWorstPlayer,
+  register,
+  login
 }

@@ -1,5 +1,5 @@
 const Player = require('../models/player');
-const Throw = require('../rollDices');
+const Throw = require('../logicDices/rollDices');
 const percentage = require('../middleware/updatePercentage');
 const throws = require('../middleware/updateThrows')
 const wins = require('../middleware/updateWins')
