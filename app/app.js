@@ -126,4 +126,6 @@ async function actualitzar_tasca() {
     }
 
 async function esborrar_tot();
-    await deleteAll();
+    tasks = await getAllTasks()
+    console.log(tasks);
+    await deleteAll(tasks);
