@@ -4,13 +4,21 @@
  const bodyParser  = require('body-parser');
  const addHeader   = require('./middlewareHeader')
  const checkHeader = require('./middlewareCheck')
+ const fs          = require('fs');
+
+
 
 app.use(fileUpload());
 app.use(bodyParser.json());
 
 app.get('/user', (req, res) => {
     const url = req.url;
-    res.json({ name: "xavier", edat: 48, url: url })
+    const objecteToSend = {name: "xavier", edat: 48, url: url};
+
+    fs.writeFile("./createdFiles/arxiu.json", JSON.stringify(objecteToSend), "utf8", (err) => {
+        if (err) throw err;
+        res.sendFile(__dirname + '/createdFiles/arxiu.json')
+    });
 });
 
 app.post('/upload', (req, res) => {
