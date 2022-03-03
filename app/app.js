@@ -19,8 +19,13 @@ async function start(){
         opcio = await inquirer.prompt({
             type: 'rawlist',
             name: 'Aplicacio',
+<<<<<<< HEAD
             message: (red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:")),
             choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir'))]
+=======
+            message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
+            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir']
+>>>>>>> Guillem
         
         })
 
@@ -31,7 +36,8 @@ async function start(){
 
 
 async function triaOpcio(opcio) {
-    console.log('Opció escollida: ', opcio.Aplicacio);
+    // Silencio perquè inquirer ja fa print del missatge d'opció triat
+    // console.log('Opció escollida: ', opcio.Aplicacio);
 
     switch (opcio.Aplicacio) {
         case 'Crear tasca':
@@ -43,12 +49,12 @@ async function triaOpcio(opcio) {
             break;
 
 
-        case 'Llistar tasques':
+        case 'Llistar totes les tasques':
             await llistar_tasques();
             break;
 
 
-        case 'Mostrar tasca':
+        case 'Mostrar una tasca':
             await mostrar_tasca();
             break;
 
@@ -57,6 +63,13 @@ async function triaOpcio(opcio) {
             await actualitzar_tasca();
             break;
 
+<<<<<<< HEAD
+=======
+        case 'Sortir':
+            process.exit(0);
+            break;
+        
+>>>>>>> Guillem
         case 'Esborrar totes les tasques':
             await esborrar_tot();
             break;
@@ -71,8 +84,12 @@ async function triaOpcio(opcio) {
 async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
+<<<<<<< HEAD
         message: (green("Introdueix el nom de l'autor:")),
 
+=======
+        message: "Introdueix el nom de l'autor:",
+>>>>>>> Guillem
     }, {
         name: 'description',
         message: (green('Nom de la tasca:')),
@@ -92,7 +109,7 @@ async function esborrar_tasca() {
     task = await getTask(task.id);
     console.log(red("Tasca esborrada: "));
     console.log(task);
-    await deleteTask(task);
+    await deleteTask(task.id);
 }
 
 
@@ -103,26 +120,38 @@ async function llistar_tasques() {
 
 
 async function mostrar_tasca() {
-    await inquirer.prompt({
+    task = await inquirer.prompt([{
         name: 'id',
         message: (green('id de la tasca:'))
 
-    })
+    }])
     task = await getTask(task.id)
     console.log(task);
 }
 
 
 async function actualitzar_tasca() {
-    inquirer.prompt({
+    task = await inquirer.prompt({
         name: 'id',
         message: (green('id de la tasca:'))
     })
+    
+    console.log('Actualitzar Tasca:');
+    console.log(await getTask(task.id));
+    opcio = await inquirer.prompt({
+        type: 'rawlist',
+        name: 'update',
+        message: "Quin camp vols modificar?",
+        choices: ['Autor', 'Descripció', 'Estat', 'Data d\'inici', 'Data de finalització', 'Torna enrera']
+    })
 
-        .then(task => {
-            // TODO aquesta deixeu-me-la per mi que posaré un update per cada camp
-        })
+    async function updateAndLog(task){
+        await updateTask(task.id, task);
+        console.log("Modificat tasca:")
+        console.log(await getTask(task.id));
+    }
 
+<<<<<<< HEAD
     }
 
 async function esborrar_tot();
@@ -130,3 +159,74 @@ async function esborrar_tot();
     console.log(tasks);
     await deleteAll(tasks);
     console.log(red("Totes les tasques esborrades "));
+=======
+    switch(opcio.update){
+        case 'Autor':
+            task2 = await inquirer.prompt([{
+                name: 'author',
+                message: 'nom de l\'autor:'
+            }])
+
+            task.author = task2.author;
+            await updateAndLog(task);
+            break;
+
+        case 'Descripció':
+            task2 = await inquirer.prompt([{
+                name: 'description',
+                message: 'Nova descripció:'
+            }])
+
+            task.description = task2.description;
+            await updateAndLog(task);
+            break;
+
+        case 'Estat':
+            task2 = await inquirer.prompt([{
+                name: 'state',
+                message: 'Nou estat (opcions vàlides: pending, open, finalized):'
+            }])
+
+            task.state = task2.state;
+            await updateAndLog(task);
+            break;
+
+        case 'Data d\'inici':
+            task2 = await inquirer.prompt([{
+                name: 'start_time',
+                message: 'Nova data d\'inici (Exemple format d\'entrada: 2020-04-10T17:14:00):'
+            }])
+
+            task.start_time = new Date(task2.start_time);
+            await updateAndLog(task);
+            break;
+
+
+        case 'Data de finalització':
+            task2 = await inquirer.prompt([{
+                name: 'end_time',
+                message: 'Nova data de finalització (Exemple format d\'entrada: 2020-04-10T17:14:00):'
+            }])
+
+            task.end_time = new Date(task2.end_time);
+            await updateAndLog(task);
+            break;
+
+        case 'Torna Enrera':
+            break;
+
+        default:
+            console.log('Error: opció no vàlida');
+        
+        }
+
+
+    }
+    
+async function esborrar_tot(){
+        tasks = await getAllTasks()
+        console.log(tasks);
+        await deleteAll(tasks);
+        console.log(red("Totes les tasques esborrades "));
+}
+>>>>>>> Guillem

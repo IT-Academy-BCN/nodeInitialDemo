@@ -28,9 +28,13 @@ function Factory() {
     }
 
     function loadFile() {
-        let data = JSON.parse(fs.readFileSync(filepath).toString());
-        if ('tasks' in data)
+        try {
+            let data = JSON.parse(fs.readFileSync(filepath).toString());
             tasks = data.tasks;
+        } catch(e){
+            // Error en parsing, desa nou file buit
+            saveFile()
+        }
     }
 
     /*
@@ -61,7 +65,8 @@ function Factory() {
 
 
     function getTaskIndex(id) {
-        return tasks.findIndex(task => task.id === id);
+        taskIndex = tasks.findIndex(task => task.id === parseInt(id));
+        return taskIndex
     }
 
     async function getTask(id) {
@@ -87,6 +92,9 @@ function Factory() {
     }
 
     async function updateTask(id, task) {
+        id = parseInt(id)
+        originalTask = await getTask(id)
+        task = {...originalTask, ...task, ...{id: id}}
         tasks[getTaskIndex(id)] = task;
         await saveFile();
     }
