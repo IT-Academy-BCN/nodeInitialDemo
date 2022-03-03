@@ -196,12 +196,11 @@ async function actualitzar_tasca() {
         
         }
 
+
+    }
+    
     async function esborrar_tot();
         tasks = await getAllTasks()
         console.log(tasks);
         await deleteAll(tasks);
         console.log(red("Totes les tasques esborrades "));
-    
-
-
-    }
