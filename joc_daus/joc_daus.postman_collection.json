@@ -14,16 +14,17 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Yoda\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"name\": \"Obi-Wan Kenobi\"\r\n} "
 				},
 				"url": {
 					"raw": "http://localhost:4000/newPlayer",
@@ -53,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Han Solo\"\r\n}",
+					"raw": "{\r\n    \"name\": \"ANONIM\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,7 +62,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/updatePlayer/6218c6c75df411c1da6aa706",
+					"raw": "http://localhost:4000/updatePlayer/621b72b9bf1c1a367ced421f",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -69,7 +70,7 @@
 					"port": "4000",
 					"path": [
 						"updatePlayer",
-						"6218c6c75df411c1da6aa706"
+						"621b72b9bf1c1a367ced421f"
 					]
 				},
 				"description": "update and return a player"
@@ -82,7 +83,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/rollDices/621b26f47883c618e2acfd35",
+					"raw": "http://localhost:4000/rollDices/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -90,7 +91,7 @@
 					"port": "4000",
 					"path": [
 						"rollDices",
-						"621b26f47883c618e2acfd35"
+						"4"
 					]
 				},
 				"description": "appends a throw dices game to the player"
@@ -106,10 +107,15 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "user-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsImNyZWF0ZWRBdCI6MTY0NjEzMzg2MywiZXhwZXJpZEF0IjoxNjQ2MTM0MTYzfQ.DPaq2lhN2VQZfHOv9YACIiC5YcC3p-mWKUA3BaWa-s0",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/deleteAllThrows/621a1c22cff0af74bcbfa63a",
+					"raw": "http://localhost:4000/deleteAllThrows/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -117,7 +123,7 @@
 					"port": "4000",
 					"path": [
 						"deleteAllThrows",
-						"621a1c22cff0af74bcbfa63a"
+						"2"
 					]
 				},
 				"description": "removes all the dices throws from a player  "
@@ -156,7 +162,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/getThrows/621b28ba7883c618e2acfd3e",
+					"raw": "http://localhost:4000/getThrows/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -164,7 +170,7 @@
 					"port": "4000",
 					"path": [
 						"getThrows",
-						"621b28ba7883c618e2acfd3e"
+						"1"
 					]
 				},
 				"description": "get all throws from a player"
@@ -233,6 +239,86 @@
 					]
 				},
 				"description": "get the worst player on the ranking"
+			},
+			"response": []
+		},
+		{
+			"name": "users register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Luke Skywalker",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "luke@theforcemail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"register"
+					]
+				},
+				"description": "users register"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Luke Skywalker",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "luke@theforcemail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "user login"
 			},
 			"response": []
 		}
