@@ -20,6 +20,10 @@ const createPlayer = async (req, res) => {
 const updatePlayer = async (req, res) =>{
   const id = req.params.id
   const { name } = req.body
+  const nameExists = Player.findOne({ where: {name: name} });
+  if (nameExists) {
+    res.send({message: "Player already exists. Select a new one"})
+  }
   try{
     await Player.update({name},{where:{id: id}})
     res.status(200).send({success: "player updated!"} )
