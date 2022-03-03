@@ -18,7 +18,7 @@ async function start(){
             type: 'rawlist',
             name: 'Aplicacio',
             message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'Sortir']
+            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir']
         
         })
 
@@ -57,7 +57,12 @@ async function triaOpcio(opcio) {
             break;
 
         case 'Sortir':
-            process.exit(0)
+            process.exit(0);
+            break;
+        
+        case 'Esborrar totes les tasques':
+            await esborrar_tot();
+            break;
 
 
         default:
@@ -190,6 +195,12 @@ async function actualitzar_tasca() {
             console.log('Error: opció no vàlida');
         
         }
+
+    async function esborrar_tot();
+        tasks = await getAllTasks()
+        console.log(tasks);
+        await deleteAll(tasks);
+        console.log(red("Totes les tasques esborrades "));
     
 
 
