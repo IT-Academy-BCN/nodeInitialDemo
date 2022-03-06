@@ -1,6 +1,6 @@
 import { connect } from 'mongoose';
 
-export const dbConnect = async () => {
+export const dbConnectMongo = async () => {
     try {
         await connect(process.env.MONGODB);
         console.log('Base de datos MongoDB online');
