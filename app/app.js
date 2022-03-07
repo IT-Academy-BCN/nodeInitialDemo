@@ -19,13 +19,8 @@ async function start(){
         opcio = await inquirer.prompt({
             type: 'rawlist',
             name: 'Aplicacio',
-<<<<<<< HEAD
             message: (red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:")),
             choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir'))]
-=======
-            message: "Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:",
-            choices: ['Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir']
->>>>>>> Guillem
         
         })
 
@@ -62,16 +57,13 @@ async function triaOpcio(opcio) {
         case 'Actualitzar tasca':
             await actualitzar_tasca();
             break;
-
-<<<<<<< HEAD
-=======
-        case 'Sortir':
-            process.exit(0);
-            break;
         
->>>>>>> Guillem
         case 'Esborrar totes les tasques':
             await esborrar_tot();
+            break;
+
+        case 'Sortir':
+            process.exit(0);
             break;
 
 
@@ -84,12 +76,8 @@ async function triaOpcio(opcio) {
 async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
-<<<<<<< HEAD
         message: (green("Introdueix el nom de l'autor:")),
 
-=======
-        message: "Introdueix el nom de l'autor:",
->>>>>>> Guillem
     }, {
         name: 'description',
         message: (green('Nom de la tasca:')),
