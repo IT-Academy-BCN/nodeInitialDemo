@@ -95,7 +95,7 @@ async function esborrar_tasca() {
         message: green('id de la tasca:')
     })
     task = await getTask(task.id);
-    console.log(reed("Tasca esborrada: "));
+    console.log(red("Tasca esborrada: "));
     console.log(task);
     await deleteTask(task.id);
 }
