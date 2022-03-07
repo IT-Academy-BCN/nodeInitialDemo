@@ -14,12 +14,13 @@ async function start(){
 
     while(true){
         // fer que el programa no surti a menys que agafis l'opció de sortir
-
+        
+        choices = [green('Crear tasca'), green('Esborrar tasca'), green('Llistar totes les tasques'),green('Mostrar una tasca'), green('Actualitzar tasca'), green('esborrar totes les tasques'), green('Sortir')]
         opcio = await inquirer.prompt({
             type: 'rawlist',
             name: 'Aplicacio',
             message: red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:"),
-            choices: [green('Crear tasca'), green('Esborrar tasca'), green('Llistar totes les tasques'),green('Mostrar una tasca'), green('Actualitzar tasca'), green('esborrar totes les tasques'), green('Sortir')]
+            choices: choices
         
         })
 
@@ -34,35 +35,35 @@ async function triaOpcio(opcio) {
     // console.log('Opció escollida: ', opcio.Aplicacio);
 
     switch (opcio.Aplicacio) {
-        case 'Crear tasca':
+        case choices[0]:
             await crear_tasca();
             break;
 
-        case 'Esborrar tasca':
+        case choices[1]:
             await esborrar_tasca();
             break;
 
 
-        case 'Llistar totes les tasques':
+        case choices[2]:
             await llistar_tasques();
             break;
 
 
-        case 'Mostrar una tasca':
+        case choices[3]:
             await mostrar_tasca();
             break;
 
 
-        case 'Actualitzar tasca':
+        case choices[4]:
             await actualitzar_tasca();
             break;
 
         
-        case 'Esborrar totes les tasques':
+        case choices[5]:
             await esborrar_tot();
             break;
 
-        case 'Sortir':
+        case choices[6]:
             process.exit(0);
             break;
 
