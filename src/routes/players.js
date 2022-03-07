@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { createNewPlayer, playersGet, playerGetId } from '../controllers/players-mongo';
+import { createNewPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mongo';
 
 export const routerPlayers = Router();
 
@@ -11,22 +11,22 @@ routerPlayers.get('/', playersGet);
 routerPlayers.get('/:id/games', playerGetId);
 
 // Returns the average success rate for all players.
-// routerPlayers.get('/ranking', playersGet);
+routerPlayers.get('/ranking', generalRanking);
 
 // Returns the player with the worst success rate.
-// routerPlayers.get('/ranking/loser', playersGet);
+routerPlayers.get('/ranking/loser', getWorstPlayer);
 
 // Returns the player with the highest success rate.
-// routerPlayers.get('/ranking/winner', playersGet);
+routerPlayers.get('/ranking/winner', getBetterPlayer);
 
 // Create a player.
 routerPlayers.post('/', createNewPlayer);
 
 // A specific player makes a roll.
-// routerPlayers.post('/:id/games', playersPost);
+routerPlayers.post('/:id/games', playerRollDices);
 
 // Modify player name.
-// routerPlayers.put('/', playersPut);
+routerPlayers.put('/', modifyPlayerName);
 
 // Removes player spins.
-// routerPlayers.delete('/:id/games', playersDelete);
+routerPlayers.delete('/:id/games', deleteGames);
