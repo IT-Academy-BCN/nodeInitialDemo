@@ -77,18 +77,10 @@ async function triaOpcio(opcio) {
 async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
-        message: green( "Introdueix el nom de l'autor:"),
+        message: green("Introdueix el nom de l'autor:"),
     }, {
         name: 'description',
         message: green('Nom de la tasca:'),
-    }, {
-        name: 'start_time',
-        message: green("Data d'inici de la tasca:") ,
-
-    }, {
-        name: 'end_time',
-        message: green("Data final de la tasca:")
-
 
     }])
     await saveNewTask(task);
@@ -103,7 +95,7 @@ async function esborrar_tasca() {
         message: green('id de la tasca:')
     })
     task = await getTask(task.id);
-    console.log(red("Tasca esborrada: "));
+    console.log(reed("Tasca esborrada: "));
     console.log(task);
     await deleteTask(task.id);
 }
@@ -151,7 +143,7 @@ async function actualitzar_tasca() {
         case 'Autor':
             task2 = await inquirer.prompt([{
                 name: 'author',
-                message: 'nom de l\'autor:'
+                message: green('nom de l\'autor:')
             }])
 
             task.author = task2.author;
@@ -206,13 +198,7 @@ async function actualitzar_tasca() {
             console.log(red('Error: opció no vàlida'));
         
         }
+    
 
 
     }
-    
-async function esborrar_tot(){
-        tasks = await getAllTasks()
-        console.log(tasks);
-        await deleteAll(tasks);
-        console.log(red("Totes les tasques esborrades "))
-}
