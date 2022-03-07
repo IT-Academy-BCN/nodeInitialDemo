@@ -1,7 +1,6 @@
 
 const inquirer = require('inquirer');
-const { red, blue, bold, green } = require("colorette");
-
+const { red, green } = require("colorette");
 
 require('dotenv').config()
 const { connect, getTask, getAllTasks, saveNewTask, updateTask, deleteTask, deleteAll } = require('./model/Tasks')
@@ -19,8 +18,8 @@ async function start(){
         opcio = await inquirer.prompt({
             type: 'rawlist',
             name: 'Aplicacio',
-            message: (red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:")),
-            choices: [(green('Crear tasca', 'Esborrar tasca', 'Llistar totes les tasques', 'Mostrar una tasca', 'Actualitzar tasca', 'esborrar totes les tasques', 'Sortir'))]
+            message: red("Benvinguda a l'aplicació TASQUES. Què vols fer? Escull una opció:"),
+            choices: [green('Crear tasca'), green('Esborrar tasca'), green('Llistar totes les tasques'),green('Mostrar una tasca'), green('Actualitzar tasca'), green('esborrar totes les tasques'), green('Sortir')]
         
         })
 
@@ -57,6 +56,7 @@ async function triaOpcio(opcio) {
         case 'Actualitzar tasca':
             await actualitzar_tasca();
             break;
+
         
         case 'Esborrar totes les tasques':
             await esborrar_tot();
@@ -76,15 +76,22 @@ async function triaOpcio(opcio) {
 async function crear_tasca() {
     task = await inquirer.prompt([{
         name: 'author',
-        message: (green("Introdueix el nom de l'autor:")),
-
+        message: green( "Introdueix el nom de l'autor:"),
     }, {
         name: 'description',
-        message: (green('Nom de la tasca:')),
+        message: green('Nom de la tasca:'),
+    }, {
+        name: 'start_time',
+        message: green("Data d'inici de la tasca:") ,
+
+    }, {
+        name: 'end_time',
+        message: green("Data final de la tasca:")
+
 
     }])
     await saveNewTask(task);
-    console.log((red(`Tasca creada:`)));
+    console.log(red(`Tasca creada:`));
     console.log(task);
         
 }
@@ -92,7 +99,7 @@ async function crear_tasca() {
 async function esborrar_tasca() {
     task = await inquirer.prompt({
         name: 'id',
-        message: (green('id de la tasca:')),
+        message: green('id de la tasca:')
     })
     task = await getTask(task.id);
     console.log(red("Tasca esborrada: "));
@@ -110,7 +117,7 @@ async function llistar_tasques() {
 async function mostrar_tasca() {
     task = await inquirer.prompt([{
         name: 'id',
-        message: (green('id de la tasca:'))
+        message: green('id de la tasca:')
 
     }])
     task = await getTask(task.id)
@@ -121,7 +128,7 @@ async function mostrar_tasca() {
 async function actualitzar_tasca() {
     task = await inquirer.prompt({
         name: 'id',
-        message: (green('id de la tasca:'))
+        message: green('id de la tasca:')
     })
     
     console.log('Actualitzar Tasca:');
@@ -129,21 +136,82 @@ async function actualitzar_tasca() {
     opcio = await inquirer.prompt({
         type: 'rawlist',
         name: 'update',
-        message: "Quin camp vols modificar?",
+        message: green("Quin camp vols modificar?"),
         choices: ['Autor', 'Descripció', 'Estat', 'Data d\'inici', 'Data de finalització', 'Torna enrera']
     })
 
     async function updateAndLog(task){
         await updateTask(task.id, task);
-        console.log("Modificat tasca:")
+        console.log(red("Modificat tasca:"))
         console.log(await getTask(task.id));
     }
 
-    }
+    switch(opcio.update){
+        case 'Autor':
+            task2 = await inquirer.prompt([{
+                name: 'author',
+                message: 'nom de l\'autor:'
+            }])
 
+            task.author = task2.author;
+            await updateAndLog(task);
+            break;
+
+        case 'Descripció':
+            task2 = await inquirer.prompt([{
+                name: 'description',
+                message: green('Nova descripció:')
+            }])
+
+            task.description = task2.description;
+            await updateAndLog(task);
+            break;
+
+        case 'Estat':
+            task2 = await inquirer.prompt([{
+                name: 'state',
+                message: green('Nou estat (opcions vàlides: pending, open, finalized):')
+            }])
+
+            task.state = task2.state;
+            await updateAndLog(task);
+            break;
+
+        case 'Data d\'inici':
+            task2 = await inquirer.prompt([{
+                name: 'start_time',
+                message: green('Nova data d\'inici (Exemple format d\'entrada: 2020-04-10T17:14:00):')
+            }])
+
+            task.start_time = new Date(task2.start_time);
+            await updateAndLog(task);
+            break;
+
+
+        case 'Data de finalització':
+            task2 = await inquirer.prompt([{
+                name: 'end_time',
+                message: green('Nova data de finalització (Exemple format d\'entrada: 2020-04-10T17:14:00):')
+            }])
+
+            task.end_time = new Date(task2.end_time);
+            await updateAndLog(task);
+            break;
+
+        case 'Torna Enrera':
+            break;
+
+        default:
+            console.log(red('Error: opció no vàlida'));
+        
+        }
+
+
+    }
+    
 async function esborrar_tot(){
-    tasks = await getAllTasks()
-    console.log(tasks);
-    await deleteAll(tasks);
-    console.log(red("Totes les tasques esborrades "))
+        tasks = await getAllTasks()
+        console.log(tasks);
+        await deleteAll(tasks);
+        console.log(red("Totes les tasques esborrades "))
 }
