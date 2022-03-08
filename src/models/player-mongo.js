@@ -3,7 +3,8 @@ import { Schema, model } from 'mongoose';
 const PlayerSchema = new Schema({
     name: {
         type: String,
-        unique: true
+        unique: true,
+        required: [true, 'Name is required']
     },
     date: String,
     totalGames: {
@@ -12,13 +13,14 @@ const PlayerSchema = new Schema({
     },
     gamesWon: {
         type: Number,
-        default:0
+        default: 0
     },
     wonRate: {
         type: Number,
         default: 0
     },
     playHistory: [Object]
-});
+},
+    { versionKey: false });
 
 export const Player = model('Player', PlayerSchema);

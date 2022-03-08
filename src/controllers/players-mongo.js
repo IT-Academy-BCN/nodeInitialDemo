@@ -2,36 +2,36 @@ import { Player } from '../models/player-mongo';
 import { rollDices } from '../models/dices';
 
 export const createNewPlayer = async (req, res) => {
+    console.log()
+
     try {
-        let name = req.body;
+        let { name } = await req.body;
         name ? true : name = 'ANONYMOUS'
         let date = new Date().toLocaleDateString();
 
-        const player = new Player({ name, date })
+        const player = Player.create({ name, date })
 
-        await player.save();
-        console.log(player);
         res.status(200).json({ player })
     } catch (error) {
-        res.status(500).send(console.log(error))
+        res.status(500).send(error)
     };
 };
 
-export const playersGet = async (res, req) => {
+export const playersGet = async (req, res) => {
     try {
-        const players = await Player.find();
+        const players = await Player.find({});
         const response = players.map(player => {
             const obj = {
                 _id: player._id,
                 player: player.name,
-                winRate: player.winRate
+                wonRate: player.wonRate
             }
             return obj;
         });
-        res.status(200).json({ players:response });
+        res.status(200).json({ players: response });
     } catch (error) {
         res.status(500).json({
-            error: 'Prueba'
+            error
         });
     };
 };
@@ -42,7 +42,7 @@ export const playerGetId = async (req, res) => {
         const player = await Player.findById({ _id: id });
         res.status(200).json({
             player: player.name,
-            rollList: player.rolls
+            rollList: player.playHistory
         });
     } catch (error) {
         res.status(500).json({
@@ -53,7 +53,7 @@ export const playerGetId = async (req, res) => {
 
 export const generalRanking = async (req, res) => {
     try {
-        const players = await Player.find();
+        const players = await Player.find({});
         const numPlayers = players.lenght;
         let sumWinRates = 0;
         players.forEach(player =>
@@ -92,29 +92,31 @@ export const playerRollDices = async (req, res) => {
         const player = await Player.findById({ _id: id });
         player.totalGames++;
         if (game.veredict === 'win') {
-            player.totalWins
+            player.gamesWon++
         };
-        player.rolls.push(game);
+        player.playHistory.push(game);
         player.winRate = parseFloat((
-            (player.totalWins / player.totalGames) * 100).toFixed(2));
+            (player.gamesWon / player.totalGames) * 100).toFixed(2));
         await player.save();
         res.status(200).json({
             name: player.name,
             rolled: game
         });
     } catch (error) {
-        res.status(500).json({
-            error
-        });
+        console.log(error)
     };
 };
 
 export const getBetterPlayer = async (req, res) => {
     try {
-        const players = await Player.find();
+        const players = await Player.find({});
         let max = 0;
         players.forEach(player =>
-            player.winRate > max ? max = player.winRate : null)
+            player.winRate > max ? max = player.winRate : null);
+        const betterPlayer = await Player.findOne({ winRate: max });
+        res.status(200).json({
+            betterPlayer
+        });
     } catch (error) {
         res.status(500).json({
             error
@@ -124,13 +126,13 @@ export const getBetterPlayer = async (req, res) => {
 
 export const getWorstPlayer = async (req, res) => {
     try {
-        const players = await Player.find();
+        const players = await Player.find({});
         let min = 100;
         players.forEach(player =>
             player.winRate < min ? min = player.winRate : null);
-        const worstPlayers = await Player.find({ winRate: min })
+        const worstPlayer = await Player.findOne({ winRate: min })
         res.status(200).json({
-            worstPlayers
+            worstPlayer
         });
     } catch (error) {
         res.status(500).json({
@@ -144,9 +146,9 @@ export const deleteGames = async (req, res) => {
     try {
         const player = await Player.findById({ _id: id });
         player.totalGames = 0;
-        player.totalWins = 0;
+        player.gamesWon = 0;
         player.winRate = 0;
-        player.rolls = [];
+        player.playHistory = [];
         await player.save();
         res.status(200).json({
             message: 'Game removed',
