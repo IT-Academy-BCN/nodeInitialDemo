@@ -28,15 +28,15 @@ export const playersGet = async (res, req) => {
             }
             return obj;
         });
-        res.status(200).json({ response });
+        res.status(200).json({ players:response });
     } catch (error) {
         res.status(500).json({
-            error
+            error: 'Prueba'
         });
     };
 };
 
-export const playerGetId = (req, res) => {
+export const playerGetId = async (req, res) => {
     const id = req.params.id;
     try {
         const player = await Player.findById({ _id: id });
@@ -139,7 +139,7 @@ export const getWorstPlayer = async (req, res) => {
     };
 };
 
-export const deleteGames = (req, res) => {
+export const deleteGames = async (req, res) => {
     const id = req.params.id;
     try {
         const player = await Player.findById({ _id: id });
