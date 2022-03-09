@@ -9,7 +9,7 @@ export const createNewPlayer = async (req, res) => {
         name ? true : name = 'ANONYMOUS'
         let date = new Date().toLocaleDateString();
 
-        const player = Player.create({ name, date })
+        const player = await Player.create({ name, date })
 
         res.status(200).json({ player })
     } catch (error) {

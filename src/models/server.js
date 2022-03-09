@@ -1,6 +1,5 @@
 import express from 'express';
 import { dbConnectMongo } from '../database/config-mongoose';
-import bodyParser from 'body-parser';
 
 import { routerPlayers } from '../routes/players';
 import { routerLogin } from '../routes/login';
@@ -32,7 +31,7 @@ class Server {
     };
 
     middlewares(){
-        this.app.use(bodyParser.json());
+        this.app.use(express.json());
     };
 
     routes() {

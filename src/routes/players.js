@@ -4,13 +4,13 @@ import { createNewPlayer, playersGet, playerGetId, generalRanking, modifyPlayerN
 
 export const routerPlayers = Router();
 
-// returns the list of all players in the system with their average success rate. [x]
+// returns the list of all players in the system with their average success rate.
 routerPlayers.get('/', playersGet);
 
-// Returns the list of plays by a player. [x]
+// Returns the list of plays by a player.
 routerPlayers.get('/:id/games', playerGetId);
 
-// Returns the average success rate for all players. [x]
+// Returns the average success rate for all players.
 routerPlayers.get('/ranking', generalRanking);
 
 // Returns the player with the worst success rate.
@@ -20,15 +20,13 @@ routerPlayers.get('/ranking/loser', getWorstPlayer);
 routerPlayers.get('/ranking/winner', getBetterPlayer);
 
 // Create a player.
-//! When I put a name, not found
 routerPlayers.post('/', createNewPlayer);
 
 // A specific player makes a roll.
 routerPlayers.post('/:id/games', playerRollDices);
 
 // Modify player name.
-//! Not found
-routerPlayers.put('/', modifyPlayerName);
+routerPlayers.put('/:id', modifyPlayerName);
 
-// Removes player spins. [x]
+// Removes player spins.
 routerPlayers.delete('/:id/games', deleteGames);
