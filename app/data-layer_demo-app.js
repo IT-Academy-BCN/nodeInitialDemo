@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { red, blue, bold } = require("colorette");
 
 demo();
 
@@ -15,8 +16,8 @@ async function demo(){
 
     // Crea task
     let task1 = {
-        description: 'Crear TO-DO app',
-        author: 'Guillem Parrado'
+        description: (blue('Crear TO-DO app')),
+        author: (blue('Guillem Parrado'))
         // No cal state: és required però s'inicialitza sol a 'pending'
         // No cal start_date: és required però s'inicialitza sol a current time
     }
@@ -27,8 +28,8 @@ async function demo(){
 
     // Crea second task
     let task2 = {
-        description: '2nd Task',
-        author: 'Laura O'
+        description: (blue('2nd Task')),
+        author: (blue('Laura O'))
     };
 
     // Save task
@@ -36,8 +37,8 @@ async function demo(){
 
     // Crea third task
     let task3 = {
-        description: '3rd Task',
-        author: 'Anon.'
+        description: (blue('3rd Task')),
+        author: (blue('Anon.'))
     };
 
     // Save task
@@ -48,11 +49,11 @@ async function demo(){
 
         // Recupera tots els tasks
         const tasks = await getAllTasks();
-        console.log(tasks);
+        console.log(blue(tasks));
 
         // Recupera un task a partir d'una id
         const recovered_1st_task = await getTask(task1.id);      // recupera 1r task
-        console.log(recovered_1st_task);
+        console.log(blue(recovered_1st_task));
 
         // Modifica un task
         const recovered_2nd_task = await getTask(task2.id);             // recupera 2n task

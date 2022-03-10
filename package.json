@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colorette": "^2.0.16",
     "dotenv": "^15.0.0",
     "inquirer": "^8.2.0",
     "mongoose": "^6.1.9",
