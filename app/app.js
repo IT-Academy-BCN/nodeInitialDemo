@@ -73,14 +73,6 @@ async function crear_tasca() {
     }, {
         name: 'description',
         message: 'Nom de la tasca:',
-    }, {
-        name: 'start_time',
-        message: "Data d'inici de la tasca:" ,
-
-    }, {
-        name: 'end_time',
-        message: "Data final de la tasca:" 
-
 
     }])
     await saveNewTask(task);
