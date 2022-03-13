@@ -1,5 +1,7 @@
 # 📌🧑🏻‍💻 Entrega 4.2: Node REST + DB + JWT
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/1.png)
+
 _Proyecto realizado como trabajo del Sprint 4.2 del curso node.js en IT Academy Barcelona por [Daniel Españadero](https://github.com/DanielEspanadero)._
 
 ### Requisitos previos 📋
@@ -19,11 +21,11 @@ npm install
 
 ## Estructura del proyecto
 
-
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/5.png)
 
 ## Dependencias
 
-Por un lado, las dependencias de desarrillo que he utilizado son Babel y Nodemon.
+Por un lado, las dependencias de desarrollo que he utilizado son Babel y Nodemon.
 Por otro lado las dependencias que he utilizado son cors, dotenv, express, jsonwebtoken, mongoose, sequelize y mysql2. Me he dejado en el tintero el use de bcryptjs para validar la contraseña ya que a modo de demostración utilizé un condicional para obtener un JWT funcional a través de un usuario y contraseña para validar rutas.
 
 ## Variables de entorno 🪛
@@ -59,9 +61,21 @@ Para realizar la autenticación introducir en el endpoint /login los siguientes 
     "password": "12345"
 }
 ```
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/2.png)
+
 Para validar el token en el resto de endpoints, tenemos dos maneras de hacerlo:
 1º - Añadir al header la KEY 'Authorization' y como VALUE le pasamos el token que hayamos generado en el endpoint login.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/3.png)
+
 2º - A través de la URL añadimos después del endpoint ?Authorization= seguido del token que hayamos generado.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/4.png)
+
+⚠️ NOTA ⚠️: Si no se añade correctamente el JWT, el acceso al endpoint será denegado.
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/6.png)
 
 ## Endpoints
 Los endpoint que he utilizado para realizar este juego de dados son los siguientes:
@@ -72,6 +86,8 @@ Devuelve un listado de todos los jugadores del sistema con su porcentaje medio d
 ```
 /players
 ```
+
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/7.png)
 
 Devuelve un listado de jugadas realizadas por un jugador:
 ```
