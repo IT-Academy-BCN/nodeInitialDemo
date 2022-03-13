@@ -1,32 +1,36 @@
 import { Router } from 'express';
 
-import { createNewPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mongo';
+import { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mongo';
+import mysql from '../controllers/players-mysql';
+import { validateToken } from '../../middlewares/validate-jwt';
 
-export const routerPlayers = Router();
+const router = Router();
 
 // returns the list of all players in the system with their average success rate.
-routerPlayers.get('/', playersGet);
+router.get('/', validateToken, playersGet);
 
 // Returns the list of plays by a player.
-routerPlayers.get('/:id/games', playerGetId);
+router.get('/:id/games', validateToken, playerGetId);
 
 // Returns the average success rate for all players.
-routerPlayers.get('/ranking', generalRanking);
+router.get('/ranking', validateToken, generalRanking);
 
 // Returns the player with the worst success rate.
-routerPlayers.get('/ranking/loser', getWorstPlayer);
+router.get('/ranking/loser', validateToken, getWorstPlayer);
 
 // Returns the player with the highest success rate.
-routerPlayers.get('/ranking/winner', getBetterPlayer);
+router.get('/ranking/winner', validateToken, getBetterPlayer);
 
 // Create a player.
-routerPlayers.post('/', createNewPlayer);
+router.post('/', validateToken, createPlayer);
 
 // A specific player makes a roll.
-routerPlayers.post('/:id/games', playerRollDices);
+router.post('/:id/games', validateToken, playerRollDices);
 
 // Modify player name.
-routerPlayers.put('/:id', modifyPlayerName);
+router.put('/:id', validateToken, modifyPlayerName);
 
 // Removes player spins.
-routerPlayers.delete('/:id/games', deleteGames);
+router.delete('/:id/games', validateToken, deleteGames);
+
+export default router;

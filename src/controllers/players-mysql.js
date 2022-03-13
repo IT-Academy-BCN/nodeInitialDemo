@@ -16,6 +16,20 @@ export const createNewPlayer = async (req, res) => {
     }
 };
 
+export const playersGet = async (req, res) => {
+    try {
+        const players = await Player.findAll({
+            attributes: ['id', 'name', 'winRate'],
+            include: [roll]
+        });
+        res.status(200).json({
+            players
+        });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+};
+
 export const modifyPlayerName = async (req, res) => {
     try {
         const id = req.params.id;
@@ -29,18 +43,4 @@ export const modifyPlayerName = async (req, res) => {
             error: 'Player not found'
         });
     };
-};
-
-export const getAllPlayers = async (req, res) => {
-    try {
-        const players = await Player.findAll({
-            attributes: ['id', 'name', 'winRate'],
-            include: [roll]
-        });
-        res.status(200).json({
-            players
-        });
-    } catch (error) {
-        res.status(500).json({error});
-    }
 };

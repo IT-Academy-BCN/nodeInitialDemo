@@ -1,8 +1,8 @@
 import express from 'express';
 import { dbConnectMongo } from '../database/config-mongoose';
 
-import { routerPlayers } from '../routes/players';
-import { routerLogin } from '../routes/login';
+import routerPlayers from '../routes/players';
+import routerLogin from '../routes/login';
 
 class Server {
     constructor() {

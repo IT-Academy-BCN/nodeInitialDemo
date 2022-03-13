@@ -1,19 +1,20 @@
-import { define } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../database/config-sequelize';
 
-export const Roll = define('Roll', {
+export const Roll = sequelize.define('Roll', {
     id: {
-        type: DataTypes.INTERGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     diceA: {
-        type: DataTypes.INTERGER
+        type: DataTypes.INTEGER
     },
     diceB: {
-        type: DataTypes.INTERGER
+        type: DataTypes.INTEGER
     },
     rollScore: {
-        type: DataTypes.INTERGER
+        type: DataTypes.INTEGER
     },
     veredict: {
         type: DataTypes.STRING
@@ -24,9 +25,9 @@ export const Roll = define('Roll', {
     }
 );
 
-export const Player = define('Player', {
+export const Player = sequelize.define('Player', {
     id: {
-        type: DataTypes.INTERGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
@@ -40,7 +41,7 @@ export const Player = define('Player', {
         defaultValue: 0
     },
     totalWins: {
-        type: DataTypes.INTERGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     },
     winRate: {
