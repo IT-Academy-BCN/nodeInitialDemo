@@ -65,6 +65,7 @@ Para realizar la autenticación introducir en el endpoint /login los siguientes 
 ![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/2.png)
 
 Para validar el token en el resto de endpoints, tenemos dos maneras de hacerlo:
+<br>
 1º - Añadir al header la KEY 'Authorization' y como VALUE le pasamos el token que hayamos generado en el endpoint login.
 
 ![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/3.png)
@@ -141,6 +142,4 @@ Borrar las jugadas del jugador seleccionado:
 ```
 
 ## Licencia 📄
-_Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENCIA](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/LICENSE) para más detalles._
-
-## ¿Cómo hice este proyecto? 📝
+_Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENCIA](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/LICENSE) para más detalles._
