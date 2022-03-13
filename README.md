@@ -1,13 +1,43 @@
 # 📌🧑🏻‍💻 Entrega 4.2: Node REST + DB + JWT
 
+_Proyecto realizado como trabajo del Sprint 4.2 del curso node.js en IT Academy Barcelona por [Daniel Españadero](https://github.com/DanielEspanadero)._
+
+### Requisitos previos 📋
+
+Para que el proyecto funcione correctamente, se recomienda tener una serie de programas instalados y configurados adecuadamente:
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Node.js y npm](https://nodejs.org/es/)
+- [MongoDB](https://docs.mongodb.com/manual/installation/)
+- [MySQL Server](https://dev.mysql.com/downloads/)
+
+### Instalación 🔧
+
+Recuerda ejecutar el siguiente comando en la terminal para instalar las dependencias y que todo funcione correctamente:
+```
+npm install
+```
+
 ## Estructura del proyecto
+
+
 
 ## Dependencias
 
+Por un lado, las dependencias de desarrillo que he utilizado son Babel y Nodemon.
+Por otro lado las dependencias que he utilizado son cors, dotenv, express, jsonwebtoken, mongoose, sequelize y mysql2. Me he dejado en el tintero el use de bcryptjs para validar la contraseña ya que a modo de demostración utilizé un condicional para obtener un JWT funcional a través de un usuario y contraseña para validar rutas.
 
-## Variables de entorno
+## Variables de entorno 🪛
 
 Para configurar las variables de entorno, tendrás que crear un archivo .env y rellenar los elementos que se encuentran el el archivo .example.env
+
+## Comandos para ejecutar ⌨️
+
+⚠️ ANTES DE COMENZAR, RECUERDA TENER INICIADO EL SERVIDOR DE MONGODB Y MYSQL ⚠️
+
+_Una vez que todos los programas y dependencias necesarios estén instalados, simplemente ejecute el siguiente comando:_
+```
+npm start
+```
 
 ## Sequelize (Nivel 1 ⭐️)
 
@@ -93,3 +123,8 @@ Borrar las jugadas del jugador seleccionado:
 ```
 /players/:id/games
 ```
+
+## Licencia 📄
+_Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENCIA](https://github.com/DanielEspanadero/nodeInitialDemo/blob/dev-teams/LICENSE) para más detalles._
+
+## ¿Cómo hice este proyecto? 📝
