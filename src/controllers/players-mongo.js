@@ -53,13 +53,9 @@ export const playerGetId = async (req, res) => {
 
 export const generalRanking = async (req, res) => {
     try {
-        const players = await Player.find({});
-        const totalPlayers = players.lenght;
-        let sumWonRates = 0;
-        players.forEach(player => sumWonRates += player.wonRate);
-        const generalWonRate = sumWonRates / totalPlayers;
+        const players = await Player.find({}).sort({ wonRate: -1 });
         res.status(200).json({
-            generalWonRate
+            players
         });
     } catch (error) {
         res.status(500).json({
