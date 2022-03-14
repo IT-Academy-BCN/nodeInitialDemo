@@ -1,4 +1,6 @@
+# Node Initial Demo Omar
 
+Aquest repo l'estic fent servir per ensenyar com s'han de fer les entregues per pull request (14/3/22).
 
 ## Node Initial Demo
 
