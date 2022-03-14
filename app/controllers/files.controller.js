@@ -1,11 +1,20 @@
 const uploadFile =  (req, res) => {
 
-    if (!req.files.image) {
-        res.status(400).send('No file uploaded. Expected "image" field and being non empty');
+
+    if (!req.files?.image) {
+        res.status(400).send({
+            status: false, 
+            message: 'No file uploaded. Expected "image" file field and being non empty'
+        });
+        return
     }
 
     if (!req.files.image.mimetype.includes('image')) {
-        res.status(400).send('File mimetype is not an image');
+        res.status(400).send({
+            status: false,
+            message: 'File mimetype is not an image'
+        });
+        return
     }
 
     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
