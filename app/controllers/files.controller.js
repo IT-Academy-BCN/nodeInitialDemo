@@ -21,7 +21,7 @@ const uploadFile =  (req, res) => {
     const image = req.files.image;
 
     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-    image.mv('./uploads/' + image.name);
+    image.mv('./uploads/' + getFormattedDatetime() + image.name);
 
     //send response
     res.send({
@@ -35,6 +35,19 @@ const uploadFile =  (req, res) => {
     });
 };
 
+const getFormattedDatetime = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    
+    const formattedDate = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+
+    return formattedDate;
+};
 
 module.exports = {
     uploadFile
