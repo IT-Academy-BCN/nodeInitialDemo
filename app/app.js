@@ -13,7 +13,7 @@ const routes = require('./routes');
 app.use(bodyParser.json());
 app.use(cors());
 app.use(cache.notCached);
-app.use(auth.basicAuth);
+app.use('/time' ,auth.basicAuth);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload({
     createParentPath: true
