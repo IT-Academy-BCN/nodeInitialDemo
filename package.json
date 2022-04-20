@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon app/app.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^9.0.2",
+    "express": "^4.17.3",
     "pm2": "^5.2.0"
   },
   "devDependencies": {
