@@ -8,8 +8,14 @@ Crea un servidor amb Express que retorni a una petició GET a l'endpoint
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');  // para leer body petición POST
+const fileUpload = require('express-fileupload');
 
 app.use(bodyParser.json());
+
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 const PORT = 5555;
 
@@ -31,7 +37,7 @@ l'extensió de l'arxiu no coincideixi amb aquestes.
 // https://ed.team/blog/como-subir-archivos-al-servidor-con-nodejs
 // Nivel 1 Ejercicio 2
 app.post('/upload', (req, res) => {
-    console.log(req.url);
+    console.log(req.files || "ups");
     res.json({
         status:"OK"
     });
