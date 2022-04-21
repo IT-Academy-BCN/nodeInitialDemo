@@ -1,14 +1,9 @@
-/*
-Nivell 1
-- Exercici 1
-Crea un servidor amb Express que retorni a una petició GET a l'endpoint
- /user un json amb el teu nom, edat i la url des d'on es fa la petició.
-*/
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');  // para leer body petición POST
 const fileUpload = require('express-fileupload');
+// multer
+const path = require('path');
 
 app.use(bodyParser.json());
 
@@ -19,47 +14,65 @@ app.use(fileUpload({
 
 const PORT = 5555;
 
-// Nivel 1 Ejercicio 1
+// Nivel 1 Ejercicio 1 ##################################################################
 app.get('/user', (req, res) => {
     res.json({
         name: 'Luis',
         edad: 41,
-        url: req.hostname  // TODO: ¿url desde donde se hace la petición"
+        url: req.hostname + req.originalUrl
     });
 });
 
-/*
-- Exercici 2
-Afegeix un endpoint /upload per a pujar al servidor un arxiu de tipus 
-png, jpg o gif que retorni un missatge d'error en cas que 
-l'extensió de l'arxiu no coincideixi amb aquestes.
-*/
-// https://ed.team/blog/como-subir-archivos-al-servidor-con-nodejs
-// Nivel 1 Ejercicio 2
+// Nivel 1 Ejercicio 2 ##################################################################
 app.post('/upload', (req, res) => {
-    console.log(req.files || "ups");
-    res.json({
-        status:"OK"
-    });
-});
-
-
-
-
-
-
-
-
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
     
+    const img = req.files?.imgfile;
+    //const img = (req.files) ? req.files.img : null; 
+    
+    if (!img) { // !req.files || !req.files.imgfile
+        res.json({
+            status: "Error",
+            msg: "No se ha subido fichero"
+        });
+        return;
+    }        
+
+    const imgNameArr = img.name.split('.');
+    const imgExt = imgNameArr[imgNameArr.length-1].toLowerCase();
+    const extensionesValidas = ['png','jpg','gif'];
+
+    if (!extensionesValidas.includes(imgExt)){
+        res.json({
+            status: "Error",
+            msg: "Extensión " + imgExt + " no válida. Las extensiones válidas son: " + extensionesValidas
+        });
+        return;
+    }
+    
+    const f = (new Date()).toISOString();
+    const marcaFecha = f.replaceAll(':','-').replace('T','-').replace('.','-').replace('Z','');
+    console.log(marcaFecha);
+
+    const imgPath = path.join(__dirname, "/uploads/", marcaFecha  + "-" + img.name);
+
+    img.mv(imgPath, ( err ) => {
+        if ( err ){
+            res.json({
+                status: "Error",
+                err
+            });
+        }
+
+        res.json({
+            status:"OK",
+            msg: "imagen subida"
+        });
+    });    
+});
 
 
-
+// Nivel 2 Ejercicio 1 ##################################################################
 /*
-
 Nivell 2
 - Exercici 1
 Creu un endpoint /time que rebi per POST com a paràmetre un JSON 
@@ -70,6 +83,10 @@ Sharing) en les respostes, ja sigui mitjançant Express o mitjançant
 un altre middleware.
 */
 
+
+
+
+// Nivel 3 Ejercicio 1 ##################################################################
 /*
 Nivell 3
 - Exercici 1
@@ -77,3 +94,18 @@ Afegeixi un middleware a l'endpoint anterior que retorni un HTTP
 Status 401 - Unauthorized si la capçalera de la petició no conté 
 autenticació bàsica (usuari i contrasenya).
 */
+
+
+
+
+// 404
+app.use((req, res, next) => {
+    res.status(404).send('Ups! not found');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+    
+
+
