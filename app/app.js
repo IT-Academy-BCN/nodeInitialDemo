@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');  // para leer body petición POST
 const fileUpload = require('express-fileupload');
-// multer
+const cors = require('cors');
+// otra opción multer: https://www.npmjs.com/package/multer 
 const path = require('path');
 
 app.use(bodyParser.json());
@@ -73,16 +74,38 @@ app.post('/upload', (req, res) => {
 
 // Nivel 2 Ejercicio 1 ##################################################################
 /*
-Nivell 2
-- Exercici 1
-Creu un endpoint /time que rebi per POST com a paràmetre un JSON 
-amb el nom d'usuari i retorni un objecte JSON que contingui l'hora 
-i data actual. Inclogui un middleware que afegeixi la 
-capçalera Cache-control: no-cache. Habiliti CORS (Cross-Origin Resource 
-Sharing) en les respostes, ja sigui mitjançant Express o mitjançant 
-un altre middleware.
+TODO: DUDAS: no se si tienen que ser los dos middlewares en uno solo o así vale.
+No tengo claro si se aplican a /time o a todo.
 */
 
+app.use('/time', (req, res, next) => {
+    //res.set('Cache-control', 'public, max-age=300');
+    res.set('Cache-control', 'no-cache');
+    next();
+});
+
+
+app.use('/time', cors()); 
+
+
+
+app.post('/time', ( req, resp ) => {
+    const user = req.body?.username;
+    if(!user) {
+        resp.json({
+            status:"Error",
+            msg: "Usuario no indicado"
+        });
+        return
+    }
+
+    const today =(new Date()).toISOString().split('T');
+
+    resp.json({
+        fecha: today[0],
+        hora: today[1].substring(0,8)
+    })
+})
 
 
 
@@ -98,9 +121,13 @@ autenticació bàsica (usuari i contrasenya).
 
 
 
+// TODO: Códigos de error
+
+//TODO: readme en condiciones
+
 // 404
 app.use((req, res, next) => {
-    res.status(404).send('Ups! not found');
+    res.status(404).json({status: "Error", msg: 'Ups! not found'});
 });
 
 app.listen(PORT, () => {
