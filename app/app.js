@@ -14,8 +14,11 @@ app.use(fileUpload({
 
 const PORT = 5555;
 
-const respuesta = (req, res) => {
-    
+const respuestaEstandar = (res, statusCode, status, msg) => {
+    res.status(statusCode).json({
+        status,
+        msg
+    });
 }
 
 // Nivel 1 Ejercicio 1 ##################################################################
@@ -34,10 +37,7 @@ app.post('/upload', (req, res) => {
     //const img = (req.files) ? req.files.img : null; 
    
     if (!img) { // !req.files || !req.files.imgfile
-        res.status(400).json({
-            status: "Error",
-            msg: "No se ha subido fichero"
-        });
+        respuestaEstandar(res, 400, "Error", "Nos se ha subido fichero");
         return;
     }        
 
@@ -46,41 +46,23 @@ app.post('/upload', (req, res) => {
     const extensionesValidas = ['png','jpg','gif'];
 
     if (!extensionesValidas.includes(imgExt)){
-        res.status(415).json({  // Unsuported media type...
-            status: "Error",
-            msg: "Extensión " + imgExt + " no válida. Las extensiones válidas son: " + extensionesValidas
-        });
+        const msg = "Extensión " + imgExt + " no válida. Las extensiones válidas son: " + extensionesValidas;
+        respuestaEstandar(res, 415, "Error", msg);
         return;
     }
-
-    /* // imagenes no validas NO FUNCIONA
-    if (img.mimetype.indexOf('image') === -1 ) {
-        res.status(415).json({  // Unsuported media type...
-            status: "Error",
-            msg: "Archivo dañado y/o no permitido"
-        });
-        return;
-    }
-    */
 
     const f = (new Date()).toISOString();
     const marcaFecha = f.replaceAll(':','-').replace('T','-').replace('.','-').replace('Z','');
-    console.log(marcaFecha);
-
+    
     const imgPath = path.join(__dirname, "/uploads/", marcaFecha  + "-" + img.name);
 
     img.mv(imgPath, ( err ) => {
         if ( err ){
-            res.status(500).json({ // ¿error del server?
-                status: "Error",
-                err
-            });
+            respuestaEstandar(res, 500, "Error", err);
+            return;
         }
 
-        res.status(200).json({
-            status:"OK",
-            msg: "imagen subida"
-        });
+        respuestaEstandar(res, 200, "OK", "imagen subida");
     });    
 });
 
@@ -104,10 +86,7 @@ app.use('/time', (req, res, next) => {
     const user = req.headers.user;
     const pass = req.headers.pass;
     if(!user || !pass) {
-        res.status(401).json({
-            status: "Error",
-            msg:"Usuario y/o contraseña no proporcionados"
-        });
+        respuestaEstandar(res, 401, "Error", "Usuario y/o contraseña no proporcionados");
         return;
     }
     // damos por hecho que user y pass son correctos
@@ -117,14 +96,10 @@ app.use('/time', (req, res, next) => {
 app.post('/time', ( req, resp ) => {
     const user = req.body?.username;
     if(!user) {
-        resp.status(401).json({
-            status:"Error",
-            msg: "Usuario no indicado"
-        });
+        respuestaEstandar(res, 401, "Error", "Usuario no indicado");
         return
     }
     const today =(new Date()).toISOString().split('T');
-
     resp.status(200).json({
         fecha: today[0],
         hora: today[1].substring(0,8)
@@ -133,7 +108,7 @@ app.post('/time', ( req, resp ) => {
 
 // 404
 app.use((req, res, next) => {
-    res.status(404).json({status: "Error", msg: 'Ups! not found'});
+    respuestaEstandar(res, 404, "Error", "Ups! not found");
 });
 
 
