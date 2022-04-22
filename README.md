@@ -1,5 +1,5 @@
 # Entrega 4.1: Node REST Server
-La aplicación trabaja en el puesto **5555**.
+La aplicación trabaja en el puerto **5555**.
 Para iniciar el servidor:
 ```
 npm run dev
