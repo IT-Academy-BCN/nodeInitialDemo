@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "3d76cf97-9821-4c1c-83da-974b1df1b805",
+		"name": "NODEJS_API_REST_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener User (N1E1)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Foto JPG (N1E2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imgfile",
+							"type": "file",
+							"src": "S4.1/snake.jPg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Foto PNG (N1E2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imgfile",
+							"type": "file",
+							"src": "S4.1/Bulbasaur.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Foto GIF (N1E2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imgfile",
+							"type": "file",
+							"src": "S4.1/ungif.gif"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Foto Sin Foto (N1E2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imgfile",
+							"type": "file",
+							"src": "/C:/Users/formacio/Desktop/LUIS/ITAcademy_node_S4.1_REST_SERVER-/img/2021.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"upload"
+					],
+					"query": [
+						{
+							"key": "imgFile",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Foto Archivo txt (N1E2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imgfile",
+							"type": "file",
+							"src": "S4.1/archivodetexto.TXT"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Time (N2E1 + E2)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user",
+						"value": "luisito",
+						"type": "text"
+					},
+					{
+						"key": "pass",
+						"value": "bleljeejejekje",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"userluis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Time (N2E1 + E2) sin user y pass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"userluis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5555/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5555/holiwi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"holiwi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
