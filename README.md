@@ -1,4 +1,10 @@
 # Entrega 4.1: Node REST Server
+## inicializar proyecto
+Es necesario tener instalado npm.
+Para instalar dependencias:
+```
+npm install
+```
 La aplicación trabaja en el puerto **5555**.
 Para iniciar el servidor:
 ```
