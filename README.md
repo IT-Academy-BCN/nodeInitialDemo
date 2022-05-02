@@ -1,4 +1,5 @@
-
+# Developers Team
+Clare, Victor, Luis
 # Node Initial Project
 
 ### Project Structure
