@@ -1,1 +1,4 @@
-console.log("holiwi");
+'use strict';
+const logic = require('./inquirer');
+
+logic();
