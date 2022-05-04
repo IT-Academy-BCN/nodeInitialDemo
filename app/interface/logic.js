@@ -37,8 +37,8 @@ let userList = [];
 
 async function logic() {
     try {
-        let answer;
-        let message;
+        let answer = '';
+        let message = '' ;
         while (true) {
             
             console.clear(); // Clear console
