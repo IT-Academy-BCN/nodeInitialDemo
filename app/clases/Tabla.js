@@ -12,23 +12,23 @@ class Tabla {
         
     }
 
-    crearTarea(){
+    crearTODO(){
         
     }
 
-    actualizarTarea(){
+    actualizarTODO(){
         
     }
 
-    borrarTarea(){
+    borrarTODO(){
 
     }
 
-    verTarea(){
+    verTODO(){
         
     }
 
-    listarTarea(){
+    listarTODO(){
         
     }
 

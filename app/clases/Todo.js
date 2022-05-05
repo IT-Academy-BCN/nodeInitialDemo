@@ -1,4 +1,4 @@
-class Tarea {
+class TODO {
     constructor(titulo, usuario) {
         // this.id = id generated
         this.estado = "TODO";
@@ -9,4 +9,4 @@ class Tarea {
         this.usuario = usuario;
     }
 }
-module.exports = Tarea;
+module.exports = TODO;
