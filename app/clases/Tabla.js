@@ -8,6 +8,10 @@ class Tabla {
         
     }
 
+    listarUsuario(){
+        
+    }
+
     crearUsuario(){
         
     }
