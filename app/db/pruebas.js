@@ -4,6 +4,9 @@ const { DatabaseJson } = require('./database-json');
 
 const bd = new DatabaseJson();
 bd.createUser("Luis");
+bd.createUser("Anna");
+/*
+
 bd.createUser("Peter");
 bd.createUser("Juanillo");
 
@@ -19,7 +22,7 @@ bd.createTodo({
     title: "Titulo bliblibli",
     user: "Luis"
 });
-
+*/
 
 console.log(bd.getUsers());
 console.log(bd.getTodos());

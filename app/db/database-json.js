@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { exit } = require('process');
 const { Database } = require('./database');
 
 class DatabaseJson extends Database {
@@ -20,8 +21,7 @@ class DatabaseJson extends Database {
     }
 
     createUser (user) {
-        // user exists?
-        if (this.jsonDb.users.findIndex((u) => u === user) === -1) {
+        if (!this.jsonDb.users.includes(user)) {
             this.jsonDb.users.push(user);
             this.saveData();
             return true;
@@ -71,24 +71,23 @@ class DatabaseJson extends Database {
         try {
             fs.writeFileSync(this.jsonDbFile, JSON.stringify(this.jsonDb));
         } catch (error) {
-            console.log(error); // Al ser app de consola no se si se llegará a ver...
+            console.log(error);
+            exit(1);
         }
         
     }
 
     loadData() {
-        let result;
         try {
             if(fs.existsSync(this.jsonDbFile)) {
-                result = JSON.parse(fs.readFileSync(this.jsonDbFile));  
-                return result;
+                return JSON.parse(fs.readFileSync(this.jsonDbFile));;
             } else {
                 return;
             }
             
         } catch (error) {
             console.log( error );
-            return;
+            exit(1);
         }      
     }    
 }
