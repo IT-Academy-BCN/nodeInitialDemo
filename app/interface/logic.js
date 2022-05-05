@@ -20,7 +20,7 @@ const listTasks = Symbol("listTasks");
 const seeTask = Symbol("seeTask");
 
 // Flow control variable
-let stage = userMenu;
+let nextScreen = userMenu;
 
 // TODO: variables to be changed when DB module implemented.
 let user;
@@ -47,22 +47,22 @@ async function logic() {
  
             message = ''; // Clear message
 
-            switch(stage) {
+            switch(nextScreen) {
 
                 case userMenu:
                     answer = await renderUserMenu();
                     switch (answer.userMenu) {
                         case 'select':
                             if (userList.length){
-                                stage = userSelect;
+                                nextScreen = userSelect;
                             } else {
                                 message = `There is no user yet.`;
-                                stage = userCreate; // As there is no user created yet, go to createUser screen
+                                nextScreen = userCreate; // As there is no user created yet, go to createUser screen
                             }
                             break;
 
                         case 'create':
-                            stage = userCreate; // Go to createUser screen
+                            nextScreen = userCreate; // Go to createUser screen
                             break;
 
                         default:
@@ -73,7 +73,7 @@ async function logic() {
                 case userSelect:
                     answer = await renderUserSelect(userList);
                     user = answer.username;
-                    stage = mainMenu; // After user is selected we go to mainMenu screen
+                    nextScreen = mainMenu; // After user is selected we go to mainMenu screen
                     break;
 
                 case userCreate:
@@ -90,7 +90,7 @@ async function logic() {
                         }
                     }
 
-                    stage = userMenu; // After user is created we go to userMenu screen
+                    nextScreen = userMenu; // After user is created we go to userMenu screen
                     break;
 
                 case mainMenu:
