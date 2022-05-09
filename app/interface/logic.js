@@ -7,7 +7,8 @@
 
 // Imports
 const {renderUserMenu, renderUserSelect, renderUserCreate} = require('./user_menu');
-const {renderMainMenu, renderCreateTask, renderListTasks, renderSeeTask} = require('./main_menu');
+const {renderMainMenu, renderCreateTask, renderListTasks, renderSeeTask, pause} = require('./main_menu');
+const { exit } = require('process');
 
 
 // Stages of our inquire flow
@@ -32,7 +33,7 @@ Beware! userList is an array these objects
 
 This is done this way to easy the inquirer element list.
  */
-let userList = [];
+let userList = ['Victor'];
 
 
 async function logic() {
@@ -96,8 +97,32 @@ async function logic() {
                 case mainMenu:
                     //TODO
                     {
-                        console.log('TODO: renderMainMenu');
-                        exit(1);
+                        const answer = await renderMainMenu();
+                                                
+                        switch (answer.mainMenu) {
+                            case 'crearTarea':
+                                // TODO
+                                exit(1);
+                                break;
+                            case 'actualizarTarea':
+                                // TODO
+                                exit(1);
+                                break;
+                            case 'borrarTarea':
+                                // TODO
+                                exit(1);
+                                break;
+                            case 'verTarea':
+                                // TODO
+                                message = `Ver Tarea`;
+                                nextScreen = seeTask;
+                                break;
+                            case 'listarTareas':
+                                exit(1);
+                                break;
+                            default:
+                                //exit(1);
+                        }
                     }
                     break;
                     
@@ -112,22 +137,32 @@ async function logic() {
                 case listTasks:
                     //TODO
                     {
-                        console.log('TODO: listTasks');
-                        exit(1);
+                        console.log('TODO: listTask');
+                        exit(1);         
                     }
                     break;
                     
                 case seeTask:
                     //TODO
-                    {
-                        console.log('TODO: seeTask');
-                        exit(1);
+                    {                        
+                        const answer = await renderSeeTask(user);
+                        const {status, id, title, horaCreacion} = answer.listTask;
+                        console.log(`    Status: ${status}\n    Id: ${id}\n    Title: ${title}\n    HoraCreación: ${horaCreacion}`);
+                        
+                        const pauseResponse = await pause('Continuar...');
+                        
+                        if (pauseResponse.ok) {
+                            message = '';
+                            nextScreen = mainMenu; 
+                        }
+                        else {
+                            exit(1);
+                        }                                                
                     }
                     break;
 
                 default:
                     throw new Error("Incorrect stage");
-                    break;
 
             }
         }
