@@ -145,9 +145,10 @@ async function logic() {
                 case seeTask:
                     //TODO
                     {                        
-                        const answer = await renderSeeTask(user);
-                        const {status, id, title, horaCreacion} = answer.listTask;
-                        console.log(`    Status: ${status}\n    Id: ${id}\n    Title: ${title}\n    HoraCreación: ${horaCreacion}`);
+                        const answer = await renderSeeTask();
+                        const {status, id, user, title, horaCreacion} = answer.listTask;
+                        //console.log(`    Status: ${status}\n    Id: ${id}\n    Title: ${title}\n    User: ${user}\n    HoraCreación: ${horaCreacion}`);
+                        console.table({status, id, title, user, horaCreacion});
                         
                         const pauseResponse = await pause('Continuar...');
                         
