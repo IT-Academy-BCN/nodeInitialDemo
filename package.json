@@ -2,11 +2,11 @@
   "name": "nodeinitialdemo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app/app",
-    "dev": "nodemon app/app"
+    "start": "node app/app.js",
+    "dev": "nodemon app/app.js"
 
   },
   "author": "Clare, Victor, Luis",
