@@ -9,6 +9,7 @@
 const {renderUserMenu, renderUserSelect, renderUserCreate} = require('./user_menu');
 const {renderMainMenu, renderCreateTask, renderListTasks, renderSeeTask, pause} = require('./main_menu');
 const { exit } = require('process');
+const TaskList = require('../clases/TaskList');
 
 
 // Stages of our inquire flow
@@ -19,6 +20,10 @@ const mainMenu = Symbol("mainMenu");
 const createTask = Symbol("createTask");
 const listTasks = Symbol("listTasks");
 const seeTask = Symbol("seeTask");
+
+//
+const taskList = new TaskList();
+
 
 // Flow control variable
 let nextScreen = userMenu;
@@ -100,24 +105,24 @@ async function logic() {
                         const answer = await renderMainMenu();
                                                 
                         switch (answer.mainMenu) {
-                            case 'crearTarea':
+                            case 'createTask':
                                 // TODO
                                 exit(1);
                                 break;
-                            case 'actualizarTarea':
+                            case 'updateTask':
                                 // TODO
                                 exit(1);
                                 break;
-                            case 'borrarTarea':
+                            case 'deleteTask':
                                 // TODO
                                 exit(1);
                                 break;
-                            case 'verTarea':
+                            case 'seeTask':
                                 // TODO
                                 message = `Ver Tarea`;
                                 nextScreen = seeTask;
                                 break;
-                            case 'listarTareas':
+                            case 'listTasks':
                                 exit(1);
                                 break;
                             default:

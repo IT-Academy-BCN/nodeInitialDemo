@@ -13,24 +13,24 @@ return inquirer.prompt([
         message: 'Choose Task',
         choices: [
             {
-                value: 'crearTarea',
-                name: 'Crear Tarea',
+                value: 'createTask',
+                name: 'Create Task',
             },
             {
-                value: 'actualizarTarea',
-                name: 'Actualizar tarea',
+                value: 'updateTask',
+                name: 'Update Task',
             },
             {
-                value: 'borrarTarea',
-                name: 'Borrar tarea',
+                value: 'deleteTask',
+                name: 'Delete Task',
             },
             {
-                value: 'verTarea',
-                name: 'Ver tarea',
+                value: 'seeTask',
+                name: 'See task',
             },
             {
-                value: 'listarTareas',
-                name: 'Listar tareas',
+                value: 'listTasks',
+                name: 'List Tasks',
             }
         ]
     }
@@ -45,9 +45,9 @@ function renderListTasks () {
 // TODO
 }
 
-function renderSeeTask (user) {
+function renderSeeTask () {
 // TODO: acceder a lista de tareas a través de clases o bd
-    let listaTareas = [
+    let taskList = [
         {
             id: 1,
             title: 'Revisar documentación Inquirer',
@@ -92,7 +92,7 @@ function renderSeeTask (user) {
         },
     ]
     // ordenamos lista
-    listaTareas.sort((a,b) => {
+    taskList.sort((a,b) => {
         if ( a.status.toLowerCase() < b.status.toLowerCase()) {
             return -1;
         }
@@ -107,10 +107,10 @@ function renderSeeTask (user) {
     // Generamos choices a imprimir
     const choices = [];
 
-    for (let tarea of listaTareas) {
+    for (let task of taskList) {
         choices.push({
-            value: tarea,
-            name: tarea.status + ' - ' + tarea.title + ' - ' + tarea.user
+            value: task,
+            name: task.status + ' - ' + task.title + ' - ' + task.user
         });
     }
     

@@ -1,4 +1,4 @@
-class TODO {
+class Task {
     constructor(titulo, usuario) {
         this.id = null
         this.estado = "TODO";
@@ -9,4 +9,4 @@ class TODO {
         this.usuario = usuario;
     }
 }
-module.exports = TODO;
+module.exports = Task;
