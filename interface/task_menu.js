@@ -11,8 +11,8 @@ function renderTaskMenu(taskId) {
     const task = taskList.getTask(taskId);
 
     // Print task via command line
-    const {status, id, user, title, horaCreacion} = task;
-    console.table({status, id, title, user, horaCreacion});
+    const {status, id, createdBy, title, createdAt} = task;
+    console.table({status, id, title, createdBy, createdAt});
 
     return inquirer.prompt([
         {

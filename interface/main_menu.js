@@ -54,7 +54,7 @@ function renderListTasks () {
 
         choices.push({
             value: task.id,
-            name: task.status.padEnd(9) + task.id.toString().padEnd(4) + task.user.padEnd(10).substring(0, 10) + task.title
+            name: task.status.padEnd(9) + task.id.toString().padEnd(4) + task.createdBy.padEnd(10).substring(0, 10) + task.title
         });
     }
 

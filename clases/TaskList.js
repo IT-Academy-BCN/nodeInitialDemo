@@ -2,8 +2,16 @@ const { DatabaseJson } = require("../db/database-json");
 
 module.exports = class TaskList {
     constructor() {
+
+       if(typeof TaskList.instance === "object") {
+        return TaskList.instance;
+        }
+
         // TODO: Lógica seleccionar BD json/mysql/mongo
-       this.bd = new DatabaseJson();
+        this.bd = new DatabaseJson();
+
+        TaskList.instance = this;
+        return this;
     }
 
     /*

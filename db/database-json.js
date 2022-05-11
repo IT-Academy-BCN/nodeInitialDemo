@@ -39,8 +39,8 @@ class DatabaseJson extends Database {
         const todo = {
             id: this.jsonDb.nextTodoId++,
             title,
-            horaCreacion: new Date(),
-            user
+            createdAt: new Date(),
+            createdBy: user
         };
         this.jsonDb.todos.push(todo);
         this.saveData();
