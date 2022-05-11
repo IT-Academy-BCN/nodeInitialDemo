@@ -16,6 +16,10 @@ function renderUserMenu() {
                 {
                     value: 'create',
                     name: 'Create new user',
+                },
+                {
+                    value: 'exit',
+                    name: 'Exit',
                 }
             ]
         }

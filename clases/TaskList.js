@@ -31,8 +31,8 @@ module.exports = class TaskList {
 
     }
 
-    getTask(){
-        
+    getTask(id){
+        return this.bd.getTask(id);
     }
 
     getTasks(){

@@ -57,7 +57,7 @@ class DatabaseJson extends Database {
     }
 
     getTask( id ) {
-        // TODO: getTask
+        return this.jsonDb.todos.find(t => t.id === id);
     }
 
     getTasks () {

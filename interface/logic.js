@@ -74,6 +74,10 @@ async function logic() {
                             nextScreen = userCreate; // Go to createUser screen
                             break;
 
+                        case 'exit':
+                            console.log('Bye :)');
+                            exit(0);
+
                         default:
                             throw new Error("Incorrect renderUserMenu");
                     }
@@ -111,9 +115,17 @@ async function logic() {
                             exit(1);
                             break;
 
-                            case 'listTasks':
-                                nextScreen = listTasks;
+                        case 'listTasks':
+                            nextScreen = listTasks;
                             break;
+
+                        case 'changeUser':
+                            nextScreen = userMenu;
+                            break;
+
+                        case 'exit':
+                            console.log('Bye :)');
+                            exit(0);
 
                         default:
                             throw new Error("Wrong mainMenu option")
@@ -123,11 +135,16 @@ async function logic() {
 
                 case listTasks:
                     answer = await renderListTasks();
-                    task = answer.task;
-                    nextScreen = taskMenu;
+                    if (answer.task === 'mainMenu'){
+                        nextScreen = mainMenu;
+                    } else {
+                        task = answer.task;
+                        nextScreen = taskMenu;
+                    }
                     break;
 
                 case taskMenu:
+
                     answer = await renderTaskMenu(task);
 
                     switch (answer.taskMenu) {
@@ -141,6 +158,10 @@ async function logic() {
                             exit(1);
                             break;
 
+                        case 'mainMenu':
+                            nextScreen = mainMenu;
+                            break;
+
                         default:
                             throw new Error("Wrong taskMenu option")
                     }
@@ -149,10 +170,7 @@ async function logic() {
 
                 case createTask:
                     //TODO
-                    {
-                        console.log('TODO: createTask');
-                        exit(1);
-                    }
+                    exit(1);
                     break;
 
                 default:

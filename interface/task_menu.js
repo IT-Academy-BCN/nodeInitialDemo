@@ -2,10 +2,16 @@
 
 const inquirer = require('inquirer');
 
-function renderTaskMenu(task) {
-    console.log(task)
+const TaskList = require('../clases/TaskList');
+
+const taskList = new TaskList();
+
+function renderTaskMenu(taskId) {
+
+    const task = taskList.getTask(taskId);
+
+    // Print task via command line
     const {status, id, user, title, horaCreacion} = task;
-    //console.log(`    Status: ${status}\n    Id: ${id}\n    Title: ${title}\n    User: ${user}\n    HoraCreación: ${horaCreacion}`);
     console.table({status, id, title, user, horaCreacion});
 
     return inquirer.prompt([
@@ -16,20 +22,27 @@ function renderTaskMenu(task) {
             choices: [
                 {
                     value: 'updateTask',
-                    name: 'Update task',
+                    name: 'Update task (TODO)',
                 },
                 {
                     value: 'deleteTask',
-                    name: 'Delete task',
+                    name: 'Delete task (TODO)',
                 },
                 {
-                    value: 'exit',
-                    name: 'Back to Main Menu',
+                    value: 'mainMenu',
+                    name: 'Go to Main Menu',
                 }
             ]
         }
     ])
 }
 
+function renderUpdateTask(taskId) {
+    // TODO
+}
 
-module.exports = {renderTaskMenu};
+function renderDeleteTask(taskId) {
+    // TODO
+}
+
+module.exports = {renderTaskMenu, renderUpdateTask, renderDeleteTask};

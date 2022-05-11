@@ -21,7 +21,15 @@ function renderMainMenu () {
                 },
                 {
                     value: 'createTask',
-                    name: 'Create Task',
+                    name: 'Create Task (TODO)',
+                },
+                {
+                    value: 'changeUser',
+                    name: 'Change user',
+                },
+                {
+                    value: 'exit',
+                    name: 'Exit',
                 }
             ]
         }
@@ -45,21 +53,29 @@ function renderListTasks () {
     for (let task of list) {
 
         choices.push({
-            value: task,
+            value: task.id,
             name: task.status.padEnd(9) + task.id.toString().padEnd(4) + task.user.padEnd(10).substring(0, 10) + task.title
         });
     }
-    
+
+    choices.push({
+        value: 'mainMenu',
+        name: "Go back to Main Menu"
+
+    })
+
     return inquirer.prompt([
         {
             type: 'list',
-            name: 'listTask',
+            name: 'task',
             message: '=== Task list ===\n\n  Status   ID  User      Title',
             choices
         }
     ]);
 }
 
+function renderCreateTasks () {
+// TODO
+}
 
-
-module.exports = {renderMainMenu, renderListTasks};
+module.exports = {renderMainMenu, renderListTasks, renderCreateTasks};
