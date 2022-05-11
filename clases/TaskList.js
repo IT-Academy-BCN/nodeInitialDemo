@@ -1,6 +1,6 @@
 const { DatabaseJson } = require("../db/database-json");
 
-class TaskList {
+module.exports = class TaskList {
     constructor() {
         // TODO: Lógica seleccionar BD json/mysql/mongo
        this.bd = new DatabaseJson();
@@ -36,8 +36,7 @@ class TaskList {
     }
 
     getTasks(){
-        
+        return this.bd.getTasks();
     }
 
 }
-module.exports = TaskList;

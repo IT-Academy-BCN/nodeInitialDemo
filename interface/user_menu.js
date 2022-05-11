@@ -3,12 +3,11 @@
 const inquirer = require('inquirer');
 
 function renderUserMenu() {
-    console.log('=== User Menu ===');
     return inquirer.prompt([
         {
             type: 'list',
             name: 'userMenu',
-            message: 'Choose user',
+            message: '=== User Menu ===',
             choices: [
                 {
                     value: 'select',
@@ -24,12 +23,11 @@ function renderUserMenu() {
 }
 
 function renderUserSelect(userList) {
-    console.log('=== Select User ===');
     return inquirer.prompt([
         {
             type: 'list',
             name: 'username',
-            message: 'Choose user',
+            message: '=== Select User ===',
             choices: userList
         }
     ])

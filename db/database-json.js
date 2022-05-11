@@ -8,8 +8,8 @@ class DatabaseJson extends Database {
         
         super();
 
-        this.jsonDbFile = 'bd.json';
-        this.jsonDb = this.loadData();        
+        this.jsonDbFile = __dirname + '/bd.json';
+        this.jsonDb = this.loadData();
 
         if(!this.jsonDb) {
             this.jsonDb = {
@@ -63,9 +63,6 @@ class DatabaseJson extends Database {
     getTasks () {
         return this.jsonDb.todos;
     }
-
-
-
 
     saveData() {
         try {
