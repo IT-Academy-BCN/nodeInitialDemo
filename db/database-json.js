@@ -35,7 +35,7 @@ class DatabaseJson extends Database {
         return this.jsonDb.users;
     }
 
-    createTodo ({title, user}) { // lo suyo sería recibir por parámetro objeto TODO
+    createTask ({title, user}) { // lo suyo sería recibir por parámetro objeto TODO
         const todo = {
             id: this.jsonDb.nextTodoId++,
             title,
@@ -46,21 +46,21 @@ class DatabaseJson extends Database {
         this.saveData();
     }
 
-    updateTodo ( id ) {
-        // TODO: updateTodo
+    updateTask ( id ) {
+        // TODO: updateTask
         this.saveData();
     }
 
-    deleteTodo ( id ) {
-        // TODO: deleteTodo
+    deleteTask ( id ) {
+        // TODO: deleteTask
         this.saveData();
     }
 
-    getTodo( id ) {
-        // TODO: getTodo
+    getTask( id ) {
+        // TODO: getTask
     }
 
-    getTodos () {
+    getTasks () {
         return this.jsonDb.todos;
     }
 

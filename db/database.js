@@ -8,15 +8,15 @@ class Database {
 
     getUsers () {}
 
-    createTodo (todo) {}
+    createTask (todo) {}
 
-    updateTodo ( id ) {}
+    updateTask ( id ) {}
 
-    deleteTodo ( id ) {}
+    deleteTask ( id ) {}
 
-    getTodo( id ) {}
+    getTask( id ) {}
 
-    getTodos () {}  
+    getTasks () {}  
 }
 
 module.exports = {
