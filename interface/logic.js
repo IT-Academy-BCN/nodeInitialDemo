@@ -10,6 +10,8 @@ const {renderUserMenu, renderUserSelect, renderUserCreate} = require('./user_men
 const {renderMainMenu, renderCreateTask, renderListTasks, renderSeeTask, pause} = require('./main_menu');
 const { exit } = require('process');
 const TaskList = require('../clases/TaskList');
+const { renderTaskMenu } = require('./task_menu');
+const { Console } = require('console');
 
 
 // Stages of our inquire flow
@@ -19,7 +21,7 @@ const userCreate = Symbol("userCreate");
 const mainMenu = Symbol("mainMenu");
 const createTask = Symbol("createTask");
 const listTasks = Symbol("listTasks");
-const seeTask = Symbol("seeTask");
+const taskMenu = Symbol("taskMenu");
 
 //
 const taskList = new TaskList();
@@ -45,6 +47,7 @@ async function logic() {
     try {
         let answer = '';
         let message = '' ;
+        let task = '';
         while (true) {
             
             console.clear(); // Clear console
@@ -71,6 +74,10 @@ async function logic() {
                             nextScreen = userCreate; // Go to createUser screen
                             break;
 
+                        case 'exit':
+                            console.log('Bye :)');
+                            exit(0);
+
                         default:
                             throw new Error("Incorrect renderUserMenu");
                     }
@@ -87,7 +94,6 @@ async function logic() {
                     let userCreated = answer.username;
                     if(userCreated != null && userCreated != undefined && userCreated != ""){
 
-
                         if (userList.some(e => e.name === answer.username)) {
                             message = `User already created.`;
                         } else {
@@ -100,71 +106,71 @@ async function logic() {
                     break;
 
                 case mainMenu:
-                    //TODO
-                    {
-                        const answer = await renderMainMenu();
-                                                
-                        switch (answer.mainMenu) {
-                            case 'createTask':
-                                // TODO
-                                exit(1);
-                                break;
-                            case 'updateTask':
-                                // TODO
-                                exit(1);
-                                break;
-                            case 'deleteTask':
-                                // TODO
-                                exit(1);
-                                break;
-                            case 'seeTask':
-                                // TODO
-                                message = `Ver Tarea`;
-                                nextScreen = seeTask;
-                                break;
-                            case 'listTasks':
-                                exit(1);
-                                break;
-                            default:
-                                //exit(1);
-                        }
+
+                    answer = await renderMainMenu();
+        
+                    switch (answer.mainMenu) {
+                        case 'createTask':
+                            // TODO
+                            exit(1);
+                            break;
+
+                        case 'listTasks':
+                            nextScreen = listTasks;
+                            break;
+
+                        case 'changeUser':
+                            nextScreen = userMenu;
+                            break;
+
+                        case 'exit':
+                            console.log('Bye :)');
+                            exit(0);
+
+                        default:
+                            throw new Error("Wrong mainMenu option")
+                    }
+                    
+                    break;
+
+                case listTasks:
+                    answer = await renderListTasks();
+                    if (answer.task === 'mainMenu'){
+                        nextScreen = mainMenu;
+                    } else {
+                        task = answer.task;
+                        nextScreen = taskMenu;
                     }
                     break;
-                    
+
+                case taskMenu:
+
+                    answer = await renderTaskMenu(task);
+
+                    switch (answer.taskMenu) {
+                        case 'deleteTask':
+                            // TODO
+                            exit(1);
+                            break;
+
+                        case 'updateTask':
+                            // TODO
+                            exit(1);
+                            break;
+
+                        case 'mainMenu':
+                            nextScreen = mainMenu;
+                            break;
+
+                        default:
+                            throw new Error("Wrong taskMenu option")
+                    }
+
+                    break;
+
                 case createTask:
                     //TODO
-                    {
-                        console.log('TODO: createTask');
-                        exit(1);
-                    }
-                    break;
-                    
-                case listTasks:
-                    //TODO
-                    {
-                        console.log('TODO: listTask');
-                        exit(1);         
-                    }
-                    break;
-                    
-                case seeTask:
-                    //TODO
-                    {                        
-                        const answer = await renderSeeTask();
-                        const {status, id, user, title, horaCreacion} = answer.listTask;
-                        //console.log(`    Status: ${status}\n    Id: ${id}\n    Title: ${title}\n    User: ${user}\n    HoraCreación: ${horaCreacion}`);
-                        console.table({status, id, title, user, horaCreacion});
-                        
-                        const pauseResponse = await pause('Continuar...');
-                        
-                        if (pauseResponse.ok) {
-                            message = '';
-                            nextScreen = mainMenu; 
-                        }
-                        else {
-                            exit(1);
-                        }                                                
-                    }
+                    exit(1);
                     break;
 
                 default:
