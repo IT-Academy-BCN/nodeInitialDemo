@@ -19,7 +19,7 @@ class DatabaseJson extends Database {
             }
         }
     }
-    /*
+    
     createUser (user) {
         if (!this.jsonDb.users.includes(user)) {
             this.jsonDb.users.push(user);
@@ -30,7 +30,6 @@ class DatabaseJson extends Database {
         }
         
     }
-    */
 
     getUsers () {
         return this.jsonDb.users;

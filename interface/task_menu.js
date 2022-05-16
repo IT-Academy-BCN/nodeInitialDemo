@@ -26,7 +26,7 @@ function renderTaskMenu(taskId) {
                 },
                 {
                     value: 'deleteTask',
-                    name: 'Delete task (DOING)',
+                    name: 'Delete task',
                 },
                 {
                     value: 'mainMenu',
