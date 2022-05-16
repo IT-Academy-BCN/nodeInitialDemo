@@ -19,7 +19,7 @@ class DatabaseJson extends Database {
             }
         }
     }
-
+    /*
     createUser (user) {
         if (!this.jsonDb.users.includes(user)) {
             this.jsonDb.users.push(user);
@@ -30,6 +30,7 @@ class DatabaseJson extends Database {
         }
         
     }
+    */
 
     getUsers () {
         return this.jsonDb.users;
@@ -52,7 +53,8 @@ class DatabaseJson extends Database {
     }
 
     deleteTask ( id ) {
-        // TODO: deleteTask
+        const index = this.jsonDb.todos.map(todo => todo.id).indexOf(id);
+        this.jsonDb.todos.splice(index,1);
         this.saveData();
     }
 

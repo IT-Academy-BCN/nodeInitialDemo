@@ -24,5 +24,8 @@ bd.createTodo({
 });
 */
 
-console.log(bd.getUsers());
+//console.log(bd.getTasks());
+//bd.deleteTask(1);
+
+//console.log(bd.getUsers());
 console.log(bd.getTasks());

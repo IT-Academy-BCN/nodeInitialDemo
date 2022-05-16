@@ -1,1 +1,53 @@
-{"nextTodoId":7,"todos":[{"id":1,"title":"Revisar documentación Inquirer","horaCreacion":"2022-05-04T21:34:03.357Z","user":"Victor","status":"TODO"},{"id":2,"title":"Definir estructura de clases","horaCreacion":"2022-05-04T21:34:03.357Z","user":"Clare","status":"TODO"},{"id":3,"title":"Estudio de mercado y marketing","horaCreacion":"2022-05-04T21:34:03.357Z","user":"Luis","status":"ONGOING"},{"id":4,"title":"Unit testing","horaCreacion":"2022-05-04T21:34:11.240Z","user":"Victor","status":"ONGOING"},{"id":5,"title":"Nuevas funcionalidades Base de datos","horaCreacion":"2022-05-04T21:34:11.240Z","user":"Clare","status":"DONE"},{"id":6,"title":"Ir a la peluquería","horaCreacion":"2022-05-04T21:34:11.241Z","user":"Luis","status":"DONE"}],"users":["Clare","Victor","Luis","Anna"]}
+{
+    "nextTodoId": 7,
+    "todos": [
+        {
+            "id": 1,
+            "title": "Revisar documentación Inquirer",
+            "horaCreacion": "2022-05-04T21:34:03.357Z",
+            "user": "Victor",
+            "status": "TODO"
+        },
+        {
+            "id": 2,
+            "title": "Definir estructura de clases",
+            "horaCreacion": "2022-05-04T21:34:03.357Z",
+            "user": "Clare",
+            "status": "TODO"
+        },
+        {
+            "id": 3,
+            "title": "Estudio de mercado y marketing",
+            "horaCreacion": "2022-05-04T21:34:03.357Z",
+            "user": "Luis",
+            "status": "ONGOING"
+        },
+        {
+            "id": 4,
+            "title": "Unit testing",
+            "horaCreacion": "2022-05-04T21:34:11.240Z",
+            "user": "Victor",
+            "status": "ONGOING"
+        },
+        {
+            "id": 5,
+            "title": "Nuevas funcionalidades Base de datos",
+            "horaCreacion": "2022-05-04T21:34:11.240Z",
+            "user": "Clare",
+            "status": "DONE"
+        },
+        {
+            "id": 6,
+            "title": "Ir a la peluquería",
+            "horaCreacion": "2022-05-04T21:34:11.241Z",
+            "user": "Luis",
+            "status": "DONE"
+        }
+    ],
+    "users": [
+        "Clare",
+        "Victor",
+        "Luis",
+        "Anna"
+    ]
+}
