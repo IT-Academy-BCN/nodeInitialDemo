@@ -1,3 +1,7 @@
+### Bibliografia:
+
+- https://www.geeksforgeeks.org/todo-list-cli-application-using-node-js/
+
 ### TASK
 Create an app managing a TO DO-list (executed via terminal) deploy with different types of persistance (data storage systems).
 
