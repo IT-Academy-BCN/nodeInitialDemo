@@ -150,7 +150,8 @@ async function logic() {
                     switch (answer.taskMenu) {
                         case 'deleteTask':
                             // TODO
-                            exit(1);
+                            taskList.deleteTask(task);
+                            nextScreen = listTasks;
                             break;
 
                         case 'updateTask':

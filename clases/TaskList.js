@@ -35,8 +35,8 @@ module.exports = class TaskList {
         
     }
 
-    deleteTask(){
-
+    deleteTask( id ){
+        this.bd.deleteTask(id);
     }
 
     getTask(id){
