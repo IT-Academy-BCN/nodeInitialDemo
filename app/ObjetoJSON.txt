@@ -1,0 +1,6 @@
+[
+
+{"idObj": 1, "description":"some text", "state": "pending", "initDate": "date obj", "completDate":"date obj","userName":"someName"},
+{"idObj": 2, "description":"some text", "state": "pending", "initDate": "date obj", "completDate":"date obj","userName":"someName"}
+
+]
