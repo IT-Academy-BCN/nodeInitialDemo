@@ -1,1 +1,8 @@
-[]
+[
+
+  {"idObj": 1, "description":"some text 1", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "completDate": null,"userName":"someName 1"},
+  {"idObj": 2, "description":"some text 2", "state": "executing", "initDate": "2022-05-17T10:32:13.539Z", "completDate":null,"userName":"someName 1"},
+  {"idObj": 3, "description":"some text 2", "state": "completed", "initDate": "2022-05-17T10:32:13.539Z", "completDate":"2022-05-17T10:32:13.539Z","userName":"someName 2"},
+  {"idObj": 4, "description":"some text 2", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "completDate":null,"userName":"someName 3"}
+  
+]
