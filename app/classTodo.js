@@ -1,8 +1,6 @@
 
 // Crear Clase Todo : 
 
-let todoIds = 0 || 1;
-
 class Todo {
   constructor(userName, text){
     this.idObj = null;
