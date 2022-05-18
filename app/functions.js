@@ -1,9 +1,8 @@
 const fs = require('fs');
 const Todo = require('./classTodo.js');
 
-  // Create Read JSON. Nombre Funcion = GetData(). => Devuelve una array (data)
-// Save JSON
- let readData = () => {
+// Read JSON. Nombre Funcion = readData(). => Devuelve una array (data)
+let readData = () => {
   
   // Read JSON
   let fileName = './todo.json';
@@ -19,18 +18,19 @@ const Todo = require('./classTodo.js');
 
   }
   */
- 
+}
 
-// Create Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
- let writeData = (enterArray) => {
-    fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
-      if (error) {
-          throw error;
-      }
+
+// Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
+let writeData = (enterArray) => {
+  fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
+    if (error) {
+        throw error;
+    }
+>>>>>>> f531aa440a496fa5054c5d3b02ca0f61302d3948
   });
 };
 
- //writeData(array);
 // Buscar en Array. Nombre function = SearchArray(int) => Entrar un numero entero (idObj) y devuelve un objeto.
 
 /*
