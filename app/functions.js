@@ -97,6 +97,8 @@ const updateTask = (numTask, stateChange) => {
       return result = 'The task has been completed.';
     break;
     default:
+      result = 'Not valid.';
+    break;
     }
     data.push(currentTask);
     writeData(data);
