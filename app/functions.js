@@ -1,4 +1,5 @@
 const fs = require('fs');
+const Todo = require('./classTodo.js');
 
   // Create Read JSON. Nombre Funcion = GetData(). => Devuelve una array (data)
 // Save JSON
