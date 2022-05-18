@@ -1,14 +1,14 @@
 const fs = require('fs');
 const Todo = require('./classTodo.js');
 
-  // Create Read JSON. Nombre Funcion = GetData(). => Devuelve una array (data)
- let readData = () => {
+// Read JSON. Nombre Funcion = readData(). => Devuelve una array (data)
+let readData = () => {
   
   // Read JSON
   let fileName = './todo.json';
   // La Array LLegida del JSON 
-  let readArrav = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-  return readArrav;
+  let readArray = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+  return readArray;
   /*
   if (parametre == "Json") {
 
@@ -18,14 +18,13 @@ const Todo = require('./classTodo.js');
 
   }
   */
- }
+}
 
-
-// Create Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
+// Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
 let writeData = (enterArray) => {
   fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
     if (error) {
-      throw error;
+        throw error;
     }
   });
 };
@@ -50,3 +49,119 @@ console.log(todo2);
 - deleteTask()
 - showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//lists all tasks, takes numTask id = position in array passed as argument
+const listTask = (numTask) => {
+  let data = readData();
+  console.log (data[numTask]);
+}
+/* Find by userName or userId
+const searchTask = (userName) =>
+{ let data = readData();
+  data.find(task => task.userName === userName);}
+ */
+
+//upDatetask, takes numTask id = position in array passed as argument
+const updateTask = (numTask, stateChange) => {
+  let result = "";
+  let data = readData();
+  let currentTask = data[numTask];
+  //I understand that you only update the state????
+  //Should I include logic looking comparing current 
+  //state with selected state.
+  if(!currentTask) {return 'Task not found.'};
+  switch(stateChange){
+    case 'pending':
+        return result = 'The task is currently pending';
+      break;
+    case 'executing':
+      currentTask.state = 'executing';
+        return result = 'The task is currently executing.';
+      break;
+    case 'finished':
+      currentTask.state = 'finished';
+      currentTask.completDate = new Date();
+      return result = 'The task has been completed.';
+    break;
+    default:
+    }
+    data.push(currentTask);
+    writeData(data);
+    console.log(result);
+}
+
+//Virtually no difference between listTask and showTaskState????????
+const showTaskState = (numTask) => {
+  let result = "";
+  let data = readData();
+  let currentTask = data[numTask];
+  if (currentTask === null || currentTask === undefined){
+    result = 'Task not found';
+  } else if (currentTask.completDate === null){
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
+  } else {
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userID ${currentTask.userId} and completed ${currentTask.completDate} `;
+  }
+  console.log(result);
+}
+
+module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
