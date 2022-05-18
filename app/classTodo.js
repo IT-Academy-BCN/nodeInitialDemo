@@ -1,8 +1,6 @@
 
 // Crear Clase Todo : 
 
-let todoIds = 0 || 1;
-
 class Todo {
   constructor(userName, text){
     this.idObj = null;
@@ -13,3 +11,5 @@ class Todo {
     this.complDate = null;
   }
 }
+
+module.exports = Todo;
