@@ -107,10 +107,35 @@ const updateTask = (numTask, stateChange) => {
     console.log(result);
 }
 
-
+//to do: logic 
 const showTaskState = (numTask) => {
   let data = readData();
   let currentTask = data[numTask];
   
-
 }
+
+module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
