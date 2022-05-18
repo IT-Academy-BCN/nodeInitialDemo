@@ -119,18 +119,20 @@ const updateTask = (numTask, stateChange) => {
       return result = 'The task has been completed.';
     break;
     default:
+      result = 'Not valid';
+    break;
     }
     data.push(currentTask);
     writeData(data);
     console.log(result);
-}
+  }
 
 //Virtually no difference between listTask and showTaskState????????
 const showTaskState = (numTask) => {
   let result = "";
   let data = readData();
   let currentTask = data[numTask];
-  if (currentTask === null || currentTask === undefined){
+  if (!currentTask){
     result = 'Task not found';
   } else if (currentTask.completDate === null){
     result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
