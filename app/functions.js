@@ -7,8 +7,8 @@ let readData = () => {
   // Read JSON
   let fileName = './todo.json';
   // La Array LLegida del JSON 
-  let readArrav = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-  return readArrav;
+  let readArray = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+  return readArray;
   /*
   if (parametre == "Json") {
 
