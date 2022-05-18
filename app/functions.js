@@ -1,8 +1,7 @@
 const fs = require('fs');
 
-  // Create Read JSON. Nombre Funcion = GetData(). => Devuelve una array (data)
-// Save JSON
- let readData = () => {
+// Read JSON. Nombre Funcion = readData(). => Devuelve una array (data)
+let readData = () => {
   
   // Read JSON
   let fileName = './todo.json';
@@ -18,80 +17,18 @@ const fs = require('fs');
 
   }
   */
- }
+}
 
- console.log(readData());
 
- let array = 
- [
-  {
-    idObj: 1,
-    description: 'some text 1',
-    state: 'pending',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 1'
-  },
-  {
-    idObj: 34,
-    description: 'some text 2',
-    state: 'executing',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 1'
-  },
-  {
-    idObj: 56,
-    description: 'some text 2',
-    state: 'completed',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: '2022-05-17T10:32:13.539Z',
-    userName: 'someName 2'
-  },
-  {
-    idObj: 34,
-    description: 'some text 1',
-    state: 'pending',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 1'
-  },
-  {
-    idObj: 84,
-    description: 'some text 2',
-    state: 'executing',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 16'
-  },
-  {
-    idObj: 85,
-    description: 'some text 3',
-    state: 'executing',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 16'
-  },
-  {
-    idObj: 86,
-    description: 'some text 3',
-    state: 'executing',
-    initDate: '2022-05-17T10:32:13.539Z',
-    completDate: null,
-    userName: 'someName 16'
-  }
-];
-
-// Create Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
- let writeData = (enterArray) => {
-    fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
-      if (error) {
-          throw error;
-      }
+// Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
+let writeData = (enterArray) => {
+  fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
+    if (error) {
+        throw error;
+    }
   });
 };
 
- //writeData(array);
 // Buscar en Array. Nombre function = SearchArray(int) => Entrar un numero entero (idObj) y devuelve un objeto.
 
 /*
