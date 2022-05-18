@@ -21,11 +21,11 @@ const fs = require('fs');
 
 
 // Create Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
- let writeData = (enterArray) => {
-    fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
-      if (error) {
-          throw error;
-      }
+let writeData = (enterArray) => {
+  fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
+    if (error) {
+      throw error;
+    }
   });
 };
 
