@@ -13,3 +13,5 @@ class Todo {
     this.complDate = null;
   }
 }
+
+module.exports = Todo;
