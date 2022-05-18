@@ -68,6 +68,11 @@ const listTask = (numTask) => {
   let data = readData();
   console.log (data[numTask]);
 }
+/* Find by userName or userId
+const listTask = (userName) =>
+{ let data = readData();
+  data.find(task => task.userName === userName);}
+ */
 
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (numTask, stateChange) => {
