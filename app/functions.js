@@ -27,7 +27,6 @@ let writeData = (enterArray) => {
     if (error) {
         throw error;
     }
->>>>>>> f531aa440a496fa5054c5d3b02ca0f61302d3948
   });
 };
 
@@ -51,14 +50,6 @@ console.log(todo2);
 - deleteTask()
 - showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
 */
-
-
-
-
-
-
-
-
 
 
 
@@ -107,11 +98,19 @@ const updateTask = (numTask, stateChange) => {
     console.log(result);
 }
 
-//to do: logic 
+//Virtually no difference between listTask and showTaskState????????
 const showTaskState = (numTask) => {
+  let result = "";
   let data = readData();
   let currentTask = data[numTask];
-  
+  if (currentTask === null || currentTask === undefined){
+    result = 'Task not found';
+  } else if (currentTask.completDate === null){
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
+  } else {
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userID ${currentTask.userId} and completed ${currentTask.completDate} `;
+  }
+  console.log(result);
 }
 
 module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
