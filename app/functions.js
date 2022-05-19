@@ -39,7 +39,7 @@ const searchById = ((dataInput, idInput) => {
 })
 
 
-//addTask() Function
+// Crear addTask() Function
 const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
   let data = readData();
@@ -55,20 +55,52 @@ const addTask = (userNameInput,taskNameInput) => {
   console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
 }
 
-addTask("!enric", "fer el dropo")
+// Crear listAll()
+const listAll = () => {
+  // read todo From Json 
+  let data = readData();
+  data.forEach(object => {
+    // Format Date
+    let initDate =  object.initDate.substring(0, 10) + " " + object.initDate.substr(11, 8);
+    // Check if Ended Date exists
+    let complDate = "Not Finished";
+    if (object.state === "completed" )
+    {
+      complDate = object.initDate.substring(0, 10) + " " + object.initDate.substr(11, 8);
+    }
+    console.log(`${object.taskId}.- "${object.text}" by ${object.userName}. State = "${object.state}". Start Date = "${initDate}". Ended Date = ${complDate}  `);
+  });
+}
 
+// Crear deleteTask()
+const deleteTask = (inputId) => {
+  // read todo From Json 
+  let data = readData();
+  // Find the Object in the array Data
+  let index = searchById (data, inputId);
+  // Check if the index exists
+  if (index == -1) {
+    console.log(`The Task Number ${inputId} Does Not exist.`)
+  }
+  else {
 
+    // Remove the object from the array data
+    var removed = data.splice(index, 1);
+    // Save JSON
+    writeData(data);
+    // Show by Console the Object deleted
+    console.log(`Removed ${removed[0].text} Task from to Do List`);
+  }
+
+}
+deleteTask(88)
 /*
-const todo1 = new Todo (7, "enric", "fer to do" );
-//{"idObj": 1,"userName":"someName 1", "descr":"some text 1", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "complDate": null}
-console.log(todo1);
-*/
-/*
-- listTask()
-- listAll()
-- updateTask()
-- deleteTask()
-- showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
+- addTask (userNameInput,taskNameInput) => Enric
+- listTask(taskId) => Marie
+- listAll() => Enric
+- updateTask(taskId)=> Marie
+- deleteTask(taskId) => Enric
+- showTaskState(taskId) returns {(pending/ executing/ completed), init date, completation date, userId}
 */
 
 
