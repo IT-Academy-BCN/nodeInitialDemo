@@ -23,18 +23,29 @@ let writeData = (enterArray) => {
 
 };
 
-
-const searchById = (numId =>{
-  let data = readData();
-  return data.find(task => task.idObj === numId);
+// Create Search by Id => Des d'una Array i un objId
+const searchById = ((dataInput, idInput) => {
+  return dataInput.findIndex(task => task.idObj === idInput);
 })
 
-console.log(searchById(1));
 
 //addTask() Function
-const addTask(userInput,taskInput){
-  let todo1 = new Todo (7, userInput, taskInput );
+const addTask = (userNameInput,taskNameInput) => {
+  // read todo From Json 
+  let data = readData();
+  // Find New Task Id
+  let newTodoId = data[data.length - 1].idObj + 1;
+  // Create new todo task
+  let newTodo = new Todo (newTodoId, userNameInput, taskNameInput );
+  // Add New Task to Data Array
+  data.push(newTodo);
+  // Save data to Json
+  writeData(data);
+  // Console log
+  console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
 }
+
+addTask("!enric", "fer el dropo")
 
 
 /*
@@ -49,3 +60,71 @@ console.log(todo1);
 - deleteTask()
 - showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
