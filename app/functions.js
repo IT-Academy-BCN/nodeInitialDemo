@@ -9,18 +9,8 @@ let readData = () => {
   // La Array LLegida del JSON 
   let readArray = JSON.parse(fs.readFileSync(fileName, 'utf8'));
   return readArray;
-  /*
-  if (parametre == "Json") {
-
-    
-  }
-  else if (parametre == "Mysql"){
-
-  }
-  */
+ 
 }
-
-
 // Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
 let writeData = (enterArray) => {
   fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
@@ -30,158 +20,126 @@ let writeData = (enterArray) => {
   });
 };
 
-// Buscar en Array. Nombre function = SearchArray(int) => Entrar un numero entero (idObj) y devuelve un objeto.
-
-/*
-
-- addTask()
-  
-
-const todo1 = new Todo ("enric", "fer to do" );
-//{"idObj": 1,"userName":"someName 1", "descr":"some text 1", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "complDate": null}
-console.log(todo1);
-
-const todo2 = new Todo ("pepe", "fer git" );
-console.log(todo2);
-
-- listTask()
-- listAll()
-- updateTask()
-- deleteTask()
-- showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log(readData());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 const searchById = ((dataInput, idInput) => {
-  return dataInput.findIndex(task => task.idObj === idInput);
+  index = dataInput.findIndex(task => task.taskId === idInput);
+  return index;
 })
 
-/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //lists all tasks, takes numTask id = position in array passed as argument
-const listTask = (numId) => {
-  data = searchById(numId);
-  console.log(data);
+const listTask = (idInput) => {
+  data = readData();
+  index = searchById(data,idInput);
+  console.log(data[index]);
 }
 
-listTask(3);
-*/
-
-/*
 //upDatetask, takes numTask id = position in array passed as argument
-const updateTask = (numTask, stateChange) => {
+const updateTask = (idInput, stateInput) => {
   let result = "";
   let data = readData();
-  let currentTask = data[numTask];
-  //I understand that you only update the state????
-  //Should I include logic looking comparing current 
-  //state with selected state.
+  console.log(data);
+  index = searchById(data,idInput);
+  let currentTask = data[index];
+  console.log(index);
   if(!currentTask) {return 'Task not found.'};
-  switch(stateChange){
-    case 'pending':
-        return result = 'The task is currently pending';
-      break;
-    case 'executing':
-      currentTask.state = 'executing';
-        return result = 'The task is currently executing.';
-      break;
-    case 'finished':
-      currentTask.state = 'finished';
-      currentTask.completDate = new Date();
-      return result = 'The task has been completed.';
-    break;
-    default:
-      result = 'Not valid.';
-    break;
-    }
-    data.push(currentTask);
-    writeData(data);
-    console.log(result);
-}
+   currentTask.state = stateInput;
+   writeData(data);
+   console.log(`The task with id ${currentTask.taskId} is ${currentTask.state}`);
+  }
+
 
 //Virtually no difference between listTask and showTaskState????????
-const showTaskState = (numTask) => {
+const showTaskState = (idInput) => {
   let result = "";
   let data = readData();
-  let currentTask = data[numTask];
-  if (currentTask === null || currentTask === undefined){
+  let index = searchById(data, idInput);
+  console.log(index);
+  let currentTask = data[index];
+  if (!currentTask){
     result = 'Task not found';
   } else if (currentTask.completDate === null){
-    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user: ${currentTask.userName}`;
   } else {
-    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userID ${currentTask.userId} and completed ${currentTask.completDate} `;
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user ${currentTask.userName} and completed ${currentTask.completDate} `;
   }
   console.log(result);
 }
 
-module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+//module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-*/
+updateTask('pending');
+showTaskState(84);
 
 
 
