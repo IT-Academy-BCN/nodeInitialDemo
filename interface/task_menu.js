@@ -1,48 +1,73 @@
-'use strict';
+"use strict";
 
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
 
-const TaskList = require('../clases/TaskList');
+const TaskList = require("../clases/TaskList");
 
 const taskList = new TaskList();
 
 function renderTaskMenu(taskId) {
+  const task = taskList.getTask(taskId);
 
-    const task = taskList.getTask(taskId);
+  // Print task via command line
+  const { status, id, createdBy, title, createdAt } = task;
+  console.table({ status, id, title, createdBy, createdAt });
 
-    // Print task via command line
-    const {status, id, createdBy, title, createdAt} = task;
-    console.table({status, id, title, createdBy, createdAt});
-
-    return inquirer.prompt([
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "taskMenu",
+      message: "=== Task Menu ===",
+      choices: [
         {
-            type: 'list',
-            name: 'taskMenu',
-            message: '=== Task Menu ===',
-            choices: [
-                {
-                    value: 'updateTask',
-                    name: 'Update task (TODO)',
-                },
-                {
-                    value: 'deleteTask',
-                    name: 'Delete task',
-                },
-                {
-                    value: 'mainMenu',
-                    name: 'Go to Main Menu',
-                }
-            ]
-        }
-    ])
+          value: "updateTask",
+          name: "Update task",
+        },
+        {
+          value: "deleteTask",
+          name: "Delete task",
+        },
+        {
+          value: "mainMenu",
+          name: "Go to Main Menu",
+        },
+      ],
+    },
+  ]);
 }
 
-function renderUpdateTask(taskId) {
-    // TODO
+function renderUpdateTaskMenu(taskId) {
+  const task = taskList.getTask(taskId);
+
+  // Print task via command line
+  const { status, id, createdBy, title, createdAt } = task;
+  console.table({ status, id, title, createdBy, createdAt });
+
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "UpdateOptionsMenu",
+      message: "=== Task Update Options ===",
+      choices: [
+        {
+          value: "updateStatus",
+          name: "Update status (TODO)",
+        },
+        {
+          value: "updateTitle",
+          name: "Update title (TODO)",
+        },
+        {
+          value: "mainMenu",
+          name: "Go to Main Menu",
+        },
+      ],
+    },
+  ]);
 }
 
 function renderDeleteTask(taskId) {
-    // TODO
+  // TODO
 }
 
-module.exports = {renderTaskMenu, renderUpdateTask, renderDeleteTask};
+module.exports = { renderTaskMenu, renderUpdateTaskMenu, renderDeleteTask };
