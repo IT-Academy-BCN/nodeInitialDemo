@@ -108,10 +108,8 @@ const listTask = (idInput) => {
 const updateTask = (idInput, stateInput) => {
   let result = "";
   let data = readData();
-  console.log(data);
-  index = searchById(data,idInput);
+  let index = searchById(data,idInput);
   let currentTask = data[index];
-  console.log(index);
   if(!currentTask) {return 'Task not found.'};
    currentTask.state = stateInput;
    writeData(data);
@@ -138,9 +136,6 @@ const showTaskState = (idInput) => {
 
 //module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-updateTask('pending');
-showTaskState(84);
-
 
 
 
