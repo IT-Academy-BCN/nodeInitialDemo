@@ -1,11 +1,10 @@
 
 // Crear Clase Todo : 
-
 class Todo {
-  constructor(userName, text){
-    this.idObj = null;
-    this.userName = userName;
-    this.text = text;
+  constructor(idInput, userInput, textInput){
+    this.taskId = idInput;
+    this.userName = userInput;
+    this.text = textInput;
     this.state = "pending";
     this.initDate = new Date();
     this.complDate = null;
