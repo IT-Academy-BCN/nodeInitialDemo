@@ -10,7 +10,6 @@
   */
 
 const showMenu = () => {
-
     return new Promise ((resolve, reject) => {
         console.clear();
         console.log("----- TO-DO App -----");
@@ -33,13 +32,14 @@ const showMenu = () => {
         });
     });
 }
+
 const pause = () => { 
     return new Promise ((resolve, reject) => {
         const readline = require('readline').createInterface({
             input: process.stdin,
             output: process.stdout
         });
-        readline.question('\n Press enter to continue\n', (opt) => {
+        readline.question('\n Press ENTER to continue\n', (opt) => {
             readline.close();
             resolve();
         });
@@ -53,4 +53,5 @@ const main = async() => {
         if (opt !== '0') await pause();
     } while (opt !== '0');        
 }
+
 main();
