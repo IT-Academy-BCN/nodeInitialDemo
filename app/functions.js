@@ -39,7 +39,9 @@ const searchById = ((dataInput, idInput) => {
 })
 
 
+
 // Crear addTask() Function
+
 const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
   let data = readData();
@@ -54,6 +56,7 @@ const addTask = (userNameInput,taskNameInput) => {
   // Console log
   console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
 }
+
 
 // Crear listAll()
 const listAll = () => {
@@ -101,147 +104,53 @@ deleteTask(88)
 - updateTask(taskId)=> Marie
 - deleteTask(taskId) => Enric
 - showTaskState(taskId) returns {(pending/ executing/ completed), init date, completation date, userId}
+
 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 //lists all tasks, takes numTask id = position in array passed as argument
-const listTask = (numId) => {
-  data = searchById(numId);
-  console.log(data);
+const listTask = (idInput) => {
+  data = readData();
+  index = searchById(data,idInput);
+  console.log(data[index]);
 }
 
-listTask(3);
-*/
 
-/*
+
 //upDatetask, takes numTask id = position in array passed as argument
-const updateTask = (numTask, stateChange) => {
+const updateTask = (idInput, stateInput) => {
   let result = "";
   let data = readData();
-  let currentTask = data[numTask];
-  //I understand that you only update the state????
-  //Should I include logic looking comparing current 
-  //state with selected state.
+  let index = searchById(data,idInput);
+  let currentTask = data[index];
   if(!currentTask) {return 'Task not found.'};
-  switch(stateChange){
-    case 'pending':
-        return result = 'The task is currently pending';
-      break;
-    case 'executing':
-      currentTask.state = 'executing';
-        return result = 'The task is currently executing.';
-      break;
-    case 'finished':
-      currentTask.state = 'finished';
-      currentTask.completDate = new Date();
-      return result = 'The task has been completed.';
-    break;
-    default:
-      result = 'Not valid.';
-    break;
-    }
-    data.push(currentTask);
-    writeData(data);
-    console.log(result);
-}
+  //assigning new state
+   currentTask.state = stateInput;
+  //write data
+   writeData(data);
+   console.log(`The task with id ${currentTask.taskId} is ${currentTask.state}`);
+  }
 
-//Virtually no difference between listTask and showTaskState????????
-const showTaskState = (numTask) => {
+
+//shows state of task
+const showTaskState = (idInput) => {
   let result = "";
   let data = readData();
-  let currentTask = data[numTask];
-  if (currentTask === null || currentTask === undefined){
+  let index = searchById(data, idInput);
+  console.log(index);
+  let currentTask = data[index];
+  if (!currentTask){
     result = 'Task not found';
   } else if (currentTask.completDate === null){
-    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user: ${currentTask.userName}`;
   } else {
-    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userID ${currentTask.userId} and completed ${currentTask.completDate} `;
+    result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user ${currentTask.userName} and completed ${currentTask.completDate} `;
   }
   console.log(result);
 }
 
-module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+//module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
