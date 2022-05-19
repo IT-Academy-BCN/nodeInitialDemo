@@ -63,8 +63,68 @@ console.log(todo2);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const searchById = (numId =>{
+  let data = readData();
+  return data.find(task => task.idObj === numId);
+})
+
+
 //lists all tasks, takes numTask id = position in array passed as argument
-const listTask = (numTask) => {
+const listTask = (numId) => {
   let data = readData();
   console.log (data[numTask]);
 }
