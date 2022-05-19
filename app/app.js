@@ -1,13 +1,24 @@
-// Menu que llama funciones
+const functions {addTask, 
+                  listTask,
+                  listAll
+                  updateTask,
+                  deleteTask,
+                  showTaskState 
+                } = require('./functions');
 
-/* addTask()
-- listTask()
-- listAll()
-- updateTask()
-- deleteTask()
-- showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
+const showMenu2 = (question) => {
+    return new Promise ((resolve, reject) => {
+        const readline = require('readline').createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
 
-  */
+        readline.question(question, (answer) => {
+            readline.close();
+            resolve(answer);
+        });
+    });
+}
 
 const showMenu = () => {
     return new Promise ((resolve, reject) => {
@@ -50,26 +61,30 @@ const main = async() => {
     let opt = '';
     do {    
         opt = await showMenu();
-
         switch (opt) {
             case '1':
-                addTask();
+                const userName = await showMenu2('Write your username: ');
+                const description = await showMenu2("Write task's description: ");
+                addTask(userName, description);
             break;
-
             case '2':
-                updateTask();
+                const id2 = await showMenu2('Write ID to update: ');
+                updateTask(id2);
             break;
             case '3':
-                deleteTask();
+                const id3 = await showMenu2('Write ID to delete: ');
+                deleteTask(id3);
             break;
             case '4':
-                listTask();
+                const id4 = await showMenu2('Write ID to list: ');
+                listTask(id4);
             break;          
             case '5':
                 listAll();
             break;
             case '6':
-                showTaskState();
+                const id6 = await showMenu2('Write ID to show state: ');
+                showTaskState(id6);
             break;
         }
         if (opt !== '0') await pause();
