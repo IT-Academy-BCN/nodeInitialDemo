@@ -97,12 +97,66 @@ const searchById = ((dataInput, idInput) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //lists all tasks, takes numTask id = position in array passed as argument
 const listTask = (idInput) => {
   data = readData();
   index = searchById(data,idInput);
   console.log(data[index]);
 }
+
+
+
 
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (idInput, stateInput) => {
@@ -136,9 +190,6 @@ const showTaskState = (idInput) => {
 
 //module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-
-
-
 
 
 
