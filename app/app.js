@@ -1,4 +1,10 @@
-// Menu que llama funciones
+/* const functions {addTask, 
+                  listTask,
+                  listAll
+                  updateTask,
+                  deleteTask,
+                  showTaskState 
+                } = require('./functions') */
 
 /* addTask()
 - listTask()
@@ -8,6 +14,23 @@
 - showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
 
   */
+const addTask = (userame, description) => {
+    console.log(`Task ${description} created for ${userName}.`);
+}
+
+const showMenu2 = (question) => {
+    return new Promise ((resolve, reject) => {
+        const readline = require('readline').createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        readline.question(question, (answer) => {
+            readline.close();
+            resolve(answer);
+        });
+    });
+}
 
 const showMenu = () => {
     return new Promise ((resolve, reject) => {
@@ -50,10 +73,11 @@ const main = async() => {
     let opt = '';
     do {    
         opt = await showMenu();
-
         switch (opt) {
             case '1':
-                addTask();
+                const username = await showMenu2('Write your username: ');
+                const description = await showMenu2("Write task's description: ");
+
             break;
 
             case '2':
