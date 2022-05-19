@@ -71,6 +71,7 @@ console.log(todo2);
 
 
 
+console.log(readData());
 
 
 
@@ -116,24 +117,22 @@ console.log(todo2);
 
 
 
-
-const searchById = (numId =>{
-  let data = readData();
-  return data.find(task => task.idObj === numId);
+const searchById = ((dataInput, idInput) => {
+  return dataInput.findIndex(task => task.idObj === idInput);
 })
 
+/*
 
 //lists all tasks, takes numTask id = position in array passed as argument
 const listTask = (numId) => {
-  let data = readData();
-  console.log (data[numTask]);
+  data = searchById(numId);
+  console.log(data);
 }
-/* Find by userName or userId
-const listTask = (userName) =>
-{ let data = readData();
-  data.find(task => task.userName === userName);}
- */
 
+listTask(3);
+*/
+
+/*
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (numTask, stateChange) => {
   let result = "";
@@ -182,7 +181,7 @@ const showTaskState = (numTask) => {
 
 module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-
+*/
 
 
 
