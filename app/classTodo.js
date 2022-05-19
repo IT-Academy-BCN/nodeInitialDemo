@@ -2,7 +2,7 @@
 // Crear Clase Todo : 
 class Todo {
   constructor(idInput, userInput, textInput){
-    this.idObj = idInput;
+    this.taskId = idInput;
     this.userName = userInput;
     this.text = textInput;
     this.state = "pending";

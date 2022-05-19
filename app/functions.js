@@ -35,7 +35,7 @@ let writeData = (enterArray) => {
 
 // Create Search by Id => Des d'una Array i un objId
 const searchById = ((dataInput, idInput) => {
-  return dataInput.findIndex(task => task.idObj === idInput);
+  return dataInput.findIndex(task => task.taskId === idInput);
 })
 
 
@@ -44,7 +44,7 @@ const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
   let data = readData();
   // Find New Task Id
-  let newTodoId = data[data.length - 1].idObj + 1;
+  let newTodoId = data[data.length - 1].taskId + 1;
   // Create new todo task
   let newTodo = new Todo (newTodoId, userNameInput, taskNameInput );
   // Add New Task to Data Array
