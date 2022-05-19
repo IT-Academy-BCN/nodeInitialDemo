@@ -1,6 +1,6 @@
-const functions {addTask, 
+const functions = {addTask, 
                   listTask,
-                  listAll
+                  listAll,
                   updateTask,
                   deleteTask,
                   showTaskState 
@@ -69,7 +69,8 @@ const main = async() => {
             break;
             case '2':
                 const id2 = await showMenu2('Write ID to update: ');
-                updateTask(id2);
+                const state = await showMenu2('Select the new state: ');
+                updateTask(id2, state);
             break;
             case '3':
                 const id3 = await showMenu2('Write ID to delete: ');
