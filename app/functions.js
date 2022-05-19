@@ -23,27 +23,47 @@ let readData = () => {
 
 // Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
 let writeData = (enterArray) => {
+
+  // Write JSON
   fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
     if (error) {
         throw error;
     }
   });
+
 };
 
-// Buscar en Array. Nombre function = SearchArray(int) => Entrar un numero entero (idObj) y devuelve un objeto.
+// Create Search by Id => Des d'una Array i un objId
+const searchById = ((dataInput, idInput) => {
+  return dataInput.findIndex(task => task.idObj === idInput);
+})
+
+
+//addTask() Function
+const addTask = (userNameInput,taskNameInput) => {
+  // read todo From Json 
+  let data = readData();
+  // Find New Task Id
+  let newTodoId = data[data.length - 1].idObj + 1;
+  // Create new todo task
+  let newTodo = new Todo (newTodoId, userNameInput, taskNameInput );
+  // Add New Task to Data Array
+  data.push(newTodo);
+  // Save data to Json
+  writeData(data);
+  // Console log
+  console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
+}
+
+addTask("!enric", "fer el dropo")
+
 
 /*
-
-- addTask()
-  
-
-const todo1 = new Todo ("enric", "fer to do" );
+const todo1 = new Todo (7, "enric", "fer to do" );
 //{"idObj": 1,"userName":"someName 1", "descr":"some text 1", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "complDate": null}
 console.log(todo1);
-
-const todo2 = new Todo ("pepe", "fer git" );
-console.log(todo2);
-
+*/
+/*
 - listTask()
 - listAll()
 - updateTask()
@@ -71,7 +91,6 @@ console.log(todo2);
 
 
 
-console.log(readData());
 
 
 
@@ -113,13 +132,6 @@ console.log(readData());
 
 
 
-
-
-
-
-const searchById = ((dataInput, idInput) => {
-  return dataInput.findIndex(task => task.idObj === idInput);
-})
 
 
 
