@@ -9,17 +9,7 @@ let readData = () => {
   // La Array LLegida del JSON 
   let readArray = JSON.parse(fs.readFileSync(fileName, 'utf8'));
   return readArray;
-  /*
-  if (parametre == "Json") {
-
-    
-  }
-  else if (parametre == "Mysql"){
-
-  }
-  */
 }
-
 
 // Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
 let writeData = (enterArray) => {
@@ -38,10 +28,7 @@ const searchById = ((dataInput, idInput) => {
   return dataInput.findIndex(task => task.taskId === idInput);
 })
 
-
-
 // Crear addTask() Function
-
 const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
   let data = readData();
@@ -96,17 +83,6 @@ const deleteTask = (inputId) => {
   }
 
 }
-deleteTask(88)
-/*
-- addTask (userNameInput,taskNameInput) => Enric
-- listTask(taskId) => Marie
-- listAll() => Enric
-- updateTask(taskId)=> Marie
-- deleteTask(taskId) => Enric
-- showTaskState(taskId) returns {(pending/ executing/ completed), init date, completation date, userId}
-
-*/
-
 
 //lists all tasks, takes numTask id = position in array passed as argument
 const listTask = (idInput) => {
@@ -114,8 +90,6 @@ const listTask = (idInput) => {
   index = searchById(data,idInput);
   console.log(data[index]);
 }
-
-
 
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (idInput, stateInput) => {
@@ -149,12 +123,5 @@ const showTaskState = (idInput) => {
   console.log(result);
 }
 
-//module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-
-
-
-
-
-
-
