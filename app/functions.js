@@ -77,22 +77,30 @@ const deleteTask = (inputId) => {
   // read todo From Json 
   let data = readData();
   // Find the Object in the array Data
-  let taskToDelete = searchById (data, inputId);
-  // Remove the object from the array data
-  var removed = data.splice(taskToDelete, 1);
-  // Save JSON
-  //writeData(data);
-  // Show by Console the Object deleted
-  console.log(`Removed ${removed[0].text} Task from to Do List`);
+  let index = searchById (data, inputId);
+  // Check if the index exists
+  if (index == -1) {
+    console.log(`The Task Number ${inputId} Does Not exist.`)
+  }
+  else {
+
+    // Remove the object from the array data
+    var removed = data.splice(index, 1);
+    // Save JSON
+    writeData(data);
+    // Show by Console the Object deleted
+    console.log(`Removed ${removed[0].text} Task from to Do List`);
+  }
+
 }
-deleteTask(91)
+deleteTask(88)
 /*
 - addTask (userNameInput,taskNameInput) => Enric
 - listTask(taskId) => Marie
 - listAll() => Enric
-- updateTask()=> Marie
-- deleteTask() => Enric
-- showTaskState() returns {(pending/ executing/ completed), init date, completation date, userId}
+- updateTask(taskId)=> Marie
+- deleteTask(taskId) => Enric
+- showTaskState(taskId) returns {(pending/ executing/ completed), init date, completation date, userId}
 */
 
 
