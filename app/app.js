@@ -18,6 +18,16 @@ const showMenu = () => {
     console.log('4. List Task');
     console.log('5. List All');
     console.log('6. Show Task State');
+    console.log('0. Exit \n');
+
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    readline.question('Select option: ', (opt) => {
+        console.log({opt});
+        readline.close();
+    });
 }
 
 showMenu();
