@@ -25,9 +25,18 @@ const showMenu = () => {
         output: process.stdout
     });
     readline.question('Select option: ', (opt) => {
-        console.log({opt});
+        readline.close();
+    });
+}
+const pause = () => { 
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    readline.question('\n Press enter to continue\n', (opt) => {
         readline.close();
     });
 }
 
 showMenu();
+pause();
