@@ -20,6 +20,7 @@ let readData = () => {
   */
 }
 
+
 // Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
 let writeData = (enterArray) => {
   fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
@@ -70,6 +71,7 @@ console.log(todo2);
 
 
 
+console.log(readData());
 
 
 
@@ -85,17 +87,53 @@ console.log(todo2);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const searchById = ((dataInput, idInput) => {
+  return dataInput.findIndex(task => task.idObj === idInput);
+})
+
+
+
+/*
 //lists all tasks, takes numTask id = position in array passed as argument
-const listTask = (numTask) => {
-  let data = readData();
-  console.log (data[numTask]);
+const listTask = (numId) => {
+  data = searchById(numId);
+  console.log(data);
 }
-/* Find by userName or userId
-const searchTask = (userName) =>
-{ let data = readData();
-  data.find(task => task.userName === userName);}
- */
 
+listTask(3);
+*/
+
+/*
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (numTask, stateChange) => {
   let result = "";
@@ -119,20 +157,20 @@ const updateTask = (numTask, stateChange) => {
       return result = 'The task has been completed.';
     break;
     default:
-      result = 'Not valid';
+      result = 'Not valid.';
     break;
     }
     data.push(currentTask);
     writeData(data);
     console.log(result);
-  }
+}
 
 //Virtually no difference between listTask and showTaskState????????
 const showTaskState = (numTask) => {
   let result = "";
   let data = readData();
   let currentTask = data[numTask];
-  if (!currentTask){
+  if (currentTask === null || currentTask === undefined){
     result = 'Task not found';
   } else if (currentTask.completDate === null){
     result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by userId: ${currentTask.userId}`;
@@ -144,7 +182,7 @@ const showTaskState = (numTask) => {
 
 module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
   
-
+*/
 
 
 
