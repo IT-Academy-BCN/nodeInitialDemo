@@ -1,48 +1,48 @@
 const fs = require('fs');
+var Todo = require('./classTodo.js');
 
-  // Create Read JSON. Nombre Funcion = GetData(). => Devuelve una array (data)
- let readData = () => {
-  
-  // Read JSON
-  let fileName = './todo.json';
+// Create Read JSON. => Retorna una array (data)
+let readData = () => {
+
   // La Array LLegida del JSON 
-  let readArrav = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+  let readArrav = JSON.parse(fs.readFileSync('./todo.json', 'utf8'));
   return readArrav;
-  /*
-  if (parametre == "Json") {
 
-    
-  }
-  else if (parametre == "Mysql"){
-
-  }
-  */
- }
+}
 
 
-// Create Write JSON.  Nombre Funcion = WriteData(). => Desde una array 
+// Create Write JSON. => Des d'e 'una array 
 let writeData = (enterArray) => {
+
+  // Write JSON
   fs.writeFile('./todo.json', JSON.stringify(enterArray), (error) => {
-    if (error) {
+    if (error) {s
       throw error;
     }
   });
+
 };
 
-// Buscar en Array. Nombre function = SearchArray(int) => Entrar un numero entero (idObj) y devuelve un objeto.
+
+const searchById = (numId =>{
+  let data = readData();
+  return data.find(task => task.idObj === numId);
+})
+
+console.log(searchById(1));
+
+//addTask() Function
+const addTask(userInput,taskInput){
+  let todo1 = new Todo (7, userInput, taskInput );
+}
+
 
 /*
-
-- addTask()
-  
-
-const todo1 = new Todo ("enric", "fer to do" );
+const todo1 = new Todo (7, "enric", "fer to do" );
 //{"idObj": 1,"userName":"someName 1", "descr":"some text 1", "state": "pending", "initDate": "2022-05-17T10:32:13.539Z", "complDate": null}
 console.log(todo1);
-
-const todo2 = new Todo ("pepe", "fer git" );
-console.log(todo2);
-
+*/
+/*
 - listTask()
 - listAll()
 - updateTask()

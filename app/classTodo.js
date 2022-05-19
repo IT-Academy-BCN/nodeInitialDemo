@@ -1,15 +1,14 @@
 
 // Crear Clase Todo : 
-
-let todoIds = 0 || 1;
-
 class Todo {
-  constructor(userName, text){
-    this.idObj = null;
-    this.userName = userName;
-    this.text = text;
+  constructor(idInput, userInput, textInput){
+    this.idObj = idInput;
+    this.userName = userInput;
+    this.text = textInput;
     this.state = "pending";
     this.initDate = new Date();
     this.complDate = null;
   }
 }
+
+module.exports = Todo;
