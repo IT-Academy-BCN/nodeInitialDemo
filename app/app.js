@@ -50,6 +50,28 @@ const main = async() => {
     let opt = '';
     do {    
         opt = await showMenu();
+
+        switch (opt) {
+            case '1':
+                addTask();
+            break;
+
+            case '2':
+                updateTask();
+            break;
+            case '3':
+                deleteTask();
+            break;
+            case '4':
+                listTask();
+            break;          
+            case '5':
+                listAll();
+            break;
+            case '6':
+                showTaskState();
+            break;
+        }
         if (opt !== '0') await pause();
     } while (opt !== '0');        
 }
