@@ -124,6 +124,3 @@ const showTaskState = (idInput) => {
 }
 
 module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
-
-
-showTaskState(34)
