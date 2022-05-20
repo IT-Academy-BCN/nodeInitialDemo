@@ -18,7 +18,7 @@ const showMenu2 = (question) => {
             resolve(answer);
         });
     });
-}5
+}
 
 const showMenu = () => {
     return new Promise ((resolve, reject) => {
