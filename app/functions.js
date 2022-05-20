@@ -25,7 +25,7 @@ let writeData = (enterArray) => {
 
 // Create Search by Id => Des d'una Array i un objId
 const searchById = ((dataInput, idInput) => {
-  return dataInput.findIndex(task => task.taskId === idInput);
+  return dataInput.findIndex(task => task.taskId == idInput);
 })
 
 // Crear addTask() Function
@@ -67,7 +67,7 @@ const deleteTask = (inputId) => {
   // read todo From Json 
   let data = readData();
   // Find the Object in the array Data
-  let index = searchById (data, inputId);
+  let index = searchById (data, inputId)
   // Check if the index exists
   if (index == -1) {
     console.log(`The Task Number ${inputId} Does Not exist.`)
@@ -111,7 +111,6 @@ const showTaskState = (idInput) => {
   let result = "";
   let data = readData();
   let index = searchById(data, idInput);
-  console.log(index);
   let currentTask = data[index];
   if (!currentTask){
     result = 'Task not found';
