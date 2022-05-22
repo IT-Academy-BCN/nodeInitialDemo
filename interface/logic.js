@@ -20,7 +20,11 @@ const {
 } = require("./main_menu");
 const { exit } = require("process");
 const TaskList = require("../clases/TaskList");
-const { renderTaskMenu, renderUpdateTaskMenu } = require("./task_menu");
+const {
+  renderTaskMenu,
+  renderUpdateTaskMenu,
+  renderUpdateTitle,
+} = require("./task_menu");
 const { Console } = require("console");
 
 // Stages of our inquire flow
@@ -32,6 +36,7 @@ const createTask = Symbol("createTask");
 const listTasks = Symbol("listTasks");
 const taskMenu = Symbol("taskMenu");
 const updateTaskMenu = Symbol("updateTaskMenu");
+const updateTaskTitle = Symbol("updateTaskTitle");
 //
 const taskList = new TaskList();
 
@@ -160,9 +165,7 @@ async function logic() {
               break;
 
             case "updateTask":
-              // TODO
               nextScreen = updateTaskMenu;
-              //   exit(1);
               break;
 
             case "mainMenu":
@@ -176,7 +179,6 @@ async function logic() {
           break;
 
         case updateTaskMenu:
-          //IN PROGRESS
           answer = await renderUpdateTaskMenu(task);
           switch (answer.UpdateOptionsMenu) {
             case "updateStatus":
@@ -185,9 +187,7 @@ async function logic() {
               break;
 
             case "updateTitle":
-              // TODO
-              exit(1);
-              //   nextScreen = updateTaskTitle;
+              nextScreen = updateTaskTitle;
               break;
 
             case "mainMenu":
@@ -197,6 +197,13 @@ async function logic() {
             default:
               throw new Error("Wrong UPDATE taskMenu option");
           }
+          break;
+
+        case updateTaskTitle:
+          answer = await renderUpdateTitle(task);
+          let updatedTaskTitle = answer.updatedTitle;
+          taskList.updateTaskTitle(task, updatedTaskTitle);
+          nextScreen = updateTaskMenu;
           break;
 
         case createTask:

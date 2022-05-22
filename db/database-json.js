@@ -46,10 +46,11 @@ class DatabaseJson extends Database {
         this.saveData();
     }
 
-    updateTask ( id ) {
-        // TODO: updateTask
+    updateTaskTitle(id, newtitle) {
+        const task = this.getTask(id);
+        task.title = newtitle;
         this.saveData();
-    }
+  }
 
     deleteTask ( id ) {
         const index = this.jsonDb.todos.map(todo => todo.id).indexOf(id);

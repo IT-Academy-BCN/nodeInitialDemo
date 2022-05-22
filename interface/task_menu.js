@@ -55,7 +55,7 @@ function renderUpdateTaskMenu(taskId) {
         },
         {
           value: "updateTitle",
-          name: "Update title (TODO)",
+          name: "Update title",
         },
         {
           value: "mainMenu",
@@ -66,8 +66,24 @@ function renderUpdateTaskMenu(taskId) {
   ]);
 }
 
+function renderUpdateTitle(taskId) {
+  const task = taskList.getTask(taskId);
+  // Print task via command line
+  const { status, id, createdBy, title, createdAt } = task;
+  console.table({ status, id, title, createdBy, createdAt });
+
+  console.log("=== Update task description ===");
+  return inquirer.prompt([
+    {
+      type: "input",
+      name: "updatedTitle",
+      message: "Input new title for this task:",
+    },
+  ]);
+}
+
 function renderDeleteTask(taskId) {
   // TODO
 }
 
-module.exports = { renderTaskMenu, renderUpdateTaskMenu, renderDeleteTask };
+module.exports = {renderTaskMenu, renderUpdateTaskMenu, renderUpdateTitle, renderDeleteTask,};
