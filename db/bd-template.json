@@ -4,43 +4,43 @@
         {
             "id": 1,
             "title": "Revisar documentación Inquirer",
-            "horaCreacion": "2022-05-04T21:34:03.357Z",
-            "user": "Victor",
+            "createdAt": "2022-05-04T21:34:03.357Z",
+            "createdBy": "Victor",
             "status": "TODO"
         },
         {
             "id": 2,
             "title": "Definir estructura de clases",
-            "horaCreacion": "2022-05-04T21:34:03.357Z",
-            "user": "Clare",
+            "createdAt": "2022-05-04T21:34:03.357Z",
+            "createdBy": "Clare",
             "status": "TODO"
         },
         {
             "id": 3,
             "title": "Estudio de mercado y marketing",
-            "horaCreacion": "2022-05-04T21:34:03.357Z",
-            "user": "Luis",
+            "createdAt": "2022-05-04T21:34:03.357Z",
+            "createdBy": "Luis",
             "status": "ONGOING"
         },
         {
             "id": 4,
             "title": "Unit testing",
-            "horaCreacion": "2022-05-04T21:34:11.240Z",
-            "user": "Victor",
+            "createdAt": "2022-05-04T21:34:11.240Z",
+            "createdBy": "Victor",
             "status": "ONGOING"
         },
         {
             "id": 5,
             "title": "Nuevas funcionalidades Base de datos",
-            "horaCreacion": "2022-05-04T21:34:11.240Z",
-            "user": "Clare",
+            "createdAt": "2022-05-04T21:34:11.240Z",
+            "createdBy": "Clare",
             "status": "DONE"
         },
         {
             "id": 6,
             "title": "Ir a la peluquería",
-            "horaCreacion": "2022-05-04T21:34:11.241Z",
-            "user": "Luis",
+            "createdAt": "2022-05-04T21:34:11.241Z",
+            "createdBy": "Luis",
             "status": "DONE"
         }
     ],

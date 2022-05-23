@@ -1,12 +1,12 @@
 class Task {
-    constructor(titulo, usuario) {
+    constructor(title, createdBy) {
         this.id = null
-        this.estado = "TODO";
-        this.titulo = titulo;
-        this.fecha_creación = new Date();
-        this.fecha_inicio = null;
-        this.fecha_fin = null;
-        this.usuario = usuario;
+        this.status = "TODO";
+        this.title = title;
+        this.createdAt = new Date();
+        this.startedAt = null;
+        this.finishedAt = null;
+        this.createdBy = createdBy;
     }
 }
 module.exports = Task;
