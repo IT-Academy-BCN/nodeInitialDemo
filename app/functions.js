@@ -104,6 +104,10 @@ const updateTask = (idInput, stateInput) => {
   if(!currentTask) {return 'Task not found.'};
   //assigning new state
    currentTask.state = stateInput;
+  //assigning date if completed
+   if(stateInput === 'completed'){
+     currentTask.completDate = new Date();
+   }
   //write data
    writeData(data);
    console.log(`The task with id ${currentTask.taskId} is ${currentTask.state}`);

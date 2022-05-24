@@ -69,7 +69,7 @@ const main = async() => {
             break;
             case '2':
                 const id2 = await showMenu2('Write ID to update: ');
-                const state = await showMenu2('Select the new state: ');
+                const state = await showMenu2('Select pending/executing/completed: ');
                 updateTask(id2, state);
             break;
             case '3':
