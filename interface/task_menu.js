@@ -10,8 +10,8 @@ function renderTaskMenu(taskId) {
   const task = taskList.getTask(taskId);
 
   // Print task via command line
-  const { status, id, createdBy, title, createdAt } = task;
-  console.table({ status, id, title, createdBy, createdAt });
+  const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
+  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
 
   return inquirer.prompt([
     {
@@ -40,8 +40,8 @@ function renderUpdateTaskMenu(taskId) {
   const task = taskList.getTask(taskId);
 
   // Print task via command line
-  const { status, id, createdBy, title, createdAt } = task;
-  console.table({ status, id, title, createdBy, createdAt });
+  const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
+  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
 
   return inquirer.prompt([
     {
@@ -69,8 +69,8 @@ function renderUpdateTaskMenu(taskId) {
 function renderUpdateTitle(taskId) {
   const task = taskList.getTask(taskId);
   // Print task via command line
-  const { status, id, createdBy, title, createdAt } = task;
-  console.table({ status, id, title, createdBy, createdAt });
+  const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
+  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
 
   console.log("=== Update task description ===");
   return inquirer.prompt([

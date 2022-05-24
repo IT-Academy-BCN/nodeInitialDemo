@@ -54,8 +54,8 @@ function renderListTasks () {
 
         choices.push({
             value: task.id,
-            name: task.status.padEnd(9) + task.id.toString().padEnd(4) + task.createdBy.padEnd(10).substring(0, 10) + task.title
-            //name: task.status.padEnd(9) + task.id.toString().padEnd(4) + task.createdBy.padEnd(10).substring(0, 10) + task.title
+            name: task.status.padEnd(9) + task.id.toString().padEnd(5) + 
+            task.createdBy.substring(0, 14).padEnd(15) + task.title
         });
     }
     
@@ -69,7 +69,7 @@ function renderListTasks () {
         {
             type: 'list',
             name: 'task',
-            message: '=== Task list ===\n\n  Status   ID  User      Title',
+            message: '=== Task list ===\n\n  Status   ID   User           Title',
             choices
         }
     ]);
