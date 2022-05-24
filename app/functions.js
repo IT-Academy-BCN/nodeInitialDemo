@@ -34,8 +34,11 @@ const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
   let data = readData();
   // Find New Task Id
-  let newTodoId = data[data.length - 1].taskId + 1;
-  // Create new todo task
+  let newTodoId = 1;
+  if (data.length > 0){
+    newTodoId = data[data.length - 1].taskId + 1;
+  }
+    // Create new todo task
   let newTodo = new Todo (newTodoId, userNameInput, taskNameInput );
   // Add New Task to Data Array
   data.push(newTodo);
