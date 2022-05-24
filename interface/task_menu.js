@@ -41,7 +41,11 @@ function renderUpdateTaskMenu(taskId) {
 
   // Print task via command line
   const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
+<<<<<<< HEAD
   console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt});
+=======
+  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
+>>>>>>> DevTeams
 
   return inquirer.prompt([
     {
@@ -86,4 +90,4 @@ function renderDeleteTask(taskId) {
   // TODO
 }
 
-module.exports = {renderTaskMenu, renderUpdateTaskMenu, renderUpdateTitle, renderDeleteTask,};
+module.exports = { renderTaskMenu, renderUpdateTaskMenu, renderUpdateTitle, renderDeleteTask };

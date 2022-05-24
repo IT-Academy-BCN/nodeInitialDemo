@@ -26,6 +26,7 @@ const {
   renderUpdateTitle,
 } = require("./task_menu");
 const { Console } = require("console");
+const { renderNewTitle } = require("../interface/new_task_menu");
 
 // Stages of our inquire flow
 const userMenu = Symbol("userMenu");
@@ -37,29 +38,21 @@ const listTasks = Symbol("listTasks");
 const taskMenu = Symbol("taskMenu");
 const updateTaskMenu = Symbol("updateTaskMenu");
 const updateTaskTitle = Symbol("updateTaskTitle");
-//
+
+// our class controller
 const taskList = new TaskList();
 
 // Flow control variable
 let nextScreen = userMenu;
-
-// TODO: variables to be changed when DB module implemented.
-let user;
-
-/* 
-Beware! userList is an array these objects
-
-    {value: username, name: username}
-
-This is done this way to easy the inquirer element list.
- */
-let userList = ["Victor"];
 
 async function logic() {
   try {
     let answer = "";
     let message = "";
     let task = "";
+    let user = "";
+    let userList = "";
+
     while (true) {
       console.clear(); // Clear console
 
@@ -72,6 +65,7 @@ async function logic() {
           answer = await renderUserMenu();
           switch (answer.userMenu) {
             case "select":
+              userList = taskList.getUsers();
               if (userList.length) {
                 nextScreen = userSelect;
               } else {
@@ -101,19 +95,7 @@ async function logic() {
 
         case userCreate:
           answer = await renderUserCreate();
-          let userCreated = answer.username;
-          if (
-            userCreated != null &&
-            userCreated != undefined &&
-            userCreated != ""
-          ) {
-            if (userList.some((e) => e.name === answer.username)) {
-              message = `User already created.`;
-            } else {
-              userList.push({ value: answer.username, name: answer.username });
-            }
-          }
-
+          taskList.createUser(answer.username);
           nextScreen = userMenu; // After user is created we go to userMenu screen
           break;
 
@@ -122,8 +104,7 @@ async function logic() {
 
           switch (answer.mainMenu) {
             case "createTask":
-              // TODO
-              exit(1);
+              nextScreen = createTask;              
               break;
 
             case "listTasks":
@@ -207,8 +188,10 @@ async function logic() {
           break;
 
         case createTask:
-          //TODO
-          exit(1);
+          answer = await renderNewTitle();
+          let newTitle = answer.newTitle;
+          taskList.createTask(newTitle, user);
+          nextScreen = mainMenu;
           break;
 
         default:
