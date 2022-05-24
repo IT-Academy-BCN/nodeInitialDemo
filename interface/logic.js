@@ -26,6 +26,7 @@ const {
   renderUpdateTitle,
 } = require("./task_menu");
 const { Console } = require("console");
+const { renderNewTitle } = require("../interface/new_task_menu");
 
 // Stages of our inquire flow
 const userMenu = Symbol("userMenu");
@@ -122,8 +123,7 @@ async function logic() {
 
           switch (answer.mainMenu) {
             case "createTask":
-              // TODO
-              exit(1);
+              nextScreen = createTask;              
               break;
 
             case "listTasks":
@@ -207,8 +207,10 @@ async function logic() {
           break;
 
         case createTask:
-          //TODO
-          exit(1);
+          answer = await renderNewTitle();
+          let newTitle = answer.newTitle;
+          taskList.createTask(newTitle, user);
+          nextScreen = mainMenu;
           break;
 
         default:

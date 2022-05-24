@@ -21,7 +21,7 @@ function renderMainMenu () {
                 },
                 {
                     value: 'createTask',
-                    name: 'Create Task (TODO)',
+                    name: 'Create Task',
                 },
                 {
                     value: 'changeUser',
@@ -76,7 +76,7 @@ function renderListTasks () {
 }
 
 function renderCreateTasks () {
-// TODO
+    // TODO
 }
 
 module.exports = {renderMainMenu, renderListTasks, renderCreateTasks};
