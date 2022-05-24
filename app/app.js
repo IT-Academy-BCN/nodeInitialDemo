@@ -3,7 +3,8 @@ const functions = {addTask,
                   listAll,
                   updateTask,
                   deleteTask,
-                  showTaskState 
+                  showTaskState, 
+                  searchID 
                 } = require('./functions');
 
 const showMenu2 = (question) => {
@@ -66,9 +67,12 @@ const main = async() => {
                 const userName = await showMenu2('Write your username: ');
                 const description = await showMenu2("Write task's description: ");
                 addTask(userName, description);
-            break;
+            break; 
             case '2':
                 const id2 = await showMenu2('Write ID to update: ');
+                if (searchById(id2) === -1){
+                    console.log("Task does'");
+                }
                 const state = await showMenu2('Select pending/executing/completed: ');
                 updateTask(id2, state);
             break;
