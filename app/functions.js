@@ -24,9 +24,10 @@ let writeData = (enterArray) => {
 };
 
 // Create Search by Id => Des d'una Array i un objId
-const searchById = ((dataInput, idInput) => {
-  return dataInput.findIndex(task => task.taskId == idInput);
-})
+const searchById = (dataInput, idInput) => dataInput.findIndex(task => task.taskId == idInput);
+
+// Create Function Format Date
+const formatDate = dateInput => dateInput.substring(0, 10) + " " + dateInput.substr(11, 8);
 
 // Crear addTask() Function
 const addTask = (userNameInput,taskNameInput) => {
@@ -49,16 +50,19 @@ const addTask = (userNameInput,taskNameInput) => {
 const listAll = () => {
   // read todo From Json 
   let data = readData();
+  // IF not Data => Show Message
+  if (data == 0) {
+    console.log("Your To Do List is Empty!!");
+    return;
+  }
   data.forEach(object => {
-    // Format Date
-    let initDate =  object.initDate.substring(0, 10) + " " + object.initDate.substr(11, 8);
     // Check if Ended Date exists
     let complDate = "Not Finished";
     if (object.state === "completed" )
     {
-      complDate = object.initDate.substring(0, 10) + " " + object.initDate.substr(11, 8);
+      complDate = formatDate(object.completDate);
     }
-    console.log(`${object.taskId}.- "${object.text}" by ${object.userName}. State = "${object.state}". Start Date = "${initDate}". Ended Date = ${complDate}  `);
+    console.log(`${object.taskId}.- "${object.text}" by ${object.userName}. State = "${object.state}". Start Date = "${formatDate(object.initDate)}". Ended Date = ${complDate}  `);
   });
 }
 
@@ -84,7 +88,7 @@ const deleteTask = (inputId) => {
 
 }
 
-//lists all tasks, takes numTask id = position in array passed as argument
+//lists 1 task, takes numTask id Show Task
 const listTask = (idInput) => {
   data = readData();
   index = searchById(data,idInput);
