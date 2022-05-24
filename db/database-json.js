@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { exit } = require('process');
 const { Database } = require('./database');
+const Task = require('../clases/Task');
 
 class DatabaseJson extends Database {
 
@@ -35,13 +36,16 @@ class DatabaseJson extends Database {
         return this.jsonDb.users;
     }
 
-    createTask ({title, user}) { // lo suyo sería recibir por parámetro objeto TODO
+    createTask (title, createdBy) {
+        /*
         const todo = {
             id: this.jsonDb.nextTodoId++,
             title,
             createdAt: new Date(),
             createdBy: user
-        };
+        };*/
+        const todo = new Task(title, createdBy);
+        todo.id = this.jsonDb.nextTodoId++;
         this.jsonDb.todos.push(todo);
         this.saveData();
     }

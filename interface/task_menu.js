@@ -86,4 +86,4 @@ function renderDeleteTask(taskId) {
   // TODO
 }
 
-module.exports = {renderTaskMenu, renderUpdateTaskMenu, renderUpdateTitle, renderDeleteTask,};
+module.exports = { renderTaskMenu, renderUpdateTaskMenu, renderUpdateTitle, renderDeleteTask };

@@ -76,7 +76,7 @@ function renderListTasks () {
 }
 
 function renderCreateTasks () {
-// TODO
+    // TODO
 }
 
 module.exports = {renderMainMenu, renderListTasks, renderCreateTasks};
