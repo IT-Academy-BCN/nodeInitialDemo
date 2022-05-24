@@ -4,7 +4,8 @@ const functions = {addTask,
                   updateTask,
                   deleteTask,
                   showTaskState, 
-                  searchID 
+                  searchById, 
+                  readData
                 } = require('./functions');
 
 const showMenu2 = (question) => {
@@ -70,11 +71,12 @@ const main = async() => {
             break; 
             case '2':
                 const id2 = await showMenu2('Write ID to update: ');
-                if (searchById(id2) === -1){
-                    console.log("Task does'");
-                }
-                const state = await showMenu2('Select pending/executing/completed: ');
-                updateTask(id2, state);
+                if (searchById(readData(), id2) === -1){
+                    console.log("Task doesn't exist.");
+                } else {
+                    const state = await showMenu2('Select pending/executing/completed: ');
+                    updateTask(id2, state);
+                }    
             break;
             case '3':
                 const id3 = await showMenu2('Write ID to delete: ');
