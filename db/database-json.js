@@ -50,7 +50,28 @@ class DatabaseJson extends Database {
         const task = this.getTask(id);
         task.title = newtitle;
         this.saveData();
-  }
+    }
+
+    updateTaskStatus(id) {
+        const task = this.getTask(id);
+        let currentStatus = task.status;
+        switch (currentStatus) {
+          case "TODO":
+            task.status = "ONGOING";
+            task.startedAt = new Date();
+            this.saveData();
+            break;
+          case "ONGOING":
+            task.status = "DONE";
+            task.finishedAt = new Date();
+            this.saveData();
+            break;
+          case "DONE":
+            break;
+          default:
+            throw new Error(`Error in task status option ${currentStatus}`);
+        }
+    }
 
     deleteTask ( id ) {
         const index = this.jsonDb.todos.map(todo => todo.id).indexOf(id);
