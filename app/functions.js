@@ -48,7 +48,6 @@ const addTask = (userNameInput,taskNameInput) => {
   console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
 }
 
-
 // Crear listAll()
 const listAll = () => {
   // read todo From Json 
@@ -91,12 +90,15 @@ const deleteTask = (inputId) => {
 
 }
 
-//lists 1 task, takes numTask id Show Task
-const listTask = (idInput) => {
-  data = readData();
-  index = searchById(data,idInput);
-  console.log(data[index]);
-}
+  //lists all tasks, takes numTask id = position in array passed as argument
+  const listTask = (idInput) => {
+    data = readData();
+    index = searchById(data,idInput);
+    if(index < 0) {
+      return console.log(`Task doesn't exist.`);
+    }
+    console.log(data[index]);
+  }
 
 //upDatetask, takes numTask id = position in array passed as argument
 const updateTask = (idInput, stateInput) => {
@@ -104,10 +106,14 @@ const updateTask = (idInput, stateInput) => {
   let data = readData();
   let index = searchById(data,idInput);
   let currentTask = data[index];
-  if(!currentTask) {return 'Task not found.'};
+  if(!currentTask || index < 0) {
+    return console.log(`Task doesn't exist.`);
+  } else if(stateinput !== 'executing' || stateinput !== 'pending' || stateinput !== 'completed'){
+    return console.log('Input not valid.');
+  } else {
   //assigning new state
    currentTask.state = stateInput;
-  //assigning date if completed
+   //assigning date if completed
    if(stateInput === 'completed'){
      currentTask.completDate = new Date();
    }
@@ -115,6 +121,7 @@ const updateTask = (idInput, stateInput) => {
    writeData(data);
    console.log(`The task with id ${currentTask.taskId} is ${currentTask.state}`);
   }
+}
 
 
 //shows state of task
@@ -122,9 +129,10 @@ const showTaskState = (idInput) => {
   let result = "";
   let data = readData();
   let index = searchById(data, idInput);
+  console.log(index);
   let currentTask = data[index];
-  if (!currentTask){
-    result = 'Task not found';
+  if (!currentTask || index < 0){
+    result = `Task doesn't exist.`;
   } else if (currentTask.completDate === null){
     result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user: ${currentTask.userName}`;
   } else {
