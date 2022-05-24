@@ -19,12 +19,12 @@ module.exports = class TaskList {
         
     }*/
 
-    getUsers(){
-
+    getUsers() {
+        return this.bd.getUsers();
     }
 
-    createUser(){
-        
+    createUser(user) {
+        this.bd.createUser(user);
     }
 
     createTask(title, createdBy){
