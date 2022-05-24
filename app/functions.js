@@ -106,7 +106,6 @@ const updateTask = (idInput, stateInput) => {
   let data = readData();
   let index = searchById(data,idInput);
   let currentTask = data[index];
-  console.log(stateInput)
   if (stateInput !== 'executing' && stateInput !== 'pending' && stateInput !== 'completed'){
     return console.log('Input not valid.');
   } else {
