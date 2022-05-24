@@ -121,7 +121,6 @@ const updateTask = (idInput, stateInput) => {
   }
 }
 
-
 //shows state of task
 const showTaskState = (idInput) => {
   let result = "";
@@ -139,4 +138,4 @@ const showTaskState = (idInput) => {
   console.log(result);
 }
 
-module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState};
+module.exports = {addTask, listTask, listAll, updateTask, deleteTask, showTaskState, searchById, readData};
