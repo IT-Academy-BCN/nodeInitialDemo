@@ -29,8 +29,6 @@ const searchById = (dataInput, idInput) => dataInput.findIndex(task => task.task
 // Create Function Format Date
 const formatDate = dateInput => dateInput.substring(0, 10) + " " + dateInput.substr(11, 8);
 
-console.log(formatDate("2022-05-17T10:32:13.539Z"))
-
 // Crear addTask() Function
 const addTask = (userNameInput,taskNameInput) => {
   // read todo From Json 
