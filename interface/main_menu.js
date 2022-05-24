@@ -21,7 +21,7 @@ function renderMainMenu () {
                 },
                 {
                     value: 'createTask',
-                    name: 'Create Task (TODO)',
+                    name: 'Create Task',
                 },
                 {
                     value: 'changeUser',
