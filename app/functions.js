@@ -106,9 +106,7 @@ const updateTask = (idInput, stateInput) => {
   let data = readData();
   let index = searchById(data,idInput);
   let currentTask = data[index];
-  if(!currentTask || index < 0) {
-    return console.log(`Task doesn't exist.`);
-  } else if(stateInput !== 'executing' || stateInput !== 'pending' || stateInput !== 'completed'){
+  if (stateInput !== 'executing' || stateInput !== 'pending' || stateInput !== 'completed'){
     return console.log('Input not valid.');
   } else {
   //assigning new state
