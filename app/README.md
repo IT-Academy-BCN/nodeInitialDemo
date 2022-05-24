@@ -1,9 +1,11 @@
-### Bibliografia:
-
-- https://www.geeksforgeeks.org/todo-list-cli-application-using-node-js/
-
 ### TASK
 Create an app managing a TO DO-list (executed via terminal) deploy with different types of persistance (data storage systems).
+
+Execute from a terminal initiated within the app folder.
+
+```
+node app.js
+````
 
 ### FEATURES: 
 - addTask()
@@ -23,7 +25,9 @@ MySQL
 ### Level 3
 MongoDB
 
+### Bibliografia:
 
+- https://www.geeksforgeeks.org/todo-list-cli-application-using-node-js/
 ### GITFLOW
 
 Uses two branches: main and develop.
