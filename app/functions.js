@@ -35,7 +35,6 @@ const addTask = (userNameInput,taskNameInput) => {
   let data = readData();
   // Find New Task Id
   let newTodoId = 1;
-  console.log()
   if (data.length > 0){
     newTodoId = data[data.length - 1].taskId + 1;
   }
