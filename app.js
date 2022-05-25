@@ -1,5 +1,6 @@
 const addTask = require('./controllers/addtask');
 const listTask = require('./controllers/listtask');  
+const listAll = require('./controllers/listall'); 
 const updateTask = require('./controllers/updatetask');  
 const deleteTask = require('./controllers/deletetask');  
 const showTaskState = require('./controllers/showtaskstate');  
@@ -29,7 +30,7 @@ const pause = () => {
         switch (opt) {
             case '1':
                 const userName = await showMenu('Write your username: ');
-                const description = await showMen2("Write task's description: ");
+                const description = await showMenu("Write task's description: ");
                 addTask(userName, description);
             break; 
             case '2':
@@ -37,7 +38,7 @@ const pause = () => {
                 if (searchById(readData(), id2) === -1){
                     console.log("Task doesn't exist.");
                 } else {
-                    const state = await showMenu2('Select pending/executing/completed: ');
+                    const state = await showMenu('Select pending/executing/completed: ');
                     updateTask(id2, state);
                 }    
             break;

@@ -4,7 +4,7 @@ const fs = require('fs');
 let readData = () => {
   
   // Read JSON
-  let fileName = '../models/todo.json';
+  let fileName = './models/todo.json';
   // La Array LLegida del JSON 
   let readArray = JSON.parse(fs.readFileSync(fileName, 'utf8'));
   return readArray;

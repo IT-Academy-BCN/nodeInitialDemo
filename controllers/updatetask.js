@@ -24,4 +24,4 @@ const updateTask = (idInput, stateInput) => {
     }
   }
 
-  module.exports = upDateTask;
+  module.exports = updateTask;
