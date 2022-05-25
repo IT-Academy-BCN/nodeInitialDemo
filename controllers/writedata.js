@@ -4,7 +4,7 @@ const fs = require('fs');
 let writeData = (enterArray) => {
 
   // Write JSON
-  fs.writeFile('../models/todo.json', JSON.stringify(enterArray), (error) => {
+  fs.writeFile('./models/todo.json', JSON.stringify(enterArray), (error) => {
     if (error) {
         throw error;
     }
