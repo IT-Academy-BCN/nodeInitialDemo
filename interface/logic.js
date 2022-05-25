@@ -163,8 +163,8 @@ async function logic() {
           answer = await renderUpdateTaskMenu(task);
           switch (answer.UpdateOptionsMenu) {
             case "updateStatus":
-              // TODO
-              exit(1);
+              taskList.updateTaskStatus(task);
+              nextScreen = updateTaskMenu
               break;
 
             case "updateTitle":

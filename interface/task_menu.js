@@ -51,7 +51,7 @@ function renderUpdateTaskMenu(taskId) {
       choices: [
         {
           value: "updateStatus",
-          name: "Update status (TODO)",
+          name: "Update status",
         },
         {
           value: "updateTitle",
