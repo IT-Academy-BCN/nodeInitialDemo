@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Todo = require('./classTodo.js');
+const Todo = require('../controllers/classTodo.js');
 
 // Read JSON. Nombre Funcion = readData(). => Devuelve una array (data)
 let readData = () => {
