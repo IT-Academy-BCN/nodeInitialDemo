@@ -10,7 +10,7 @@ const showTaskState = (idInput) => {
     let currentTask = data[index];
     if (!currentTask || index < 0){
       result = `Task doesn't exist.`;
-    } else if (currentTask.completDate === null){
+    } else if (currentTask.completDate == null){
       result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user: ${currentTask.userName}`;
     } else {
       result = `The state of the task is ${currentTask.state}, it was added ${currentTask.initDate} by user ${currentTask.userName} and completed ${currentTask.completDate} `;
