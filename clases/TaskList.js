@@ -31,8 +31,12 @@ module.exports = class TaskList {
         this.bd.createTask(title, createdBy);
     }
 
-    updateTaskTitle(id, newtitle){
-        this.bd.updateTaskTitle(id, newtitle);
+    updateTaskTitle(id, newTitle){
+        this.bd.updateTaskTitle(id, newTitle);
+    }
+
+    updateTaskStatus(id) {
+        this.bd.updateTaskStatus(id);
     }
 
     deleteTask( id ){
