@@ -3,7 +3,7 @@ class Task {
         this.id = null
         this.status = "TODO";
         this.title = title;
-        this.createdAt = new Date();
+        this.createdAt = (new Date()).toISOString();
         this.startedAt = null;
         this.finishedAt = null;
         this.createdBy = createdBy;

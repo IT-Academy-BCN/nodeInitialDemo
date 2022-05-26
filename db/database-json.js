@@ -62,12 +62,12 @@ class DatabaseJson extends Database {
         switch (currentStatus) {
           case "TODO":
             task.status = "ONGOING";
-            task.startedAt = new Date();
+            task.startedAt = (new Date()).toISOString();
             this.saveData();
             break;
           case "ONGOING":
             task.status = "DONE";
-            task.finishedAt = new Date();
+            task.finishedAt = (new Date()).toISOString();
             this.saveData();
             break;
           case "DONE":
