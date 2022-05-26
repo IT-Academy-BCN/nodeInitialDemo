@@ -1,6 +1,7 @@
 # Developers Team - Todo List
 ## Descripción proyecto
 Todo-List por consola, utilizando node.js y la librería inquirer (https://www.npmjs.com/package/inquirer)
+![Image text](screens.png)
 ## Autores
 Clare ([@klarema](https://github.com/klarema)), Victor ([@vicmape](https://github.com/vicmape)), Luis ([@qfluis](https://github.com/qfluis))
 ## Metodología
