@@ -65,7 +65,7 @@ async function logic() {
           answer = await renderUserMenu();
           switch (answer.userMenu) {
             case "select":
-              userList = taskList.getUsers();
+              userList = await taskList.getUsers();
               if (userList.length) {
                 nextScreen = userSelect;
               } else {
@@ -95,7 +95,7 @@ async function logic() {
 
         case userCreate:
           answer = await renderUserCreate();
-          taskList.createUser(answer.username);
+          await taskList.createUser(answer.username);
           nextScreen = userMenu; // After user is created we go to userMenu screen
           break;
 
@@ -141,7 +141,7 @@ async function logic() {
           switch (answer.taskMenu) {
             case "deleteTask":
               // TODO
-              taskList.deleteTask(task);
+              await taskList.deleteTask(task);
               nextScreen = listTasks;
               break;
 
@@ -163,7 +163,7 @@ async function logic() {
           answer = await renderUpdateTaskMenu(task);
           switch (answer.UpdateOptionsMenu) {
             case "updateStatus":
-              taskList.updateTaskStatus(task);
+              await taskList.updateTaskStatus(task);
               nextScreen = updateTaskMenu
               break;
 
@@ -183,14 +183,14 @@ async function logic() {
         case updateTaskTitle:
           answer = await renderUpdateTitle(task);
           let updatedTaskTitle = answer.updatedTitle;
-          taskList.updateTaskTitle(task, updatedTaskTitle);
+          await taskList.updateTaskTitle(task, updatedTaskTitle);
           nextScreen = updateTaskMenu;
           break;
 
         case createTask:
           answer = await renderNewTitle();
           let newTitle = answer.newTitle;
-          taskList.createTask(newTitle, user);
+          await taskList.createTask(newTitle, user);
           nextScreen = mainMenu;
           break;
 

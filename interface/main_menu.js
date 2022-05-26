@@ -36,14 +36,14 @@ function renderMainMenu () {
     ])
 }
 
-function renderListTasks () {
+async function renderListTasks () {
 
-    let list = taskList.getTasks();
+    let list = await taskList.getTasks();
     
     // Sort the list of tasks
     list.sort((a,b) => {
-        if ( a.status.toLowerCase() < b.status.toLowerCase()) return 1;
-        if ( a.status.toLowerCase() > b.status.toLowerCase()) return -1;
+        if ( a.status < b.status) return 1;
+        if ( a.status > b.status) return -1;
         return 0;
     });
     
