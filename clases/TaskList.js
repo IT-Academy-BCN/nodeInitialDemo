@@ -1,54 +1,58 @@
+require('dotenv').config();
+
 const { DatabaseJson } = require("../db/database-json");
+const { DatabaseMongo } = require("../db/database-mongo");
+
 
 module.exports = class TaskList {
     constructor() {
 
-       if(typeof TaskList.instance === "object") {
+    if(typeof TaskList.instance === "object") {
         return TaskList.instance;
-        }
+    }
 
-        // TODO: Lógica seleccionar BD json/mysql/mongo
-        this.bd = new DatabaseJson();
+        if (process.env.DB === 'mongo') {
+            this.bd = new DatabaseMongo();
+        } else {
+            // Default database is json
+            this.bd = new DatabaseJson();
+        }
 
         TaskList.instance = this;
         return this;
     }
 
-    /*
-    selectUser(){
-        
-    }*/
-
-    getUsers() {
-        return this.bd.getUsers();
+    async getUsers() {
+        return await this.bd.getUsers();
     }
 
-    createUser(user) {
-        this.bd.createUser(user);
+    async createUser(user) {
+        await this.bd.createUser(user);
     }
 
-    createTask(title, createdBy){
-        this.bd.createTask(title, createdBy);
+    async createTask(title, createdBy){
+        await this.bd.createTask(title, createdBy);
     }
 
-    updateTaskTitle(id, newTitle){
-        this.bd.updateTaskTitle(id, newTitle);
+    async updateTaskTitle(id, newTitle){
+        await this.bd.updateTaskTitle(id, newTitle);
     }
 
-    updateTaskStatus(id) {
-        this.bd.updateTaskStatus(id);
+    async updateTaskStatus(id) {
+        console.log('here')
+        await this.bd.updateTaskStatus(id);
     }
 
-    deleteTask( id ){
-        this.bd.deleteTask(id);
+    async deleteTask( id ){
+        await this.bd.deleteTask(id);
     }
 
-    getTask(id){
-        return this.bd.getTask(id);
+    async getTask(id){
+        return await this.bd.getTask(id);
     }
 
-    getTasks(){
-        return this.bd.getTasks();
+    async getTasks() {
+        return await this.bd.getTasks();
     }
 
 }

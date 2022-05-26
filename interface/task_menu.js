@@ -6,12 +6,24 @@ const TaskList = require("../clases/TaskList");
 
 const taskList = new TaskList();
 
-function renderTaskMenu(taskId) {
-  const task = taskList.getTask(taskId);
-
+function printTask(task) {
   // Print task via command line
   const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
-  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
+
+  console.table({
+    status,
+    id,
+    title,
+    createdBy,
+    createdAt: (createdAt ? createdAt.toString(): createdAt),
+    startedAt: (startedAt? startedAt.toString(): startedAt),
+    finishedAt: (finishedAt ? finishedAt.toString(): finishedAt)
+  });
+}
+
+async function renderTaskMenu(taskId) {
+  const task = await taskList.getTask(taskId);
+  printTask(task);
 
   return inquirer.prompt([
     {
@@ -36,12 +48,11 @@ function renderTaskMenu(taskId) {
   ]);
 }
 
-function renderUpdateTaskMenu(taskId) {
-  const task = taskList.getTask(taskId);
+async function renderUpdateTaskMenu(taskId) {
+   const task = await taskList.getTask(taskId);
 
   // Print task via command line
-  const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
-  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
+  printTask(task);
 
   return inquirer.prompt([
     {
@@ -66,11 +77,12 @@ function renderUpdateTaskMenu(taskId) {
   ]);
 }
 
-function renderUpdateTitle(taskId) {
-  const task = taskList.getTask(taskId);
+async function renderUpdateTitle(taskId) {
+
+  const task = await taskList.getTask(taskId);
+
   // Print task via command line
-  const { status, id, createdBy, title, createdAt, startedAt, finishedAt } = task;
-  console.table({ status, id, title, createdBy, createdAt, startedAt, finishedAt });
+  printTask(task);
 
   console.log("=== Update task description ===");
   return inquirer.prompt([
