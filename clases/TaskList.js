@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const { DatabaseJson } = require("../db/database-json");
 const { DatabaseMongo } = require("../db/database-mongo");
+const { DatabaseMysql } = require("../db/database-mysql");
 
 
 module.exports = class TaskList {
@@ -10,9 +11,11 @@ module.exports = class TaskList {
     if(typeof TaskList.instance === "object") {
         return TaskList.instance;
     }
-
-        if (process.env.DB === 'mongo') {
+        const {DB} = process.env;
+        if (DB === 'mongo') {
             this.bd = new DatabaseMongo();
+        } else if (DB === 'sql'){
+            this.bd = new DatabaseMysql();
         } else {
             // Default database is json
             this.bd = new DatabaseJson();

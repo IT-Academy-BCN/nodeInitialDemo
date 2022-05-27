@@ -59,7 +59,7 @@ class DatabaseMysql extends Database {
         this.initDb();
     }
 
-    async createUser(user){
+    async createUser(user) {
 
         let result = false;
 
@@ -73,18 +73,82 @@ class DatabaseMysql extends Database {
         } catch (err) {
             console.log(err.message);
         }
+        console.log(result);
 
         return result;
     }
 
-    async getUsers(){}
-    async createTask(){}
-    async updateTaskTitle(){}
-    async updateTaskStatus(){}
-    async deleteTask(){}
-    async getTask(){}
-    async getTasks(){}
+    async getUsers() {
+        let users = await this.User.findAll();
+        let names = users.map(e => e.name);
+        return names;
+    }
+    
+    async createTask(title, createdBy) {
+        try {
+            let t = new this.Task({
+                title, 
+                status: 'TODO',
+                createdBy,
+                createdAt: new Date() //to ISOSTRING?
+            });
+            await t.save();            
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    async updateTaskTitle(id, newTitle) {
+        try {
+            const t = await this.Task.findOne({where:{id}});
+            t.title = newTitle;
+            t.save();
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    async updateTaskStatus(id) {
+        try {
+            let newStatus = "";
+            const t = await this.Task.findOne({where:{id}});
+            if (t.status === "TODO") newStatus = "ONGOING"
+            if (t.status === "ONGOING") newStatus = "DONE"
+            
+            if (newStatus !== "") {
+                t.status = newStatus;
+                t.save();
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+    
+    async deleteTask(id) {
+        try {
+            await this.Task.destroy({where: {id}});
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    async getTask(id) {
+        try {
+            const t = await this.Task.findOne({where:{id}});
+            return this.Task;
+        } catch (err) {
+            console.log(err.message);
+        }        
+    }
+    async getTasks() {
+        try {
+            const tasks = await this.Task.findAll();
+            return tasks;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     
 }
 
-module.exports = { DatabaseMongo }
+module.exports = { DatabaseMysql }
