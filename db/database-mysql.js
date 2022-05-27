@@ -28,9 +28,9 @@ class DatabaseMysql extends Database {
             title:{
                 type: DataTypes.STRING
             },
-            createAt: {
+            /*createdAt: {  Sequelize lo crea por defecto
                 type: DataTypes.DATE,
-            },
+            },*/
             startedAt: {
                 type: DataTypes.DATE,
                 defaultValue: null
@@ -102,7 +102,7 @@ class DatabaseMysql extends Database {
         try {
             const t = await this.Task.findOne({where:{id}});
             t.title = newTitle;
-            t.save();
+            await t.save();
         } catch (err) {
             console.log(err.message);
         }
@@ -110,14 +110,17 @@ class DatabaseMysql extends Database {
 
     async updateTaskStatus(id) {
         try {
-            let newStatus = "";
             const t = await this.Task.findOne({where:{id}});
-            if (t.status === "TODO") newStatus = "ONGOING"
-            if (t.status === "ONGOING") newStatus = "DONE"
-            
-            if (newStatus !== "") {
-                t.status = newStatus;
-                t.save();
+            if (t.status === "TODO") {
+                t.startedAt = new Date();
+                t.status = "ONGOING"
+                await t.save();
+            } else if (t.status === "ONGOING") {
+                t.finishedAt = new Date();
+                t.status = "DONE";
+                await t.save();
+            } else {
+                // NOTHING TO DO
             }
         } catch (err) {
             console.log(err.message);
@@ -135,7 +138,7 @@ class DatabaseMysql extends Database {
     async getTask(id) {
         try {
             const t = await this.Task.findOne({where:{id}});
-            return this.Task;
+            return t;
         } catch (err) {
             console.log(err.message);
         }        
