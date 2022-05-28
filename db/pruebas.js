@@ -1,28 +1,28 @@
-const { DatabaseJson } = require('./database-json');
+const { DatabaseMysql } = require('./database-mysql');
 
 // Código para probar la clase...
 
-const bd = new DatabaseJson();
+const bd = new DatabaseMysql();
 bd.createUser("Luis");
 bd.createUser("Anna");
-/*
+
 
 bd.createUser("Peter");
 bd.createUser("Juanillo");
 
-bd.createTodo({
+bd.createTask({
     title: "Titulo blebleble",
     user: "Juanillo"
 });
-bd.createTodo({
+bd.createTask({
     title: "Titulo blablbalba",
     user: "Peter"
 });
-bd.createTodo({
+bd.createTask({
     title: "Titulo bliblibli",
     user: "Luis"
 });
-*/
+
 
 //console.log(bd.getTasks());
 //bd.deleteTask(1);
