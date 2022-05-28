@@ -43,6 +43,12 @@ Según el valor de la variable <b>DB</b> se utilizará uno u otro sistema de per
 - <b>DB=mongo</b>: Se utilizará MongoDB.
 - <b>DB=sql</b>: Se utilizará MySQL.
 
+### MySQL
+En el caso de MySQL es necesario tener una BD creada (la misma que la que se indique en `MYSL_DB_NAME`). El siguiente script permite crear la BD:
+```
+CREATE SCHEMA `DevTeams_luis_clare_victor` DEFAULT CHARACTER SET utf8mb4 ;
+```
+
 ### Iniciar proyecto:
 ```
 npm init
