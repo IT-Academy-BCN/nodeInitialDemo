@@ -1,16 +1,35 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require("sequelize");
 
+const mysql = require('mysql2/promise');
+
 const { Database } = require('./Database');
 
 class DatabaseMysql extends Database {
 
+    constructor() {
+        super();
+    }
+
     async initDb() {
+
+        const connection = await mysql.createConnection({ 
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS });
+        
+        await connection.connect();
+        // We do not drop the database every init. The DB_NAME is unique to avoid colision
+        // with other colleagues.
+        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\`;`);
+        console.log(`Database ${process.env.DB_NAME} (re)created`);
+        await connection.end();
+
         // Conexión
-        const { MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT } = process.env;
-        const db =  new Sequelize(MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASS, {
-            host: MYSQL_HOST,
-            port: MYSQL_PORT, // por defecto 3306 
+        const { DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_PORT } = process.env;
+        const db =  new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+            host: DB_HOST,
+            port: DB_PORT, // por defecto 3306 
             dialect: 'mysql', 
             logging: false    // comentar esta linea si necesitas detalle de las consultas
         });
@@ -43,26 +62,21 @@ class DatabaseMysql extends Database {
                 type: DataTypes.STRING
             }            
         });
+
         // Modelo User
         this.User = db.define('User', {
             name: {
                 type: DataTypes.STRING
             }
-        });        
-        
-        await db.sync();
+        });
 
-    }
-    
-    constructor() {
-        super();
-        this.initDb();
+        await db.sync();
     }
 
     async createUser(user) {
-
+        
         let result = false;
-
+        
         try {
             const userExist = await this.User.findOne({where:{name:user}});
             if(!userExist) {
@@ -92,7 +106,7 @@ class DatabaseMysql extends Database {
                 createdBy,
                 createdAt: new Date() //to ISOSTRING?
             });
-            await t.save();            
+            await t.save();
         } catch (err) {
             console.log(err.message);
         }

@@ -8,21 +8,26 @@ const { DatabaseMysql } = require("../db/database-mysql");
 module.exports = class TaskList {
     constructor() {
 
-    if(typeof TaskList.instance === "object") {
-        return TaskList.instance;
-    }
-        const {DB} = process.env;
-        if (DB === 'mongo') {
+        if(typeof TaskList.instance === "object") {
+            return TaskList.instance;
+        }
+
+        if (process.env.DB === 'mongo') {
             this.bd = new DatabaseMongo();
-        } else if (DB === 'sql'){
+        } else if (process.env.DB === 'sql'){
             this.bd = new DatabaseMysql();
         } else {
-            // Default database is json
-            this.bd = new DatabaseJson();
+            this.bd = new DatabaseJson(); // Default database is json
         }
 
         TaskList.instance = this;
         return this;
+    }
+
+    async initTaskListDb() {
+        if (process.env.DB === 'sql') {
+            await this.bd.initDb();
+        }
     }
 
     async getUsers() {
@@ -57,5 +62,4 @@ module.exports = class TaskList {
     async getTasks() {
         return await this.bd.getTasks();
     }
-
 }

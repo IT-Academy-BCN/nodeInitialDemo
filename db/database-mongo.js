@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 class DatabaseMongo extends Database {
 
     async initDb() {
+        console.log(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
         
         const mongoDB = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 

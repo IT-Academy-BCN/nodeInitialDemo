@@ -20,13 +20,16 @@ const {
 } = require("./main_menu");
 const { exit } = require("process");
 const TaskList = require("../clases/TaskList");
+
 const {
   renderTaskMenu,
   renderUpdateTaskMenu,
   renderUpdateTitle,
 } = require("./task_menu");
+
 const { Console } = require("console");
 const { renderNewTitle } = require("../interface/new_task_menu");
+const Task = require("../clases/Task");
 
 // Stages of our inquire flow
 const userMenu = Symbol("userMenu");
@@ -52,6 +55,9 @@ async function logic() {
     let task = "";
     let user = "";
     let userList = "";
+
+    // In MySQL we need an async function to initialize the DB
+    await taskList.initTaskListDb();
 
     while (true) {
       console.clear(); // Clear console
@@ -95,8 +101,12 @@ async function logic() {
 
         case userCreate:
           answer = await renderUserCreate();
-          await taskList.createUser(answer.username);
-          nextScreen = userMenu; // After user is created we go to userMenu screen
+          if (/\s/g.test(answer.username)){
+            message = 'Wrong username. Do not use spaces'
+          } else {
+            await taskList.createUser(answer.username);
+            nextScreen = userMenu; // After user is created we go to userMenu screen
+          }
           break;
 
         case mainMenu:

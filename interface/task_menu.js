@@ -54,6 +54,15 @@ async function renderUpdateTaskMenu(taskId) {
   // Print task via command line
   printTask(task);
 
+  let updateStatus = '';
+  if (task.status === 'TODO') {
+    updateStatus = 'Update status (-> ONGOING)'
+  } else if (task.status === 'ONGOING') {
+    updateStatus = 'Update status (-> DONE)';
+  } else {
+    updateStatus = 'Update status (Already DONE)'
+  }
+
   return inquirer.prompt([
     {
       type: "list",
@@ -62,7 +71,7 @@ async function renderUpdateTaskMenu(taskId) {
       choices: [
         {
           value: "updateStatus",
-          name: "Update status",
+          name: updateStatus,
         },
         {
           value: "updateTitle",
