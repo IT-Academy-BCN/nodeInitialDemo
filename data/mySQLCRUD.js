@@ -1,10 +1,10 @@
 const { Player, Games }  = require ("./connectMySQL");
 
-async function  addPlayer (player) {
+async function  addNewPlayer (player) {
 
-     return await Player.create({name: player.name, registerDate: player.register_date});
+     return await Player.create({namePlayer: player.namePlayer, register_date: player.register_date});
  }
-
+/*
  async function  getAllPlayers () {
 
     return await Player.findAll();
@@ -33,7 +33,7 @@ async function ranking() {
 async function modifyPlayer(id) {
     return await Player.update({name: player.name, registerDate: player.register_date});
 }
-*/
+
 
 async function deletePlayerGames(game) {
     return await Games.destroy({where: {PlayeridPlayer: game.idPlayer}});
@@ -46,10 +46,12 @@ async function deletePlayerGames(game) {
 async function updateScore() {
     return await Player.update({score: Game.score});
 }
+*/
 
 
-
-module.exports = { addPlayer, getAllPlayers, getPlayer, addGame, getAllGames, ranking, deletePlayerGames, updateScore};
+module.exports = { addNewPlayer,
+    // getAllPlayers, getPlayer, addGame, getAllGames, ranking, deletePlayerGames, updateScore
+    };
 
 
    
