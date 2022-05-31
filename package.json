@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/patricia79/nodeInitialDemo/issues"
   },
-  "homepage": "https://github.com/patricia79/nodeInitialDemo#readme"
+  "homepage": "https://github.com/patricia79/nodeInitialDemo#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
