@@ -1,0 +1,19 @@
+{
+  "name": "api-4.2-joc-de-daus",
+  "version": "3.0.0",
+  "description": "Joc de daus, sprint 4.2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patricia79/nodeInitialDemo.git"
+  },
+  "author": "Patricia González",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patricia79/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/patricia79/nodeInitialDemo#readme"
+}
