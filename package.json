@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+<<<<<<< Updated upstream
     "dev": "nodemon app.js"
+=======
+    "dev": "nodemon src/app.js"
+>>>>>>> Stashed changes
   },
   "repository": {
     "type": "git",
