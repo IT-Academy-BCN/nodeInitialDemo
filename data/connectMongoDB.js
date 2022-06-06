@@ -13,9 +13,9 @@ mongoose.connect("mongodb://localhost:27017/dice_game",(err, res) =>{
 if(err){
 throw err;
 }else{
-  console.log("La base de dades está funcionant correctament");
+  console.log("Synchronized tables");
   app.listen(config.port, () => {
-    console.log("Exemple d'app escoltant");
+    console.log("app listening on port " + config.port);
   })
 }
 });
@@ -34,6 +34,9 @@ let PlayerSchema = Schema({
     name: String,
     idPlayer: Number,
     register_date: Date,
+    totalGames: Number,
+    totalWins: Number,
+    winRatio: Number
     
 });
 
