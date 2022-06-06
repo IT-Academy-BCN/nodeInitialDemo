@@ -1,0 +1,21 @@
+{
+  "name": "joc_daus_api_4.2",
+  "version": "4.0.0",
+  "description": "Joc de daus de l'sprint 4",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Patricia González",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
