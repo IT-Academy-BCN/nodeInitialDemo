@@ -1,6 +1,6 @@
 
 const { Player, Games }  = require ("./connectMySQL");
-const { Op} = require("sequelize");
+const { Op } = require("sequelize");
 
 
 
