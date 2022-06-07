@@ -1,16 +1,22 @@
 {
-  "name": "nodeinitialdemo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "joc_daus_api_4.2",
+  "version": "4.0.0",
+  "description": "Joc de daus de l'sprint 4",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "Patricia González",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^9.0.2",
-    "nodemon": "^2.0.7",
-    "pm2": "^4.5.6"
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.3.5",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
