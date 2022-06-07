@@ -26,29 +26,26 @@ En el fichero `.env-template` puedes encontrar un ejemplo. El contenido del `.en
 ```
 //PERSISTENCIA
 
-DB=json
+//DB=json
 //DB=mongo
-//DB=sql
+DB=sql
 
-// MONGO
-
-DB_HOST=localhost
-DB_PORT=27017
 DB_NAME=DevTeams_luis_clare_victor
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=1234
 
-//MYSQL
+//Default MongoDB
+//DB_PORT=27017
 
-MYSQL_DB_NAME=DevTeams_luis_clare_victor
-MYSQL_USER=root
-MYSQL_PASS=olakease1234!
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
+//Default MySQL
+DB_PORT=3306
 ```
 Según el valor de la variable <b>DB</b> se utilizará uno u otro sistema de persistencia:
 - <b>DB=json</b>: Se utilizará un fichero json.
 - <b>DB=mongo</b>: Se utilizará MongoDB.
 - <b>DB=sql</b>: Se utilizará MySQL.
-
+Importante que también configures correctamente la variable `DB_PORT` según la base de datos seleccionada.
 
 ### Iniciar proyecto:
 ```
