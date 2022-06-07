@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const Schema  = mongoose.Schema;
 const config = require("../config/config");
 const app = require("../app");
+const { Decimal128 } = require("bson");
 
 
 mongoose.connect("mongodb://localhost:27017/dice_game",(err, res) =>{
