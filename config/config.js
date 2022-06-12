@@ -3,7 +3,7 @@ const config = {
   password: "root1111_",
   database: "dice_game",
   host: "localhost",
-  dialect: "mysql",
+  dialect: "mongodb",
   
   port: process.env.PORT || 8888,
 }

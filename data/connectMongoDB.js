@@ -11,14 +11,14 @@ const { Decimal128 } = require("bson");
 
 
 mongoose.connect("mongodb://localhost:27017/dice_game",(err, res) =>{
-if(err){
-throw err;
-}else{
-  console.log("Synchronized tables");
-  app.listen(config.port, () => {
-    console.log("app listening on port " + config.port);
-  })
-}
+  if(err){
+    throw err;
+  }else{
+//   console.log("Synchronized tables");
+//   app.listen(config.port, () => {
+//     console.log("app listening on port " + config.port);
+//   })
+  }
 });
 
 let GameSchema = Schema({
@@ -29,7 +29,7 @@ let GameSchema = Schema({
     idPlayer: {type: Schema.ObjectId, ref: "Player"} //Referenciara un id d'objecte de la col.leccio Player
 });
 
-module.exports = mongoose.model("Game",GameSchema);
+const Game = mongoose.model("Game", GameSchema);
 
 let PlayerSchema = Schema({
     name: String,
@@ -44,4 +44,6 @@ let PlayerSchema = Schema({
 /* Exportem el model i genera un objecte anomenat Player, realitzant una instancia de totes les dades que 
 nosaltres haguem enmagatzemat amb l'esquema definit */
 
-module.exports = mongoose.model("Player", PlayerSchema); 
+const Player = mongoose.model("Player", PlayerSchema);
+
+module.exports = { Game, Player };
