@@ -8,7 +8,9 @@ const { connectMySQL, xatroom } = require("../database/mysql");
 connectMySQL();
 
 const io = require("socket.io")(server);
-app.use(express.static(path.join(__dirname + "/client")));
+app.use(express.static(path.join(__dirname + "/../client")));
+
+
 
 io.on("connection", function (socket) {
   socket.chatroom = "general";
