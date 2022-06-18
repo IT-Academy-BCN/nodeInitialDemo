@@ -16,7 +16,7 @@ async function  getAllPlayersData() {
 }
 
 async function getPlayerData(id) {
-    return await Player.findOne({where: {idPlayer: id}});
+    return await Player.findOne({where: {_id: id}});
 }
     
 async function addGameData(game) {
@@ -41,7 +41,7 @@ async function  getAllPlayersRanking() {
 }
 
 async function modifyNamePlayerData(player) {
-    return await Player.update({name: player.name}, {where: {idPlayer: player.id}});
+    return await Player.updateOne({_id: player.id}, { name: player.name });
 }
 async function updatePlayerData(player) {
 
@@ -51,6 +51,7 @@ async function updatePlayerData(player) {
 
 }
 
+// dan
 
 async function  getLoserPlayersRanking() {
 
