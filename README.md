@@ -26,7 +26,7 @@ npm run dev
 ```
 •	Al README.md hauries d'afegir el canvi de contrasenya de la base de dades i el nom de la base de dades que usaràs (perquè no hi hagi problemes de sobreescritura)
 
- user: "root",
+  user: "root",
   password: "root1111_",
   database: "dice_game",
   host: "localhost",
@@ -34,6 +34,7 @@ npm run dev
   
 Depenent de si vols fer servir la persistència en la base de dades MongoDB o MySQL s'haurà de canviar el "dialect". 
 És a dir, si es vol guardar les dades a MongoDB:
+
 ```
 dialect: "mongo"
 ```
