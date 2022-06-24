@@ -24,7 +24,10 @@ Mode desenvolupament:
 ```
 npm run dev
 ```
-•	Al README.md hauries d'afegir el canvi de contrasenya de la base de dades i el nom de la base de dades que usaràs (perquè no hi hagi problemes de sobreescritura)
+
+## Instruccions Bases de dades:
+
+Les dades de la base de dades (perquè no hi hagi problemes de sobreescritura) són els següents:
 
   user: "root",
   password: "root1111_",
@@ -67,3 +70,13 @@ GET /ranking: retorna un ranking de jugadors ordenat per percentatge d'èxits i 
 GET /ranking/loser: retorna el jugador amb pitjor percentatge d’èxit;
 
 GET /ranking/winner: retorna el jugador amb millor percentatge d’èxit;
+
+
+CORRECCIONS:
+
+•	Diferents rutes tornen arrays buits (si no hi ha jocs, si no hi ha usuaris, etc). Si no hi ha res a tornar hauries de tornar un missatge dient "no hi ha jugadors" o algo així, no un array buit
+•	Hi ha codi una mica desordenat en alguns arxius: usa el Format Document de VSC o alguna eina així i comenta els arxius on hi hagi diferents seccions
+•	L'estructura està força bé. Jo posaria a /config tot el que fa de switch per seleccionar una database o una altra. A /database només les connexions, etc
+•	Hi ha molts logs al server de producció, s'haurien de reduir al minim: "s'ha creat un usuari", "connexió amb la base de dades correcta", "server actiu al port XXXX"...
+•	La ruta /ranking peta si no hi ha jocs, no hauria de tornar 500, sino 200 amb un missatge d'error ❌
+Dona-li una repassada a aquestes coses abans de seguir amb la versió de Mongo 😉
