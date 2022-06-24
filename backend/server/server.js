@@ -1,13 +1,31 @@
 const express = require("express");
-const path = require("path");
+const cors = require('cors');
+const { Server } = require('socket.io');
 
 const app = express();
+const corsOptions = {
+  origin: 'http://localhost:5001',
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 const server = require("http").createServer(app);
+
 
 const { connectMySQL, xatroom } = require("../database/mysql");
 connectMySQL();
 
-const io = require("socket.io")(server);
+
+// Socket-io
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:5001',
+  },
+});
+require('socket.io')(io);
+
+//const io = require("socket.io")(server);
 
 
 io.on("connection", function (socket) {
