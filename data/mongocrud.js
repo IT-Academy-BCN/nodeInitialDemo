@@ -47,7 +47,7 @@ async function updatePlayerData(player) {
 
 // de fet he actualitzat l'objecte player sencer
 
-    return await Player.update({name: player.name, register_date: player.register_date, totalGames: player.totalGames, totalWins: player.totalWins, winRatio: player.winRatio }, {where: {idPlayer: player.id}});
+    return await Player.updateMany({name: player.name, register_date: player.register_date, totalGames: player.totalGames, totalWins: player.totalWins, winRatio: player.winRatio }, {where: {idPlayer: player.id}});
 
 }
 
