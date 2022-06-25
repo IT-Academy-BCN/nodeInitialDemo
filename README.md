@@ -23,3 +23,5 @@ Mode desenvolupament:
 ```
 npm run dev
 ```
+
+El client té el server al port 5001 i el back al 5000.
