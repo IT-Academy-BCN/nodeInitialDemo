@@ -33,8 +33,11 @@ async function addGameData(game) {
 }
 
 async function getAllGamesData(player) {
-    //PlayerIdPlayer es la columna de base de datos de la tabla games dnd se almacenan las id de los player (ForeignKey)
-    return await Game.find({where: {PlayerIdPlayer: player.id}});
+    try {
+        return await Player.findOne({_id: mongoose.Types.ObjectId(player.id)});  
+    }catch(error) {
+        return null;
+    }
 }
     
 async function deletePlayerGamesData(game) {

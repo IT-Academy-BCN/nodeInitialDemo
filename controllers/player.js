@@ -115,7 +115,7 @@ const getAllGames = async (req, res) => {
 
       // Creamos modelo player e igualamos el modelo playerdb con player.
       let player = new Player();
-      player.id = playerdb.idPlayer;
+      player.id = req.params.id;
       player.name = playerdb.name;
       player.register_date = playerdb.register_date;
       player.totalGames = playerdb.totalGames;
