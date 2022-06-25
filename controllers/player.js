@@ -55,11 +55,10 @@ const getAllPlayers = async (req, res) => {
 
 const addPlayerGame = async (req, res) => {
   try {
-    // si no hi ha id...
+    // comprovo si hi ha id...
     if (!req.params.id) {
       res.status(400).json({ message: "Bad request" });
     } else {
-      // si hi ha id...
       let playerdb = await PlayerDB.getPlayerData(req.params.id);
       if (playerdb) {
         // si hi ha jugador
@@ -68,7 +67,7 @@ const addPlayerGame = async (req, res) => {
         await PlayerDB.addGameData(game);
         //TODO: actualitzar ratios del jugador
         let player = new Player();
-        player.id = playerdb.idPlayer;
+        player.id = playerdb._id;
         player.name = playerdb.name;
         player.register_date = playerdb.register_date;
         player.totalGames = playerdb.totalGames;

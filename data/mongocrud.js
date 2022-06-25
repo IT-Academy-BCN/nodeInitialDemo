@@ -1,4 +1,5 @@
 const { Player, Game }  = require ("./connectmongodb");
+const mongoose = require('mongoose');
 
 async function  addNewPlayerData(player) {  // bbdd: constructor
     const newPlayer = new Player();
@@ -16,7 +17,13 @@ async function  getAllPlayersData() {
 }
 
 async function getPlayerData(id) {
-    return await Player.findOne({where: {_id: id}});
+    try {
+        let idconverted = mongoose.Types.ObjectId(id);
+        return await Player.findOne({_id: idconverted});  
+    }catch(error) {
+        return null;
+    }
+    
 }
     
 async function addGameData(game) {

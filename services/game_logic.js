@@ -8,11 +8,9 @@ function dice_game(idGame) {
   let score = false;
   if (dice1 + dice2 === 7) {
     score = true;
-    console.log(`Congratulations!! You've won!! `);
-  } else {
+   } else {
     score = false;
-    console.log(`Sorry, You've lost!! `);
-  }
+   }
 
   return new Game(dice1, dice2, score, idGame);
 }
