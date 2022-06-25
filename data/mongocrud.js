@@ -18,13 +18,11 @@ async function  getAllPlayersData() {
 
 async function getPlayerData(id) {
     try {
-        let idconverted = mongoose.Types.ObjectId(id);
-        return await Player.findOne({_id: idconverted});  
+        return await Player.findOne({_id: mongoose.Types.ObjectId(id)});  
     }catch(error) {
         return null;
     }
-    
-}
+    }
     
 async function addGameData(game) {
     const newGame = new Game();
@@ -51,10 +49,8 @@ async function modifyNamePlayerData(player) {
     return await Player.updateOne({_id: player.id}, { name: player.name });
 }
 async function updatePlayerData(player) {
-
-// de fet he actualitzat l'objecte player sencer
-
-    return await Player.updateMany({name: player.name, register_date: player.register_date, totalGames: player.totalGames, totalWins: player.totalWins, winRatio: player.winRatio }, {where: {idPlayer: player.id}});
+// de fet he actualitzat l'objecte player sencers
+    return await Player.findOneAndUpdate({_id: mongoose.Types.ObjectId(player.id)}, {name: player.name, register_date: player.register_date, totalGames: player.totalGames, totalWins: player.totalWins, winRatio: player.winRatio });
 
 }
 

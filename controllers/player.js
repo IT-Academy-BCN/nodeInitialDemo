@@ -67,7 +67,7 @@ const addPlayerGame = async (req, res) => {
         await PlayerDB.addGameData(game);
         //TODO: actualitzar ratios del jugador
         let player = new Player();
-        player.id = playerdb._id;
+        player.id = req.params.id;
         player.name = playerdb.name;
         player.register_date = playerdb.register_date;
         player.totalGames = playerdb.totalGames;
@@ -82,7 +82,7 @@ funcion updateWinRatio y updateScore de ./services/game_logic.js */
 
         // guardar a la base de dades la tirada que ha realitzat, actualizant les dades dels totals i winRatio i demes
         // de fet he actualitzat l'objecte player sencer
-        await PlayerDB.updatePlayerData(player);
+        let updateresult = await PlayerDB.updatePlayerData(player);
         if (game.score == true) {
           res.status(200).json({
             message: `Game created successfully!! Congratulations!! You've won!!`,
