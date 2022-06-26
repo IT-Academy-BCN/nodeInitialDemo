@@ -46,9 +46,12 @@ async function deletePlayerGamesData(game) {
 }catch(error) {
     return null;
 }
-
+}
 async function  getAllPlayersRanking() {
-    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}});
+
+    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'DESC']]});
+    
+    // return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}});
 }
 
 async function modifyNamePlayerData(player) {
@@ -63,12 +66,14 @@ async function updatePlayerData(player) {
 
 async function  getLoserPlayersRanking() {
 
-    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'ASC']], limit: 1});
+    
+    //return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'ASC']], limit: 1});
 }
 
 async function  getWinnerPlayersRanking () {
 
-    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'DESC']], limit: 1});
+   
+    // return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'DESC']], limit: 1});
 }
 
 
