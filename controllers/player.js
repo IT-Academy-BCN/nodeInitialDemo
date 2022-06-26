@@ -155,7 +155,7 @@ const deletePlayerGames = async (req, res) => {
 
         // actualitza ratios del jugador
         let player = new Player();
-        player.id = playerdb.idPlayer;
+        player.id = req.params.id;
         player.name = playerdb.name;
         player.register_date = playerdb.register_date;
         player.totalGames = playerdb.totalGames;

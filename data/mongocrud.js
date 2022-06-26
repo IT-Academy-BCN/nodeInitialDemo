@@ -41,7 +41,10 @@ async function getAllGamesData(player) {
 }
     
 async function deletePlayerGamesData(game) {
-    return await Game.deleteMany({where: {PlayeridPlayer: game.idPlayer}});
+    try {
+    return await Game.findOneAndDelete({_id: mongoose.Types.ObjectId(game.id)});  
+}catch(error) {
+    return null;
 }
 
 async function  getAllPlayersRanking() {
@@ -57,7 +60,6 @@ async function updatePlayerData(player) {
 
 }
 
-// dan
 
 async function  getLoserPlayersRanking() {
 
