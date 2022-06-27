@@ -3,10 +3,7 @@ const config = {
     password: "root1111_",
     database: "xatroom",
     host: "localhost",
-    dialect: "mysql",
-    
-    port: process.env.PORT || 5000,
-  }
+    dialect: "mysql"
+  };
+  module.exports = config;
   
-  
-  module.exports = config
