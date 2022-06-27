@@ -30,9 +30,11 @@ Per tal de poder accedir a la connexió de la base de dades s'especifica a conti
   host: "localhost",
   dialect: "mysql",
 
+  Això ho pots trobar a la carpeta de back, a dins de config, a l'arxiu config.js
+
+
 # Errors
-•	Que el client em digui que està funcionant correctament al arrencar (si no diu res no sé si està funcionant o si s'ha penjat)
-Un cop aconsegueixo fer-ho funcionar:
+
 •	Abans de crear sales puc escriure però els missatges no van enlloc
 •	Quan creo la primera sala sembla que no funciona (quan es connecta un altre usuari no reben els missatges)
 •	S'hauria d'esborrar el contignut del xat al canviar de sala, per saber què s'ha enviat en cada sala
