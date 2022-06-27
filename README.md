@@ -1,7 +1,7 @@
 🧬 
 # Branca Chat-5.1: Entrega 5.1: Chat 
 
-## Instruccions per a iniciar el projecte:
+# 1
 
 Per a instal·lar les dependències hauràs d'executar a les carpetes client i backend
 
@@ -9,24 +9,18 @@ Per a instal·lar les dependències hauràs d'executar a les carpetes client i b
 npm install
 ```
 
+# 2
 
- •	Instruccions d'arrencada: npm start no funciona ni en el client ni en el servidor
-
-
-
-
-Per a iniciar el server:
-
-Mode producció:
-
+Per a arrencar el back i el front també hauràs d'executar la següent ordre a les carpetes backend i client respectivament:
 
 ```
 npm start
 ```
 
+
 El client té el server al port 5001 i el back al 5000.
 
-# Instruccions de configuració
+# 3 Instruccions de configuració
 
 Per tal de poder accedir a la connexió de la base de dades s'especifica a continuacio les dades corresponents:
 
@@ -36,11 +30,7 @@ Per tal de poder accedir a la connexió de la base de dades s'especifica a conti
   host: "localhost",
   dialect: "mysql",
 
-
-
-
- 
-•	
+# Errors
 •	Que el client em digui que està funcionant correctament al arrencar (si no diu res no sé si està funcionant o si s'ha penjat)
 Un cop aconsegueixo fer-ho funcionar:
 •	Abans de crear sales puc escriure però els missatges no van enlloc
