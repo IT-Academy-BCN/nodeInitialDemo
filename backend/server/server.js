@@ -37,6 +37,7 @@ io.on("connection", function (socket) {
       .to(socket.chatroom)
       .emit("update", username + "  s'ha afegit a la conversa");
   });
+  
 
   socket.on("exituser", function (username) {
     socket.broadcast
