@@ -25,8 +25,6 @@ const io = new Server(server, {
 });
 require('socket.io')(io);
 
-//const io = require("socket.io")(server);
-
 //para decir que se ha conectado un usuario, cuando aprietas el boton de 'accedir'
 //el cliente real se conecta con el servidor
 io.on("connection", function (socket) {
