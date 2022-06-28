@@ -1,6 +1,9 @@
 
 # Node Initial Project
 
+**Nota: aquesta és la branca sockets**
+
+
 ### Project Structure
 
 Main structure of node.js project. Folders / files:
