@@ -1,6 +1,5 @@
+# CHAT with Socket.io
 
-
-# REST API DICE GAME
 Instructions:
 Initialize terminal from inside the project folder.
 Install node modules.
