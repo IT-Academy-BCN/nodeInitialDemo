@@ -1,32 +1,15 @@
 const express = require("express");
-const cors = require('cors');
-const { Server } = require('socket.io');
+const path = require("path");
 
 const app = express();
-const corsOptions = {
-  origin: 'http://localhost:5001',
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
 const server = require("http").createServer(app);
 
-
-const { connectMySQL, xatroom } = require("../database/mysql");
+const { connectMySQL, xatroom } = require("./database/mysql");
 connectMySQL();
 
+const io = require("socket.io")(server);
+app.use(express.static(path.join(__dirname + "/public")));
 
-// Socket-io
-const io = new Server(server, {
-  cors: {
-    origin: 'http://localhost:5001',
-  },
-});
-require('socket.io')(io);
-
-//para decir que se ha conectado un usuario, cuando aprietas el boton de 'accedir'
-//el cliente real se conecta con el servidor
 io.on("connection", function (socket) {
   socket.chatroom = "general";
   socket.join(socket.chatroom);
@@ -35,7 +18,6 @@ io.on("connection", function (socket) {
       .to(socket.chatroom)
       .emit("update", username + "  s'ha afegit a la conversa");
   });
-  
 
   socket.on("exituser", function (username) {
     socket.broadcast

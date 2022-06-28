@@ -5,10 +5,7 @@ const sequelize = new Sequelize(
   config_db.database,
   config_db.user,
   config_db.password,
-  
-  { dialect: config_db.dialect,
-  logging: false },
- 
+  { dialect: config_db.dialect }
 );
 
 async function connectMySQL() {
@@ -16,7 +13,6 @@ async function connectMySQL() {
     host: config_db.host,
     user: config_db.user,
     password: config_db.password,
-   
   });
   connection.query(
     `CREATE DATABASE IF NOT EXISTS \`${config_db.database}\`;`,

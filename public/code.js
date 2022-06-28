@@ -1,7 +1,6 @@
 (function(){
      const app = document.querySelector('.app');
-     const socket = io('http://localhost:5000');
-     //const socket = io();
+     const socket = io();
 
      let uname;
 
