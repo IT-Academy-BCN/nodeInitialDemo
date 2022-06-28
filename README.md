@@ -1,3 +1,38 @@
+# CHAT with Socket.io
+
+Instructions:
+Initialize terminal from inside the project folder.
+Install node modules.
+
+```
+npm install
+
+```
+Convert .env.example to .env and adapt variables to pertinent environment.
+
+Run server with
+
+```
+npm start
+```
+
+or in developper mode
+
+```
+npm run dev
+```
+
+
+
+# Sockets
+
+The main idea behind Socket.IO is that you can send and receive any events you want, with any data you want.
+
+
+
+
+
+
 
 # Node Initial Project
 
