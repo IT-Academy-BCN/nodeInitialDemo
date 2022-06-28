@@ -1,5 +1,5 @@
 * {
-    margin: 0px;
+    margin: 5px;
     padding: 0px;
     box-sizing: border-box;
 
@@ -8,7 +8,7 @@
 body{
     background: fallback for old browsers linear-gradient(to right, #0072ff, #00c6ff);
     background: Chrome 10-25, Safari 5.1-6 ;
-    background: Firefox 16+ Chrome 26+ Opera 12+ Safari 7+;
+    background: Firefox 16+ Chrome 26+ Opera 12+ Safari 7+ sans-serif;
     font-family: "Roboto", sans-serif;
     height: 100vh;
     display: flex;
@@ -86,7 +86,7 @@ body{
     font-size: 16px;
     cursor: pointer;
     outline: none;
-    border: none;
+    border: 3px solid #555;
     margin-top: 10px;
 }
 
@@ -181,6 +181,6 @@ body{
     background: rgb(0, 0, 0);
     color: #eee;
     font-size: 18px;
-    outline: none;
+    outline: 3px solid #555;
     cursor: pointer;
 }
