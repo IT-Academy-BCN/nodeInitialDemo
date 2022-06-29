@@ -2,11 +2,10 @@
   "name": "xat_5.1",
   "version": "2.0.0",
   "description": "xat de l'sprint 5",
-  "main": "server.js",
+  "main": "client.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
+    "start": "node client.js"
+     },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/patricia79/xat_5.1.git"
