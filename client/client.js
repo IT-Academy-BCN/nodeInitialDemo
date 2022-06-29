@@ -11,3 +11,4 @@ app.use(express.static(path.join(__dirname + "/../client")));
 client.listen(config.port, () => {
     console.log(`Server Front corriendo en ${config.port}`);
   });
+  
