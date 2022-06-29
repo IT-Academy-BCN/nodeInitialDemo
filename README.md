@@ -16,7 +16,7 @@ Run server with
 npm start
 ```
 
-or in developper mode
+or in developer mode
 
 ```
 npm run dev
