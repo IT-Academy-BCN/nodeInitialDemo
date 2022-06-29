@@ -33,14 +33,52 @@ async function connectMySQL() {
 
 
     const xatroom = sequelize.define("xatroom", {
+      xatroom_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+
       xatroom_name: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
+      }
      
       });
 
+      const users = sequelize.define("users", {
+        user_id: {
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+          allowNull: false,
+        },
+        user_name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        }
+       
+      });
+
+        const xatroom_users = sequelize.define("xatroom_users", {
+          user_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+          },
+          xatroom_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+          },
+
+         
+   
+
+        });
+
+
+
 module.exports = {
-    xatroom, sequelize,
+    xatroom, users, xatroom_users, sequelize,
   connectMySQL,
 };
