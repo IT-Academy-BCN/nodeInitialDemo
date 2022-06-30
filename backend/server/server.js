@@ -13,7 +13,7 @@ app.use(cors(corsOptions));
 const server = require("http").createServer(app);
 
 
-const { connectMySQL, xatroom } = require("../database/mysql");
+const { connectMySQL, xatroom, users } = require("../database/mysql");
 connectMySQL();
 
 
@@ -30,10 +30,24 @@ require('socket.io')(io);
 io.on("connection", function (socket) {
   socket.chatroom = "general";
   socket.join(socket.chatroom);
+
   socket.on("newuser", function (username) {
     socket.broadcast
       .to(socket.chatroom)
       .emit("update", username + "  s'ha afegit a la conversa");
+
+      try {
+        await username.create({ user_name: users.user_name });
+      } catch (error) {
+        console.log("error");
+      }
+    
+    let user0 = await users.findById();
+    socket.emit("usero", salas);
+    socket.broadcast.emit("nuevasala", salas);
+  });
+
+
   });
   
 
@@ -71,6 +85,9 @@ io.on("connection", function (socket) {
     socket.emit("nuevasala", salas);
     socket.broadcast.emit("nuevasala", salas);
   });
+
+
+  
 // todos emiten en el primer elemento de la select
 
   socket.on("initxat", async function () {

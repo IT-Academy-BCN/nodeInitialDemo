@@ -44,6 +44,7 @@ async function connectMySQL() {
       xatroom_name: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique:true
       }
      
       });
@@ -58,6 +59,7 @@ async function connectMySQL() {
         user_name: {
           type: Sequelize.STRING,
           allowNull: false,
+          
         }
        
       });
