@@ -1,4 +1,5 @@
 const mysql = require("mysql2");
+const { BelongsTo } = require("sequelize");
 const Sequelize = require("sequelize");
 const config_db = require("../config/config");
 const sequelize = new Sequelize(
@@ -61,24 +62,11 @@ async function connectMySQL() {
        
       });
 
-        const xatroom_users = sequelize.define("xatroom_users", {
-          user_id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-          },
-          xatroom_id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-          },
-
+      users.hasOne(xatroom,{as: "usersInXatroom",  foreignKey: 'user_id'}); 
+      xatroom.belongsTo(users,{as: "usersInXatroom",  foreignKey: 'user_id'}); 
          
-   
-
-        });
-
-
 
 module.exports = {
-    xatroom, users, xatroom_users, sequelize,
+    xatroom, users, sequelize,
   connectMySQL,
 };
