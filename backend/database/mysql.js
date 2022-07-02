@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-const { BelongsTo } = require("sequelize");
 const Sequelize = require("sequelize");
 const config_db = require("../config/config");
 const sequelize = new Sequelize(
@@ -32,43 +31,47 @@ async function connectMySQL() {
   connection.end();
 }
 
+const user = sequelize.define("user", {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+});
 
-    const xatroom = sequelize.define("xatroom", {
-      xatroom_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
+const xatroom = sequelize.define("xatroom", {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+});
 
-      xatroom_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique:true
-      }
-     
-      });
-
-      const users = sequelize.define("users", {
-        user_id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          autoIncrement: true,
-          allowNull: false,
-        },
-        user_name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          
-        }
-       
-      });
-
-      users.hasOne(xatroom,{as: "usersInXatroom",  foreignKey: 'user_id'}); 
-      xatroom.belongsTo(users,{as: "usersInXatroom",  foreignKey: 'user_id'}); 
-         
+const user_xatroom = sequelize.define("user_xatroom", {
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  xatroom_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  }
+});
 
 module.exports = {
-    xatroom, users, sequelize,
+  user, 
+  user_xatroom,
+  xatroom,
+  sequelize,
   connectMySQL,
 };
+
+
