@@ -111,6 +111,7 @@
                     el.innerText = message[i].name;
                     users.appendChild(el);
                }
+               
           }
           // scroll chat to end
           messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight;
