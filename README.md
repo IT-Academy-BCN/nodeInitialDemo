@@ -32,14 +32,3 @@ Per tal de poder accedir a la connexió de la base de dades s'especifica a conti
 
   Això ho pots trobar a la carpeta de back, a dins de config, a l'arxiu config.js
 
-
-# Errors
-
-no em guarda a la DB les sales tot i que es crea la base de dades, això fa q no pugui escriure
-
-
-•	Abans de crear sales puc escriure però els missatges no van enlloc
-•	Quan creo la primera sala sembla que no funciona (quan es connecta un altre usuari no reben els missatges)
-•	S'hauria d'esborrar el contignut del xat al canviar de sala, per saber què s'ha enviat en cada sala
-•	S'haurien d'afegir notificacions per quan un usuari entra o surt de la sala on estem
-•	Estaria bé veure els usuaris que hi ha a la sala on estem
