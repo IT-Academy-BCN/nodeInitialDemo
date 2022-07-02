@@ -4,7 +4,7 @@
   "description": "xat de l'sprint 5",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/server.js",
     "dev": "nodemon server.js"
   },
   "repository": {
