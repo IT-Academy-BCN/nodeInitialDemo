@@ -2,10 +2,9 @@
   "name": "xat_5.1",
   "version": "2.0.0",
   "description": "xat de l'sprint 5",
-  "main": "server.js",
+  "main": "client.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "start": "node client.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/patricia79/xat_5.1#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
