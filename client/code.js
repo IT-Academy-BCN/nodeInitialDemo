@@ -2,6 +2,7 @@
      const app = document.querySelector('.app');
      const socket = io('http://localhost:5000');
      let uname;
+     let cname;
 
      app.querySelector(".join-screen #join-user").addEventListener("click",function(){
           let username = app.querySelector(".join-screen #username").value;
@@ -12,7 +13,7 @@
           uname = username;
           app.querySelector(".join-screen").classList.remove("active");
           app.querySelector(".chat-screen").classList.add("active");
-          renderMessage("update", username + "  s'ha afegit a la conversa");
+          renderMessage("update", username + "  ha entrat al xat");
      });
 
      app.querySelector(".chat-screen #add-chatroom").addEventListener("click",function(){
@@ -27,26 +28,25 @@
 
      app.querySelector(".chat-screen #chatroom-select").addEventListener("change",function(){
           app.querySelector(".chat-screen #message-input").disabled = false;
-          app.querySelector(".chat-screen .messages").innerHTML = "";
           let chatroom = app.querySelector(".chat-screen #chatroom-select").value;
-          socket.emit("switchchatroom",chatroom);
+          cname = chatroom;
+          app.querySelector(".chat-screen .messages").innerHTML = "";
+          socket.emit("switchchatroom", chatroom, uname);
      });
 
-    
      app.querySelector(".chat-screen #send-message").addEventListener("click",function(){
           let message = app.querySelector(".chat-screen #message-input").value;
-          let chatroom = app.querySelector(".chat-screen #chatroom-select").value;
-          if(message.length == 0 || chatroom.length == 0){
+          if(message.length == 0 || cname.length == 0){
                return;
           }
           renderMessage("chat", {
                username: uname,
-               chatroom: chatroom,
+               chatroom: cname,
                text: message
           });
           socket.emit("chat", {
                username:uname,
-               chatroom:chatroom,
+               chatroom:cname,
                text: message
              
           });
@@ -54,7 +54,7 @@
      });
 
      app.querySelector(".chat-screen #exit-chat").addEventListener("click",function(){
-          socket.emit("exituser",uname);
+          socket.emit("exituser",uname, cname);
           window.location.href = window.location.href;
      });
 
@@ -67,14 +67,21 @@
      });
 
      socket.on("switchchatroom",function(chatroom){
-               renderMessage("update",chatroom); 
+          renderMessage("update",chatroom); 
      }); 
   
+     socket.on("updateuserschannel",function(users){
+          renderMessage("updateuser", users);
+     });
+          
      socket.on("nuevasala",function(chatroom){
           //TODO: Recibimos un listado de salas desde la base de datos. Recargar el select con este listado.
           app.querySelector(".chat-screen #chatroom-select").innerHTML = "<option disabled selected value> -- selecciona un canal -- </option>";
           for (let i = 0; i < chatroom.length; i++) {
-               app.querySelector(".chat-screen #chatroom-select").innerHTML += `<option value="${chatroom[i].xatroom_name}">${chatroom[i].xatroom_name}</option>`;
+               app.querySelector(".chat-screen #chatroom-select").innerHTML += `<option id="${chatroom[i].id}" value="${chatroom[i].name}">${chatroom[i].name}</option>`;
+          }
+          if (cname) {
+               app.querySelector(".chat-screen #chatroom-select").value = cname;
           }
      });
 
@@ -95,6 +102,15 @@
                el.setAttribute("class", "update");
                el.innerText = message;
                messageContainer.appendChild(el);
+          } else if (type == "updateuser"){
+               let users = app.querySelector(".chat-screen .chatinfo .user-list");
+               users.innerHTML = "<h2>Usuaris conectats</h2>";
+               for (let i = 0; i < message.length; i++) {
+                    let el = document.createElement("div");
+                    el.setAttribute("class", "user");
+                    el.innerText = message[i].name;
+                    users.appendChild(el);
+               }
           }
           // scroll chat to end
           messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight;
