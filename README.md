@@ -27,7 +27,7 @@ npm run dev
 
 ## Instruccions Bases de dades:
 
-Les dades de la base de dades (perquè no hi hagi problemes de sobreescritura) són els següents:
+Les dades de la base de dades (perquè no hi hagi problemes de sobreescriptura) són els següents:
 
   user: "root",
   password: "root1111_",
@@ -79,4 +79,3 @@ CORRECCIONS:
 •	L'estructura està força bé. Jo posaria a /config tot el que fa de switch per seleccionar una database o una altra. A /database només les connexions, etc
 •	Hi ha molts logs al server de producció, s'haurien de reduir al minim: "s'ha creat un usuari", "connexió amb la base de dades correcta", "server actiu al port XXXX"...
 •	La ruta /ranking peta si no hi ha jocs, no hauria de tornar 500, sino 200 amb un missatge d'error ❌
-Dona-li una repassada a aquestes coses abans de seguir amb la versió de Mongo 😉
