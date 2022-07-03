@@ -49,9 +49,9 @@ async function deletePlayerGamesData(game) {
 }
 async function  getAllPlayersRanking() {
 
-    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'DESC']]});
-    
-    // return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}});
+
+    return await Player.find({ totalGames: { $gte: 0 } }).exec();
+   
 }
 
 async function modifyNamePlayerData(player) {
