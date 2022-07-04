@@ -5,6 +5,8 @@ const config = {
   host: "localhost",
   dialect: "mongodb",
   
+  // dialect: "mysql",
+  
   port: process.env.PORT || 8888,
 }
 
