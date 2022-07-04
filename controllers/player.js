@@ -187,11 +187,12 @@ const ranking = async (req, res) => {
   try {
     let players = await PlayerDB.getAllPlayersRanking();
    let average = await averageWinRatio(players);
-    res.status(200).json({ message: `el rànking és ${players} i el percentatge mig és: ${average}` });
+    res.status(200).json({ message: {players}, average});
       } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+// i el percentatge mig és: ${average}
 
 
 //TODO  PUT players/{id}: modifica el nom del jugador / modifyNamePlayer
