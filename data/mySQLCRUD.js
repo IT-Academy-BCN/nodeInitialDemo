@@ -40,8 +40,7 @@ async function getAllGamesData(player) {
 
 async function  getAllPlayersRanking() {
     
-    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'ASC']], limit: 1});
-    
+    return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}});
 }
 
 async function modifyNamePlayerData(player) {
