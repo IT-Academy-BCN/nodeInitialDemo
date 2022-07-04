@@ -13,8 +13,10 @@ app.use(cors(corsOptions));
 const server = require("http").createServer(app);
 
 
-const { connectMySQL, xatroom, user, user_xatroom } = require("../database/mysql");
+const { connectMySQL } = require("../database/connect");
 connectMySQL();
+const { sequelize, xatroom, user, user_xatroom } = require("../database/mysql");
+// const { user, user_xatroom, xatroom } = require("../models/user");
 
 
 // Socket-io
