@@ -1,6 +1,8 @@
 # CHAT with Socket.io
 
 Instructions:
+Clone repository.
+
 Initialize terminal from inside the project folder.
 Install node modules.
 
@@ -8,7 +10,7 @@ Install node modules.
 npm install
 
 ```
-Convert .env.example to .env and adapt variables to pertinent environment.
+Convert .env.example to .env and adapt variables to pertinent environment i.e url for MongoDB.
 
 Run server with
 
