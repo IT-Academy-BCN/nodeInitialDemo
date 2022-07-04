@@ -47,7 +47,7 @@ async function updateWinRatio(player) {
 
 async function averageWinRatio(players) {
 let winRatioTotal = 0;
-for (let index = 0; index <= players.length; index++) {
+for (let index = 0; index < players.length; index++) {
 
    winRatioTotal = players[index].winRatio + winRatioTotal
      
