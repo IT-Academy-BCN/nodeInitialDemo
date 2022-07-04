@@ -5,7 +5,8 @@ const sequelize = new Sequelize(
   config_db.database,
   config_db.user,
   config_db.password,
-  { dialect: "mysql" }
+  { dialect: "mysql" ,
+  logging: false },
 );
 
 async function connectMySQL() {
@@ -59,7 +60,7 @@ async function connectMySQL() {
       },
       
     winRatio: {
-      type: Sequelize.DECIMAL(10, 2),
+      type: Sequelize.INTEGER,
       defaultValue: 0,
       allowNull: false,
     }
