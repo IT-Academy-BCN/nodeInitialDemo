@@ -50,12 +50,12 @@ let winRatioTotal = 0;
 for (let index = 0; index <= players.length; index++) {
 
    winRatioTotal = players[index].winRatio + winRatioTotal
-  
-  averageWinRatio = winRatioTotal / players.length;
-
-  return averageWinRatio;
-
+     
   }
+  let averageWinRatioResult = winRatioTotal / players.length;
+
+  return averageWinRatioResult;
+
 }
 
 

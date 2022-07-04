@@ -186,8 +186,8 @@ const deletePlayerGames = async (req, res) => {
 const ranking = async (req, res) => {
   try {
     let players = await PlayerDB.getAllPlayersRanking();
-   let players2 = await averageWinRatio(players);
-    res.status(200).json({ message: {players2}});
+   let average = await averageWinRatio(players);
+    res.status(200).json({ message: `el rànking és ${players} i el percentatge mig és: ${average}` });
       } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }

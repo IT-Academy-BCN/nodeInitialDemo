@@ -49,7 +49,7 @@ async function deletePlayerGamesData(game) {
 }
 async function  getAllPlayersRanking() {
 
-    return await Player.find({ totalGames: { $gte: 0 } }).sort({ winRatio: -1 }).exec();
+    return await Player.find().sort({ winRatio: -1 }).exec();
    // return await Player.find({ totalGames: { $gte: 0 } }).exec();
    
 }
@@ -74,7 +74,7 @@ async function  getLoserPlayersRanking() {
 async function  getWinnerPlayersRanking () {
 
     // totalGames > 0 winRatio > 0 orden per winRatio descendent limit: 1
-    return await Player.find({ winRatio: { $gte: 0} }).sort({ winRatio: -1 });
+    return await Player.find({ winRatio: { $gte: 0} }).sort({ winRatio: -1 }).limit(1).exec();
 }
 
 
