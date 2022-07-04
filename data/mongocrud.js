@@ -66,14 +66,15 @@ async function updatePlayerData(player) {
 
 async function  getLoserPlayersRanking() {
 
-    return await Player.findOne({ winRatio: { $gte: } }).sort({ winRatio: -1 }).limit(1).exec();
-    //return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'ASC']], limit: 1});
+    // totalGames > 0 winRatio > 0 orden per winRatio descendent limit: 1
+    return await Player.find({ winRatio: { $gte: 0} }).sort({ winRatio: 1 }).limit(1).exec();
+
 }
 
 async function  getWinnerPlayersRanking () {
 
-   
-    // return await Player.findAll({where: {totalGames: {[Op.gt]: 0}}, order: [['winRatio', 'DESC']], limit: 1});
+    // totalGames > 0 winRatio > 0 orden per winRatio descendent limit: 1
+    return await Player.find({ winRatio: { $gte: 0} }).sort({ winRatio: 1 });
 }
 
 
