@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require('cors');
 const { Server } = require('socket.io');
-
 const app = express();
 const corsOptions = {
   origin: 'http://localhost:5001',
@@ -9,14 +8,20 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+
 app.use(cors(corsOptions));
 const server = require("http").createServer(app);
 
-
 const { connectMySQL } = require("../database/connect");
+
 connectMySQL();
-const { sequelize, xatroom, user, user_xatroom } = require("../database/mysql");
-// const { user, user_xatroom, xatroom } = require("../models/user");
+
+const { user, xatroom, user_xatroom } = require("../database/mysql");
+
+/* const { user } = require("../database/user");
+const { xatroom } = require("../database/xatroom");
+const { user_xatroom } = require("../database/user_xatroom"); */
+
 
 
 // Socket-io
@@ -29,6 +34,7 @@ require('socket.io')(io);
 
 //para decir que se ha conectado un usuario, cuando aprietas el boton de 'accedir'
 //el cliente real se conecta con el servidor
+
 io.on("connection", function (socket) {
   socket.chatroom = "general";
   socket.join(socket.chatroom);
