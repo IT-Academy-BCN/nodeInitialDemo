@@ -185,6 +185,9 @@ const deletePlayerGames = async (req, res) => {
 
 const ranking = async (req, res) => {
   try {
+    
+    // TODO : si no hi ha res pre mostrar, mostrar array buit i no internal server error
+
     let players = await PlayerDB.getAllPlayersRanking();
    let average = await averageWinRatio(players);
     res.status(200).json({ message: {players}, average});
