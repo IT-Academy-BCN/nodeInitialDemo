@@ -22,13 +22,7 @@ module.exports = (io) => {
         )
     });
 
-    //join room
-      socket.on('join-room', (user, room) => {
-        const {error, currentUser} = new User(user);
-
-        socket.emit('joined-user', message);
-        
-    }
+    
 
     //join room
     socket.on('join-room', ({ name, room }, callback) => {
@@ -39,25 +33,32 @@ module.exports = (io) => {
         if (error) return callback(error);
 
 
-
-    socket.on('join', ({ name, room_id, user_id }) => {
-        const { error, user } = addUser(socket.id, name, user_id, room_id);
-  
-        socket.join(room_id);
-        if (error) {
-          console.log('join error', error);
-        } else {
-          console.log('joined user: ', user);
-        }
-      });
     //TODO
     //send messages
-    socket.on('send-message', (user) => {
-        const currentUser = User.findOne({user});
+    
 
-    })
+    socket.on('send-message', (message, room_id, clearSpaceCb) => {
+        const user = getUser(socket.id);
+  
+        const newMessage = {
+          name: user.name,
+          user_id: user.user_id,
+          room_id,
+          text: message,
+        };
+  
+        console.log(newMessage);
+  
+        newMessage = new Message(newMessage);
+  
+        newMessage.save();
+  
+        io.to(room_id).emit('new-message', newMessage);
+       
+        clearSpaceCb();
+      });
 
-    //TODO
+   
      socket.on('get-messages', () => {
          const messages = Message.findAll({})
 
