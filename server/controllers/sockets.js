@@ -1,7 +1,7 @@
 const Room = require('./models/Room');
 const Message = require('./models/Message');
 const User = require('./models/User');
-const Room = require('./models/Room');
+
 
 module.exports = (io) => {
 
@@ -22,16 +22,34 @@ module.exports = (io) => {
         )
     });
 
-
-    //https://socket.io/docs/v3/rooms/
-    //https://www.geeksforgeeks.org/how-to-manage-users-in-socket-io-in-node-js/
     //join room
-      socket.on('join-room', ({user}, room) => {
-        const joinedUser = new User({user});
+      socket.on('join-room', (user, room) => {
+        const {error, currentUser} = new User(user);
 
         socket.emit('joined-user', message);
         
     }
+
+    //join room
+    socket.on('join-room', ({ name, room }, callback) => {
+ 
+        const { error, currentUser } = addUser(
+            { id: socket.id, name, room });
+ 
+        if (error) return callback(error);
+
+
+
+    socket.on('join', ({ name, room_id, user_id }) => {
+        const { error, user } = addUser(socket.id, name, user_id, room_id);
+  
+        socket.join(room_id);
+        if (error) {
+          console.log('join error', error);
+        } else {
+          console.log('joined user: ', user);
+        }
+      });
     //TODO
     //send messages
     socket.on('send-message', (user) => {
