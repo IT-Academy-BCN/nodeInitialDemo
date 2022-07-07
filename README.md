@@ -1,7 +1,7 @@
 # CHAT with Socket.io
 
 Instructions:
-Clone repository.
+Clone repository and make sure that npm is installed.
 
 Initialize terminal from inside the project folder.
 Install node modules.
@@ -10,7 +10,7 @@ Install node modules.
 npm install
 
 ```
-Convert .env.example to .env and adapt variables to pertinent environment i.e url for MongoDB.
+Convert .env.example to .env and adapt variables to current environment.
 
 Run server with
 
@@ -23,27 +23,42 @@ or in developer mode
 ```
 npm run dev
 ```
+### SERVER
 
+Server runs with express and http modules.
 
+### SOCKET.io
 
-# Sockets
+The main idea behind Socket.IO is to send 
+and receive any events with any data you want.
 
-The main idea behind Socket.IO is that you can send and receive any events you want, with any data you want.
+Basics:
+https://socket.io/get-started/chat
 
+Rooms:
+https://socket.io/docs/v3/rooms/
+https://www.geeksforgeeks.org/how-to-manage-users-in-socket-io-in-node-js/
 
+Socket.io cheatsheet:
+https://socket.io/docs/v4/emit-cheatsheet/#server-side
 
+### MONGOOSE:
 
+MongoDB deployed as persistance with mongoose as ORM.
 
+https://mongoosejs.com/
 
+### FRONT END:
 
-# Node Initial Project
-
+TBD
+GENERAL (stitching together a chat):
+https://stackfame.com/mongodb-chat-schema-mongoose-chat-schema-chat-application
 ### Project Structure
 
 Main structure of node.js project. 
 
 - <b>app</b>:
-    - <b>controllers</b>
+    - <b>controllers</b> 
     - <b>middleware</b>
     - <b>models</b>
     - <b>routes</b>
@@ -58,7 +73,10 @@ Main structure of node.js project.
 
 
 
-Sources:
-https://socket.io/get-started/chat
-https://mongoosejs.com/
-https://stackfame.com/mongodb-chat-schema-mongoose-chat-schema-chat-application
+
+
+
+
+
+
+
