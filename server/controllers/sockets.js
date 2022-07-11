@@ -1,13 +1,29 @@
+const jwt = require('jsonwebtoken');
+
 const Room = require('./models/Room');
 const Message = require('./models/Message');
 const User = require('./models/User');
+const {checkRoom} = ('./controllers/rooms.js')
 
 
-module.exports = (io) => {
+module.exports = async(io) => {
 
-    io.on('connection', (socket => {
-        console.log('User connected to socket')
-    }))
+    io.use((socket, next) => {
+        if (socket.handshake.query && socket.handshake.query.token) {
+            jwt.verify(socket.handshake.query.token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
+            if (err) return next(new Error('Authentication error'));
+            socket.decoded = decoded;
+            next();
+        });
+        }
+        else {
+        next(new Error('Authentication error'));
+        }
+    })
+
+
+    io.on('connection', (socket) => {
+       
 
     //find current available rooms
     socket.on('find-rooms', () => {
@@ -22,21 +38,17 @@ module.exports = (io) => {
         )
     });
 
-    
-
     //join room
-    socket.on('join-room', ({ name, room }, callback) => {
+    socket.on('join-room', ({name, room }, callback) => {
  
         const { error, currentUser } = addUser(
             { id: socket.id, name, room });
  
         if (error) return callback(error);
 
-
-    //TODO
+    });
+   
     //send messages
-    
-
     socket.on('send-message', (message, room_id, clearSpaceCb) => {
         const user = getUser(socket.id);
   
@@ -46,7 +58,7 @@ module.exports = (io) => {
           room_id,
           text: message,
         };
-  
+        //debug
         console.log(newMessage);
   
         newMessage = new Message(newMessage);
@@ -58,18 +70,19 @@ module.exports = (io) => {
         clearSpaceCb();
       });
 
-   
-     socket.on('get-messages', () => {
-         const messages = Message.findAll({})
-
-
+     
+      //get message history
+     socket.on('get-messages', (room_id) => {
+             Message.find({room_id}).then((messages) => {
+             socket.emit('get-messages', result)
+         })
      })
 
-     //TODO
+     
      socket.on('disconnect-user', (user) => {
          removeUser
      })
 
+    }
 
-
-};
+}
