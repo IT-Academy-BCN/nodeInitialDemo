@@ -29,8 +29,7 @@ Server runs with express and http modules.
 
 ### SOCKET.io
 
-The main idea behind Socket.IO is to send 
-and receive any events with any data you want.
+
 
 Basics:
 https://socket.io/get-started/chat
@@ -41,6 +40,9 @@ https://www.geeksforgeeks.org/how-to-manage-users-in-socket-io-in-node-js/
 
 Socket.io cheatsheet:
 https://socket.io/docs/v4/emit-cheatsheet/#server-side
+
+Authenticate sockets:
+https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt
 
 ### MONGOOSE:
 

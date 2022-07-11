@@ -2,12 +2,12 @@
 const mongoose = require('mongoose');
 require('mongoose-type-email');
 
-
 const user = new mongoose.Schema({
       
     username:{
           type:String,
           required:[true, 'Please enter a name'],
+          unique: true,
         },
 
        email:{
@@ -22,9 +22,13 @@ const user = new mongoose.Schema({
           required:[true, 'Please enter a password'],
           minlength: [6, 'The password should be at least 6 characters long'],
 
-      },
+      room:{
+          type:String
+          
+       }
+    },
 
-      is_active: { type: Boolean, default: false },
+      
 
 })
 
