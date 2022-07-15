@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+
 //const cors = require('cors');
 
 const app = express();
@@ -14,12 +15,14 @@ const io = require('socket.io')(server);
 require('./utils/connectDB.js')();
 
 
-app.use(express.static( '../public'));
-app.use(cors);
+
+app.use(express.static( './public'));
+//app.use(cors);
 
 //require routes
-const authRoutes = require('./routes/auth.js')
-
+const signupRoute = ('./routes/signup.js');
+//const authRoutes = require('./routes/auth.js')
+app.use(signupRoute);
 
 //invalid route handling
 app.use((req, res, next)=>{
@@ -27,7 +30,7 @@ app.use((req, res, next)=>{
   });
 
 //requiering and executing sockets
-require('../utils/sockets')(io);
+//require('./utils/sockets')(io);
 
 server.listen(port, () => {
     console.log(`Socket.IO server running at http://localhost:${port}/`);

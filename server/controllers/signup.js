@@ -26,7 +26,3 @@ module.exports = async (req, res) => {
         })
     }
 }
-
-
-
-const disconnectUser =

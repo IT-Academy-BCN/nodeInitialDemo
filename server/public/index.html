@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO playground</title>
+    <style>
+      body {
+        color: #333333;
+        font-family: arial;
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Socket.IO playground</h1>
+    <p>Exemple d'aplicació Socket bàsica amb comuniació entre server i client separats.</p>
+
+    <!-- importa la llibreria de Socket.io del servidor -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    
+    <script>
+      
+      // connexió als sockets del servidor
+      const socket = io("http://localhost:3000");
+      
+      let name = "manualidades";
+      
+      socket.emit('create-room', name);
+
+   
+
+    </script>
+
+  </body>
+</html>
+

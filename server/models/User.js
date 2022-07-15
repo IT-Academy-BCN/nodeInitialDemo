@@ -1,5 +1,5 @@
 //https://mongoosejs.com/docs/api/document.html#document_Document-validate
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
 require('mongoose-type-email');
 
 const user = new mongoose.Schema({
@@ -8,6 +8,7 @@ const user = new mongoose.Schema({
           type:String,
           required:[true, 'Please enter a name'],
           unique: true,
+          
         },
 
        email:{
@@ -23,9 +24,10 @@ const user = new mongoose.Schema({
           minlength: [6, 'The password should be at least 6 characters long'],
 
       room:{
-          type:String
-          
-       }
+         roomId: String,
+         roomName: {type:String,
+         default:"chatterbox",}
+        }  
     },
 });
 
