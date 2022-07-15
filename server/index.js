@@ -1,18 +1,14 @@
 require('dotenv').config();
 
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 //create server
 const server = require('http').Server(app);
 const port = process.env.PORT || 3000;
 //create socket server
-const io = require('socket.io')(server,{
-  cors: {
-    ortigin: '*'
-  }
-});
+const io = require('socket.io')(server);
 
 //connect to DB
 require('./utils/connectDB.js')();
@@ -21,9 +17,8 @@ require('./utils/connectDB.js')();
 app.use(express.static( '../public'));
 app.use(cors);
 
-app.use('/register', registerRoutes);
-app.use('/login', loginRoutes);
-app.use('/auth', authRoutes);
+//require routes
+const authRoutes = require('./routes/auth.js')
 
 
 //invalid route handling
