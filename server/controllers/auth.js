@@ -4,10 +4,9 @@ const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.TOKEN_SECRET_KEY;
 const expTime = 1440;
-const expCookie = 1;
 
-const createJWT = (id) => {
-    return jwt.sign(id, secretKey, {
+const createJWT = (payload) => {
+    return jwt.sign(payload, secretKey, {
     expiresIn: expTime
     })
 }
@@ -28,7 +27,7 @@ const signup = async(req, res) => {
 
 
 const login = async(req, res) => {
-    const {email, password} = req.body;
+    const {name, password} = req.body;
     try {
         const user = await User.login(email, password);
         const token = createJWT(user._id);
