@@ -12,31 +12,7 @@ const port = process.env.PORT || 3000;
 const io = require('socket.io')(server);
 
 //connect to DB
-//require('./utils/connectDB.js')();
-
-
-
-async function main() {
-  await mongoose.connect('mongodb://localhost:27017/test');
-
-const kittySchema = new mongoose.Schema({
-  name: String
-});
-
-const Kitten = mongoose.model('Kitten', kittySchema);
-
-
-
-
-const fluffy = new Kitten({ name: 'fluffy' });
-await fluffy.save();
-
-
-}
-
-
-
-
+require('./utils/connectDB.js')();
 
 
 
