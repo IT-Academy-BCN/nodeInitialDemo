@@ -1,30 +1,38 @@
 require('dotenv').config();
 
 const express = require('express');
-
 const mongoose = require('mongoose');
 
 const app = express();
+
 //create server
 const server = require('http').Server(app);
 const port = process.env.PORT || 3000;
+
 //create socket server
 const io = require('socket.io')(server);
 
-//connect to DB
-require('./utils/connectDB.js')();
+//create/connect to DB
+require('./models/models.js')();
+
 
 
 
 //require routes
-const usersAuthRoutes = require('./routes/usersAuth.js');
+const register = require('./routes/register.js');
+const signin = require('./routes/signin.js');
+//const auth = require('./routes/auth.js');
 
 //middleware
+//needed if running from public?
+app.use(express.json());
+
+
 //app.use(cors);
 
-app.use(usersAuthRoutes);
-
-
+app.use('/api',register);
+app.use('/api', signin);
+//app.use(auth);
 
 
 
