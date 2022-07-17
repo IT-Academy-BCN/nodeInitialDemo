@@ -1,38 +1,32 @@
-
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require('../models/users.js');
-
+const Users = require('mongoose').model("Users");
+const bcrypt = require('bcrypt')
 
 //register
 module.exports = async (req, res) => {
-
-   
-    try{
     
-    const duplicateEmail = await User.findOne({email: req.body.email});
-    if(duplicateEmail){
-        return res.status(400).json({
-            message:"This email is already registered."
-        });
-    }
+    try {
+        const userName = req.body.userName;
+        const password = req.body.password;
 
-    const duplicateName = await User.findOne({fullname: req.body.fullname});
-    if(duplicateName){
-        return res.status(400).json({
-            message:"This name is already taken."
-        });
-    }
-      
-   
-     const newUser = new User(req.body);
-     newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
-    
-    await newUser.save() 
-    } catch (err){
-        return res.status(503).json({
-            message:"Database error"
-        });
-    }    
-}      
+        if (!userName) return res.status(400).send({ status: 'fail', message: 'Username not provided'});
+        if (!password) return res.status(400).send({ status: 'fail', message: 'Password not provided'});
 
+        const duplicateUser = await Users.find({userName});
+        if(duplicateUser.length > 0) return res.status(400).send({ status: "fail", message: 'Username already registered'});
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        await Users.create({ userName: userName, password: hashedPassword })
+
+        res.status(201).send({
+            status: 'success', 
+            message: 'User has been registered.'
+        });
+
+     } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            message: err.message
+        })
+    }
+}

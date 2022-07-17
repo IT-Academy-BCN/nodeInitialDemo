@@ -44,11 +44,13 @@ https://socket.io/docs/v4/emit-cheatsheet/#server-side
 Authenticate sockets:
 https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt
 
+
 ### MONGOOSE:
 
 MongoDB deployed as persistance with mongoose as ORM.
 
 https://mongoosejs.com/
+https://mongoosejs.com/docs/api/document.html#document_Document-validate
 
 ### FRONT END:
 

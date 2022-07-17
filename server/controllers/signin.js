@@ -1,26 +1,32 @@
-const jwt = require('jsonwebtoken');
+const Users = require('mongoose').model('Users')
+const jwt = require('jsonwebtoken')
 
-const User = require('../models/users.js');
-
-const createJWT = require('../helpers/createJWT.js');
-
-
-//sign in 
+//sign In
 module.exports = async (req, res) => {
-    const { email } = req.body;
-    const user = await User.findOne({
-        email
-      }, function(err, user) {
-        if (err) throw err;
-        if (!user || !user.comparePassword(req.body.password)) {
-          return res.status(401).json({ message: 'Authentication failed. Invalid user or password.' });
+     
+  try {
+        const userName = req.body.userName;
+
+        const userEntry = await Users.findOne({userName});
+
+        const user = {
+            userId: userEntry._id,
+            userName: userEntry.userName
         }
-        const token = createJWT({email});
-        return res.json({ token});
-      });
-    };
 
+        const accessToken = jwt.sign(user, process.env.TOKEN_SECRET_KEY)
+         res.status(201).send({
+            status: 'success', 
+            user,
+            accessToken
+        });
 
-    
+     } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            message: err.message
+        })
+    }
+}
 
 
