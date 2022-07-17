@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 
-//const cors = require('cors');
+const mongoose = require('mongoose');
 
 const app = express();
 //create server
@@ -12,17 +12,46 @@ const port = process.env.PORT || 3000;
 const io = require('socket.io')(server);
 
 //connect to DB
-require('./utils/connectDB.js')();
+//require('./utils/connectDB.js')();
 
 
 
-app.use(express.static( './public'));
-//app.use(cors);
+async function main() {
+  await mongoose.connect('mongodb://localhost:27017/test');
+
+const kittySchema = new mongoose.Schema({
+  name: String
+});
+
+const Kitten = mongoose.model('Kitten', kittySchema);
+
+
+
+
+const fluffy = new Kitten({ name: 'fluffy' });
+await fluffy.save();
+
+
+}
+
+
+
+
+
+
 
 //require routes
-const signupRoute = ('./routes/signup.js');
-//const authRoutes = require('./routes/auth.js')
-app.use(signupRoute);
+const usersAuthRoutes = require('./routes/usersAuth.js');
+
+//middleware
+//app.use(cors);
+
+app.use(usersAuthRoutes);
+
+
+
+
+
 
 //invalid route handling
 app.use((req, res, next)=>{
