@@ -1,18 +1,16 @@
-
-
 const jwt = require('jsonwebtoken');
-const TOKEN_SECRET_KEY = process.env.TOKEN_SECRET_KEY
 
-module.exports = (req, res, next) => {
-    
-    if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
-      jsonwebtoken.verify(req.headers.authorization.split(' ')[1], TOKEN_SECRET_KEY, function(err, decode) {
-        if (err) req.user = undefined;
-        req.user = decode;
-        next();
-      });
-    } else {
-      req.user = undefined;
-      next();
-    }
-  };
+// middleware verifyJWT
+module.exports = async (req, res, next) => {
+  const authHeader = req.headers['authorization']
+  // bearer token
+  const token = authHeader && authHeader.split(' ')[1] 
+  if (token === null) return res.sendStatus(401)
+  jwt.verify(token, process.env.TOKEN_SECRET_KEY, (err, decoded) => {
+      if (err) return res.sendStatus(403)
+      req.userName = decoded.userName;
+      req.userId = decoded.userId;
+      next()
+  })
+}
+

@@ -7,11 +7,11 @@ module.exports = async (req, res) => {
   try {
         const userName = req.body.userName;
 
-        const userEntry = await Users.findOne({userName});
+        const userSignedIn = await Users.findOne({userName});
 
         const user = {
-            userId: userEntry._id,
-            userName: userEntry.userName
+            userId: userSignedIn._id,
+            userName: userSignedIn.userName
         }
 
         const accessToken = jwt.sign(user, process.env.TOKEN_SECRET_KEY)

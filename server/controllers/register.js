@@ -5,9 +5,8 @@ const bcrypt = require('bcrypt')
 module.exports = async (req, res) => {
     
     try {
-        const userName = req.body.userName;
-        const password = req.body.password;
-
+        const {userName, password} = req.body;
+        
         if (!userName) return res.status(400).send({ status: 'fail', message: 'Username not provided'});
         if (!password) return res.status(400).send({ status: 'fail', message: 'Password not provided'});
 
