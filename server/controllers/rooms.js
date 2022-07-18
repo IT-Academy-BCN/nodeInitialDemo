@@ -45,4 +45,4 @@ const getRooms = async() => {
 
 
 
-module.exports = {createRoom, getRooms}
+module.exports = {createRoom, getRooms};
