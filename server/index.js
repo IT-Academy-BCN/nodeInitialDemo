@@ -28,7 +28,8 @@ const signin = require('./routes/signin.js');
 //needed if running from public?
 app.use(express.json());
 // Set static folder for frontend
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("./public"));
 //app.use(cors);
 
 app.use('/api',register);

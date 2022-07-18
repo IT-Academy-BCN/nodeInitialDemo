@@ -54,9 +54,25 @@ https://mongoosejs.com/docs/api/document.html#document_Document-validate
 
 ### FRONT END:
 
-TBD
 GENERAL (stitching together a chat):
+
+https://github.com/StratocasterO/masterclasses-it-academy/tree/master/2022_07_12%20frontend
+
 https://stackfame.com/mongodb-chat-schema-mongoose-chat-schema-chat-application
+
+registration form
+https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-html-forms-by-building-a-registration-form/
+
+shadow effect
+https://www.w3schools.com/howto/howto_css_cards.asp
+
+query selector
+https://www.w3schools.com/jsref/met_document_queryselector.asp
+
+form action
+https://www.w3schools.com/tags/att_form_action.asp
+
+
 ### Project Structure
 
 Main structure of node.js project. 

@@ -1,38 +1,28 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Socket.IO playground</title>
-    <style>
-      body {
-        color: #333333;
-        font-family: arial;
-        max-width: 650px;
-        margin: 0 auto;
-        padding: 0 16px;
-      }
-    </style>
-  </head>
-  <body>
-
-    <h1>Socket.IO playground</h1>
-    <p>Exemple d'aplicació Socket bàsica amb comuniació entre server i client separats.</p>
-
-    <!-- importa la llibreria de Socket.io del servidor -->
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    
-    <script>
-      
-      // connexió als sockets del servidor
-      const socket = io("http://localhost:3000");
-      
-      let name = "manualidades";
-      
-      socket.emit('create-room', name);
-
-   
-
-    </script>
-
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uti et Abuti</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <h1>Uti et Abuti</h1>
+  <form id="card">
+    <fieldform>
+    <label><input class="input card-input" type="text" name="userName" placeholder="Username... " maxlength="16" spellcheck="false" required autofocus></label>
+                <lable><input class="input card-input" type="password" name="password" placeholder="Password... " spellcheck="false" required></lable>
+                <label><input class="input card-input" type="password" name="repassword" placeholder="Repeat password... " spellcheck="false" required></label>
+                <span class="input card-input" class="error"></span>
+                <label><input class="input card-input" type="submit" value="register"></label>
+            </form>
+            <p>Already have an account? <a href="./login.html">Login</a></p>
+          </fieldform>
+        </div>
+     </form>
+       <script src="../js/register.js">
+       </script>
+    </body>
 </html>
 

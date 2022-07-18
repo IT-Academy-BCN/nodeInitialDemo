@@ -1,7 +1,5 @@
 
 
-loginform.addeventlistener("submit", e => {
-    e.preventDefault();
 
     sessionStorage.clear();
 
