@@ -37,7 +37,7 @@ body {
 }
 
 
-.entry {
+form {
 	width: 60vw;
 	background:var(--light--color);
 	max-width: 400px;
