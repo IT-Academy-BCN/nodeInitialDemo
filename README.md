@@ -1,6 +1,8 @@
 
 # Node Initial Project
 
+Branca Developers Team
+
 ### Project Structure
 
 Main structure of node.js project. Folders / files:
