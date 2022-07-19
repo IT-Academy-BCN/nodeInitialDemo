@@ -5,22 +5,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Uti et Abuti</title>
+  <link rel="icon" href="../img/fff_favicon.png" type="image/png" sizes="32x32">
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-  <h1>Uti et Abuti</h1>
-  <form id="card">
-    <fieldform>
-    <label><input class="input card-input" type="text" name="userName" placeholder="Username... " maxlength="16" spellcheck="false" required autofocus></label>
-                <lable><input class="input card-input" type="password" name="password" placeholder="Password... " spellcheck="false" required></lable>
-                <label><input class="input card-input" type="password" name="repassword" placeholder="Repeat password... " spellcheck="false" required></label>
-                <span class="input card-input" class="error"></span>
-                <label><input class="input card-input" type="submit" value="register"></label>
-            </form>
-            <p>Already have an account? <a href="./login.html">Login</a></p>
-          </fieldform>
-        </div>
-     </form>
+  <div id="container">
+    <h1>Uti et Abuti</h1>
+  <form class = "entry">
+    <fieldset>
+      <label><input type="text" name="register-userName" placeholder="Username max 16 characters... " maxlength="16" spellcheck="false" required autofocus></label>
+                <label><input type="password" name="register-password" placeholder="Password... " spellcheck="false" required></label>
+                <label><input type="password" name="repeat-password" placeholder="Repeat password... " spellcheck="false" required></label>
+                <label><span id="register_error" class="error"></span></label>
+                <label> <input type="submit" value="Sign up"></label>
+            </fieldset>
+          </form>
+          <p>Already have an account? <a href="/html/login.html">Login</a></p>
+       </div>  
        <script src="../js/register.js">
        </script>
     </body>

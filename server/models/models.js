@@ -4,7 +4,7 @@ module.exports = async () => {
     let mongoDB = process.env.DB_URL;
 
     mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-    
+    console.log('connected to DB');
     const usersSchema = new mongoose.Schema({
         userName: String,
         password: String,

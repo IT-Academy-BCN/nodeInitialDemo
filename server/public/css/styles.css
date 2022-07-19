@@ -1,50 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');');
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+
 
 :root {
-	--dark-color-a: #667aff;
-	--back-color:whitesmoke;
-	--container-color: #c9ccc0;
-	--text-color: #232534;
-	--success-color: #5cb85c;
-	--error-color: #d9534f;
+	--lightest--color:#A5D6A7;
+    --light--color:whitesmoke;
+	--dark--color: #000033;
+	--medium--color:#E8E8E8
+	
+
 }
 
 body {
-	display: flex column;
-	width: 100%;
-	height: 100vh;
-	margin: 0;
-	background:whitesmoke;
-	color: #232534;
-	font-family: DM sans;
+	font-family: 'Nanum gothic', sans-serif;
 	font-size: 16px;
-  }
+	color: var(--dark--color);
+	background: var(--lightest--color);
+	margin: 0px;
+    width:100%;
+    height:100vh;
+}
 
   h1, p {
-	margin: 1em auto;
-	text-align: center;
-  }
+    margin: 1em auto;
+	padding-top: 1em;
+   
+    
+}
 
-  form {
+#container {
+	display:flex; 
+	flex-direction: column; 
+	justify-content: center; 
+	align-items: center;
+}
+
+
+.entry {
 	width: 60vw;
-	  max-width: 500px;
-	  min-width: 300px;
-	  margin: 0 auto;
-	padding-bottom: 2em;
+	background:var(--light--color);
+	max-width: 400px;
+	min-width: 200px;
+	margin: 0 auto;
+    padding-bottom: 1em;
+	justify-content: center;
 	
   }
 
   fieldset {
-	border: none;
-	padding: 2rem 0;
-	border-bottom: 3px solid #3b3b4f;
-	background:whitesmoke;
+	
+	border:none;
+    text-align:center;
+    background-color:var(--light--color);
+	padding: 1em;
 	
   }
 
- 
-    label {
-	display: block;
-	margin: 0.5rem;
+
+  label {
+     
+      display: block;
+      margin: 0.5rem;
+	  border:0.1em;
+	  border-color:var(--dark--color);
+	  
+   }
+
+  input{
+    margin: 13px 0 0 0;
+    width: 80%;
+    min-height: 2em;
+    background:var(--light--color);
 	
-  }
+}
+
+
+input[type="submit"] {
+    margin: 15px auto;
+    display:block;
+    width: 20%;
+    height: 2em;
+    
+	background-color:var(--lightest--color);
+    min-width: 100px;
+    border:0.1em;
+	border-color:var(--light--color);
+	
+	
+}
+
+
+  
