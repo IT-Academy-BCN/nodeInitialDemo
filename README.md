@@ -72,6 +72,9 @@ https://www.w3schools.com/jsref/met_document_queryselector.asp
 form action
 https://www.w3schools.com/tags/att_form_action.asp
 
+logout
+https://stackoverflow.com/questions/29952249/how-to-create-log-out-script-parse-javascript
+
 
 ### Project Structure
 
