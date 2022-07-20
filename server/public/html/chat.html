@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Socket.IO playground</title>
-    <style>
-      body {
-        color: #333333;
-        font-family: arial;
-        max-width: 650px;
-        margin: 0 auto;
-        padding: 0 16px;
-      }
-    </style>
+    <title>Uti et Abuti</title>
+    <link rel="icon" href="../img/fff_favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../css/styles.css"/>
   </head>
   <body>
+    <div class ="chat-container">
+      <header class="chat-header">
+        <h1>Uti et Abuti</h1>
+        <a id="leave-btn" class="btn">Leave Room</a>
+        <a id="logout-btn" class="btn">Logout</a>
+      </header>
+      <main class="chat-main">
+        <div class="chat-sidebar">
+          <h3>Room Name:</h3>
+          <h2 id="room-name"></h2>
+          <h3></i> Users</h3>
+          <ul id="users"></ul>
+           </div>
+      </main>
+      <div class="chat-form-container">
+        <form id="chat-form">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Enter Message"
+            required
+            autocomplete="off"
+          />
+          <button class="btn"><i class="fa-solid fa-paper-plane-top"></i> Send</button>
+        </form>
+      </div>
 
-    <h1>Socket.IO playground</h1>
-    <p>Exemple d'aplicació Socket bàsica amb comuniació entre server i client separats.</p>
+ </div>
+    
 
     <!-- import socket library from server -->
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    
     <script>
-      
       // connection to sockets
       const socket = io("http://localhost:3000");
-      
-     
+      </script>
+      <script src="https://kit.fontawesome.com/d4806b766a.js" crossorigin="anonymous"></script>
 
-   
-
-    </script>
 
   </body>
 </html>

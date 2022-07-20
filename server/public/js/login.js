@@ -5,8 +5,8 @@
     
         sessionStorage.clear();
     
-        const userName = document.querySelector('input[name="login-name"]').value;
-        const password = document.querySelector('input[name="login-password"]').value;
+        const userName = document.querySelector('[name="login-username"]').value;
+        const password = document.querySelector('[name="login-password"]').value;
     
         fetch('http://localhost:3000/api/login', {
             method: 'post',
@@ -23,7 +23,7 @@
                 sessionStorage.accessToken = data.accessToken;
     
                 // jump to chat
-                window.location.assign('../html/chat.html');
+                window.location.replace('../html/chat.html');
     
             } else {
                 document.getElementById("login-error").innerHTML = data.message;

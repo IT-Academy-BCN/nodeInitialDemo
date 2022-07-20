@@ -4,7 +4,7 @@ const api = express.Router();
 const signin = require('../controllers/signin');
 //const auth = require('./middleware/authenticate.js');
 
-api.post('/signin', //auth,
+api.post('/login', //auth,
              signin);
 
 module.exports = api;

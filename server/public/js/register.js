@@ -24,8 +24,8 @@ registerForm.addEventListener('submit', e => {
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
-            //
-            window.location.assign('./html/login.html')
+            
+            window.location.replace('./html/login.html')
         } else {
             registerError.innerHTML = data.message;
         }
