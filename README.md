@@ -29,8 +29,6 @@ Server runs with express and http modules.
 
 ### SOCKET.io
 
-
-
 Basics:
 https://socket.io/get-started/chat
 
@@ -43,6 +41,9 @@ https://socket.io/docs/v4/emit-cheatsheet/#server-side
 
 Authenticate sockets:
 https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt
+
+One socket/ user:
+https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-with-node-js-socket-io-and-redis-65f9eb57f66a
 
 
 ### MONGOOSE:
@@ -74,6 +75,9 @@ https://www.w3schools.com/tags/att_form_action.asp
 
 logout
 https://stackoverflow.com/questions/29952249/how-to-create-log-out-script-parse-javascript
+
+icons
+https://fontawesome.com/icons
 
 
 ### Project Structure
