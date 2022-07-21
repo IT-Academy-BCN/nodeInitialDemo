@@ -1,0 +1,21 @@
+[
+    {
+        "usuari": "Marta",
+"nomTasca": "fer programa",
+"estat": "en execució",
+"dataInici": "2022-07-21T22:00:00.000+00:00",
+"dataFinal": ""
+},
+{
+
+        "usuari": "Francesc",
+"nomTasca": "fer documentació",
+"estat": "finalitzada",
+"dataInici": "2022-07-20T22:00:00.000+00:00",
+"dataFinal": "2022-07-21T22:00:00.000+00:00"
+}
+
+
+
+]
+
