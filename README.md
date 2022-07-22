@@ -4,6 +4,10 @@ Instructions:
 Clone repository and make sure that npm is installed.
 
 Initialize terminal from inside the project folder.
+
+```
+cd server
+```
 Install node modules.
 
 ```
@@ -45,6 +49,9 @@ https://stackoverflow.com/questions/36788831/authenticating-socket-io-connection
 One socket/ user:
 https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-with-node-js-socket-io-and-redis-65f9eb57f66a
 
+Connecting frontend - backend:
+https://stackabuse.com/serving-static-files-with-node-and-express-js/
+
 
 ### MONGOOSE:
 
@@ -69,6 +76,7 @@ https://www.w3schools.com/howto/howto_css_cards.asp
 
 query selector
 https://www.w3schools.com/jsref/met_document_queryselector.asp
+https://dev.to/eidorianavi/queryselector-vs-getelementbyid-gm1
 
 form action
 https://www.w3schools.com/tags/att_form_action.asp
@@ -76,8 +84,17 @@ https://www.w3schools.com/tags/att_form_action.asp
 logout
 https://stackoverflow.com/questions/29952249/how-to-create-log-out-script-parse-javascript
 
+autofocus
+https://www.w3schools.com/tags/att_input_autofocus.asp
+
 icons
 https://fontawesome.com/icons
+
+hover dropdown
+https://www.w3schools.com/howto/howto_css_dropdown.asp
+
+animated input
+https://www.w3schools.com/howto/howto_css_animated_search.asp
 
 
 ### Project Structure
