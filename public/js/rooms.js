@@ -1,15 +1,15 @@
-//TODO check that id:s are correct
-//add new room
-const addRoom = () => {
-   
-    const roomName = document.query('[name="new-room"]').value;
 
-        if (roomName && roomName !== "") {
-            socket.emit('new-room', roomName)
-            document.query('[name="new-room"]').value ="";
+//add new room
+document.querySelector('[name="add-roombtn"]').addEventListener('click', () => {
+
+        const roomName = document.querySelector('[name="new-room"]').value;
+        console.log(roomName);
+        if (roomName) {
+            socket.emit('add-room', roomName)
+            document.querySelector('[name="new-room"]').value ="";
          }
     return false;
-}
+})
 
 
 //join a new room
@@ -25,16 +25,16 @@ const joinRoom = () => {
   sessionStorage.roomId = room.roomId;
 
   // Change current room name
-  document.query("room-name").innerHTML = `${room.roomName}`;
+  document.querySelector("room-name").innerHTML = `${room.roomName}`;
 
   // Delete messages from old room
-  document.query("message-list").innerHTML = "";
+  document.querySelector("message-list").innerHTML = "";
 
  //Clear up
-  document.query('[name="new-room"]').value = "";
-  document.query('[name="new-message"]').value = "";
+  document.querySelector('[name="new-room"]').value = "";
+  document.querySelector('[name="new-message"]').value = "";
 
-  document.query('[name="new-message"]').focus();
+  document.querySelector('[name="new-message"]').focus();
 }
 
 
@@ -54,53 +54,50 @@ outputRoom = (room) => {
   btn.onclick = () => {
 
       if (sessionStorage.roomId) {
-          document.query(sessionStorage.roomId).classList.remove('room-btn--active')
+          document.querySelector(sessionStorage.roomId).classList.remove('room-btn--active')
       }
 
       btn.classList.add('room-btn--active');
       joinRoom(room);
 
-      let currentRoom = document.query('room');
+      let currentRoom = document.querySelector('room');
       if (currentRoom.classList.contains('responsive')) {
 
         currentRoom.classList.remove('responsive');
           
-          let currentUser = document.query('user');
+          let currentUser = document.querySelector('user');
           currentUser.classList.remove('d-none');
           
-          let chat = document.query('chat');
+          let chat = document.querySelector('chat');
           chat.classList.remove('d-none');
       }
   }
 
-  const rooms = document.query("room-list");
+  const rooms = document.querySelector("room-list");
   rooms.appendChild(btn);
 
   sortBtnList("room-list");
 }
 
 
-const displayRoomUsers = (room, users) => {
-  document.query(room.roomId).textContent = `${room.roomName} (${users.length})`
+const outputRoomUsers = (room, users) => {
+  document.getElementbyID(room.roomId).textContent = `${room.roomName} (${users.length})`
 }
-
 
 
 const outputRooms = () => {
 
-  // Delete error/success message
-
-  let room = document.query('room');
+  let room = document.querySelector('.room');
   room.classList.toggle('responsive');
 
-  let user = document.query('user');
+  let user = document.querySelector('.user');
   user.classList.toggle('d-none');
 
-  let chat = document.query('chat');
+  let chat = document.querySelector('.chat');
   chat.classList.toggle('d-none');
 
   if (room.classList.contains('responsive')){
-      let roomList = document.query('roomList');
+      let roomList = document.querySelector('#room-list');
       roomList.addEventListener('click', e => {
           e.preventDefault();
           room.classList.remove('responsive');

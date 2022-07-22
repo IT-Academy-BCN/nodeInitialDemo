@@ -3,6 +3,7 @@ require('dotenv').config();
 const path = require("path");
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -25,7 +26,7 @@ const login = require('./routes/login.js');
 //const auth = require('./routes/auth.js');
 
 //middleware
-//needed if running from public?
+
 app.use(express.json());
 // Set static folder for frontend
 //app.use(express.static(path.join(__dirname, "public")));

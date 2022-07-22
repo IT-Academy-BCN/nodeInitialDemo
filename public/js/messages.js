@@ -1,20 +1,20 @@
-const sendMessage = () => {
-    const text = document.query('[name="new-message"]').value;
+document.querySelector('[name="send-message"]').addEventListener('click',() => {
+    const text = document.querySelector('[name="new-message"]').value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
     const room = {roomId: sessionStorage.roomId, roomName: sessionStorage.roomName};
 
     if (text) {
         let message = {user, room, text};
         socket.emit('new-message', message);
-        displayMessage(message);
+        outputMessage(message);
         text = '';
     }
 
     return false;
-}
+})
 
 
-const displayMessage = (message) => {
+const outPutMessage = (message) => {
 
     let messageList = document.getElementById("message-list");
 

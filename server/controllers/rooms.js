@@ -1,9 +1,10 @@
 const Rooms = require('mongoose').model("Rooms")
 const Users = require('mongoose').model("Users")
 
-const createRoom = async(roomName) => {
+const addRoom = async(roomName) => {
 
     let result;
+    console.log(roomName);
 
     try {
         // Check if room exists
@@ -45,4 +46,4 @@ const getRooms = async() => {
 
 
 
-module.exports = {createRoom, getRooms};
+module.exports = {addRoom, getRooms};

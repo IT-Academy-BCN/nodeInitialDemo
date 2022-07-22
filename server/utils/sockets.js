@@ -1,13 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-
 const {getMessages, addMessage} = require('./controllers/messages.js');
 const {getUsers, joinRoom, disconnectUser} = require('./controllers/users.js');
-const {createRoom, getRooms} = require('./controllers/rooms.js');
+const {addRoom, getRooms} = require('./controllers/rooms.js');
 
 module.exports = async (io) => {
 
-    io.use(function(socket, next){
+    /*io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
             jwt.verify(socket.handshake.query.token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
             if (err) return next(new Error('Authentication error'));
@@ -19,14 +18,17 @@ module.exports = async (io) => {
         next(new Error('Authentication error'));
         }
     })
-
+*/
 
     socket.on('connection', socket => {
+
+         console.log('hola');
+
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         
         //add new message to room
         socket.on('new-message', async (message) => {
-            // console.log("new-message")
+            console.log("new-message")
             let newMessage = await addMessage(message);
             // console.log('new-message', newMessageRes);
             if (newMessage.status === 'success') {
@@ -37,10 +39,10 @@ module.exports = async (io) => {
         })
 
         //create new room
-        socket.on('create-room', async (roomName) => {
-
-            let newRoom = await createRoom(roomName);
-            // console.log(`new-room`, newRoomRes)
+        socket.on('add-room', async(roomName) => {
+            console.log('hola');
+            let newRoom = await addRoom(roomName);
+           
 
             if (newRoom.status === 'success') {
 
@@ -145,27 +147,15 @@ module.exports = async (io) => {
             } else {
                 io.to(socket.id).emit('error', userDisconnected.message);
             }
-        });
+        })
+
     })
-        
+} 
 
 
 
 
-
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    }
-    )
-
-
-
 

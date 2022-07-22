@@ -11,23 +11,23 @@
       <header class="chat-header">
        <h1 id="chat-name">Uti et Abuti</h1>
           <div class="chat-logout">
-            <button class="button" type="button" onclick="logout()">Logout</button>
+            <button type="button" name="leave-btn">Logout</button>
         </div>
     </header>
     <div class="chat-sidebar" id="chat-info">
-      <button id="show-rooms" type="button" onclick="showRooms()"><strong>ROOMS</strong></button>
-              <form id="room-form" onsubmit="return createRoom()">
-                   <input class="input" type="text" id="new-room" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
-                   <input class="button" type="submit" value="Add">
+      <button id="show-rooms" type="button" onclick="outputRooms()"><strong>ROOMS</strong></button>
+              <form id="room-form">
+                   <input class="input-text" type="text" name="new-room" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
+                   <input class="button" type="submit" name="add-roombtn" value="Add">
                </form>
                <ul id="room-list"></ul>
-              <button name="show-user" type="button" onclick="showUsers()"><strong>USERS</strong></button>
+              <button name="show-user" type="button" onclick="outputUsers()"><strong>USERS</strong></button>
               <ul id="user-list"></ul>
             
      </div>
     <main id="chat-messages" class="chat">
       <ul id="message-list"></ul>
-      <form id="message-form" onsubmit="return sendMessage()">
+      <form id="message-form" onsubmit="sendMessage()">
         <input class="input" type="text" name="new-message" autocomplete="off" autofocus>
           <input class="button" type="submit" name="send-message" value="Send">
       </form>
@@ -35,11 +35,9 @@
   </div>
     
 
-    <!-- import socket library from server -->
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script>
-      // connection to sockets
-      const socket = io("http://localhost:3000");</script>
+    <!-- import socket library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>src="../js/sockets.js"</script>
       <script src="../js/logout.js"></script>
       <script src="../js/messages.js"></script>
       <script src="../js/rooms.js"></script>
