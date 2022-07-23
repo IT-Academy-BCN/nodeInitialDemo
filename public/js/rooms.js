@@ -3,7 +3,6 @@
 document.querySelector('[name="add-roombtn"]').addEventListener('click', () => {
 
         const roomName = document.querySelector('[name="new-room"]').value;
-        console.log(roomName);
         if (roomName) {
             socket.emit('add-room', roomName)
             document.querySelector('[name="new-room"]').value ="";
@@ -26,7 +25,6 @@ const joinRoom = () => {
 
   // Change current room name
   document.querySelector("room-name").innerHTML = `${room.roomName}`;
-
   // Delete messages from old room
   document.querySelector("message-list").innerHTML = "";
 
@@ -38,7 +36,7 @@ const joinRoom = () => {
 }
 
 
-//output room
+//output current room
 outputRoom = (room) => {
 
   const btn = document.createElement('button');
@@ -79,21 +77,21 @@ outputRoom = (room) => {
   sortBtnList("room-list");
 }
 
-
+//outputRoomUsers
 const outputRoomUsers = (room, users) => {
   document.getElementbyID(room.roomId).textContent = `${room.roomName} (${users.length})`
 }
 
+//output all currents rooms
+document.querySelector('#show-rooms').addEventListener('click', () => {
 
-const outputRooms = () => {
-
-  let room = document.querySelector('.room');
+  let room = document.querySelector('#chat-room');
   room.classList.toggle('responsive');
 
-  let user = document.querySelector('.user');
+  let user = document.querySelector('#chat-user');
   user.classList.toggle('d-none');
 
-  let chat = document.querySelector('.chat');
+  let chat = document.querySelector('#chat');
   chat.classList.toggle('d-none');
 
   if (room.classList.contains('responsive')){
@@ -103,10 +101,9 @@ const outputRooms = () => {
           room.classList.remove('responsive');
           user.classList.remove('d-none');
           chat.classList.remove('d-none');
-
-      });
+    });
   }
-}
+})
 
 
 

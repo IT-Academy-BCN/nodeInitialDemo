@@ -1,7 +1,7 @@
 const Users = require('mongoose').model("Users");
 
 //get users from current room
-const getUsers = (room) => {
+const getUsers = async(room) => {
     
     let result;
     try {
@@ -18,7 +18,7 @@ const getUsers = (room) => {
 }
 
 //joinroom
-const joinRoom = (user, room) =>{
+const joinRoom = async(user, room) =>{
 
     let result;
     
@@ -49,7 +49,7 @@ const joinRoom = (user, room) =>{
 }
 
 //disconnect user from room
-const  disconnectUser = (user) => {
+const  disconnectUser = async(user) => {
 
     let result;
 
@@ -66,9 +66,7 @@ const  disconnectUser = (user) => {
             result = {status: 'success', 
                       user,
                       room: userDisconnect.room}
-        } else {
-            result = {status: 'fail', message: 'socketid for user disconnect not found'}
-        }
+        } 
     } catch (err) {
         result =  {status:'error', message: err.message};
     }

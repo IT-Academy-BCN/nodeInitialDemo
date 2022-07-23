@@ -25,15 +25,15 @@ const deleteUser = (user) => {
 }
 
 //output users to DOM
-const outputUsers = () => {
+document.querySelector('[name="show-users"]').addEventListener('click', () => {
 
-    let user = document.querySelector('.user');
+    let user = document.querySelector('#user');
     user.classList.toggle('responsive');
 
-    let room = document.querySelector('.room');
+    let room = document.querySelector('#room');
     room.classList.toggle('d-none');
 
-    let chat = document.querySelector('.chat');
+    let chat = document.querySelector('#chat');
     chat.classList.toggle('d-none');
     
     if (user.classList.contains('responsive')){
@@ -46,4 +46,4 @@ const outputUsers = () => {
 
         });
     }
-}
+})

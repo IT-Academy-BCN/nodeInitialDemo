@@ -14,20 +14,22 @@
             <button type="button" name="leave-btn">Logout</button>
         </div>
     </header>
-    <div class="chat-sidebar" id="chat-info">
-      <button id="show-rooms" type="button" onclick="outputRooms()"><strong>ROOMS</strong></button>
+    <div class="chat-sidebar" id="chat-room">
+      <button id="show-rooms" type="button"><strong>ROOMS</strong></button>
               <form id="room-form">
                    <input class="input-text" type="text" name="new-room" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
                    <input class="button" type="submit" name="add-roombtn" value="Add">
                </form>
                <ul id="room-list"></ul>
-              <button name="show-user" type="button" onclick="outputUsers()"><strong>USERS</strong></button>
+              </div>
+              <div class="chat-sidebar" id="chat-users">
+              <button name="show-users" type="button"><strong>USERS</strong></button>
               <ul id="user-list"></ul>
-            
-     </div>
-    <main id="chat-messages" class="chat">
+            </div>
+     
+    <main  class="chat" id="chat-messages">
       <ul id="message-list"></ul>
-      <form id="message-form" onsubmit="sendMessage()">
+      <form id="message-form">
         <input class="input" type="text" name="new-message" autocomplete="off" autofocus>
           <input class="button" type="submit" name="send-message" value="Send">
       </form>

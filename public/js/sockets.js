@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000',{
+let socket = io('http://localhost:3000',{
     reconnectionDelayMax: 3600,
     query: {
         'token': sessionStorage.accessToken
@@ -18,10 +18,9 @@ socket.on('connect', () => {
        console.log("new-message", message);
         outputMessage(message);
     })
-
-    socket.on('new-join-message', message => {
-        // console.log("new-join-message", message);
-        outputJoinMessage(message);
+    //output user joining room
+    socket.on('joined-message', message => {
+        joinedMessage(message);
     })
 
     socket.on('new-room', (room, users) => {
@@ -31,8 +30,8 @@ socket.on('connect', () => {
         outputRoomUsers(room, users);
     })
 
-    socket.on('update-room-users', (room, users) => {
-        // console.log('update-room-users', room, users);
+    socket.on('users-update', (room, users) => {
+        // console.log('update-roomusers', room, users);
 
         if (sessionStorage.roomId === room.roomId) {
             outputUsers(users)

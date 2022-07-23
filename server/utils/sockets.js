@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const {getMessages, addMessage} = require('./controllers/messages.js');
-const {getUsers, joinRoom, disconnectUser} = require('./controllers/users.js');
-const {addRoom, getRooms} = require('./controllers/rooms.js');
+const {getMessages, addMessage} = require('../controllers/messages.js');
+const {getUsers, joinRoom, disconnectUser} = require('../controllers/users.js');
+const {addRoom, getRooms} = require('../controllers/rooms.js');
 
 module.exports = async (io) => {
 
-    /*io.use(function(socket, next){
+    io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
             jwt.verify(socket.handshake.query.token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
             if (err) return next(new Error('Authentication error'));
@@ -18,11 +18,9 @@ module.exports = async (io) => {
         next(new Error('Authentication error'));
         }
     })
-*/
 
-    socket.on('connection', socket => {
 
-         console.log('hola');
+    io.on('connection', socket => {
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         
@@ -42,8 +40,7 @@ module.exports = async (io) => {
         socket.on('add-room', async(roomName) => {
             console.log('hola');
             let newRoom = await addRoom(roomName);
-           
-
+            
             if (newRoom.status === 'success') {
 
                 //inform about the new room
@@ -137,13 +134,13 @@ module.exports = async (io) => {
                 // console.log(`user ${userDisconnected.user.userName} left room ${userDisconnected.room.roomName}`);
 
                 // inform old room we left
-                socket.broadcast.to(userDisconnected.room.roomId).emit('new-join-message', `${userDisconnected.user.userName} left the room`);
+                socket.broadcast.to(userDisconnected.room.roomId).emit('joined-message', `${userDisconnected.user.userName} left the room`);
 
                 // get the new room #users
                 let currentUsers = await getUsers(userDisconnected.room);
 
                 // inform everyone about the new room #users
-                io.emit('update-room-users', userDisconnected.room, currentUsers.users);
+                io.emit('users-update', userDisconnected.room, currentUsers.users);
             } else {
                 io.to(socket.id).emit('error', userDisconnected.message);
             }

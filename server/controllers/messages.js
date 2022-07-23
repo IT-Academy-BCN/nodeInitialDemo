@@ -33,7 +33,7 @@ let result;
 
 
 //add new message
-const addMessage = (message) => {
+const addMessage = async(message) => {
 
     let result;
 

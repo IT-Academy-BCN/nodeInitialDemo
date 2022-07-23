@@ -65,7 +65,11 @@ form {
 	
   }
 
-  fieldset {
+  .login-form {
+	background:var(--light--color);
+  }
+
+  .entry-fieldset {
 	
 	border:none;
     text-align:center;

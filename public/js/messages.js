@@ -13,10 +13,10 @@ document.querySelector('[name="send-message"]').addEventListener('click',() => {
     return false;
 })
 
-
+//outout chat messages to dom
 const outPutMessage = (message) => {
 
-    let messageList = document.getElementById("message-list");
+    let messageList = document.querySelector("#message-list");
 
     // Create the element to append
     let li = document.createElement('li');
@@ -56,4 +56,22 @@ const outPutMessage = (message) => {
     messageList.scrollTop = messageList.scrollHeight;
 }
 
+//output user joining room
 
+const joinedMessage = () => {
+
+    document.getElementById('lastMessage').removeAttribute('id');
+
+    let messageList = document.getElementById('messageList');
+
+    // Create the element to append
+    let li = document.createElement('li');
+    li.classList.add('chat__li--join')
+    li.textContent = message;
+    li.setAttribute('id', 'lastMessage');
+
+    messageList.appendChild(li);
+    messageList.scrollTop = messageList.scrollHeight;
+}
+
+}
