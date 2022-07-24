@@ -9,18 +9,18 @@
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-  <div id="container">
-    <h1>Uti et Abuti</h1>
-  <form class="registerForm">
-    <fieldset class="entry-fieldset">
+  <div class="entry-container">
+    <header><h1>Uti et Abuti</h1></header>
+  <form class="register-form">
+    <fieldset>
       <label><input type="text" name="register-username" placeholder="Username max 16 characters... " maxlength="16" spellcheck="false" required autofocus></label>
                 <label><input type="password" name="register-password" placeholder="Password... " spellcheck="false" required></label>
                 <label><input type="password" name="repeat-password" placeholder="Repeat password... " spellcheck="false" required></label>
                 <label><span id="register-error" class="error"></span></label>
-                <label> <input type="submit" value="Sign up"></label>
+                <label> <input class="btn" type="submit" value="Sign up"></label>
             </fieldset>
           </form>
-          <p><a href="/html/login.html">Login</a> if you already have an account.</p>
+          <div class="entry-info"><p><a href="/html/login.html"><strong>Login </strong></a> if you already have an account.</p>
        </div>  
        <script src="./js/register.js">
        </script>

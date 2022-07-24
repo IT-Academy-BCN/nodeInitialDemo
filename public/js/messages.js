@@ -1,5 +1,5 @@
-document.querySelector('[name="send-message"]').addEventListener('click',() => {
-    const text = document.querySelector('[name="new-message"]').value;
+document.querySelector('.chat-form button').addEventListener('click',() => {
+    const text = document.querySelector('.chat-form input').value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
     const room = {roomId: sessionStorage.roomId, roomName: sessionStorage.roomName};
 
@@ -15,28 +15,24 @@ document.querySelector('[name="send-message"]').addEventListener('click',() => {
 
 //outout chat messages to dom
 const outPutMessage = (message) => {
-
+    
     let messageList = document.querySelector("#message-list");
 
     // Create the element to append
     let li = document.createElement('li');
-    li.classList.add('chat__li')
+    li.classList.add('chat-list')
     li.textContent = message.text;
 
     // Get the last inserted Ul
     let ul = document.getElementById('last-message');
 
-    // If last inserted ul has the same userId then append and we are done.
-    if (ul && (ul.getAttribute('userId') === message.user.userId)) {
-        // Same user, append message to last ul.
-        ul.appendChild(li)
-    } else {
-        if (ul) document.getElementById("last-message").removeAttribute("id");
+    if(ul)
+    {document.getElementById("last-message").removeAttribute("id");}
 
         // Create new ul
         ul = document.createElement('ul');
         ul.setAttribute('id', 'last-message');
-        ul.setAttribute('userId', message.user.userId)
+        ul.setAttribute('user-id', message.user.userId)
 
         // my messages will be aligned different
         if (message.user.userId === sessionStorage.userId) {
@@ -45,14 +41,14 @@ const outPutMessage = (message) => {
             const name = document.createElement('li')
             name.textContent = message.user.userName;
             messageList.appendChild(name);
-            ul.classList.add('others-message')
+            ul.classList.add('alien-message')
         }
         
         ul.appendChild(li);
 
         messageList.appendChild(ul);
-    }
-
+   
+      
     messageList.scrollTop = messageList.scrollHeight;
 }
 
@@ -66,7 +62,7 @@ const joinedMessage = () => {
 
     // Create the element to append
     let li = document.createElement('li');
-    li.classList.add('chat__li--join')
+    li.classList.add('chat-list-join')
     li.textContent = message;
     li.setAttribute('id', 'lastMessage');
 
@@ -74,4 +70,4 @@ const joinedMessage = () => {
     messageList.scrollTop = messageList.scrollHeight;
 }
 
-}
+

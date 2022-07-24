@@ -51,6 +51,14 @@ https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-
 
 Connecting frontend - backend:
 https://stackabuse.com/serving-static-files-with-node-and-express-js/
+### MONGO:
+
+connect to mongo (patch for mac high sierra):
+1. cd/Users
+2. cd to your home directory
+3. cd data
+4. mongod --dbpath ~/data/db press enter then just keep it running.
+
 
 
 ### MONGOOSE:
