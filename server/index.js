@@ -1,25 +1,34 @@
 require('dotenv').config();
 
 const express = require('express');
-//const cors = require('cors');
+const mongoose = require('mongoose');
 
 const app = express();
+
 //create server
 const server = require('http').Server(app);
 const port = process.env.PORT || 3000;
+
 //create socket server
 const io = require('socket.io')(server);
 
 //connect to DB
-require('./utils/connectDB.js')();
-
-
-app.use(express.static( '../public'));
-app.use(cors);
+require('./models/models.js')();
 
 //require routes
-const authRoutes = require('./routes/auth.js')
+const register = require('./routes/register.js');
+const login = require('./routes/login.js');
+//const auth = require('./routes/auth.js');
 
+//middleware
+app.use(express.json());
+
+// Set static folder for frontend
+app.use(express.static("../public/"));
+
+app.use('/api', register);
+app.use('/api', login);
+//app.use(auth);
 
 //invalid route handling
 app.use((req, res, next)=>{
@@ -27,7 +36,7 @@ app.use((req, res, next)=>{
   });
 
 //requiering and executing sockets
-require('../utils/sockets')(io);
+require('./utils/sockets')(io);
 
 server.listen(port, () => {
     console.log(`Socket.IO server running at http://localhost:${port}/`);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Uti et Abuti</title>
+    <link rel="icon" href="../img/fff_favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../css/styles.css" />
+   
+  </head>
+  
+  <body>
+   
+    <div class="chat-container">
+      <header class="chat-header">
+        <h1>Uti et Abuti</h1>
+       
+        <label><button class="btn" name="leave-btn">Logout</button></label>
+      </header>
+      <main class="chat-main">
+        <div class="chat-sidebar">
+          <h3>Room Name:</h3>
+          <h4 id="room-name">JavaScript</h4>
+          <form class="new-room-form">
+          <label><input type="text" placeholder="Enter new room name..."></label>
+          <button class="btn">Add</button></form>
+          <form class="user-form">
+          <h3>Users:</h3>
+          <ul id="users">
+          </ul>
+          </form>
+        </div>
+        <div class="chat-messages">
+            
+        </div>
+      </main>
+      <div class="chat-form-container"><ul id="message-list" class="chat-ul"></ul>
+        <form id="message-form" class="chat-form">
+            <input class="input" type="text" id="new-message" name="new-message" autocomplete="off" autofocus>
+            <button class="btn" >Send"</button>
+        </form>
+        </form>
+      </div>
+    </div>
+  
+
+    <!-- import socket library -->
+     <script src="/socket.io/socket.io.js"></script> 
+     <script>src="../js/sockets.js"</script>
+      <script src="../js/logout.js"></script>
+      <script src="../js/messages.js"></script>
+      <script src="../js/rooms.js"></script>
+      <script src="../js/users.js"></script>
+     
+      </body>
+</html>
+
