@@ -1,20 +1,19 @@
 # CHAT with Socket.io
 
 Instructions:
-Clone repository and make sure that npm is installed.
-
-Initialize terminal from inside the project folder.
+Clone repository.
 
 ```
 cd server
 ```
+Initialize terminal from inside the project folder.
 Install node modules.
 
 ```
 npm install
 
 ```
-Convert .env.example to .env and adapt variables to current environment.
+Convert .env.example to .env and adapt pertinent variables to current environment.
 
 Run server with
 
@@ -27,9 +26,22 @@ or in developer mode
 ```
 npm run dev
 ```
+
+The front end is served by the same port as the back end.
+If .env PORT variable is 3000 go to:
+
+````
+http://localhost:3000/
+````
+if not change to same port as in .env
+to experience major eyesore...
+
 ### SERVER
 
 Server runs with express and http modules.
+
+Connecting frontend - backend:
+https://stackabuse.com/serving-static-files-with-node-and-express-js/
 
 ### SOCKET.io
 
@@ -49,21 +61,18 @@ https://stackoverflow.com/questions/36788831/authenticating-socket-io-connection
 One socket/ user:
 https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-with-node-js-socket-io-and-redis-65f9eb57f66a
 
-Connecting frontend - backend:
-https://stackabuse.com/serving-static-files-with-node-and-express-js/
+
 ### MONGO:
 
-connect to mongo (patch for mac high sierra):
+connect to mongo (solution to connection problems for mac OS high sierra):
 1. cd/Users
 2. cd to your home directory
 3. cd data
 4. mongod --dbpath ~/data/db press enter then just keep it running.
 
-
-
 ### MONGOOSE:
 
-MongoDB deployed as persistance with mongoose as ORM.
+MongoDB deployed as persistence with mongoose as ORM.
 
 https://mongoosejs.com/
 https://mongoosejs.com/docs/api/document.html#document_Document-validate
@@ -103,6 +112,9 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp
 
 animated input
 https://www.w3schools.com/howto/howto_css_animated_search.asp
+
+add option elements to select
+https://javascript.plainenglish.io/how-to-add-options-to-an-html-select-element-with-javascript-97c8bc64932c
 
 
 ### Project Structure

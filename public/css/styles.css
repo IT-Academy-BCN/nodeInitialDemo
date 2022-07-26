@@ -2,14 +2,14 @@
 
 :root {
 	--dark-color-a: 
-	#eeeee4;
+	#efefee;
 	--dark-color-b:
-	#eeeee4;
-	--lightest-color: whitesmoke;
+	#efefee;
+	--lightest-color: white;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 	--light--color:
-	#eeeee4;
+	#efefee;
 	--dark--color: #000033;
 	--button--color:#95d2df
 }
@@ -38,8 +38,6 @@ a {
 
 h1{
 	color:var(--dark--color);
-
-	
 }
 
 .btn {
@@ -63,10 +61,8 @@ h1{
 	margin: 0 auto;
     padding-bottom: 1em;
 	padding-top:3em;
-	
 	justify-content: center;
-	
-  }
+}
 
   .entry-container header{
 	
@@ -75,8 +71,7 @@ h1{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
- }
+}
 
   .entry-container fieldset {
 	
@@ -176,7 +171,9 @@ input[type="submit"] {
 	background: var(--light--color);
 	color: var(--dark--color);
 	padding: 20px 20px 60px;
-	overflow-y: scroll;
+	display:flex;
+    flex-direction:column;
+	justify-content: space-between;
 }
 
 .chat-sidebar h2 {
@@ -186,12 +183,19 @@ input[type="submit"] {
 	margin-bottom: 20px;
 }
 
+
+
 .chat-sidebar h4 {
 	margin-bottom: 15px;
 }
 
 .chat-sidebar ul li {
 	padding: 10px 0;
+}
+
+.chat-sidebar div {
+
+margin: 1rem auto;
 }
 
 .chat-messages {
@@ -245,10 +249,36 @@ input[type="submit"] {
 	height: 40px;
 	
 	flex: 5;
-	background-color: whitesmoke;
+	background-color: white;
 	border:0;
     margin:0 0 0 2rem ;
 }
+
+
+.room-display button{
+	
+		background-color: var(--button--color);
+		color: var(--dark--color);
+		cursor: pointer;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 18px;
+}
+	  
+
+.active, .collapsible:hover {
+	background-color: var(--light-color);
+}
+
+.content {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	background-color: var(--light-color);
+  }
+
 
 @media (max-width: 700px) {
 	.chat-main {

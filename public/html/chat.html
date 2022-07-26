@@ -4,40 +4,45 @@
     <title>Uti et Abuti</title>
     <link rel="icon" href="../img/fff_favicon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="../css/styles.css" />
-   
-  </head>
+   </head>
   
   <body>
-   
+   <!--chat-container contains the whole chat-->
     <div class="chat-container">
       <header class="chat-header">
         <h1>Uti et Abuti</h1>
        
         <label><button class="btn" name="leave-btn">Logout</button></label>
       </header>
-      <main class="chat-main">
-        <div class="chat-sidebar">
-          <h3>Room Name:</h3>
-          <h4 id="room-name">JavaScript</h4>
-          <form class="new-room-form">
-          <label><input type="text" placeholder="Enter new room name..."></label>
-          <button class="btn">Add</button></form>
-          <form class="user-form">
-          <h3>Users:</h3>
-          <ul id="users">
-          </ul>
-          </form>
-        </div>
-        <div class="chat-messages">
-            
-        </div>
-      </main>
+      <!--chat-main contains the chat-sidebar and chat-form-container-->
+      <div class="chat-main">
+         <!--chat-sidebar contains room-display and user-display-->
+         <div class="chat-sidebar">
+           <form class="chat-info">
+             
+            <div class="add-room">
+            <label><input type="text" placeholder="Enter new name..."></label>
+            <button class="btn">+</button>
+          </div>
+          
+            <div class="room-display">
+              <button type="button" class="collapsible"><h4>Rooms...</h4></button>
+              <div class="room-list">
+                <ul></ul>
+              </div>
+            </div>
+           <div class="user-display">
+              <h3>Users:</h3>
+              <ul id="users"></ul>
+           </div>
+      </div>
+      </div>
       <div class="chat-form-container"><ul id="message-list" class="chat-ul"></ul>
         <form id="message-form" class="chat-form">
             <input class="input" type="text" id="new-message" name="new-message" autocomplete="off" autofocus>
-            <button class="btn" >Send"</button>
+            <button class="btn" >Send</button>
         </form>
-        </form>
+        
       </div>
     </div>
   

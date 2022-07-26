@@ -83,7 +83,7 @@ const outputRoomUsers = (room, users) => {
 }
 
 //output all currents rooms
-document.querySelector('#show-rooms').addEventListener('click', () => {
+document.querySelector('room-display button').addEventListener('click', () => {
 
   let room = document.querySelector('#chat-room');
   room.classList.toggle('responsive');
