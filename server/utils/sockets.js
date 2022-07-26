@@ -5,7 +5,7 @@ const {getUsers, joinRoom, disconnectUser} = require('../controllers/users.js');
 const {addRoom, getRooms} = require('../controllers/rooms.js');
 
 module.exports = async (io) => {
-
+  
     io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
             jwt.verify(socket.handshake.query.token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
@@ -21,6 +21,9 @@ module.exports = async (io) => {
 
 
     io.on('connection', socket => {
+        
+            console.log('a user connected');
+         
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         

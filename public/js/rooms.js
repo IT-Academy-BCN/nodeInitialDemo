@@ -1,14 +1,15 @@
 
 //add new room
-document.querySelector(".chat-info").addEventListener('click', () => {
-
-        const roomName = document.querySelector('input[name="new-room"]').value;
-        if (roomName) {
-            socket.emit('add-room', roomName)
-            document.querySelector('input[name="new-room"]').value ="";
+const addRoom = () => {
+     
+        const roomName = document.querySelector("#new-room").value;
+      
+         if (roomName) {
+            socket.emit('add-room', roomName);
+            document.querySelector("#new-room").value ="";
          }
     return false;
-})
+}
 
 
 //join a new room
