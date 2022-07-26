@@ -1,11 +1,11 @@
 
 //add new room
-document.querySelector('[name="add-roombtn"]').addEventListener('click', () => {
+document.querySelector(".chat-info").addEventListener('click', () => {
 
-        const roomName = document.querySelector('[name="new-room"]').value;
+        const roomName = document.querySelector('input[name="new-room"]').value;
         if (roomName) {
             socket.emit('add-room', roomName)
-            document.querySelector('[name="new-room"]').value ="";
+            document.querySelector('input[name="new-room"]').value ="";
          }
     return false;
 })
@@ -83,7 +83,7 @@ const outputRoomUsers = (room, users) => {
 }
 
 //output all currents rooms
-document.querySelector('room-display button').addEventListener('click', () => {
+document.querySelector('.all-rooms').addEventListener('click', () => {
 
   let room = document.querySelector('#chat-room');
   room.classList.toggle('responsive');
