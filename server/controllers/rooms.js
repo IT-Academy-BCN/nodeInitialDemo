@@ -1,5 +1,5 @@
-const Rooms = require('mongoose').model("Rooms")
-const Users = require('mongoose').model("Users")
+const Rooms = require('mongoose').model("Rooms");
+
 
 const addRoom = async(roomName) => {
 

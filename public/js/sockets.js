@@ -6,11 +6,10 @@ const socket = io('http://localhost:3000', {
 });
 
 
-let socketConnected = false;s
+let socketConnected = false;
 
 socket.on('connect', () => {
 
-  
     if (socketConnected) return;
     socketConnected = true;
 
@@ -20,48 +19,35 @@ socket.on('connect', () => {
 
     socket.on('new-message', message => {
         // console.log("new-message", message);
-        displayMessage(message);
+        outputMessage(message);
     })
 
     socket.on('new-join-message', message => {
         // console.log("new-join-message", message);
-        displayJoinMessage(message);
+        joinedMessage(message);
     })
 
     socket.on('new-room', (room, users) => {
         // console.log('new-room room', room);
         // console.log('new-room users', users);
-        displayRoom(room);
-        displayRoomUsers(room, users);
+        outputRoom(room);
+        outputUsers(room, users);
     })
 
-    socket.on('update-room-users', (room, users) => {
+    socket.on('users-update', (room, users) => {
         // console.log('update-room-users', room, users);
-
-        // Display users in our console
-        if (sessionStorage.roomId === room.roomId) {
-            displayUsers(users)
-        }
-
-        displayRoomUsers(room, users);
+       outputUsers(room, users);
     })
 
-    socket.on('error', message => {
-        document.getElementById("roomError").innerHTML = message;
-    })
-
-    socket.on('success', message => {
-        console.log("here")
-        document.getElementById("roomSuccess").innerHTML = message;
-    })
-
+   
     socket.on('disconnect', () => {
       // console.log('Socket disconnected')
     });
-
+   
     // Delete room list
-    document.getElementById("roomList").innerHTML = '';
-
+    document.getElementById("room-list").innerHTML = '';
+  
+    
     // Ask for the room list again
     socket.emit('get-rooms');
 })

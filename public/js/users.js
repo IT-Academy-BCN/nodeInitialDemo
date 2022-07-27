@@ -20,7 +20,7 @@ const outputUser = (users) => {
 
 //delete user 
 const deleteUser = (user) => {
-    var item = document.getElementById(user.userId);
-    if (item) item.parentNode.removeChild(item);
+    let userDeleted = document.getElementById(user.userId);
+    if (userDeleted) userDeleted.parentNode.removeChild(userDeleted);
 }
 

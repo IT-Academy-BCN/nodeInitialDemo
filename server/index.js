@@ -18,7 +18,7 @@ require('./models/models.js')();
 //require routes
 const register = require('./routes/register.js');
 const login = require('./routes/login.js');
-//const auth = require('./routes/auth.js');
+const auth = require('./routes/auth.js');
 
 //middleware
 app.use(express.json());
@@ -28,7 +28,7 @@ app.use(express.static("../public/"));
 
 app.use('/api', register);
 app.use('/api', login);
-//app.use(auth);
+app.use(auth);
 
 //invalid route handling
 app.use((req, res, next)=>{
