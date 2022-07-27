@@ -1,3 +1,9 @@
+const socket = io('http://localhost:3000', {
+    reconnectionDelayMax: 3600,
+    query: {
+        'token': sessionStorage.accessToken
+    }
+});
 
 
 let socketConnected = false;s

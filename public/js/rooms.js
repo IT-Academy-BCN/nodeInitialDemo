@@ -5,7 +5,7 @@ const addRoom = () => {
         const roomName = document.querySelector("#new-room").value;
       
          if (roomName) {
-            socket.emit('add-room', roomName);
+            socket.emit('new-room', roomName);
             document.querySelector("#new-room").value ="";
          }
     return false;

@@ -40,8 +40,8 @@ module.exports = async (io) => {
         })
 
         //create new room
-        socket.on('add-room', async(roomName) => {
-            console.log('hola');
+        socket.on('new-room', async(roomName) => {
+            
             let newRoom = await addRoom(roomName);
             
             if (newRoom.status === 'success') {
