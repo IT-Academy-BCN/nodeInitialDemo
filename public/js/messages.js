@@ -14,7 +14,7 @@ document.querySelector('.chat-form button').addEventListener('click',() => {
 })
 
 //outout chat messages to dom
-const outPutMessage = (message) => {
+const outputMessage = (message) => {
     
     let messageList = document.querySelector("#message-list");
 

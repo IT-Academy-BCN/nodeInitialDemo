@@ -49,7 +49,7 @@ module.exports = async (io) => {
                 //inform about the new room
                 let currentUsers = await getUsers(newRoom.room);
                 
-                io.emit('new-room', newRoom.room, currentUsers.users);
+                io.emit('add-room', newRoom.room, currentUsers.users);
                 io.to(socket.id).emit('success', `${roomName} created`);
             } else {
                 io.to(socket.id).emit('error', newRoom.message);
@@ -57,7 +57,6 @@ module.exports = async (io) => {
         })
 
 
-        //get all rooms
         socket.on('get-rooms', async () => {
 
             let currentRooms = await getRooms();
@@ -150,6 +149,7 @@ module.exports = async (io) => {
         })
 
     })
+    */
 } 
 
 

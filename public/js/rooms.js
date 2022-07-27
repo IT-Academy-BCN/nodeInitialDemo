@@ -1,7 +1,7 @@
 
 //add new room
 const addRoom = () => {
-     
+       console.log('hola');
         const roomName = document.querySelector("#new-room").value;
       
          if (roomName) {
@@ -9,9 +9,9 @@ const addRoom = () => {
             document.querySelector("#new-room").value ="";
          }
     return false;
-}
+ }
 
-
+/*
 //join a new room
 const joinRoom = () => {
 
@@ -79,7 +79,7 @@ outputRoom = (room) => {
 }
 
 //outputRoomUsers
-const outputRoomUsers = (room, users) => {
+const outputUsers = (room, users) => {
   document.getElementbyID(room.roomId).textContent = `${room.roomName} (${users.length})`
 }
 
@@ -106,5 +106,5 @@ document.querySelector('.all-rooms').addEventListener('click', () => {
   }
 })
 
-
+*/
 
