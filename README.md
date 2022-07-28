@@ -2,6 +2,8 @@
 
 ## Descripció 👁‍🗨
 
+Branca Victor
+
 Forma un equip amb 2 desenvolupadors més que estiguin en aquest mateix sprint (el mentor pot ajudar-te o suggerir-te companys). Haureu de construir el projecte TO-DO, que ha de satisfer els següents requisits:
 
 - Creeu una aplicació que permeti portar un llistat de tasques per fer. Ha de contemplar l'opció d'afegir tasques, llistar-les i mostrar el seu estat (pendents, en execució o acabades) i l'hora d'inici i final de la tasca, així com l'usuari/ària que la va donar d'alta
