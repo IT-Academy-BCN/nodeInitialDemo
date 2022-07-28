@@ -1,51 +1,34 @@
+# Entrega 3.3: Developers Team 🫕
 
-# Node Initial Project
+## Descripció 👁‍🗨
 
-### Project Structure
+Forma un equip amb 2 desenvolupadors més que estiguin en aquest mateix sprint (el mentor pot ajudar-te o suggerir-te companys). Haureu de construir el projecte TO-DO, que ha de satisfer els següents requisits:
 
-Main structure of node.js project. Folders / files:
+- Creeu una aplicació que permeti portar un llistat de tasques per fer. Ha de contemplar l'opció d'afegir tasques, llistar-les i mostrar el seu estat (pendents, en execució o acabades) i l'hora d'inici i final de la tasca, així com l'usuari/ària que la va donar d'alta
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
+- S'ha d'utilitzar per a la consola i ha de contenir les següents opcions: crear tasca, actualitzar tasca, esborrar tasca, llistar totes les tasques o llistar una tasca específica.
 
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
+- Heu d'utilitzar un repositori GitHub seguint la metodologia gitflow.
 
-### Import project for use with Visual Studio Code
+ Important ⚠️
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+- A partir d'ara, els lliuraments has de fer-los mitjançant pull-requests en el teu propi repositori. Efectua els següents passos:
 
+- Fes un fork del repositori nodeInitialDemo.
 
-### Import project for use with WebStorm
+- Clona el contingut al teu ordinador.
+Treballa en el teu codi a una branca nova.
+Quan acabis, fes una pull request a la teva branca main. -El mentor/a escriurà allà els comentaris necessaris per la correcció. 
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+Nivell 1 ⭐
 
+Utilitzeu com a persistència un arxiu JSON.
+El projecte haurà d'estar correctament configurat en GitHub en la seva estructura de carpetes i de branches (seguint la metodologia gitflow).
 
-### Utilities
+Nivell 2 ⭐⭐
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+Feu servir com a persistència MySQL.
+
+Nivell 3 ⭐⭐⭐
+
+Useu com a persistència MongoDB.
