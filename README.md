@@ -2,7 +2,7 @@
 
 ## Descripció 👁‍🗨
 
-Branca Victor
+Branca Victor segona part
 
 Forma un equip amb 2 desenvolupadors més que estiguin en aquest mateix sprint (el mentor pot ajudar-te o suggerir-te companys). Haureu de construir el projecte TO-DO, que ha de satisfer els següents requisits:
 
