@@ -1,5 +1,10 @@
 # Entrega 3.3: Developers Team 🫕
 
+Para utilizar database json executar:
+```
+npm run json
+```
+
 ## Descripció 👁‍🗨
 
 Branca Victor segona part
