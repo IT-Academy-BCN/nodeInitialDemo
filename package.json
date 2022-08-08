@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "json": "cross-env NODE_ENV=json node src/app.js",
-    "mongo": "cross-env NODE_ENV=mongo node src/app.js",
-    "mysql": "cross-env NODE_ENV=mysql node src/app.js"
+    "json": "cross-env NODE_ENV=json node app.js",
+    "mongo": "cross-env NODE_ENV=mongo node app.js",
+    "mysql": "cross-env NODE_ENV=mysql node app.js"
   },
   "repository": {
     "type": "git",
