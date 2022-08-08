@@ -1,5 +1,30 @@
 {
+  "name": "dev_teams",
+  "description": "## Descripció 👁‍🗨",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "json": "cross-env NODE_ENV=json node src/app.js",
+    "mongo": "cross-env NODE_ENV=mongo node src/app.js",
+    "mysql": "cross-env NODE_ENV=mysql node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkafkain/nodeInitialDemo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vkafkain/nodeInitialDemo/issues"
+  },
+  "homepage": "https://github.com/vkafkain/nodeInitialDemo#readme",
   "dependencies": {
-    "inquirer": "^9.0.1"
+    "dotenv": "^16.0.1",
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.19"
   }
 }
