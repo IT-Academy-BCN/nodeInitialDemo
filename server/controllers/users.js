@@ -1,4 +1,4 @@
-const Users = require('mongoose').model("Users");
+const {Users} = require('../models/models.js');
 
 //get users from current room
 const getUsers = async(room) => {
@@ -36,7 +36,7 @@ const joinRoom = async(user, room) =>{
         if (currentUser) {
             result = {status: 'success',
                       user: { userId: currentUser._id, userName: currentUser.userName },
-                      oldRoom: currentUser.room
+                      prevRoom: currentUser.room
                      };
         } else {
             result = {status: 'fail', message: 'Error joining room'}
