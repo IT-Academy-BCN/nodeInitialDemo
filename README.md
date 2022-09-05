@@ -13,7 +13,13 @@ Install node modules.
 npm install
 
 ```
-Convert .env.example to .env and adapt pertinent variables to current environment.
+Convert .env.example to .env and adapt pertinent variables to current environment. 
+Current variables: 
+
+```
+PORT=3000 
+DB_URL="mongodb://localhost:27017/test"
+```
 
 Run server with
 
@@ -33,8 +39,7 @@ If .env PORT variable is 3000 go to:
 ````
 http://localhost:3000/
 ````
-if not change to same port as in .env
-to experience major eyesore...
+
 
 ### SERVER
 
@@ -64,11 +69,11 @@ https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-
 
 ### MONGO:
 
-connect to mongo (solution to connection problems for mac OS high sierra):
-1. cd/Users
-2. cd to your home directory
-3. cd data
-4. mongod --dbpath ~/data/db press enter then just keep it running.
+connect to mongo (solution to connection issue for mac OS high sierra):
+
+1. cd to your home directory
+2. cd data
+3. mongod --dbpath ~/data/db press enter then just keep it running.
 
 ### MONGOOSE:
 

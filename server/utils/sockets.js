@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const {getMessages, addMessage} = require('../controllers/messages.js');
 const {getUsers, joinRoom, disconnectUser} = require('../controllers/users.js');
-const {addRoom, getRooms} = require('../controllers/rooms.js');
+const {getRooms,addRoom, initHall} = require('../controllers/rooms.js');
 
 module.exports = async (io) => {
   
@@ -22,11 +22,12 @@ module.exports = async (io) => {
 
     io.on('connection', socket => {
         
-            console.log('a user connected');
+            //console.log('a user connected');
          
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
-        
+        let room = initHall();
+
         //add new message to room
         socket.on('new-message', async (message) => {
             console.log("new-message")
@@ -93,7 +94,7 @@ module.exports = async (io) => {
                     letcurrentUsers = await getUsers(currentRoom.oldRoom);
 
                     // inform everyone about the old room #users
-                    io.emit('update-room-users', currentRoom.oldRoom,currentUsers.users);
+                    io.emit('update-room-users', currentRoom.oldRoom, currentUsers.users);
                 }
 
                 // join the new room
@@ -149,7 +150,7 @@ module.exports = async (io) => {
         })
 
     })
-    */
+
 } 
 
 
