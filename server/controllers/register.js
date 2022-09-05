@@ -1,4 +1,4 @@
-const Users = require('mongoose').model("Users");
+const {Users} = require('../models/models.js');
 const bcrypt = require('bcrypt')
 
 //register
@@ -7,15 +7,18 @@ module.exports = async (req, res) => {
     try {
         const {userName, password} = req.body;
         
-        if (!userName) return res.status(400).send({ status: 'fail', message: 'Username not provided'});
+        /*if (!userName) return res.status(400).send({ status: 'fail', message: 'Username not provided'});
         if (!password) return res.status(400).send({ status: 'fail', message: 'Password not provided'});
+        */
 
+        if (!userName || !password) return res.status(400).send({status: "fail", message: 'Missing information.'});
+        
         const duplicateUser = await Users.find({userName});
-        if(duplicateUser.length > 0) return res.status(400).send({ status: "fail", message: 'Username already registered'});
+        if(duplicateUser.length > 0) return res.status(400).send({status: "fail", message: 'Username already registered'});
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        await Users.create({ userName: userName, password: hashedPassword })
+        await Users.create({userName: userName, password: hashedPassword })
 
         res.status(201).send({
             status: 'success', 

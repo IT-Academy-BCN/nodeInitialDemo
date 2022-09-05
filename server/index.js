@@ -1,19 +1,18 @@
 require('dotenv').config();
 
 const express = require('express');
-const mongoose = require('mongoose');
 
 const app = express();
 
 //create server
 const server = require('http').Server(app);
-const port = process.env.PORT || 3000;
+
 
 //create socket server
 const io = require('socket.io')(server);
 
 //connect to DB
-require('./models/models.js')();
+require('./sockets/connectDB.js.js.js')();
 
 //require routes
 const register = require('./routes/register.js');
@@ -36,8 +35,9 @@ app.use((req, res, next)=>{
   });
 
 //requiering and executing sockets
-require('./utils/sockets')(io);
+require('./sockets/sockets')(io);
 
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
     console.log(`Socket.IO server running at http://localhost:${port}/`);
   });

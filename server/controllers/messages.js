@@ -1,4 +1,4 @@
-const Rooms = require('mongoose').model("Rooms");
+const {Rooms} = require('../models/models.js');
 
 // retrieve messages from Room
 const getMessages = async(room) => {

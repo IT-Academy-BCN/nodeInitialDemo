@@ -1,19 +1,20 @@
-const Rooms = require('mongoose').model("Rooms");
+const {Rooms} = require('../models/models.js');
 
 
 const addRoom = async(roomName) => {
 
     let result;
-    console.log(roomName);
+    //console.log(roomName);
 
     try {
         // Check if room exists
-        const roomExist = await Rooms.findOne({ roomName });
+        const roomExist = await Rooms.findOne({roomName});
 
         if(roomExist) {
-            result =  {status:'fail', message:'Room already exists.'};
+            result =  {status:'fail', message:'Chat room already exists.'};
+        
         } else {
-            const room = await Rooms.create({ roomName })
+            const room = await Rooms.create({roomName})
             result = {status: 'success', room: {roomId: room._id, roomName: room.roomName}}
         }
     } catch (err) {
@@ -44,6 +45,12 @@ const getRooms = async() => {
 }
 
 
+const initHall = async() => {
+    
+    const roomExist = await Rooms.findOne({ roomName:'Hall' });
+  if(!roomExist) {
+    const room = await Rooms.create({ roomName:'Hall' })
+ }
+}
 
-
-module.exports = {addRoom, getRooms};
+module.exports = {addRoom, getRooms, initHall};
