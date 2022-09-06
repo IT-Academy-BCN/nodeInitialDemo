@@ -1,17 +1,17 @@
-const Users = require('mongoose').model('Users')
+const {Users} = require('../models/models.js');
 const jwt = require('jsonwebtoken')
 
-//sign In
+//log in
 module.exports = async (req, res) => {
      
   try {
         const userName = req.body.userName;
 
-        const userSignedIn = await Users.findOne({userName});
+        const currentUser = await Users.findOne({userName});
 
         const user = {
-            userId: userSignedIn._id,
-            userName: userSignedIn.userName
+            userId: currentUser._id,
+            userName: currentUser.userName
         }
 
         const accessToken = jwt.sign(user, process.env.TOKEN_SECRET_KEY)

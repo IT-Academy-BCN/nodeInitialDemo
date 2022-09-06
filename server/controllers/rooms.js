@@ -47,9 +47,9 @@ const getRooms = async() => {
 
 const initHall = async() => {
     
-    const roomExist = await Rooms.findOne({ roomName:'Hall' });
+    const roomExist = await Rooms.findOne({roomName:'Hall' });
   if(!roomExist) {
-    const room = await Rooms.create({ roomName:'Hall' })
+    const room = await Rooms.create({roomName:'Hall' })
  }
 }
 

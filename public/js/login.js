@@ -8,9 +8,9 @@
         const userName = document.querySelector('[name="login-username"]').value;
         const password = document.querySelector('[name="login-password"]').value;
     
-        fetch('http://localhost:3000/api/login', {
+        fetch('http://localhost:3000/login', {
             method: 'post',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json' },
             body: JSON.stringify({userName, password})
         })
         .then(response => response.json())

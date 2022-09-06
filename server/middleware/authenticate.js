@@ -1,4 +1,4 @@
-const Users = require('mongoose').model('Users');
+const {Users} = require('../models/models.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
