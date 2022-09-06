@@ -12,7 +12,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 //connect to DB
-require('./sockets/connectDB.js.js.js')();
+require('./utils/connectDB.js')();
 
 //require routes
 const register = require('./routes/register.js');
@@ -25,8 +25,8 @@ app.use(express.json());
 // Set static folder for frontend
 app.use(express.static("../public/"));
 
-app.use('/api', register);
-app.use('/api', login);
+app.use(register);
+app.use(login);
 app.use(auth);
 
 //invalid route handling

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const {getMessages, addMessage} = require('../controllers/messages.js');
 const {getUsers, joinRoom, disconnectUser} = require('../controllers/users.js');
-const {getRooms,addRoom, initHall} = require('../controllers/rooms.js');
+const {getRooms, addRoom, initHall} = require('../controllers/rooms.js');
 
 module.exports = async (io) => {
   
