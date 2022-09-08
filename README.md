@@ -121,6 +121,9 @@ https://www.w3schools.com/howto/howto_css_animated_search.asp
 add option elements to select
 https://javascript.plainenglish.io/how-to-add-options-to-an-html-select-element-with-javascript-97c8bc64932c
 
+sort unordered list
+//https://es.stackoverflow.com/questions/259945/ordenar-ul-javascript
+
 
 ### Project Structure
 
