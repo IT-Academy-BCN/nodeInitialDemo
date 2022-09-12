@@ -1,15 +1,16 @@
 
 //add new room
-const addRoom = () => {
-       console.log('hola');
+const createRoom = () => {
+       
         const roomName = document.querySelector("#new-room").value;
       
          if (roomName) {
             socket.emit('new-room', roomName);
-            document.querySelector("#new-room").value ="";
+            document.querySelector("#new-room").value ='';
+         } else {
+          return false;
          }
-    return false;
- }
+}
 
 /*
 //join a new room
