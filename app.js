@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // Importar llibreria Express
 const express = require('express');
+const path = require('path');
 
 // Instanciar servidor Express
 const app = express();
@@ -13,12 +14,14 @@ const app = express();
 //const PORT = process.env.PORT; --> No funciona amb aquest
 const PORT = 3000;
 
-// Importar rutes del Controller
-//const user_routes = require('../controller/user.js');
+//Carregar rutes
+const user_routes = require('./src/routes/user.js');
+
+//Middlewares
 app.use(express.json());
 
 //NIVELL 1
-app.use('/api', user_routes);
+app.use('/', user_routes);
 
 
 //test
