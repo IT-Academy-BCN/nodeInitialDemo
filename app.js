@@ -1,9 +1,9 @@
 'use strict';
 
-// Per importar dotenv
+// Importar dotenv
 require('dotenv').config();
 
-// Per importar llibreria Express
+// Importar llibreria Express
 const express = require('express');
 
 // Instanciar servidor Express
@@ -13,12 +13,20 @@ const app = express();
 //const PORT = process.env.PORT; --> No funciona amb aquest
 const PORT = 3000;
 
-//test
-app.get('/', function (req, res) {
-    res.send('Hola Leyva! Hola Samsa! Hola Cris!');
-});
+// Importar rutes del Controller
+//const user_routes = require('../controller/user.js');
+app.use(express.json());
 
-// Iniciar servidor--> ¡¡¡SIEMPRE AL FINAL!!!
+//NIVELL 1
+app.use('/api', user_routes);
+
+
+//test
+/*app.get('/', function (req, res) {
+    res.send('Hola Leyva! Hola Samsa! Hola Cris!');
+});*/
+
+// Iniciar servidor--> ¡¡¡SEMPRE AL FINAL!!!
 app.listen(PORT, () => {
     console.log(`El servidor funciona en el port ${PORT}`);
 });
