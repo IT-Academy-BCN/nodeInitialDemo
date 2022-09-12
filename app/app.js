@@ -12,8 +12,8 @@ const app = express();
 // Configurar entorn
 const PORT = process.env.PORT;
 
-// Iniciar servidor
+// Iniciar servidor--> ¡¡¡SIEMPRE AL FINAL!!!
 app.listen(PORT, () => {
-    console.log(`El servidor funciona en el port ${PORT}`)
+    console.log(`El servidor funciona en el port ${PORT}`);
 });
 
