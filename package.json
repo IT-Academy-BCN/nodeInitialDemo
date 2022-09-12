@@ -1,14 +1,14 @@
 {
-  "name": "nodeinitialdemo",
+  "name": "nodeinitialdemo_Sprint4",
   "version": "1.0.0",
-  "description": "sample project for node",
+  "description": "Sample project for node: REST API",
   "main": "app.js",
   "scripts": {
     "start": "node app/app.js",
     "dev": "nodemon app/app.js",
     "test": "jest"
   },
-  "author": "",
+  "author": "JessFaLa",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^9.0.2"
