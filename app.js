@@ -10,7 +10,13 @@ const express = require('express');
 const app = express();
 
 // Configurar entorn
-const PORT = process.env.PORT;
+//const PORT = process.env.PORT; --> No funciona amb aquest
+const PORT = 3000;
+
+//test
+app.get('/', function (req, res) {
+    res.send('Hola Leyva! Hola Samsa! Hola Cris!');
+});
 
 // Iniciar servidor--> ¡¡¡SIEMPRE AL FINAL!!!
 app.listen(PORT, () => {
