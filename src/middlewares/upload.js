@@ -12,7 +12,6 @@ let fileFilter = (req, res = response, cb) => {
  
     } else {
         res.status(400).json({ message: "No hay ningún archivo. // No hi ha cap arxiu. // No file"});
-
  }
 }
 
