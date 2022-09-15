@@ -14,6 +14,6 @@ const getUser = (req, res) => {
     } catch (err) {
         console.log(err);
         }
-    }
+    };
 
-module.exports = getUser;
+module.exports = {getUser};
