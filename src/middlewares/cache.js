@@ -1,6 +1,6 @@
 "use strict";
 
-// Configuració del middleware per fer el control del caché (mètodes "POST")
+// Configuració del Middleware per fer el control del caché (mètodes "POST", CORS)
   
 let cacheMiddleware = (req,res,next)=>{
   if (req.method == 'POST') {
