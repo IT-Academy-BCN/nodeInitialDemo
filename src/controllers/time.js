@@ -5,7 +5,6 @@ const time = (req, res) => {
       fecha:  new Date().toDateString(),
       hora:  new Date().getHours()
     })
-   
  };
 
  module.exports = {time}
