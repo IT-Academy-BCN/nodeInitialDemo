@@ -12,7 +12,7 @@ const fileUpload = require('express-fileupload');
 const fileFilter = require('./middlewares/upload');
 const error = require('./controllers/error');
 
-// habilitar la càrrega d'arxius
+// Habilitar la càrrega d'arxius
 app.use(fileUpload({
   createParentPath: true,
   limits: { 
@@ -20,16 +20,13 @@ app.use(fileUpload({
   },
 }));
 
-//middlewares
+// Middlewares
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 app.get('/user', userGet);
 
 app.post('/upload', fileFilter, uploadPost);
-
 
 app.post('/time', cors(), authe, cache, time);
 
@@ -38,7 +35,6 @@ app.post("/*", error);
 app.put("/*", error);
 app.delete("/*", error);
 
-
-app.listen(9000, () => { 
-console.log("El servidor està inicialitzar al puerto 9000"); 
+app.listen(3000, () => { 
+console.log("El servidor està inicialitzar al puerto 3000"); 
 });

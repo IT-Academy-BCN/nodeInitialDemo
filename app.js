@@ -26,11 +26,11 @@ app.use('/', user_routes);
 
 //test
 /*app.get('/', function (req, res) {
-    res.send('Hola Leyva! Hola Samsa! Hola Cris!');
+    res.send('Hola Leyva! Hola Samsa!');
 });*/
 
 // Iniciar servidor--> ¡¡¡SEMPRE AL FINAL!!!
 app.listen(PORT, () => {
-    console.log(`El servidor funciona en el port ${PORT}`);
+    console.log(`El servidor funciona en el port ${PORT}. // El servidor funciona al port ${PORT}. // Server works on port ${PORT}.`);
 });
 
