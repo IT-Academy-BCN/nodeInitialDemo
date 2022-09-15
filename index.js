@@ -1,4 +1,4 @@
-const express = require("express"); 
+const express = require('express'); 
 const cors = require('cors');
 const app = express();
 const path = require('path');
@@ -36,5 +36,5 @@ app.put("/*", error);
 app.delete("/*", error);
 
 app.listen(3000, () => { 
-console.log("El servidor está arrancado en el puerto 3000. // El servidor està inicialitzar al port 3000. // Server is initialized on port 3000"); 
+console.log("El servidor está iniciado en el puerto 3000. // El servidor està inicialitzar al port 3000. // Server is initialized on port 3000"); 
 });
