@@ -88,4 +88,4 @@ typings/
 .dynamodb/
 
 # DS Temp Mac
-.SD_Store
+.DS_Store
