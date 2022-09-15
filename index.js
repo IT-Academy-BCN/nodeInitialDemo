@@ -36,5 +36,5 @@ app.put("/*", error);
 app.delete("/*", error);
 
 app.listen(3000, () => { 
-console.log("El servidor està inicialitzar al puerto 3000"); 
+console.log("El servidor está arrancado en el puerto 3000. // El servidor està inicialitzar al port 3000. // Server is initialized on port 3000"); 
 });
