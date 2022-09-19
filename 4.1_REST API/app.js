@@ -25,8 +25,8 @@ app.use(express.json());
 app.use('/', user_routes);
 
 
-//test
-/*app.get('/', function (req, res) {
+/*test
+app.get('/', function (req, res) {
     res.send('Hola Leyva! Hola Samsa!');
 });*/
 

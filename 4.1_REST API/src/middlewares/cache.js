@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Configuració del Middleware per fer el control del caché (mètodes "POST", CORS)
   

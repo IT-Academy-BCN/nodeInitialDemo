@@ -3,7 +3,7 @@ const authe= (req, res, next) =>{
     console.log(req.headers);
   
     if (!authheader) {
-        var err = new Error("No estás autentificado. // No estàs autenticat. // You are not authenticated!");
+        var err = new Error("No estás autenticado. // No estàs autenticat. // You are not authenticated!");
         res.setHeader('WWW-Authenticate', 'Basic');
         err.status = 401;
         return next(err)
