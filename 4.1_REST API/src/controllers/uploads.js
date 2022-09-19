@@ -18,7 +18,6 @@ const uploadPost = ((req, res) => {
         })
   
     }
-  s
 } catch (error) {
     res.status(500).json({ message: "Error interno del servidor. // Error intern del servidor. // Internal Server Error" });
   }

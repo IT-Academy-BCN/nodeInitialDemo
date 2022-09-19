@@ -9,7 +9,7 @@ const time = (req, res) => {
 
  module.exports = {time}
 
- class Authenticate extends Middleware
+ /*class Authenticate extends Middleware
  {
 
 /*
