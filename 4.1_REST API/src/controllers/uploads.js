@@ -25,7 +25,6 @@ const uploadImage = ((req, res) => {
       //Enviar resposta d'arxiu carregat correctament
       res.status(200).json({message: "¡Enhorabuena! Archivo cargado correctamente. // Enhorabona! L'arxiu s'ha carregat correctament. // Congratulations! File uploaded successfully."
         })
-  
     }
 } catch (error) {
     res.status(500).json({ message: "Error interno del servidor. // Error intern del servidor. // Internal Server Error" });

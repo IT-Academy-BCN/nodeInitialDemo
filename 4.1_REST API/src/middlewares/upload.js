@@ -8,7 +8,7 @@ let fileFilter = (req, res = response, cb) => {
 
     if (fileTypes.some(fileType => fileType === req.files.image.mimetype)) return cb(null, true);
 
-    return res.status(400).json({message: "Solo son válidos los ficheros con las siguientes extensiones: .jpg, .jpeg, .png y/o .gif // Només són vàlids els fitxers amb les següents extensions: .jpg,.jpeg, .png i/o .gif // Valid files only with the following extensions: .jpg, .jpeg, .png and/or .gif"});
+    return res.status(406).json({message: "Solo son válidos los ficheros con las siguientes extensiones: .jpg, .jpeg, .png y/o .gif // Només són vàlids els fitxers amb les següents extensions: .jpg,.jpeg, .png i/o .gif // Valid files only with the following extensions: .jpg, .jpeg, .png and/or .gif"});
  
     } else {
         res.status(400).json({ message: "No hay ningún archivo. // No hi ha cap arxiu. // No file"});
