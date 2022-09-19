@@ -5,8 +5,8 @@ require('dotenv').config();
 
 // Importar llibreries 
 const express = require('express');
-const path = require('path');
-const multer = require('multer');
+//const path = require('path');
+//const multer = require('multer');
 
 // Instanciar servidor Express
 const app = express();
@@ -17,21 +17,23 @@ const PORT = 3000;
 
 //Carregar rutes
 const user_routes = require('./src/routes/user.js');
+const upload_routes = require('./src/routes/upload.js');
+
 
 //Middlewares
 app.use(express.json());
 
 //NIVELL 1
 app.use('/', user_routes);
+app.use('/', upload_routes);
 
 
-/*test
-app.get('/', function (req, res) {
+//test
+/*app.get('/', function (req, res) {
     res.send('Hola Leyva! Hola Samsa!');
 });*/
 
 // Iniciar servidor--> ¡¡¡SEMPRE AL FINAL!!!
 app.listen(PORT, () => {
-    console.log(`El servidor funciona en el puerto ${PORT}. // El servidor funciona al port ${PORT}. // Server works on port ${PORT}.`);
+    console.log(`El servidor funciona en el puerto ${PORT}.`); 
 });
-

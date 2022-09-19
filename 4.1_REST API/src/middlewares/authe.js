@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 const authe= (req, res, next) =>{
 var authheader = req.headers.authorization;
 console.log(req.headers);
@@ -25,4 +25,4 @@ var auth = new Buffer.from(authheader.split(' ')[1],
     }
   };
   
-  module.exports = authe;
+  module.exports = authe;*/

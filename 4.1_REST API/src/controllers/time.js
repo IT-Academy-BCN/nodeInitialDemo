@@ -1,4 +1,4 @@
-const getTime = (req,res) => {
+/*const getTime = (req,res) => {
     try {
     res.status(200).send({
          date: new Date().toLocaleString()
@@ -11,4 +11,4 @@ const getTime = (req,res) => {
   } 
 }
 
-module.exports = getTime;
+module.exports = getTime;*/
