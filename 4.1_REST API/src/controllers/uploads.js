@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Carregar un sol arxiu
 const uploadPost = ((req, res) => {
