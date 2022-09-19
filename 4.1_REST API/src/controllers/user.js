@@ -8,12 +8,15 @@ const getUser = (req, res) => {
         res.status(200).json({
             "name": "Samsa",
             "age": "24",
-            "url": req.protocol + "://" + req.headers.host + req.url
+            "url": req.protocol + "://" + req.get('Host') + req.originalUrl
             }); 
 
     } catch (err) {
-        console.log(err);
-        }
-    };
+        res.status(404).send({
+            status:"error", 
+            message: "Esta página no existe. // Aquesta pàgina no existeix. // This page doesn't exist"
+        });
+    }
+}
 
 module.exports = {getUser};
