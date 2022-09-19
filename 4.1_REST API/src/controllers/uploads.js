@@ -13,7 +13,7 @@ const app = express();
 const uploadImage = ((req, res) => {
   try {
     if (!req.files) {
-      res.status(406).json({ message: "Petición incorrecta. Formato de archivp no aceptado. // Petició incorrecta. Format d'arxiu no acceptat. // Bad request. File Format Not Accepted." });// 
+      res.status(406).json({ message: "Petición incorrecta. Formato de archivo no aceptado. // Petició incorrecta. Format d'arxiu no acceptat. // Bad Request. File Format Not Accepted." });// 
      
     } else {
       // Es fa servir el nom del camp d'entrada (és a dir, "imagen") per a recuperar l'arxiu carregat
@@ -27,7 +27,7 @@ const uploadImage = ((req, res) => {
         })
     }
 } catch (error) {
-    res.status(500).json({ message: "Error interno del servidor. // Error intern del servidor. // Internal Server Error" });
+    res.status(500).json({ message: "Error interno del servidor. Vuelve a intentarlo. // Error intern del servidor. Torna a intentar-ho. // Internal Server Error. Try again." });
   }
 })
 
