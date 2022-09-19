@@ -1,3 +1,4 @@
+'use strict';
 const res = require('express/lib/response');
 const multer = require('multer')
 const path = require('path')
