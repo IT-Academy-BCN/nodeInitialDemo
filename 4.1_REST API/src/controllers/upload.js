@@ -19,6 +19,7 @@ const upload = multer ({
   storage: storage,
   limits: {fileSize: 3000000},
   fileFilter:function(req, file, cb){
+    imageFilter(file, cb);
   }
 }).single('imagen');
 
