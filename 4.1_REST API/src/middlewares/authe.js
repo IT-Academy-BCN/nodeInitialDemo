@@ -1,28 +1,11 @@
-/*'use strict';
-const authe= (req, res, next) =>{
-var authheader = req.headers.authorization;
-console.log(req.headers);
-  
-    if (!authheader) {
-        var err = new Error("No estás autenticado. // No estàs autenticat. // You are not authenticated!");
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 401;
-        return next(err)
+const basicAuth = require('express-basic-auth');
+
+const authe = basicAuth({
+    users: { 'admin': '54321' },
+    unauthorizedResponse: { 
+        status: "not-authorized",
+        message:"401-Acceso no autorizado" 
     }
-  
-var auth = new Buffer.from(authheader.split(' ')[1],
-'base64').toString().split(':');
- var user = auth[0];
- var pass = auth[1];
-  
-    if (user == 'admin' && pass == 'password') {
-        next(); // Si l'usuarix està autoritzat
-    } else {
-        var err = new Error("No estás autorizado. // No estàs autenticat. // You are not authenticated.");
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 401;
-        return next(err);
-    }
-  };
-  
-  module.exports = authe;*/
+});
+
+module.exports = authe;

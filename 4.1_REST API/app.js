@@ -6,7 +6,6 @@ require('dotenv').config();
 // Importar llibreries 
 const express = require('express');
 const path = require('path');
-//const multer = require('multer');
 
 // Instanciar servidor Express
 const app = express();
@@ -18,7 +17,7 @@ const PORT = 3000;
 //Carregar rutes
 const user_routes = require('./src/routes/user.js');
 const upload_routes = require('./src/routes/upload.js');
-
+const time_routes = require('./src/routes/time.js');
 
 //Middlewares
 app.use(express.static(path.join(__dirname, './uploads')));
@@ -27,6 +26,9 @@ app.use(express.json());
 //NIVELL 1
 app.use('/', user_routes);
 app.use('/', upload_routes);
+
+//NIVELL 2
+app.use('/', time_routes);
 
 
 //test

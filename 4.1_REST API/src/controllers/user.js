@@ -1,6 +1,6 @@
 //Creació Endpoint-/user
 
-//http://localhost:3000/api/user
+//http://localhost:3000/user
 
 const getUser = (req, res) => {
 
