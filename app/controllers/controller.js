@@ -86,7 +86,7 @@ async function llistarPerEstat(estatTasca) {
     }
 }
 
-llistarPerEstat('finalitzada')
+//llistarPerEstat('finalitzada')
 
 module.exports = {
     borrarFitxer,
