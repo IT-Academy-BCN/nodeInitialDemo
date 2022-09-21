@@ -21,7 +21,7 @@
       |-- imageFilter.js
       |-- Cache.js
 
-      / -> Ficheros a utilizar en ejercicio del endpoint"/upload"
+      / -> Ficheros a utilizar en ejercicio del endpoint"/uploads"
       |-- vps.png
       |-- vps2.pdf
     /routes -> Declaración de los endpoints
