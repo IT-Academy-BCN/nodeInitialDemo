@@ -18,6 +18,7 @@ const PORT = 3000;
 const user_routes = require('./src/routes/user.js');
 const upload_routes = require('./src/routes/upload.js');
 const time_routes = require('./src/routes/time.js');
+const pokemon_routes = require('./src/routes/pokemon.js');
 
 //Middlewares
 app.use(express.static(path.join(__dirname, './uploads')));
@@ -30,6 +31,9 @@ app.use('/', upload_routes);
 //NIVELL 2
 app.use('/', time_routes);
 
+//NIVELL 3
+
+app.use('/',pokemon_routes);
 
 //test
 /*app.get('/', function (req, res) {
