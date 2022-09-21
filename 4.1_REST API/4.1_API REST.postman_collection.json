@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "f04e6fa1-4d38-4cdf-b7ec-74783422b7b0",
+		"name": "4.1_API REST",
+		"description": "Mediante una petición GET se comprueba que el puerto del servidor local creado funciona correctamente.\n\nAñadiendo la url el sistema debe devolver el nombre, la edad y la url en formato JSON como se pide en el ejercicio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23301130"
+	},
+	"item": [
+		{
+			"name": "1.1-Servidor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": "Utilizando una petición POST y después de haber creado la ruta /upload con la ayuda de las dependencias de la librería '_multer_' como señala el ejercicio se hace la comprobación de que el _localhost_ sube la imagen seleccionada de acuerdo a los formatos aceptados —jpg, jpeg, png y gif— y/o devuelve _'Error 415 invalid extension_' en caso de añadir cualquier otro formato."
+			},
+			"response": []
+		},
+		{
+			"name": "1.2-/upload_jpg, png, gif",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/Users/Jess/Documents/VSP.png"
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/Users/Jess/Documents/VSP2.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1-/time_cache",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "54321",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				},
+				"description": "Utilizando una petición POST se comprueba que después de haber creado el endpoint '/time' el servidor local devuelve un objeto JSON con la fecha y la hora.\n\nPara testar correctamente en Postman la ruta '/time' deben elegirse los siguiente parámetros:\n\nAuthorization > Type > Basic Auth"
+			},
+			"response": []
+		},
+		{
+			"name": "2.2-/time_401",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "54320",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				},
+				"description": "Usando una petición POST se comprueba que si xl usuarix no introduce el nombre y el password correctos en el Login, el servidor le devuelve un error 401 indicándole que hay un error de autenticación."
+			},
+			"response": []
+		},
+		{
+			"name": "3.1-pokeApi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/pokemon/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokemon",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Mediante una petición GET se comprueba que el servidor local devuelve siguiendo el _endpoint_ _/pokemon/:id_ los datos _name_, _height_ y _weight_ en formato JSON del Pokemon elegido por su id."
+			},
+			"response": []
+		}
+	]
+}
