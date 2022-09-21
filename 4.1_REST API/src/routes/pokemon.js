@@ -1,13 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 
-router.get('/pokemon',(req, res) =>{
-    res.send(
-        PokeNom,
-        altura,
-        peso
-    );
-});
+const pokeApi = require('../controllers/pokemon');
 
-module.exports=router;
+router.get('/pokemon/:id',pokeApi);
+
+module.exports = router;
