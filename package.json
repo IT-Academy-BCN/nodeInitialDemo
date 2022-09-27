@@ -11,10 +11,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^9.0.2"
+    "dotenv": "^9.0.2",
+    "inquirer": "^8.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.7"
+  },
+  "nodemonConfig": {
+    "exec": "npm start",
+    "watch": [
+      "src"
+    ],
+    "ext": ".json,.ts,.env",
+    "stdin": false
   }
 }
