@@ -26,6 +26,7 @@ const controlLocal = {
 
   async borrarFitxer(objecteBusca) {
     try {
+
       let cargarFitxer = await fs.readFile("./app/models/todo.json", {
         encoding: "utf8",
       }); //cargar fitxer
@@ -37,6 +38,7 @@ const controlLocal = {
       llistatTodo.splice(todoTrobat, 1); //Eliminar el primer objecte de l'array
       await fs.writeFile("../models/todo.json", JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
       return console.log("L'objecte ha sigut el.liminat de l'array");
+
     } catch (err) {
       console.error(err);
     }
@@ -45,21 +47,20 @@ const controlLocal = {
 
   async actualitzarFitxer(objecteBusca, nouValor) {
     try {
-      let cargarFitxer = await fs.readFile("./app/models/todo.json", {
-        encoding: "utf8",
-      }); //cargar fitxer
-      let llistatTodo = JSON.parse(cargarFitxer); //converteix en objecte
-      let propietat = Object.keys(objecteBusca); //Identificar propietat de busca
-      let todoTrobat = llistatTodo.findIndex(
-        (todo) => todo[propietat[0]] == objecteBusca[propietat[0]]
-      ); //Buscar el PRIMER objecte amb la propietat buscada
-      llistatTodo[todoTrobat][propietat] = nouValor;
-      await fs.writeFile("../models/todo.json", JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
-      return console.log("L'objecte ha sigut actualitzat de l'array");
+
+        let cargarFitxer = await fs.readFile('../models/todo.json', { encoding: 'utf8' }); //cargar fitxer
+        let llistatTodo = JSON.parse(cargarFitxer); //converteix en objecte        
+        let propietat = Object.keys(objecteBusca); //Identificar propietat de busca 
+        let todoTrobat = llistatTodo.findIndex(todo => todo[propietat[0]] == objecteBusca[propietat[0]]); //Buscar el PRIMER objecte amb la propietat buscada
+        llistatTodo[todoTrobat][propietat] = nouValor;
+        await fs.writeFile('../models/todo.json',JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
+        return console.log("L'objecte ha sigut actualitzat de l'array");
     } catch (err) {
       console.log(err);
     }
+
   },
+
 
   //actualitzarFitxer({ "usuari": "Francesc" },"Joan");
 
@@ -84,7 +85,9 @@ const controlLocal = {
     }
   },
 
+
   async llistarPerEstat(estatTasca) {
+
     try {
       let llegirArxiu = await fs.readFile("./app/models/todo.json", {
         encoding: "utf8",
@@ -111,7 +114,9 @@ const controlLocal = {
     } catch (err) {
       console.log(err);
     }
-  },
+
+  }
 };
+
 
 module.exports = controlLocal;
