@@ -6,7 +6,7 @@ function inquirerUser(){
 const questions = [
     {
       type: 'input',
-      name: 'username',
+      name: 'name',
       message: `Welcome to the TO-DO List \nPlease, enter your username`,
     }
 ]
