@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const controlLocal = require("./controller.js");
+const controlLocal = require("../controller.js");
 
 function inquirerCrearTasca(usuari) {
   return inquirer
