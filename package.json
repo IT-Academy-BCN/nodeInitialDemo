@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^9.0.2",
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "mongoose": "^6.6.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.2"
   },
   "devDependencies": {
     "jest": "^28.1.1",

@@ -1,9 +1,12 @@
 const inquirer = require('inquirer');
 const controlLocal = require('./controllers/controller');
 const controllerInquirer = require('./controllers/controllerInquirer');
+require('./config/configMongodb');
+require('./config/configMysql');
 
-/// Variable usuari
+/// Variables programa
 let usuari;
+let database;
 
 /// Sequencia
 console.log('DevTeams Sprint 3.3');
@@ -13,6 +16,9 @@ console.log('DevTeams Sprint 3.3');
 //Menu usuari
 console.log('Menú usuari');
 await preguntaUsuari();
+
+console.log('Menu persistencia');
+await preguntaPersistencia();
 
 ///Menu principal
 console.log('Menú principal');
@@ -40,6 +46,33 @@ function preguntaUsuari() {
      }
    });
 
+}
+
+function preguntaPersistencia(){
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'persistencia',
+      message: 'En quina persistencia vols treballar les tasques?',
+      choices: ['JSON local','Mongo DB','Mysql']
+    }
+  ])
+    .then(async(answers) => {
+      database = answers.persistencia;
+      /// Carrega databases
+      if(database == 'Mongo DB'){
+      const db = require('./config/configMongodb')
+    } else if(database == 'Mysql'){
+      const db = require('./config/configMysql')
+      }
+    })
+    .catch((error) => {
+      if (error.isTtyError) {
+        // Prompt couldn't be rendered in the current environment
+      } else {
+        // Something else went wrong
+      }
+    });
 }
  
 function preguntaMenu(usuari) {
