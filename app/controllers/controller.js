@@ -3,22 +3,28 @@ const path = require("path");
 const Tasca = require("../models/model");
 
 const controlLocal = {
-  async crearTasca(usuari, nomTasca, estat, dataInici, dataFinal) {
+
+  async crearTasca(usuari, nomTasca, estat, dataFinal) {
     try {
+      let cargarFitxer = await fs.readFile( "./app/models/todo.json", {encoding:'utf8'});
+      cargarFitxer = JSON.parse(cargarFitxer);
+      let id = cargarFitxer[cargarFitxer.length - 1]["id"];
+
       let novaTasca = new Tasca(
         usuari,
         nomTasca,
         estat,
-        dataInici,
-        dataFinal
+        dataFinal,
+        id + 1
       ); 
-     
-      let cargarFitxer = await fs.readFile( "./app/models/todo.json", {encoding:'utf8'});
-      cargarFitxer = JSON.parse(cargarFitxer);
       cargarFitxer.push(novaTasca);
+     
       
       await fs.writeFile("./app/models/todo.json", JSON.stringify(cargarFitxer), {encoding:'utf8'});
       console.log('Nova tasca gravada');
+      setTimeout(() => {
+        
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
