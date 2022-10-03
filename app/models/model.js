@@ -1,5 +1,6 @@
 class Tasca {
 
+
   constructor(usuari, nomTasca, estat, dataFinal, id) {
           this.name = usuari,
           this.nomTasca = nomTasca,
