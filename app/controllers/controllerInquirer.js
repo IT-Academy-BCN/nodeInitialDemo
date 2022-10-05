@@ -25,14 +25,16 @@ function inquirerCrearTasca(usuari) {
         message: "Quan acabarà la nova tasca?",
       },
     ])
-    .then((answers) => {
+    .then(async (answers) => {
+      let id = await controlLocal.buscarUltimId() + 1;
         //Local
         controlLocal.crearTasca(
             usuari,
             answers.nomTasca,
             answers.estat,
             answers.dataInici,
-            answers.dataFinal
+            answers.dataFinal,
+            id
             );
             
             //MongoDB
