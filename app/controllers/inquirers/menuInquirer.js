@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const controlLocal = require('../controller');
-const crearTascaInquirer = require('./controllerInquirer');
+const controllerInquirer = require('./controllerInquirer');
 
 function preguntaMenu(usuari,database) {
     return inquirer.prompt([
@@ -8,7 +8,7 @@ function preguntaMenu(usuari,database) {
        type: 'list',
        name: 'funcio',
        message: 'Quina funció vols realitzar?',
-       choices: ['Llistar tasques', 'Llistar una tasca', 'Crear una tasca', 'Actualitzar una tasca', 'Borrar una tasca',new inquirer.Separator(),'Sortir programa'],
+       choices: ['Llistar tasques', 'Crear una tasca', 'Actualitzar una tasca', 'Borrar una tasca',new inquirer.Separator(),'Sortir programa'],
      }
    ])
      .then((answers) => {
@@ -28,32 +28,29 @@ function preguntaMenu(usuari,database) {
 
     switch (resposta.funcio) {
       case 'Crear una tasca':
-        await crearTascaInquirer.inquirerCrearTasca(usuari,database);
+        await controllerInquirer.inquirerCrearTasca(usuari,database);
         break;
       case 'Actualitzar una tasca':
-        await actualitzarTascaInquirer.inquirerActualitzarTasca(usuari,database);
+        await controllerInquirer.inquirerActualitzarTasca(usuari,database);
         // controlLocal.actualitzarFitxer(1, 1);
         break;
       case 'Borrar una tasca':
-        await borrarTascaInquirer.inquirerBorrarTasca(usuari,database);
+        await controllerInquirer.inquirerBorrarTasca(usuari,database);
         //controlLocal.borrarFitxer(1);
-        break;
-        case 'Llistar una tasca':
-        await llistarTascaInquirer.inquirerLlistarTasca(usuari,database);
-        //controlLocal.llistarPerEstat(1);
         break;
       case 'Llistar tasques':
         switch (database){
             case 'JSON local':
-                controlLocal.llistarTotesLesTasques();
+                await controlLocal.llistarTotesLesTasques();
                 break;
             case 'Mongo DB':
-                controlMongo.llistarTotesLesTasques();
+              await controlMongo.llistarTotesLesTasques();
                 break;
             case 'Mysql':
-                controlMysql.llistarTotesLesTasques();
+              await controlMysql.llistarTotesLesTasques();
                 break;
         }
+        await controllerInquirer.inquirerVeureTasca(database);
         break;
       case 'Sortir programa':
         console.log('Has sortit del programa');
@@ -61,8 +58,10 @@ function preguntaMenu(usuari,database) {
         break;
     } 
     
-    console.log('Menú principal')
-    preguntaMenu(usuari);
+     console.log(' /////////////////// Menú principal ///////////////////');
+     setTimeout(() => {
+       preguntaMenu(usuari,database);
+     }, 1000);
   }
 
  module.exports = preguntaMenu;

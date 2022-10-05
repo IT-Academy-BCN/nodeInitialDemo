@@ -10,7 +10,7 @@ async function preguntaUsuari() {
        message: 'Nom del usuari?',
      }
    ])
-     .then((answers) => {
+     .then((answers) => { 
        usuari = answers.usuari;
        console.log(`T'has registrat com ${usuari}`);
      })
