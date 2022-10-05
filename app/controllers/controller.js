@@ -3,28 +3,31 @@ const path = require("path");
 const Tasca = require("../models/model");
 
 const controlLocal = {
-
   async crearTasca(usuari, nomTasca, estat, dataFinal) {
     try {
-      let cargarFitxer = await fs.readFile( "./app/models/todo.json", {encoding:'utf8'});
+      let id;
+      let cargarFitxer = await fs.readFile( "./app/database/todo.json", {encoding:'utf8'});
       cargarFitxer = JSON.parse(cargarFitxer);
-      let id = cargarFitxer[cargarFitxer.length - 1]["id"];
+      console.log(cargarFitxer.length);
+      if(cargarFitxer.length==0){
+        id = 0;
+      }else{
+        id = cargarFitxer[cargarFitxer.length - 1]["id"] + 1;
+      }
 
       let novaTasca = new Tasca(
         usuari,
         nomTasca,
         estat,
         dataFinal,
-        id + 1
+        id
       ); 
       cargarFitxer.push(novaTasca);
-     
-      
-      await fs.writeFile("./app/models/todo.json", JSON.stringify(cargarFitxer), {encoding:'utf8'});
+    
+      await fs.writeFile("./app/database/todo.json", JSON.stringify(cargarFitxer), {encoding:'utf8'});
       console.log('Nova tasca gravada');
       setTimeout(() => {
-        
-      }, 3000);
+      }, 1500);
     } catch (error) {
       console.log(error);
     }
@@ -33,33 +36,35 @@ const controlLocal = {
   async borrarFitxer(objecteBusca) {
     try {
 
-      let cargarFitxer = await fs.readFile("./app/models/todo.json", {
+      let cargarFitxer = await fs.readFile("./app/database/todo.json", {
         encoding: "utf8",
       }); //cargar fitxer
       let llistatTodo = JSON.parse(cargarFitxer); //converteix en objecte
-      let propietat = Object.keys(objecteBusca); //Identificar propietat de busca
       let todoTrobat = llistatTodo.findIndex(
-        (todo) => todo[propietat[0]] == objecteBusca[propietat[0]]
-      ); //Buscar el PRIMER objecte amb la propietat buscada
-      llistatTodo.splice(todoTrobat, 1); //Eliminar el primer objecte de l'array
-      await fs.writeFile("../models/todo.json", JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
-      return console.log("L'objecte ha sigut el.liminat de l'array");
+        (element) => element['id'] == objecteBusca
+      ); //Buscar el PRIMER objecte amb la propietat buscad
+      console.log(todoTrobat)
+      if(!todoTrobat){
+        return "L'objecte no ha sigut trobat a l'array";
+      }
+  
+        llistatTodo.splice(todoTrobat, 1); //Eliminar el primer objecte de l'array
+        await fs.writeFile("./app/database/todo.json", JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
+        return console.log("L'objecte ha sigut el.liminat de l'array");
 
     } catch (err) {
       console.error(err);
     }
   },
-  //borrarFitxer({ "usuari": "Francesc" });
 
-  async actualitzarFitxer(objecteBusca, nouValor) {
+  async actualitzarFitxer(id, propietat, nouValor) {
     try {
-
-        let cargarFitxer = await fs.readFile('../models/todo.json', { encoding: 'utf8' }); //cargar fitxer
+        let cargarFitxer = await fs.readFile('./app/database/todo.json', { encoding: 'utf8' }); //cargar fitxer
         let llistatTodo = JSON.parse(cargarFitxer); //converteix en objecte        
-        let propietat = Object.keys(objecteBusca); //Identificar propietat de busca 
-        let todoTrobat = llistatTodo.findIndex(todo => todo[propietat[0]] == objecteBusca[propietat[0]]); //Buscar el PRIMER objecte amb la propietat buscada
-        llistatTodo[todoTrobat][propietat] = nouValor;
-        await fs.writeFile('../models/todo.json',JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
+        //let propietat = Object.keys(objecteBusca); //Identificar propietat de busca 
+        //let todoTrobat = llistatTodo.findIndex(todo => todo[propietat[0]] == objecteBusca[propietat[0]]); //Buscar el PRIMER objecte amb la propietat buscada
+        llistatTodo[id][propietat] = nouValor;
+        await fs.writeFile('./app/database/todo.json',JSON.stringify(llistatTodo)); //Sobreescriu tot el fitxer amb el nou array
         return console.log("L'objecte ha sigut actualitzat de l'array");
     } catch (err) {
       console.log(err);
@@ -67,25 +72,19 @@ const controlLocal = {
 
   },
 
-
-  //actualitzarFitxer({ "usuari": "Francesc" },"Joan");
-
   async llistarTotesLesTasques() {
     try {
-      let llegirArxiu = await fs.readFile("./app/models/todo.json", {
+      let llegirArxiu = await fs.readFile("./app/database/todo.json", {
         encoding: "utf8",
       }); //cargar fitxer
       let tasques = JSON.parse(llegirArxiu); //converteix en objecte
-      console.log("llistat", tasques);
-      let count = tasques.length;
-      for (let i = 0; i < count; i++) {
-        console.log(`Usuari: ${tasques[i].usuari}`);
-        console.log(`Tasca: ${tasques[i].nomTasca}`);
-        console.log(`Estat Tasca: ${tasques[i].estat}`);
-        console.log(`Data Inicial: ${tasques[i].dataInici}`);
-        console.log(`Data final: ${tasques[i].dataFinal}`);
-        console.log(`\n`);
-      }
+      console.log('Totes les tasques');
+      console.table(tasques);
+      return tasques;
+      setTimeout(() => {
+        
+      }, 500);
+
     } catch (err) {
       console.log(err);
     }
@@ -95,7 +94,7 @@ const controlLocal = {
   async llistarPerEstat(estatTasca) {
 
     try {
-      let llegirArxiu = await fs.readFile("./app/models/todo.json", {
+      let llegirArxiu = await fs.readFile("./app/database/todo.json", {
         encoding: "utf8",
       }); //cargar fitxer
 
@@ -104,17 +103,20 @@ const controlLocal = {
 
       let estat = estatTasca;
       let count = tasques.length;
-      console.log(`TASQUES AMB ESTAT: ${estat}`);
-
+      console.log(`//////////// Tasques amb estat : ${estat}`);
+      if(count==0){
+        console.log('No hi ha tasques amb aquest estat');
+      }
       for (let i = 0; i < count; i++) {
         let estatTascaActual = tasques[i].estat;
         if (estatTascaActual === estat) {
-          console.log(`Usuari: ${tasques[i].usuari}`);
-          console.log(`Tasca: ${tasques[i].nomTasca}`);
-          console.log(`Estat Tasca: ${tasques[i].estat}`);
-          console.log(`Data Inicial: ${tasques[i].dataInici}`);
-          console.log(`Data final: ${tasques[i].dataFinal}`);
-          console.log(`\n`);
+          console.table(tasques[i]);
+          // console.log(`Usuari: ${tasques[i].usuari}`);
+          // console.log(`Tasca: ${tasques[i].nomTasca}`);
+          // console.log(`Estat Tasca: ${tasques[i].estat}`);
+          // console.log(`Data Inicial: ${tasques[i].dataInici}`);
+          // console.log(`Data final: ${tasques[i].dataFinal}`);
+          // console.log(`\n`);
         }
       }
     } catch (err) {

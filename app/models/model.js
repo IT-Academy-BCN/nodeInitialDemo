@@ -2,12 +2,12 @@ class Tasca {
 
 
   constructor(usuari, nomTasca, estat, dataFinal, id) {
-          this.name = usuari,
+          this.id = id,
+          this.usuari = usuari,
           this.nomTasca = nomTasca,
           this.estat = estat,
           this.dataInici = new Date().toISOString(),
-          this.dataFinal = dataFinal, 
-          this.id = id
+          this.dataFinal = dataFinal
   }
 }
  
