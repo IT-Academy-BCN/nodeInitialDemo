@@ -2,16 +2,29 @@
 
 :root {
 	--dark-color-a: 
-	#1A1A6E;
+	black;
 
 	--lightest-color: whitesmoke;
 	--light--color:whitesmoke;
-	--link-color:#0E0ED6;
+	--link-color:MediumAquamarine;
 	--button-color:#95d2df;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
 
+.uti-logo {
+	height:6.5em;
+	margin-top:1.5em;
+	margin-left:2.5em;
+	
+}
+
+.submit-btn {
+	background-color:seagreen;
+	color:whitesmoke;
+	margin:auto;
+	
+}
 
 
 body {
@@ -19,7 +32,7 @@ body {
     height: 100vh;
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 16px;
-	background-color: var(--light--color);
+	background-color: var(--dark-color-a);
 	margin: auto;
 	align-items: center;
 }
@@ -36,18 +49,20 @@ h4{
 /* LOGIN AND REGISTER */
 
 .entry-container {
+	display:flex;
+	flex-direction:column;
 	width: 40vw;
 	max-width: 370px;
 	min-width: 250px;
 	background-color:var(--dark-color-a);
-	margin:3em auto;
+	margin:4em auto;
 	border-radius:1em;
 	
 	
 	
 }
 
-.entry-container h1{
+.entry-container h2{
 	margin:auto;
 	text-align:center;
 	padding-top:1.5em;
@@ -80,6 +95,7 @@ h4{
 .entry-info{
 	text-align:center;
 	margin:-2em;
+	color:whitesmoke;
 }
 
 .entry-info a{
