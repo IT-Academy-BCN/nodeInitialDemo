@@ -1,67 +1,51 @@
 const {Rooms} = require('../models/models.js');
 
-// retrieve messages from Room
+//retrieve messages from current room
 const getMessages = async(room) => {
 
-let result;
+    let result;
 
     try {
-        let roomData = '';
+
+        let roomInfo = '';
         let messages = '';
 
         if (room.roomId) {
-            roomData = await Rooms.findOne({_id: room.roomId});
+            roomInfo = await Rooms.findOne({_id: room.roomId});
         } else if (room.roomName) {
-            roomData = await Rooms.findOne({roomName: room.roomName});
+            roomInfo = await Rooms.findOne({roomName: room.roomName});
         } else {
-            throw new Error('roomId and roomName missing');
+            throw new Error('roomId nor roomName provided');
         }
-        
-        //iterate through messages if any
-        if (roomData.messages !== null) {
+        if (roomInfo.messages !== null) {
             messages = roomInfo.messages.map(({ user, room, text}) => ({ user, room, text }));
         }
-
         result = {status: 'success', messages};
 
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
-
-    return result;
+      return result;
 }
 
-
-//add new message
-const addMessage = async(message) => {
+//push message to current room in db
+const newMessage = async(message) => {
 
     let result;
 
     try {
-            result = await Rooms.updateOne(
+        // message is pushed to the room
+        result = await Rooms.updateOne(
             { _id: message.room.roomId }, 
             { $push: { messages: message }}
         );
 
         result = {status: 'success', message};
-
         return result;
-
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
-
     return result;
 }
 
-module.exports = {getMessages, addMessage}
-
-
-
-
-
-
-
-
-    
-
+module.exports = {getMessages, newMessage}
