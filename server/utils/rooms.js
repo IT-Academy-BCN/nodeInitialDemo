@@ -1,56 +1,50 @@
 const {Rooms} = require('../models/models.js');
 
+//initiate hall - room 0
+const initHall = async () => {
+    const roomExist = await Rooms.findOne({ roomName:'Hall' });
+    
+    if(!roomExist) {
+        room = await Rooms.create({ roomName:'Hall' });
+    }
+}    
 
-const addRoom = async(roomName) => {
+//create room 
+const createRoom = async(roomName) => {
 
     let result;
-    
     try {
-        // Check if room exists
-        const roomExist = await Rooms.findOne({roomName});
+        // checks if room exists
+        const roomExist = await Rooms.findOne({ roomName });
 
         if(roomExist) {
-            result =  {status:'fail', message:'Chat room already exists.'};
-        
+            result =  {status:'fail', message:'room already created'};
         } else {
-            const room = await Rooms.create({roomName})
+            const room = await Rooms.create({ roomName })
             result = {status: 'success', room: {roomId: room._id, roomName: room.roomName}}
         }
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
-
     return result;
 }
 
+//retrieve all rooms
 const getRooms = async() => {
 
     let result;
-
     try {
         let rooms = await Rooms.find({});
-         rooms = rooms.map(({_id, roomName}) => { 
+        rooms = rooms.map(({_id, roomName}) => { 
             return {roomId:_id, roomName};
           });
 
         result = {status: 'success', rooms};
 
     } catch (err) {
-        
-        result = {status:'error', message: err.message};
+        result =  {status:'error', message: err.message};
     }
 
     return result;
 }
-
-
-const initHall = async() => {
-    
-    const roomExist = await Rooms.findOne({roomName:'Hall' });
-  if(!roomExist) {
-    const room = await Rooms.create({roomName:'Hall' })
-    return room;
- }
-}
-
-module.exports = {addRoom, getRooms, initHall};
+module.exports = {initHall, createRoom, getRooms}
