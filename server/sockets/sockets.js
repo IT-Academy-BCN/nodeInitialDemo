@@ -27,6 +27,7 @@ module.exports = async (io) => {
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         let room = initHall();
+        joinRoom(user, room);
 
         //add new message to room
         socket.on('new-message', async (message) => {
@@ -138,10 +139,8 @@ module.exports = async (io) => {
 
                 // inform old room we left
                 socket.broadcast.to(userDisconnected.room.roomId).emit('joined-message', `${userDisconnected.user.userName} left the room`);
-
                 // get the new room #users
                 let currentUsers = await getUsers(userDisconnected.room);
-
                 // inform everyone about the new room #users
                 io.emit('users-update', userDisconnected.room, currentUsers.users);
             } else {

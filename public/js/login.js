@@ -1,6 +1,6 @@
-   const login = document.querySelector(".login-form");
+ 
 
-   login.addEventListener("submit", e => {
+  document.querySelector(".login-form").addEventListener("submit", e => {
         e.preventDefault();
     
         sessionStorage.clear();

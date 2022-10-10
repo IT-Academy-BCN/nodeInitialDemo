@@ -4,8 +4,7 @@ const {Rooms} = require('../models/models.js');
 const addRoom = async(roomName) => {
 
     let result;
-    //console.log(roomName);
-
+    
     try {
         // Check if room exists
         const roomExist = await Rooms.findOne({roomName});
@@ -50,6 +49,7 @@ const initHall = async() => {
     const roomExist = await Rooms.findOne({roomName:'Hall' });
   if(!roomExist) {
     const room = await Rooms.create({roomName:'Hall' })
+    return room;
  }
 }
 

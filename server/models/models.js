@@ -13,6 +13,7 @@ const roomsSchema = new mongoose.Schema({
 
 const Users = mongoose.model('Users', usersSchema);
 const Rooms = mongoose.model('Rooms', roomsSchema);
+
 module.exports = {Users, Rooms};
 
 
@@ -38,11 +39,6 @@ module.exports = async () => {
     mongoose.model('Rooms', roomsSchema);
     
     //entry point
-    const Rooms = require('mongoose').model("Rooms");
-    
-    const duplicateRoom = await Rooms.findOne({ roomName:'FOYER' });
-    if(!duplicateRoom) {
-        const room = await Rooms.create({ roomName:'FOYER' })
-    }
+   
 }
 */

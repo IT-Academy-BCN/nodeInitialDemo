@@ -1,17 +1,11 @@
-
-registerForm.addEventListener("submit", e => {
+    document.querySelector('.register-form').addEventListener("submit", e => {
     e.preventDefault();
 
     sessionStorage.clear();
 
-    const userName = registerForm.userName.value;
-    const password = registerForm.password.value;
-    const repassword = registerForm.repassword.value;
-
-    if (/\s/.test(userName)) {
-        document.getElementById("register_error").innerHTML = 'User name cannot contain spaces';
-        return;
-    }
+    const userName = document.querySelector('.register-form [name="register-username"]').value;
+    const password = document.querySelector('.register-form [name="password"]').value;
+    const repassword = document.querySelector('.register-form [name="repeat-password"]').value;
 
     if (password !== repassword) {
         document.getElementById("register_error").innerHTML = 'Your passwords do not match';

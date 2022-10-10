@@ -19,10 +19,11 @@ const register = require('./routes/register.js');
 const login = require('./routes/login.js');
 const auth = require('./routes/auth.js');
 
+
 //middleware
 app.use(express.json());
 
-// Set static folder for frontend
+//express static middleware serving the whole front
 app.use(express.static("../public/"));
 
 app.use(register);
@@ -30,10 +31,11 @@ app.use(login);
 app.use(auth);
 
 //invalid route handling
+/*
 app.use((req, res, next)=>{
     res.status(404).send({message:"Bad request: Route Not Found"});
   });
-
+*/
 //requiering and executing sockets
 require('./sockets/sockets')(io);
 
