@@ -4,7 +4,7 @@ const api = express.Router();
 //middleware
 const verifyJWT = require('../middleware/verifyJWT.js');
 
-api.post('/auth',
+api.post('/',
              verifyJWT, (req, res) => {
 
                 try {
