@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken');
 
-const {getMessages, addMessage} = require('../controllers/messages.js');
-const {getUsers, joinRoom, disconnectUser} = require('../controllers/users.js');
-const {getRooms, addRoom, initHall} = require('../controllers/rooms.js');
+const {initHall, getRooms, createRoom} = require('../utils/rooms.js');
+const {getUsers, disconnectUser, joinRoom} = require('../utils/users');
+const {getMessages, newMessage} = require('../utils/messages.js');
+
 
 module.exports = async (io) => {
-  
+
     io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
-            jwt.verify(socket.handshake.query.token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
+            jwt.verify(socket.handshake.query.token, process.env.ACCESS_TOKEN_SECRET, function(err, decoded) {
             if (err) return next(new Error('Authentication error'));
             socket.decoded = decoded;
             next();
@@ -19,53 +20,50 @@ module.exports = async (io) => {
         }
     })
 
-
     io.on('connection', socket => {
+
         
-            //console.log('a user connected');
-         
-
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
-        let room = initHall();
-        joinRoom(user, room);
+        initHall();
 
-        //add new message to room
+        // console.log(`user ${user.userName} connected`);
+        
+        //saving message to db before emitting back to front
         socket.on('new-message', async (message) => {
-            console.log("new-message")
-            let newMessage = await addMessage(message);
-            // console.log('new-message', newMessageRes);
-            if (newMessage.status === 'success') {
-                socket.broadcast.to(message.room.roomId).emit('new-message', newMessage.message);
+            // console.log("new-message")
+            let newMsg = await newMessage(message);
+            // console.log('new-message', newMsg);
+            if (newMsg.status === 'success') {
+                socket.broadcast.to(message.room.roomId).emit('new-message', newMsg.message);
             } else {
-                io.to(socket.id).emit('error', newMessage.message);
+                io.to(socket.id).emit('error', newMsg.message);
             }
         })
 
-        //create new room
-        socket.on('new-room', async(roomName) => {
-            
-            let newRoom = await addRoom(roomName);
-            
-            if (newRoom.status === 'success') {
+         //create room and inform users of creation
+        socket.on('new-room', async (roomName) => {
 
-                //inform about the new room
-                let currentUsers = await getUsers(newRoom.room);
-                
-                io.emit('add-room', newRoom.room, currentUsers.users);
+            let createdRoom = await createRoom(roomName);
+            // console.log(`new-room`, createdRoom)
+            if (createdRoom.status === 'success') {
+                // get currebt #users
+                let currentUsers = await getUsers(createdRoom.room);
+                // inform about new room #users
+                io.emit('new-room', createdRoom.room, currentUsers.users);
                 io.to(socket.id).emit('success', `${roomName} created`);
             } else {
-                io.to(socket.id).emit('error', newRoom.message);
+                io.to(socket.id).emit('error', createdRoom.message);
             }
         })
 
-
+        //retrieve all rooms
         socket.on('get-rooms', async () => {
 
             let currentRooms = await getRooms();
             // console.log(`get-rooms`, currentRooms)
 
             if (currentRooms.status === 'success') {
-                currentRooms.rooms.forEach ( async(room) => {
+                currentRooms.rooms.forEach (async (room) => {
                     let currentUsers = await getUsers(room);
                     io.to(socket.id).emit('new-room', room, currentUsers.users)
                 });
@@ -73,89 +71,80 @@ module.exports = async (io) => {
                 io.to(socket.id).emit('error', currentRooms.message);
             }
         })
-
-       //join room
+        
+        //join room, leave old and inform about change
         socket.on('join-room', async (room) => {
 
-            let currentRoom = await joinRoom(user, room);
-            // console.log('join-room', currentRoom);
+            let joinedRoom = await joinRoom(user, room);
+            // console.log('join-room', joinedRoom);
 
-            if (currentRoom.status === 'success') {
+            if (joinedRoom.status === 'success') {
 
-                if (currentRoom.oldRoom.roomId) {
+                if (joinedRoom.oldRoom.roomId) {
+                    // leave room (to join new)
+                    socket.leave(joinedRoom.oldRoom.roomId);
+                    // console.log(`user ${user.userName} left room ${joinedRoom.oldRoom.roomName}`);
 
-                    // leave the old room
-                    socket.leave(currentRoom.oldRoom.roomId);
-                    // console.log(`user ${user.userName} left room ${currentRoom.oldRoom.roomName}`);
+                    // inform room that user left
+                    socket.broadcast.to(joinedRoom.oldRoom.roomId).emit('new-join-message', `${joinedRoom.user.userName} left the room`);
 
-                    // inform old room we left
-                    socket.broadcast.to(currentRoom.oldRoom.roomId).emit('new-join-message', `${currentRoom.user.userName} left the room`);
+                    // get the room's #users
+                    let formerUsers = await getUsers(joinedRoom.oldRoom);
 
-                    // get the old room #users
-                    letcurrentUsers = await getUsers(currentRoom.oldRoom);
-
-                    // inform everyone about the old room #users
-                    io.emit('update-room-users', currentRoom.oldRoom, currentUsers.users);
+                    // inform #users from former room
+                    io.emit('update-room-users', joinedRoom.oldRoom, formerUsers.users);
                 }
 
-                // join the new room
+                // join new room
                 socket.join(room.roomId);
                 // console.log(`user ${user.userName} joined room ${room.roomName}`);
+               // inform new room of joined user
+                socket.broadcast.to(room.roomId).emit('new-join-message', `${joinedRoom.user.userName} joined the room`);
 
-                // inform new room we came
-                socket.broadcast.to(room.roomId).emit('new-join-message', `${currentRoom.user.userName} joined the room`);
-
-                // get the new room #users
+                // get the current #users
                 let currentUsers = await getUsers(room);
 
-                // inform everyone about the new room #users
-                io.emit('update-room-users', room,currentUsers.users);
+                // update current room's #users
+                io.emit('update-room-users', room, currentUsers.users);
 
-                // Get the messages of the new room
+                // retrieve messages of the new room
                 let currentMessages = await getMessages(room);
                 // console.log('get-messages', currentMessages)
-
+                
+                //iterate through current room's messages if any
                 if ((currentMessages.status === 'success') && (currentMessages.messages !== null)) {
                     currentMessages.messages.forEach (message => io.to(socket.id).emit('new-message', message))
                 } else {
                     io.to(socket.id).emit('error', currentMessages.message)
                 }
             } else {
-                io.to(socket.id).emit('error', currentRoom.message);
+                io.to(socket.id).emit('error', joinedRoom.message);
             }
         })
-
+        
         socket.on('disconnect', async () => {
             // console.log(`user ${user.userName} disconnected`);
 
-            let userDisconnected = await disconnectUser(user);
-            // console.log('userDisconnected', userDisconnected)
+            let disconnectedUser = await disconnectUser(user);
+            // console.log('disconnectedUser', disconnectedUser)
 
-            if (userDisconnected.status === 'success') {
+            if (disconnectedUser.status === 'success') {
                 
-                // leave the old room
-                socket.leave(userDisconnected.room.roomId);
-                // console.log(`user ${userDisconnected.user.userName} left room ${userDisconnected.room.roomName}`);
+                // users leaves former room
+                socket.leave(disconnectedUser.room.roomId);
+                // console.log(`user ${disconnectedUser.user.userName} left room ${disconnectedUser.room.roomName}`);
 
-                // inform old room we left
-                socket.broadcast.to(userDisconnected.room.roomId).emit('joined-message', `${userDisconnected.user.userName} left the room`);
-                // get the new room #users
-                let currentUsers = await getUsers(userDisconnected.room);
-                // inform everyone about the new room #users
-                io.emit('users-update', userDisconnected.room, currentUsers.users);
+                // inform that user has left the room
+                socket.broadcast.to(disconnectedUser.room.roomId).emit('new-join-message', `${disconnectedUser.user.userName} left the room`);
+
+                // get the current #users of the room
+                let currentUsers = await getUsers(disconnectedUser.room);
+
+                // update room's current #users
+                io.emit('update-room-users', disconnectedUser.room, currentUsers.users);
             } else {
-                io.to(socket.id).emit('error', userDisconnected.message);
+                io.to(socket.id).emit('error', disconnectedUser.message);
             }
-        })
-
+        });
     })
-
-} 
-
-
-
-
-    
-    
-    
-
+}
