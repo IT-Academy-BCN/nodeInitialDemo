@@ -33,7 +33,7 @@ or in developer mode
 npm run dev
 ```
 
-The front end is served by the same port as the back end.
+The client and server are served by same port through express static middleware.
 If .env PORT variable is 3000 go to:
 
 ````
