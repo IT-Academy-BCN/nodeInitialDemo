@@ -17,8 +17,10 @@ Convert .env.example to .env and adapt pertinent variables to current environmen
 Current variables: 
 
 ```
-PORT=3000 
-DB_URL="mongodb://localhost:27017/test"
+PORT=3000
+DB_HOST=local
+DB_PORT=27017
+DB_NAME=chatterbox
 ```
 
 Run server with
@@ -67,9 +69,9 @@ One socket/ user:
 https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-with-node-js-socket-io-and-redis-65f9eb57f66a
 
 
-### MONGO:
+### MONGODB:
 
-connect to mongo (solution to connection issue for mac OS high sierra):
+connect to mongoDB (solution to connection issue for mac OS high sierra):
 
 1. cd to your home directory
 2. cd data
