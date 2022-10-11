@@ -34,7 +34,7 @@ npm run dev
 ```
 
 The client and server are served by same port through express static middleware.
-If .env PORT variable is 3000 go to:
+If process.env.PORT variable is 3000 open browser and go to:
 
 ````
 http://localhost:3000/
