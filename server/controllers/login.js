@@ -1,22 +1,21 @@
 const {Users} = require('../models/models.js');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-//log in
 module.exports = async (req, res) => {
-     
-  try {
-        const userName = req.body.userName;
 
-        const currentUser = await Users.findOne({userName});
+    try {
+        const userName = req.body.userName;
+        const userEntry = await Users.findOne({userName});
 
         const user = {
-            userId: currentUser._id,
-            userName: currentUser.userName
+            userId: userEntry._id,
+            userName: userEntry.userName
         }
 
-        const accessToken = jwt.sign(user, process.env.TOKEN_SECRET_KEY)
-         res.status(201).send({
-            status: 'success', 
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+
+        res.status(201).send({
+            status: "success", 
             user,
             accessToken
         });
@@ -28,5 +27,3 @@ module.exports = async (req, res) => {
         })
     }
 }
-
-

@@ -2,10 +2,10 @@ const express = require('express');
 const api = express.Router();
 
 //middleware
-const verifyJWT = require('../middleware/verifyJWT.js');
+const {authJWT} = require('../middlewares/authentication.js');
 
 api.post('/',
-             verifyJWT, (req, res) => {
+             authJWT, (req, res) => {
 
                 try {
                     res.status(201).send({
@@ -22,3 +22,5 @@ api.post('/',
             );
 
 module.exports = api;
+
+

@@ -1,6 +1,6 @@
 const {Users} = require('../models/models.js');
 
-//get users from current room
+//retrieve users
 const getUsers = async(room) => {
     
     let result;
@@ -9,7 +9,30 @@ const getUsers = async(room) => {
         // console.log('getUsers', users)
         users = users.map(({ _id, userName }) => ({ userId: _id, userName }));
         result = {status: 'success', users};
+    } catch (err) {
+        result =  {status:'error', message: err.message};
+    }
+    return result;
+}
 
+const disconnectUser = async(user) => {
+
+    let result;
+
+    try {
+        // console.log('disconnectUser', user);
+        const userDisconnected = await Users.findOneAndUpdate(
+            { _id: user.userId }, 
+            { 'room.roomId': null, 'room.roomName': null}
+            );
+
+        if (userDisconnected) {
+            result = {status: 'success', 
+                      user,
+                      room: userDisconnected.room}
+        } else {
+            result = {status: 'fail', message: 'User not found'}
+        }
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
@@ -17,15 +40,14 @@ const getUsers = async(room) => {
     return result;
 }
 
-//joinroom
-const joinRoom = async(user, room) =>{
+
+const joinRoom = async(user, room) => {
 
     let result;
-    
     try {
         // console.log('joinRoom', room);
 
-        // Push this user into the current room
+        // Push current user into current room
         const currentUser = await Users.findOneAndUpdate(
             { _id: user.userId }, 
             { 'room.roomId': room.roomId, 'room.roomName': room.roomName }
@@ -36,7 +58,7 @@ const joinRoom = async(user, room) =>{
         if (currentUser) {
             result = {status: 'success',
                       user: { userId: currentUser._id, userName: currentUser.userName },
-                      prevRoom: currentUser.room
+                      oldRoom: currentUser.room
                      };
         } else {
             result = {status: 'fail', message: 'Error joining room'}
@@ -44,33 +66,7 @@ const joinRoom = async(user, room) =>{
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
-
-        return result;
-}
-
-//disconnect user from room
-const  disconnectUser = async(user) => {
-
-    let result;
-
-    try {
-        
-        // console.log('disconnectUser', user);
-
-        const userDisconnect = await Users.findOneAndUpdate(
-            { _id: user.userId }, 
-            { 'room.roomId': null, 'room.roomName': null}
-            );
-
-        if (userDisconnect) {
-            result = {status: 'success', 
-                      user,
-                      room: userDisconnect.room}
-        } 
-    } catch (err) {
-        result =  {status:'error', message: err.message};
-    }
-
     return result;
 }
-module.exports = {getUsers, joinRoom, disconnectUser};
+
+module.exports = {getUsers, disconnectUser, joinRoom}
