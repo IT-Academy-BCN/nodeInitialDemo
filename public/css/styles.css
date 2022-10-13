@@ -1,221 +1,363 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+/* VARIABLES */
 
 :root {
-	--dark-color-a: 
-	black;
-
-	--lightest-color: whitesmoke;
-	--light--color:whitesmoke;
-	--link-color:MediumAquamarine;
-	--button-color:#95d2df;
-	--success-color: #5cb85c;
-	--error-color: #d9534f;
+    --background-color: black;
+    --color: whitesmoke;
+    --green:seagreen;
+    --blue:blue;
+   
 }
 
-.uti-logo {
-	height:6.5em;
-	margin-top:1.5em;
-	margin-left:2.5em;
-	
-}
-
-.submit-btn {
-	background-color:seagreen;
-	color:whitesmoke;
-	margin:auto;
-	
-}
-
-
-body {
-	width: 100%;
-    height: 100vh;
-	font-family: 'Nanum Gothic', sans-serif;
-	font-size: 16px;
-	background-color: var(--dark-color-a);
-	margin: auto;
-	align-items: center;
-}
-
-h4{
-	color:var(--light--color);
-}
-
-.btn:hover{
-	background-color:var(--button-color);
-	border:1px solid var(--button-color);
-}
-
-/* LOGIN AND REGISTER */
-
-.entry-container {
-	display:flex;
-	flex-direction:column;
-	width: 40vw;
-	max-width: 370px;
-	min-width: 250px;
-	background-color:var(--dark-color-a);
-	margin:4em auto;
-	border-radius:1em;
-	
-	
-	
-}
-
-.entry-container h2{
-	margin:auto;
-	text-align:center;
-	padding-top:1.5em;
-	padding-bottom:1em;
-	color:var(--light--color);
-}
-
-.entry-container form{
-	width:90%;
-	margin:auto;
-	padding-bottom:2.5em;
-	
-	
-}
-
-.entry-container fieldset{
-    margin:auto;
-	border:none;
-	text-align:center;
-	
-}
-
-.entry-container label{
-	margin:0;
-	display:block;
-	padding-top:1em;
-	font-size:16px;
-}
-
-.entry-info{
-	text-align:center;
-	margin:-2em;
-	color:whitesmoke;
-}
-
-.entry-info a{
-	
-	text-align: center;
-	color:var(--link-color);
-}
-
-
-  
-  
-
-
-
-
-
-/* CHAT */
-.chat-container{
-	
-	max-width: 700px;
-	min-width: 500px;
-	background-color:var(--dark-color-a);
-	margin:1em auto;
-	border-radius:1em;
-	padding-bottom:8em;
-	
-	
-	
-}
-
-.chat-header h1{
-	color:var(--light--color);
-	text-align:center;
-	padding-bottom:0.4em;
-	
+.img-logo-uti {
+    max-height:3.5em;
+    margin-top:2em;
 }
 
 
 
-button[name="leave-btn"] {
-	margin-top:2em;
-	margin-left:46em;
-	
+/* SCROLL BAR */
+
+* {
+    scrollbar-width: 5px;
+    scrollbar-color:var(--color) var(--background-color);
 }
 
+/* SCROLL BAR WEBKIT */
 
-
-.chat-sidebar{
-	
-	margin-left:2em;
-	display:flex;
-	flex-direction:column;
-	justify-content: space-between;
-	
-	
-	
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
 }
 
-.add-room{
-	
-	display:inline-block;
-	padding-bottom:1em;
+::-webkit-scrollbar-thumb {
+    background-color: var(--color);
+    border-radius: 15px;
 }
 
-
-.chat-form-container{
-	
-	padding-bottom:2em;
-	justify-content: center;
-	
-	
-	
+/* GENERIC TAGS */
+* {
+    font-size: 100%;
+    font-family: 'PT Serif', serif;
 }
 
-.chat-form{
-	
-	
-	display:inline-block;
+a {
+    color: unset;
+}
+
+a:hover {
+    
+    background-color: var(--blue);
     
 }
 
-textarea{
-	width:80%;
-	max-height: 80%;
-	
-	
+body {
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
-.chat-main{
-	display:flex;
-	flex-direction:row;
-	justify-content: space-between;
-	border-bottom: 2px solid var(--link--color);
-	
-	
-	
+h1 {
+    font-size: 2em;
 }
 
-#new-message{
-	width:67%;
+h2 {
+    font-size: 1.5em;
 }
 
-.room-display{
-	color:var(--dark-color-a);
-	font-size:12px;
-	background-color:var(--light--color);
+ul,li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.room-display option{
-	padding-top:0.1em;
-	padding-bottom:0.1em;
-	height:1em;
+/* ERROR */
+
+
+.error, .success {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
 }
 
-.user-display{
-	margin-top:2em;
-	
+.error {
+    color: red;
 }
 
-.user-display p{
-	color:var(--light--color);
-	font-size:12px;
+.success {
+    color: var(--color);
 }
+
+/* CONTAINER */
+
+.container {
+    height: calc(100vh - 10vh - 22px);
+    display:flex;
+    position: relative;
+    border: 2px solid var(--color);
+    border-top: 0;
+}
+
+/* BUTTON */
+
+.button {
+    height: 30px;
+    border: 2px solid var(--color);
+    border-radius: 2rem;
+    color: var(--color);
+    background-color: var(--background-color);
+    padding: 0 1rem;
+    margin: 0;
+    margin-left: 0.75rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0px 0px 20px var(--color);
+    background-color: var(--color);
+    color: var(--background-color);
+}
+
+/* CHAT */
+
+.chat {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    padding: 1rem;
+    border-left: 2px solid var(--color);
+    border-right: 2px solid var(--color);
+}
+
+.chat__ul {
+    overflow: hidden;
+    overflow-y: auto;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 58px;
+    padding: 2rem;
+}
+
+.chat__ul > li {
+    margin-top: 1rem;
+    font-size: 12px;
+}
+
+.chat__li {
+    word-break: break-all;
+}
+
+.chat__li--join {
+    font-style: italic;
+    text-align: center;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.chat__form {
+    display: flex;
+    padding: 0.75rem 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 2px solid  var(--color);
+}
+
+
+/* INPUT */
+
+.input {
+    width: 100%;
+    border:  2px solid var(--color);
+    border-radius: 2rem;
+    padding: 0 1rem;
+    color: var(--color);
+    background-color: var(--background-color);
+}
+
+.input:focus {
+    box-shadow: 0px 0px 20px var(--color);
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--color);
+    opacity: 0.5;
+}
+
+/* LOGIN && REGISTER */
+
+.entry-form {
+    border: solid var(--color);
+    border-radius: 1rem;
+    width: 340px;
+    height: auto;
+    padding: 1.5rem;
+    margin: auto;
+    margin-top: 25vh;
+}
+
+.entry_input {
+    border: solid var(--color);
+    border-radius: 2rem;
+    width: auto;
+    height: auto;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    display:block;
+}
+
+.entry_button {
+    margin-left: 0rem;
+}
+
+/* HEADER  */
+
+.header {
+    height: 15vh;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+/* ROOM */
+
+.room {
+    min-width: 260px;
+    max-width: 260px;
+    position: relative;
+    background-color: var(--background-color);
+}
+
+/* FORM */
+
+.room__form {
+    display: flex;
+    padding: 0.75rem 0.5rem;
+}
+
+.room__header {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 28px;
+    border: 0;
+    border-bottom: 2px solid var(--color);
+    color: var(--color);
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+.room__ul {
+    overflow-y: auto;
+    margin-right: 2px;
+    position: absolute;
+    top: 130px;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+}
+
+.room__btn {
+    border: none;
+    padding: 0.25rem 1rem;
+    display: block;
+    width: calc(100% - 1rem);
+    text-align: left;
+    border-radius: 8px;
+    margin: 0.25rem 0.5rem;
+    word-break: break-all;
+    color: var(--color);
+    background-color: var(--background-color);
+}
+
+.room__btn:hover {
+    box-shadow: 0px 0px 20px var(--color);
+    background-color: var(--color);
+    color: var(--background-color);
+    cursor: pointer;
+}
+
+.room__btn--active {
+    background-color: var(--color);
+    color: var(--background-color);
+}
+
+/* These are the ul inside each message */
+.notMyMessage, .myMessage {
+    width: max-content;
+    max-width: 50%;
+    margin: .25rem auto;
+    padding: .25rem 1rem;
+    border: 1px solid var(--color);
+    border-radius: .5rem;
+}
+
+.notMyMessage {
+    margin-left: 0;
+    text-align: left;
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+.myMessage {
+    margin-right: 0;
+    text-align: right;
+    margin-top: 1rem;
+    background-color: var(--color);
+}
+
+.myMessage li {
+    background-color: var(--color);
+    color: var(--background-color);
+}
+
+/* USERS */
+
+.user {
+    min-width: 260px;
+    max-width: 260px;
+    position: relative;
+    background-color: var(--background-color);
+}
+
+.user__header {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 28px;
+    border: 0;
+    border-bottom: 2px solid var(--color);
+    color: var(--color);
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+.user__ul {
+    overflow-y: auto;
+    padding: 1rem;
+    margin-right: 2px;
+    position: absolute;
+    top: 56px;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+}
+
+.user__li {
+    padding: 0.25rem 1rem;
+    word-break: break-all;
+}
+
+
+/* COLLAPSIBLE */
+
+.collapse {
+    display: none;
+}
+
