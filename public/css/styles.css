@@ -55,6 +55,8 @@ a:hover {
 body {
     color: var(--color);
     background-color: var(--background-color);
+    display:flex;
+    flex-direction:column;
 }
 
 h1 {
@@ -193,7 +195,7 @@ ul,li {
 
 /* LOGIN && REGISTER */
 
-.entry-form {
+.login__form {
     border: solid var(--color);
     border-radius: 1rem;
     width: 340px;
@@ -203,7 +205,7 @@ ul,li {
     margin-top: 25vh;
 }
 
-.entry_input {
+.login__input {
     border: solid var(--color);
     border-radius: 2rem;
     width: auto;
@@ -213,7 +215,7 @@ ul,li {
     display:block;
 }
 
-.entry_button {
+.login__button {
     margin-left: 0rem;
 }
 
