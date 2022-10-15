@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ut et Abuti</title>
+        <title>Uti et Abuti</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="HTML, CSS, JavaScript, Node">
-        <meta name="description" content="A chat of some sorts">
+        <meta name="description" content="Uti et Abuti">
         <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
-        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
+   <header id="logo-header">
+    <a href="./about.html">
+        <img class="img_uti-logo" src="../img/uti_logo.svg" alt="uti logo" >
+       </a> 
+
+   </header>
+   
     <body>
-        <div class="login-container">
-            <a href="./html/about.html">
-            <img class="img_uti-logo" src="../img/uti_logo.svg" alt="uti logo" >
-        </a> 
-            <form class="login-form">
-              
-              <label><input type="text" name="login-username" placeholder="Nombre... " maxlength="16" spellcheck="false" required autofocus></label>
-              <label><input type="password" name="login-password" placeholder="Contraseña... " spellcheck="false" required></label>
-              <label><span id="login-error" class="error"></span></label>
-              <label> <input  class="button" type="submit" value="login"></label>
-                      
-                    </form>
-                    <div class="login-info"><p>Take me to <a href="./html/register.html"> Sign up</a>!</p></div>
-              </div>
-             <script src="./js/login.js">
-          </script>
+        <div class="entry-form">
+            
+            <form class="register-form">
+                <p><input class="input card__input" type="text" name="username" placeholder="Username... " maxlength="16" spellcheck="false" required autofocus></p>
+                <p><input class="input card__input" type="password" name="password" placeholder="Password... " spellcheck="false" required></p>
+                <p><input class="input card__input" type="password" name="repassword" placeholder="Repeat password... " spellcheck="false" required></p>
+                <p><span id="register_error" class="error"></span></p>
+                <input class="button card__button" type="submit" value="Register">
+            </form>
+            <p>Have an account? <a href="../index.html">Login</a></p>
+        </div>
     </body>
 </html>
 
+<script src="../js/register.js"></script>

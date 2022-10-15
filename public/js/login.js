@@ -1,13 +1,13 @@
- 
-
-  document.querySelector(".login-form").addEventListener("submit", e => {
+       document.querySelector(".login-form").addEventListener("submit", e => {
         e.preventDefault();
     
         sessionStorage.clear();
-    
+       //assigning variables from input fields
         const userName = document.querySelector('[name="login-username"]').value;
         const password = document.querySelector('[name="login-password"]').value;
-    
+        console.log(userName + password);
+        
+        //fetch result from authentication
         fetch('http://localhost:3000/login', {
             method: 'post',
             headers: {'Content-Type': 'application/json' },
@@ -17,12 +17,12 @@
         .then(data => {
             if (data.status === "success") {
     
-                //Storing session variables 
+                //storing session variables 
                 sessionStorage.userId = data.user.userId;
                 sessionStorage.userName = data.user.userName;
                 sessionStorage.accessToken = data.accessToken;
     
-                // jump to chat
+                // and jump to chat page
                 window.location.replace('../html/chat.html');
     
             } else {

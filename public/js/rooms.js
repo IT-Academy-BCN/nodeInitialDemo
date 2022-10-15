@@ -3,8 +3,7 @@
 const createRoom = () => {
        
         const roomName = document.querySelector("#new-room").value;
-      
-         if (roomName) {
+        if (roomName) {
             socket.emit('new-room', roomName);
             document.querySelector("#new-room").value ='';
          } else {
@@ -14,18 +13,18 @@ const createRoom = () => {
 
 const joinRoom = (room) => {
 
-  //check that option is other than current
+  //check that option is not current room
   if (sessionStorage.roomId === room.roomId) {
     return;
   }
-  // Emit to server 'join-room' event
+  // emit to server 'join-room' event
   socket.emit('join-room, room');
 
-  //Variable update
+  //update variables
   sessionStorage.roomName = room.roomName;
   sessionStorage.roomId = room.roomId;
 
-  // Clear messages from "old" room
+  // clear messages from former room
   document.querySelector("#message-list").innerHtml = "";
 
 }

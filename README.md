@@ -14,13 +14,15 @@ npm install
 
 ```
 Convert .env.example to .env and adapt pertinent variables to current environment. 
-Current variables: 
+Example of variables: 
 
 ```
 PORT=3000
 DB_HOST=local
 DB_PORT=27017
 DB_NAME=chatterbox
+
+
 ```
 
 Run server with
@@ -35,8 +37,9 @@ or in developer mode
 npm run dev
 ```
 
-The client and server are served by same port through express static middleware.
-If process.env.PORT variable is 3000 open browser and go to:
+The client and server are served by the same port 
+through express static middleware.
+If process.env.PORT variable is 3000, open browser and go to:
 
 ````
 http://localhost:3000/
@@ -72,6 +75,19 @@ https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-
 ### MONGODB:
 
 connect to mongoDB (solution to connection issue for mac OS high sierra):
+https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0-0-1-27017/705/8
+
+1. cd /Users
+2. cd to your home directory
+3. mkdir data
+4. cd data
+5. mkdir db
+6. mongod --dbpath ~/data/db press enter then just keep it running.
+
+---------------------------------------------------------------------------
+Afterwards you can do this after shutdown/ restart till one day it won't work
+and you have to delete the data and db folder and start over. 
+
 
 1. cd to your home directory
 2. cd data
