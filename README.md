@@ -1,5 +1,5 @@
-# CHAT with Socket.io
-
+# CHAT with SOCKET.IO, NODE.js, EXPRESS 
+ 
 Instructions:
 Clone repository.
 
@@ -45,6 +45,7 @@ If process.env.PORT variable is 3000, open browser and go to:
 http://localhost:3000/
 ````
 
+!important. Not apt for less than 1100px...
 
 ### SERVER
 

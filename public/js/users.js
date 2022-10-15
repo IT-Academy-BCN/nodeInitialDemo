@@ -1,7 +1,9 @@
-//creates list
+//creates list of users
 const displayUsers = (users) => {
+    
     const userList = document.getElementById("userList");
     userList.innerHTML = "";
+    
     // iterating the users array
     users.forEach(user => {
         //creating user 'li' element
@@ -10,14 +12,8 @@ const displayUsers = (users) => {
         li.textContent = user.userName;
         li.setAttribute("id", user.userId);
         // append the user to the userList
-        userList.appendChild(li);
+        userList.append(li);
     });
 }
    
-//delete user from list
-const deleteUser = (user) => {
-    let element = document.getElementById(user.userId);
-    if (element) {
-        element.remove();
-    }
-}
+

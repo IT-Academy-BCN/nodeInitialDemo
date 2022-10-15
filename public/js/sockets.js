@@ -10,17 +10,19 @@ let socketConnected = false;
 
 socket.on('connect', () => {
 
-    //avoid connecting multiple times
+  // console.log('Socket connected');
+
+    //TODO prevent multiple sessions
     if (socketConnected) return;
     socketConnected = true;
 
-    
+  
   //displays new message in chat
     socket.on('new-message', message => {
         // console.log("new-message", message);
         displayMessage(message);
     })
-    //emit join message to chat
+    //emits join message to chat
     socket.on('new-join-message', message => {
         // console.log("new-join-message", message);
         displayJoinMessage(message);
@@ -33,8 +35,7 @@ socket.on('connect', () => {
         displayRoom(room);
         displayRoomUsers(room, users);
     })
-    
-    //update list of users 
+
     socket.on('update-room-users', (room, users) => {
         // console.log('update-room-users', room, users);
 
@@ -44,6 +45,7 @@ socket.on('connect', () => {
         }
         displayRoomUsers(room, users);
     })
+   
     
     //disconnect user
     socket.on('disconnect', () => {
