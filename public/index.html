@@ -11,21 +11,24 @@
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
-        <div class="container">
+        <div class="entry-container">
             <a href="./html/about.html">
-            <img class="img_uti-logo" src="./img/uti_logo.svg" alt="uti logo" >
-        </a> 
-            <form class="login-form">
-             
-                <label><input type="text" name="login-username" placeholder="Nombre... " maxlength="16" spellcheck="false" required autofocus></label>
-                          <label><input type="password" name="login-password" placeholder="Contraseña... " spellcheck="false" required></label>
-                          <label><span id="login-error" class="error"></span></label>
-                          <label> <input  class="button" type="submit" value="login"></label>
-                  
+            <img class="img_uti-logo" src="../img/uti_logo.svg" alt="uti logo" >
+          </a> 
+            <form class="entry-form">
+                <p><span id="login_error" class="error"></span></p>
+              <fieldset class="entry-fieldset">
+                    <label><input type="text" name="username" placeholder="Nombre... " maxlength="16" spellcheck="false" required autofocus></label>
+                    <label><input type="password" name="password" placeholder="Contraseña... " spellcheck="false" required></label>
+                      <label> <input id="login-button" class="button" type="submit" value="+"></label>
+                      </fieldset>
                     </form>
-                    <div class="login-info"><p>Take me to <a href="./html/register.html"> Sign up</a>!</p></div>
+
+                    <div class="entry-info"><p>Take me to <a href="./html/register.html"> Sign up</a>!</p></div>
+
               </div>
              <script src="./js/login.js">
           </script>
     </body>
 </html>
+
