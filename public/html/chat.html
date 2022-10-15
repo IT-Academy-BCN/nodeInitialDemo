@@ -5,50 +5,55 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="HTML, CSS, JavaScript, Node">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Node, ">
         <meta name="description" content="A chat of some sorts">
         <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
-        <link rel="stylesheet" href="../css/stylesheet.css">
-    </head>
+        <link rel="stylesheet" href="../css/styles.css">
+        
     
     <body>
         <header class="header">
-            <img class="img_uti-logo" src="../img/uti_logo.svg" alt="uti logo" >
-            <h1 class="header__username" id="userName" ></h1>
-            <h1 class="header__roomname" id="roomName" ></h1>
-            <div class="header__buttons">
-                
-                <button class="button" type="button" onclick="logout()">Logout</button>
-            </div>
+            
+            <h2>Current Room:</h2>
+            <h1 id="roomName" class="header__roomname"></h1>
+            <h1 id="userName" class="header__username"></h1>
+            <div class="add-space"></div>
+             <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>
+       
         </header>
-        
+
         <div class="chat-container">
+            
             <aside id="room" class="room">
-                <button class="room__header" type="button" ><strong>ROOMS</strong></button>
-                <button class="room__header collapse" type="button" onclick="showRooms()"><strong>ROOMS</strong></button>
+                <button class="room__header" type="button">Rooms</button>
+                <button class="room__header collapse" type="button" onclick="showRooms()">Rooms</button>
                 <form id="roomForm" class="room__form" onsubmit="createRoom()">
                     <input class="input" type="text" id="newRoom" name="newRoom" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
-                    <input class="button" type="submit" value="Create">
+                    <input class="button" type="submit" value="+">
                 </form>
-                <div id="roomError" class="error"></div>
-                <div id="roomSuccess" class="success"></div>
-                <ul id="roomList" class="room__ul"></ul>
+               <ul id="roomList" class="room__ul"></ul>
             </aside>
+            
+            
             <main id="chat" class="chat">
                 <ul id="messageList" class="chat__ul"></ul>
                 <form id="messageForm" class="chat__form" onsubmit="return sendMessage(this)">
-                    <input class="input" type="text" id="newMessage" name="newMessage" autocomplete="off" autofocus>
-                    <input class="button" type="submit" value="Send">
+                    <input class="input" type="text" id="newMessage" name="newMessage" placeholder="Type a message..." autocomplete="off" autofocus>
+                    <input class="button" type="submit" value="+">
                 </form>
             </main>
+            
             <aside id="user" class="user">
-                <button class="user__header" type="button"><strong>USERS</strong></button>
+                <button class="user__header" type="button">Users</button>
                 <button class="user__header collapse" type="button" onclick="showUsers()"><strong>USERS</strong></button>
                 <ul id="userList" class="user__ul"></ul>
             </aside>
+              
         </div>
+    </div>
     
-        <!--https://cdnjs.com/libraries/socket.io-->     
+        <!--https://cdnjs.com/libraries/socket.io-->
+        <script src="https://kit.fontawesome.com/d4806b766a.js" crossorigin="anonymous"></script>  
         <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
         <script src="../js/sockets.js"></script>
         <script src="../js/utils.js"></script>
@@ -58,4 +63,5 @@
         <script src="../js/messages.js"></script>
     </body>
 </html>
+
 
