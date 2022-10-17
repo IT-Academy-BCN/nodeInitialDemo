@@ -29,9 +29,9 @@ module.exports = async (io) => {
         
         //saving message to db before emitting back to front
         socket.on('new-message', async (message) => {
-            // console.log("new-message")
+           
             let newMsg = await newMessage(message);
-            // console.log('new-message', newMsg);
+            
             if (newMsg.status === 'success') {
                 socket.broadcast.to(message.room.roomId).emit('new-message', newMsg.message);
             } else {
@@ -43,11 +43,11 @@ module.exports = async (io) => {
         socket.on('new-room', async (roomName) => {
 
             let createdRoom = await createRoom(roomName);
-            // console.log(`new-room`, createdRoom)
+            
             if (createdRoom.status === 'success') {
-                // get currebt #users
+                
                 let currentUsers = await getUsers(createdRoom.room);
-                // inform about new room #users
+           
                 io.emit('new-room', createdRoom.room, currentUsers.users);
                 io.to(socket.id).emit('success', `${roomName} created`);
             } else {
@@ -59,7 +59,7 @@ module.exports = async (io) => {
         socket.on('get-rooms', async () => {
 
             let currentRooms = await getRooms();
-            // console.log(`get-rooms`, currentRooms)
+         
 
             if (currentRooms.status === 'success') {
                 currentRooms.rooms.forEach (async (room) => {
@@ -75,29 +75,29 @@ module.exports = async (io) => {
         socket.on('join-room', async (room) => {
 
             let joinedRoom = await joinRoom(user, room);
-            // console.log('join-room', joinedRoom);
+           
 
             if (joinedRoom.status === 'success') {
 
                 if (joinedRoom.oldRoom.roomId) {
-                    // leave room (to join new)
+                   
+                    //leave room (to join new)
                     socket.leave(joinedRoom.oldRoom.roomId);
-                    // console.log(`user ${user.userName} left room ${joinedRoom.oldRoom.roomName}`);
-
-                    // inform room that user left
+                    
+                    //inform room that user left
                     socket.broadcast.to(joinedRoom.oldRoom.roomId).emit('new-join-message', `${joinedRoom.user.userName} left the room`);
-
+                    
                     // get the room's #users
                     let formerUsers = await getUsers(joinedRoom.oldRoom);
-
+                    
                     // inform #users from former room
                     io.emit('update-room-users', joinedRoom.oldRoom, formerUsers.users);
                 }
 
                 // join new room
                 socket.join(room.roomId);
-                // console.log(`user ${user.userName} joined room ${room.roomName}`);
-               // inform new room of joined user
+                
+                // inform new room of joined user
                 socket.broadcast.to(room.roomId).emit('new-join-message', `${joinedRoom.user.userName} joined the room`);
 
                 // get the current #users
@@ -122,17 +122,14 @@ module.exports = async (io) => {
         })
         
         socket.on('disconnect', async () => {
-            // console.log(`user ${user.userName} disconnected`);
-
+            
             let disconnectedUser = await disconnectUser(user);
-            // console.log('disconnectedUser', disconnectedUser)
-
+           
             if (disconnectedUser.status === 'success') {
                 
                 // users leaves former room
                 socket.leave(disconnectedUser.room.roomId);
-                // console.log(`user ${disconnectedUser.user.userName} left room ${disconnectedUser.room.roomName}`);
-
+                
                 // inform that user has left the room
                 socket.broadcast.to(disconnectedUser.room.roomId).emit('new-join-message', `${disconnectedUser.user.userName} left the room`);
 

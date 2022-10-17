@@ -1,6 +1,6 @@
 const {Users} = require('../models/models.js');
 
-async function getUsers(room) {
+const getUsers = async (room) => {
     let result;
     try {
         let users = await Users.find({'room.roomId': room.roomId});
@@ -15,11 +15,12 @@ async function getUsers(room) {
     return result;
 }
 
-async function disconnectUser (user) {
+const disconnectUser = async(user) => {
 
     let result;
 
     try {
+        
         // console.log('disconnectUser', user);
 
         const userDisconnected = await Users.findOneAndUpdate(
@@ -46,20 +47,19 @@ async function joinRoom (user, room) {
 
     let result;
     try {
-        // console.log('joinRoom', room);
-
-        // Push this user into the current room
-        const oldUser = await Users.findOneAndUpdate(
+       
+        // Push user into the current room
+        const currentUser = await Users.findOneAndUpdate(
             { _id: user.userId }, 
             { 'room.roomId': room.roomId, 'room.roomName': room.roomName }
             );
 
-        // console.log("oldUser", oldUser)
+       
 
-        if (oldUser) {
+        if (currentUser) {
             result = {status: 'success',
-                      user: { userId: oldUser._id, userName: oldUser.userName },
-                      oldRoom: oldUser.room
+                      user: { userId: currentUser._id, userName: currentUser.userName },
+                      oldRoom: currentUser.room
                      };
         } else {
             result = {status: 'fail', message: 'Error joining room'}
