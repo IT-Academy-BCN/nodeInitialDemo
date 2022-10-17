@@ -19,9 +19,9 @@ app.use(express.static("../public/"));
 // Routes
 app.use('/register', require('./routes/register.js'));
 app.use('/login', require('./routes/login.js'));
-app.use('/auth', require('./routes/auth.js'));
 
-//handling error route
+
+//handling errooneous routes
 app.use((req, res) => res.status(404).send({ status: "fail", message: "PAGE NOT FOUND"}));
 
 // Sockets
