@@ -1,6 +1,7 @@
 # CHAT with SOCKET.IO, NODE.js, EXPRESS 
  
-Instructions:
+### Instructions:
+
 Clone repository.
 
 ```
