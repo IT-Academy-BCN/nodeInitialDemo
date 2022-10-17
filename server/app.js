@@ -13,15 +13,13 @@ require('./utils/connectDB.js')();
 app.use(express.json());
 
 //express static middleware serving the front end
-//if run on separate ports, cors is required
 app.use(express.static("../public/"));
 
 // Routes
 app.use('/register', require('./routes/register.js'));
 app.use('/login', require('./routes/login.js'));
 
-
-//handling errooneous routes
+//invalid route handling
 app.use((req, res) => res.status(404).send({ status: "fail", message: "PAGE NOT FOUND"}));
 
 // Sockets
