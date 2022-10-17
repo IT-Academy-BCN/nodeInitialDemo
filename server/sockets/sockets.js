@@ -9,7 +9,7 @@ module.exports = async (io) => {
 
     io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
-            jwt.verify(socket.handshake.query.token, process.env.ACCESS_TOKEN_SECRET, function(err, decoded) {
+            jwt.verify(socket.handshake.query.token, process.env.ACCESS_TOKEN_KEY, function(err, decoded) {
             if (err) return next(new Error('Authentication error'));
             socket.decoded = decoded;
             next();
@@ -26,7 +26,7 @@ module.exports = async (io) => {
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         initHall();
 
-        // console.log(`user ${user.userName} connected`);
+        console.log(`user ${user.userName} connected`);
         
         //saving message to db before emitting back to front
         socket.on('new-message', async (message) => {

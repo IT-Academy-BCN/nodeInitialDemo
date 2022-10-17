@@ -25,8 +25,8 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
             window.location.assign('../html/chat.html');
 
         } else {
-            document.getElementById("login_error").innerHTML = data.message;
+            document.getElementById("login-error").innerHTML = data.message;
         }
-    }).catch(err => document.getElementById("login_error").innerHTML = err.message);
+    }).catch(err => document.getElementById("login-error").innerHTML = err.message);
 });
 
