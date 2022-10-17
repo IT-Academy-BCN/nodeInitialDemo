@@ -56,7 +56,7 @@ Register has option for getting back to login.
 About has option to get back to logon via logo or clickable text.
 ![chat_about](https://user-images.githubusercontent.com/100954079/196165481-3fda4bf7-7f6e-4f31-90aa-7351c1cf6fd8.png)
 
-After successful authentication user gets access to app.
+After successful authentication user gets access to app. There are a list of rooms and one of users.
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
 
