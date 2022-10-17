@@ -47,7 +47,16 @@ http://localhost:3000/
 
 !important. Not apt for less than 1100px...
 
+The user starts out on login page. There's an option to switch to register. The logo leads to about.
+![chat_login](https://user-images.githubusercontent.com/100954079/196165446-e30b963b-b8ed-4b6f-a26e-96c9bb8ed2b9.png)
 
+Register has option for getting back to login.
+![chat_register](https://user-images.githubusercontent.com/100954079/196165412-7c0d9080-08bd-415b-b35e-85f0ac0fa4a6.png)
+
+About has option to get back to logon via logo or clickable text.
+![chat_about](https://user-images.githubusercontent.com/100954079/196165481-3fda4bf7-7f6e-4f31-90aa-7351c1cf6fd8.png)
+
+After successful authentication user gets access to app.
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
 
