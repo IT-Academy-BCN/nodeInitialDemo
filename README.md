@@ -17,11 +17,14 @@ Convert .env.example to .env and adapt pertinent variables to current environmen
 Example of variables: 
 
 ```
-PORT=3000
-DB_HOST=local
+
+DB_HOST=localhost
 DB_PORT=27017
 DB_NAME=chatterbox
 
+API_PORT=3000
+
+ACCESS_TOKEN_KEY=somethingwickedcomesthisway
 
 ```
 

@@ -366,7 +366,7 @@ label{
 }
 
 .user__header {
-    width: 100%;
+    width: 80%;
     padding: 0.5rem;
     font-size: 1.8rem;
     color: var(--color);

@@ -1,9 +1,7 @@
-//creates list of users
+//creates list
 const displayUsers = (users) => {
-    
     const userList = document.getElementById("userList");
     userList.innerHTML = "";
-    
     // iterating the users array
     users.forEach(user => {
         //creating user 'li' element
@@ -16,4 +14,3 @@ const displayUsers = (users) => {
     });
 }
    
-

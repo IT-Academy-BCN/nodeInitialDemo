@@ -1,4 +1,4 @@
-//sorts buttonlist so hall is always on top
+//sort Hall to top and order buttonlist
 const sortBtnList = (btn) => {
     let buttonList = document.getElementById(btn);
     let buttonArray = Array.from(buttonList.getElementsByTagName("BUTTON"))
@@ -9,5 +9,4 @@ const sortBtnList = (btn) => {
         })
         .forEach(li => buttonList.append(li));
 }
-
 

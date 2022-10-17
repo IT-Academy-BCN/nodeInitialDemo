@@ -1,6 +1,7 @@
 const {Rooms} = require('../models/models.js');
 
 //initiate hall - room 0
+
 const initHall = async () => {
     const roomExist = await Rooms.findOne({ roomName:'Hall' });
     
@@ -9,10 +10,14 @@ const initHall = async () => {
     }
 }    
 
+
+
+
 //create room 
 const createRoom = async(roomName) => {
 
     let result;
+
     try {
         // checks if room exists
         const roomExist = await Rooms.findOne({ roomName });
@@ -26,16 +31,19 @@ const createRoom = async(roomName) => {
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
+
     return result;
 }
-
 //retrieve all rooms
 const getRooms = async() => {
 
     let result;
+
     try {
+
         let rooms = await Rooms.find({});
-        rooms = rooms.map(({_id, roomName}) => { 
+
+        rooms = rooms.map(({_id, roomName})=> { 
             return {roomId:_id, roomName};
           });
 
@@ -47,4 +55,5 @@ const getRooms = async() => {
 
     return result;
 }
+
 module.exports = {initHall, createRoom, getRooms}

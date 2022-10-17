@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const {initHall, getRooms, createRoom} = require('../utils/rooms.js');
-const {getUsers, disconnectUser, joinRoom} = require('../utils/users.js');
+const {getUsers, disconnectUser, joinRoom} = require('../utils/users');
 const {getMessages, newMessage} = require('../utils/messages.js');
 
 

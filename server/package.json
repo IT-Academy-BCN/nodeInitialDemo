@@ -1,26 +1,29 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket",
-  "main": "index.js",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "chat with node.js, express, socket.io",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "author": "",
+  "keywords": [
+    "Node.js",
+    "express",
+    "socket.io"
+  ],
+  "author": "MK",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^9.0.2",
-    "express": "^4.18.1",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.2",
-    "path": "^0.12.7",
-    "pm2": "^4.5.6",
-    "socket.io": "^4.5.1"
+    "mongoose": "^6.6.5",
+    "socket.io": "^4.5.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.20"
   }
 }

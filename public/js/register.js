@@ -1,3 +1,4 @@
+
 document.querySelector(".entry-form").addEventListener('submit', e => {
     e.preventDefault();
 
@@ -31,3 +32,4 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     }).catch(err => registerError.innerHTML = err.message);
 
 })
+

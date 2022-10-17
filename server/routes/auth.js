@@ -1,15 +1,16 @@
 const express = require('express');
 const api = express.Router();
 
-//middleware
 const {authJWT} = require('../middlewares/authentication.js');
 
+
 api.post('/',
-             authJWT, (req, res) => {
+            authJWT,
+            async (req, res) => {
 
                 try {
                     res.status(201).send({
-                        status: 'success'
+                        status: "success"
                     });
             
                  } catch (err) {
@@ -22,5 +23,3 @@ api.post('/',
             );
 
 module.exports = api;
-
-

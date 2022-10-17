@@ -1,11 +1,10 @@
-const sendMessage = (form) => {
+function sendMessage(form) {
     //retrieve message from chat-form input, room and user from sessionStorage
     const text = form.newMessage.value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
     const room = {roomId: sessionStorage.roomId, roomName: sessionStorage.roomName};
     
     //send obj with message, room and user info to backend
-    if (text) {
     if (text) {
         let message = {user, room, text};
         socket.emit('new-message', message);
@@ -14,11 +13,10 @@ const sendMessage = (form) => {
     }
 
     return false;
- }
 }
 
 //outout chat messages to dom
-const displayMessage = (message) => {
+function displayMessage(message) {
     
     // current message list on display
     let messageList = document.getElementById("messageList");
@@ -64,7 +62,7 @@ const displayMessage = (message) => {
 }
 
 //output user joining room
-const displayJoinMessage = (message) => {
+function displayJoinMessage(message) {
 
     // console.log('displayJoinMessage', message)
 
@@ -84,3 +82,4 @@ const displayJoinMessage = (message) => {
     //scroll to bottom
     messageList.scrollTop = messageList.scrollHeight;
 }
+

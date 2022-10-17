@@ -1,8 +1,9 @@
 const express = require('express');
 const api = express.Router();
 
-const register = require('../controllers/register.js');
+const register = require('../controller/register.js');
 
-api.post('/',register);
+api.post( '/',
+             register);
 
 module.exports = api;

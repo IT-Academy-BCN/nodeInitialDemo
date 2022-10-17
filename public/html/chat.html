@@ -26,6 +26,7 @@
             
             <aside id="room" class="room">
                 <button class="room__header" type="button">Rooms</button>
+                <button class="room__header collapse" type="button" onclick="showRooms()">Rooms</button>
                 <form id="roomForm" class="room__form" onsubmit="createRoom()">
                     <input class="input" type="text" id="newRoom" name="newRoom" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
                     <input class="button" type="submit" value="+">
@@ -44,6 +45,7 @@
             
             <aside id="user" class="user">
                 <button class="user__header" type="button">Users</button>
+                <button class="user__header collapse" type="button" onclick="showUsers()"><strong>USERS</strong></button>
                 <ul id="userList" class="user__ul"></ul>
             </aside>
               

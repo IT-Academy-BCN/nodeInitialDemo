@@ -1,9 +1,4 @@
-document.querySelector('.button-logout').addEventListener('click', () => {
-    const leaveRoom = confirm('Are you sure that you want to log off?');
-    if(leaveRoom){
-        sessionStorage.clear();
-        window.location.replace('../index.html');
-    }
-})
-
-
+function logout() {
+    sessionStorage.clear();
+    window.location.assign('../index.html')
+}
