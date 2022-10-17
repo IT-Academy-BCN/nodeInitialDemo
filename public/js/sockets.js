@@ -11,13 +11,6 @@ let socketConnected = false;
 socket.on('connect', () => {
 
   // console.log('Socket connected');
-
-    // TODO: we make sure we only connect once. 
-    // This prevents the client to connect again when server disconnects.
-    // Find the right way to do this.
-    if (socketConnected) return;
-    socketConnected = true;
-
   // console.log(`userName: ${sessionStorage.userName}`)
   // console.log(`userId: ${sessionStorage.userId}`)
   // console.log(`accessToken: ${sessionStorage.accessToken}`)
@@ -50,17 +43,7 @@ socket.on('connect', () => {
         }
         displayRoomUsers(room, users);
     })
-    /*
-    socket.on('error', message => {
-        document.getElementById("roomError").innerHTML = message;
-    })
-
-    socket.on('success', message => {
-        console.log("here")
-        document.getElementById("roomSuccess").innerHTML = message;
-    })
-    */
-    
+  
     //disconnect user
     socket.on('disconnect', () => {
       // console.log('Socket disconnected')

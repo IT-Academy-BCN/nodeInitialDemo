@@ -94,7 +94,7 @@ https://medium.com/hackernoon/enforcing-a-single-web-socket-connection-per-user-
 
 ### MONGODB:
 
-connect to mongoDB (solution to connection issue for mac OS high sierra):
+connect to mongoDB (solution for ancient mac with MacOs high sierra):
 https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0-0-1-27017/705/8
 
 1. cd /Users
@@ -105,13 +105,7 @@ https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0
 6. mongod --dbpath ~/data/db press enter then just keep it running.
 
 ---------------------------------------------------------------------------
-Afterwards you can do this after shutdown/ restart till one day it won't work
-and you have to delete the data and db folder and start over. 
-
-
-1. cd to your home directory
-2. cd data
-3. mongod --dbpath ~/data/db press enter then just keep it running.
+When shutting down and restarting erase added /data/db structure and start allover...
 
 ### MONGOOSE:
 
@@ -119,6 +113,12 @@ MongoDB deployed as persistence with mongoose as ORM.
 
 https://mongoosejs.com/
 https://mongoosejs.com/docs/api/document.html#document_Document-validate
+
+### AUTHENTICATION:
+bcryptjs (bcrypt not compatible with ancient macs...) and jsonwebtoken modules.
+
+https://frontegg.com/blog/jwt-authentication
+https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
 
 ### FRONT END:
 
@@ -162,7 +162,16 @@ https://javascript.plainenglish.io/how-to-add-options-to-an-html-select-element-
 sort unordered list
 //https://es.stackoverflow.com/questions/259945/ordenar-ul-javascript
 
+### TODO on a rainy day...
 
+- add google auth
+- add refresh token
+- add @media for smartphones
+- add user can only have on session
+- investigate if it matters if you npm init inside server folder or outside?
+- add colors to chat bubbles
+- do frontend with react...
+- improve design
 ### Project Structure
 
 Main structure of node.js project. 

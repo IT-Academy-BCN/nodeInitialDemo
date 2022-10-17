@@ -149,7 +149,7 @@ ul,li {
    
 }
 
-.chat__ul {
+.chat-ul {
     overflow: hidden;
     overflow-y: auto;
     position: absolute;
@@ -160,23 +160,23 @@ ul,li {
     padding: 2.4rem;
 }
 
-.chat__ul > li {
+.chat-ul > li {
     margin-top: 1rem;
     font-size: 0.75rem;
 }
 
-.chat__li {
+.chat-li {
     word-break: break-all;
 }
 
-.chat__li--join {
+.chat-li-join {
     font-style: italic;
     text-align: center;
     font-size: 0.75rem;
     line-height: 1.5rem;
 }
 
-.chat__form {
+.chat-form {
     display: flex;
     padding: 0.75rem 0.5rem;
     position: absolute;
@@ -186,7 +186,7 @@ ul,li {
     
 }
 /* HEADER*/
-.header__roomname{
+.header-roomname{
     color:var(--blue);
 }
 
@@ -282,13 +282,13 @@ label{
 }
 
 
-.room__form {
+.room-form {
     display: flex;
     padding: 0.75rem 0.5rem;
     padding-top:0.5rem;
 }
 
-.room__header {
+.room-header {
     width: 100%;
     padding: 0.5rem;
     font-size: 1.8rem;
@@ -301,7 +301,7 @@ label{
     margin-left:10px;
 }
 
-.room__ul {
+.room-ul {
     overflow-y: auto;
     margin-right: 2px;
     position: absolute;
@@ -312,7 +312,7 @@ label{
     
 }
 
-.room__btn {
+.room-btn {
     border: none;
     padding: 0.25rem 1rem;
     display: block;
@@ -323,12 +323,12 @@ label{
     background-color: var(--background-color);
 }
 
-.room__btn:hover {
+.room-btn:hover {
     color: var(--blue);
     cursor: pointer;
 }
 
-.room__btn--active {
+.room-btn-active {
     color: var(--blue);
 }
 
@@ -366,7 +366,7 @@ label{
     background-color: var(--background-color);
 }
 
-.user__header {
+.user-header {
     width: 80%;
     padding: 0.5rem;
     font-size: 1.8rem;
@@ -379,7 +379,7 @@ label{
     margin-left:1rem;
 }
 
-.user__ul {
+.user-ul {
     overflow-y: auto;
     padding: 1rem;
     margin-right: 2px;
@@ -390,7 +390,7 @@ label{
     right: 0;
 }
 
-.user__li {
+.user-li {
     padding: 0.25rem 1rem;
     word-break: break-all;
 }

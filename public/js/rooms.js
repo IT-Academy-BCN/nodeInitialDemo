@@ -39,20 +39,20 @@ const displayRoom = (room) => {
 
     const btn = document.createElement('button');
         if (room.roomName === 'Hall') {
-        btn.classList.add('room__btn--active');
+        btn.classList.add('room-btn-active');
         joinRoom(room);
     }
 
     btn.textContent = room.roomName;
     btn.setAttribute('id', room.roomId);
-    btn.classList.add('room__btn');
+    btn.classList.add('room-btn');
     btn.onclick = () => {
 
         if (sessionStorage.roomId) {
-            document.getElementById(sessionStorage.roomId).classList.remove('room__btn--active')
+            document.getElementById(sessionStorage.roomId).classList.remove('room-btn-active')
         }
 
-        btn.classList.add('room__btn--active');
+        btn.classList.add('room-btn-active');
         joinRoom(room);
 
     }

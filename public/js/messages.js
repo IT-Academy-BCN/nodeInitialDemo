@@ -23,7 +23,7 @@ function displayMessage(message) {
 
     // create element with current message to append to current message list
     let li = document.createElement('li');
-    li.classList.add('chat__li')
+    li.classList.add('chat-li')
     li.textContent = message.text;
 
     // retrieve last inserted ul element 
@@ -72,7 +72,7 @@ function displayJoinMessage(message) {
 
     // Create the element to append
     let li = document.createElement('li');
-    li.classList.add('chat__li--join')
+    li.classList.add('chat-li--join')
     li.textContent = message;
     li.setAttribute('id', 'lastMessage');
     

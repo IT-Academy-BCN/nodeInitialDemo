@@ -6,7 +6,7 @@ const displayUsers = (users) => {
     users.forEach(user => {
         //creating user 'li' element
         const li = document.createElement('li');
-        li.classList.add('user__li');
+        li.classList.add('user-li');
         li.textContent = user.userName;
         li.setAttribute("id", user.userId);
         // append the user to the userList
