@@ -48,11 +48,10 @@ ul,li {
 /* ERROR */
 
 .error {
-    font-style: italic;
+    
     font-weight: bold;
-    font-size: 0.8rem;
-    text-align: center;
-    color: red;
+    font-size: 0.9rem;
+    color: var(--blue);
 }
 
 
@@ -229,6 +228,7 @@ ul,li {
 
 .entry-form{
     padding-top:2%;
+    
 }
 
 .entry-fieldset {
