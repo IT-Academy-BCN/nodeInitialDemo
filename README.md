@@ -1,6 +1,7 @@
 # CHAT with SOCKET.IO, NODE.js, EXPRESS 
  
-Instructions:
+### Instructions:
+
 Clone repository.
 
 ```
@@ -42,7 +43,7 @@ npm run dev
 
 The client and server are served by the same port 
 through express static middleware.
-If process.env.PORT variable is 3000, open browser and go to:
+If process.env.API_PORT variable is 3000, open browser and go to:
 
 ````
 http://localhost:3000/
