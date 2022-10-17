@@ -47,6 +47,10 @@ http://localhost:3000/
 
 !important. Not apt for less than 1100px...
 
+
+![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
+
+
 ### SERVER
 
 Server runs with express and http modules.
