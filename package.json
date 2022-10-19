@@ -1,0 +1,28 @@
+{
+  "name": "rest_api_dados_v.2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessFala/rest_api_dados_v.2.git"
+  },
+  "author": "Jess Fala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessFala/rest_api_dados_v.2/issues"
+  },
+  "homepage": "https://github.com/JessFala/rest_api_dados_v.2#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.25.3"
+  }
+}

@@ -1,0 +1,8 @@
+# node modules
+node_modules/
+
+# entorno
+.env
+
+# otros
+.DS_Store
