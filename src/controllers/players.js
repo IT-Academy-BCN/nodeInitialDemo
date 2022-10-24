@@ -5,8 +5,33 @@ const Jugador = require('../models/jugador_mysql.js');
 // Crear nuevx jugadorx
 const crearJugador = async (req, res) => {
   const userName = req.body.userName;
+  let jugador;
   try {
-    if(!userName || (userName == "")){
+    if(userName) {
+      const buscarNombre = await Jugador.findOne({
+        where: {userName: userName}
+      });
+      if(buscarNombre){
+        return res.status(400).send({
+          error: "Usuarix ya existente. Por favor, inténtalo con uno distinto."});
+        }
+        jugador = await Jugador.create({userName:userName});
+      } else {
+        jugador = await Jugador.create();
+      }
+      res.status(200).send({
+        message: 'El jugador se ha creado.',
+        id: jugador.id,
+        userName: jugador.userName
+      });
+  } catch (err) {
+    res.status(500).send({message:err.message});
+  }
+};
+
+    
+  
+    /*if(!userName || (userName == "")){
       let nuevoJugador = await Jugador.create({});
       res.json(nuevoJugador);
       };
@@ -31,7 +56,7 @@ const crearJugador = async (req, res) => {
         message: err.message
       });
     }
- }
+ }*/
 
  // Modificar el nombre delx jugadorx
   const modificarNombreJugador = async (req, res,  next) => {

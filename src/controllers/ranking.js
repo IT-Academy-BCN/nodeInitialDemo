@@ -36,7 +36,6 @@ const obtenerPerdedor = async (req, res) => {
 };
 
 // Jugador con el mejor resultado de éxitos
-
 const obtenerGanador = async (req, res) => {
     try {
 // Esto devuelve UN solo resultado en orden ASCendente; por tanto, el peor.
@@ -44,7 +43,7 @@ const obtenerGanador = async (req, res) => {
             attributes: ["id", "userName", "exitoPorcentaje"],
             order: [["exitoPorcentaje", "DESC"]],
         });
-    res.status(200).json({"El ganador es": ganador });
+    res.status(200).json({"El ganador es ": ganador });
 } catch (err) {
     res.status(500).json ({ message: err.message});
 }
