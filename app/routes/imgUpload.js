@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './images');
+    cb(null, './views/images');
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname)
@@ -13,7 +13,8 @@ const storage = multer.diskStorage({
 });
 
 let fileFilter = function (req, file, cb) {
- 
+  let fileType = 'image/jpg' | 'image/png' | 'image/gif'
+    
   if (file.mimetype === 'image/jpg' | file.mimetype === 'image/png' | file.mimetype === 'image/gif') {
         cb(null, true);
     } else {
@@ -27,10 +28,10 @@ const upload = multer({
 })
 
 router.get('/', function (req, res) {
-  res.render('index.ejs');
+  res.render('app.ejs');
 });
 
-router.post('/', upload.single('file'), (req, res) => {
+router.post('/', upload.single('file-send'), (req, res) => {
   try {
     console.log(req.file);
     res.status(201).send(`Document ${req.file.originalname} guardat correctament`)
