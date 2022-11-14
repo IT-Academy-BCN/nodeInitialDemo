@@ -2,7 +2,9 @@ const playerInfo = require('../models/playerdb')
 
 
 class Player {
-    constructor() {};
+    constructor(username) {
+        this.username = username.toLowerCase()
+    };
 
     async getPlayers () {
         let playerList = await playerInfo.findAll({})
@@ -16,13 +18,13 @@ class Player {
     }
 
 
-    async createPlayer(username) {
-        let checkedPlayer = await this.checkPlayer(username)
+    async createPlayer() {
+        let checkedPlayer = await this.checkPlayer()
         let userConfirmation = ""
 
         if (!checkedPlayer) {
             const user = await playerInfo.create({
-                username: username,
+                username: this.username,
                 register_date: new Date(),
                 won_games: 0,
                 losed_games: 0,
@@ -39,19 +41,19 @@ class Player {
         }
     };
 
-    async checkPlayer(username) {
+    async checkPlayer() {
         try {
             let checkUser = await playerInfo.findAll({
                 where: {
-                    username: username
+                    username: this.username
                 }
             });
 
             console.log(checkUser)
 
-            if (checkUser.length === 0 && username === '') {
+            if (checkUser.length === 0 && this.username === '') {
                 let randomID = await playerInfo.count()
-                username = `ANÒNIM${randomID}`
+                this.username = `ANÒNIM${randomID}`
                 return false
             } else if (checkUser.length === 0) {
                 return false
@@ -70,14 +72,13 @@ class Player {
         try {
             let checkUser = await playerInfo.findOne({
                 where: {
-                    player_id: this.username
+                    id: this.username
                 }
             });
 
             if (checkUser) {
                this.username = newUsername
                let checkedPlayer = await this.checkPlayer(newUsername)
-               console.log(checkedPlayer)
 
                 if (!checkedPlayer) {
 
