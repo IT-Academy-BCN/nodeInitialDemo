@@ -65,6 +65,26 @@ class Player {
         }
     }
 
+    async checkPlayerID() {
+        try {
+            let checkUser = await playerInfo.findAll({
+                where: {
+                    id: this.username
+                }
+            });
+
+            console.log(checkUser)
+
+            if (checkUser.length === 0) {
+                return false
+            } else {
+                return true
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     async modifyPlayer(newUsername) {
 
         console.log(newUsername)
@@ -101,6 +121,53 @@ class Player {
         } catch (err) {
             return err
         }
+    }
+
+    async registerWin() {
+        let playerStats = await playerInfo.findOne({where: {id : this.username}})
+        
+        let newWinAmount = playerStats.won_games + 1
+        console.log(newWinAmount)
+        let totalPlayed = newWinAmount + playerStats.losed_games
+        console.log(totalPlayed)
+        let newVictoryPercentage = ((playerStats.won_games / totalPlayed)*100).toFixed(2)
+        console.log(newVictoryPercentage)
+    
+        await playerStats.set({
+            won_games: newWinAmount,
+            victory_percentage: newVictoryPercentage
+        })
+
+        await playerStats.save()
+
+        return playerStats
+
+    }
+
+    async registerLoses() {
+        let playerStats = await playerInfo.findOne({where: {id : this.username}})
+        
+        let  newLostAmount = playerStats.losed_games + 1
+        console.log(newLostAmount)
+        let totalPlayed = playerStats.won_games + newLostAmount
+        console.log(totalPlayed)
+        let newVictoryPercentage = ""
+
+        if(playerStats.won_games == 0) {
+            newVictoryPercentage = (1/2)*100
+        } else {
+        newVictoryPercentage = ((playerStats.won_games / totalPlayed)*100).toFixed(2)
+        }
+    
+        await playerStats.set({
+            losed_games: newLostAmount,
+            victory_percentage: newVictoryPercentage
+        })
+
+        await playerStats.save()
+
+        return playerStats
+
     }
 }
 
