@@ -196,8 +196,10 @@ class Player {
     async getLoser() {
         
         try {
-            let player = await playerInfo.findAll({
-                where: playerInfo.min('victory_percentage'),
+            let player = await playerInfo.findOne({
+                order: [
+                    ['victory_percentage', 'ASC']
+                ],
                 limit: 1 })
             
             console.log(player)
@@ -210,8 +212,10 @@ class Player {
     async getWinner() {
         
         try {
-            let player = await playerInfo.findAll({
-                where: playerInfo.max('victory_percentage'),
+            let player = await playerInfo.findOne({
+                order: [
+                    ['victory_percentage', 'DESC']
+                ],
                 limit: 1 })
             
             console.log(player)
