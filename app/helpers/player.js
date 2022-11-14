@@ -1,4 +1,5 @@
-const playerInfo = require('../models/playerdb')
+const playerInfo = require('../models/playerdb');
+const sequelize = require('../database');
 
 
 class Player {
@@ -6,7 +7,7 @@ class Player {
         this.username = username.toLowerCase()
     };
 
-    async getPlayers () {
+    async getPlayers() {
         let playerList = await playerInfo.findAll({})
 
         console.log(playerList)
@@ -14,7 +15,8 @@ class Player {
         if (playerList.length == 0) {
             return `0 jugadors registrats`
         } else {
-        return playerList}
+            return playerList
+        }
     }
 
 
@@ -28,7 +30,7 @@ class Player {
                 register_date: new Date(),
                 won_games: 0,
                 losed_games: 0,
-                victory_percentage: 1
+                victory_percentage: 100
             });
             return userConfirmation = {
                 id: user.player_id,
@@ -97,8 +99,8 @@ class Player {
             });
 
             if (checkUser) {
-               this.username = newUsername
-               let checkedPlayer = await this.checkPlayer(newUsername)
+                this.username = newUsername
+                let checkedPlayer = await this.checkPlayer(newUsername)
 
                 if (!checkedPlayer) {
 
@@ -124,15 +126,19 @@ class Player {
     }
 
     async registerWin() {
-        let playerStats = await playerInfo.findOne({where: {id : this.username}})
-        
+        let playerStats = await playerInfo.findOne({
+            where: {
+                id: this.username
+            }
+        })
+
         let newWinAmount = playerStats.won_games + 1
         console.log(newWinAmount)
         let totalPlayed = newWinAmount + playerStats.losed_games
         console.log(totalPlayed)
-        let newVictoryPercentage = ((playerStats.won_games / totalPlayed)*100).toFixed(2)
+        let newVictoryPercentage = ((playerStats.won_games / totalPlayed) * 100).toFixed(2)
         console.log(newVictoryPercentage)
-    
+
         await playerStats.set({
             won_games: newWinAmount,
             victory_percentage: newVictoryPercentage
@@ -145,20 +151,24 @@ class Player {
     }
 
     async registerLoses() {
-        let playerStats = await playerInfo.findOne({where: {id : this.username}})
-        
-        let  newLostAmount = playerStats.losed_games + 1
+        let playerStats = await playerInfo.findOne({
+            where: {
+                id: this.username
+            }
+        })
+
+        let newLostAmount = playerStats.losed_games + 1
         console.log(newLostAmount)
         let totalPlayed = playerStats.won_games + newLostAmount
         console.log(totalPlayed)
         let newVictoryPercentage = ""
 
-        if(playerStats.won_games == 0) {
-            newVictoryPercentage = (1/2)*100
+        if (playerStats.won_games == 0) {
+            newVictoryPercentage = (1 / 2) * 100
         } else {
-        newVictoryPercentage = ((playerStats.won_games / totalPlayed)*100).toFixed(2)
+            newVictoryPercentage = ((playerStats.won_games / totalPlayed) * 100).toFixed(2)
         }
-    
+
         await playerStats.set({
             losed_games: newLostAmount,
             victory_percentage: newVictoryPercentage
@@ -168,6 +178,47 @@ class Player {
 
         return playerStats
 
+    }
+
+    async orderPlayers() {
+        try {
+            let players = await playerInfo.findAll({
+                order: [
+                    ['victory_percentage', 'DESC']
+                ]
+            })
+            return players
+        } catch (err) {
+            return err
+        }
+    }
+
+    async getLoser() {
+        
+        try {
+            let player = await playerInfo.findAll({
+                where: playerInfo.min('victory_percentage'),
+                limit: 1 })
+            
+            console.log(player)
+            return player
+        } catch (err) {
+            return err
+        }
+    }
+
+    async getWinner() {
+        
+        try {
+            let player = await playerInfo.findAll({
+                where: playerInfo.max('victory_percentage'),
+                limit: 1 })
+            
+            console.log(player)
+            return player
+        } catch (err) {
+            return err
+        }
     }
 }
 

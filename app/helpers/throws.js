@@ -1,5 +1,4 @@
 const throwdb = require('../models/throwdb')
-const player = require('./player');
 
 
 class Throws {

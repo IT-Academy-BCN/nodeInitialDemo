@@ -24,12 +24,7 @@ sequelize
     const gameRoute = require('./routes/gameRoute');
     app.use('/game', gameRoute)
 
-/*;
-
-const rankingRouter = require('./routes/ranking');
-
-
-
-app.use('/ranking', rankingRouter)*/
+    const rankingRouter = require('./routes/rankingRoute');
+    app.use('/ranking', rankingRouter)
 
 app.listen(port, () => console.log(`Running on http://localhost:${port}`))
