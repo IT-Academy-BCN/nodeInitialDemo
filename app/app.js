@@ -7,16 +7,14 @@ app.use(express.urlencoded({extended:false}))
 
 const sequelize = require('./database');
 
-/*const playerInfo = require('./models/playerInfo')
-const gameInfo = require('./models/gameInfo')
-const throws = require('./models/throws')
+const playerdb = require('./models/playerdb')
+const throwdb = require('./models/throwdb')
 
-playerInfo.hasMany(gameInfo, {foreignKey: 'winner'})
-gameInfo.belongsTo(playerInfo)
-sequelize.sync({alter: true}).catch((err) => {console.log(err)})*/
+playerdb.hasOne(throwdb)
+throwdb.belongsTo(playerdb)
 
 sequelize
-    .sync()
+    .sync({alter: true})
     .then((result) => console.log(result))
     .catch((err) => console.log(err))
 
