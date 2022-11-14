@@ -32,24 +32,23 @@ router
             res.status(400)
             res.json(`Jugador amb ID ${userID} no trobat, registre't per jugar!`)
         }
-    })/*
+    })
     // DELETE player's throws
     .delete(async (req, res) => {
         let playerID = req.params.id
-        const throws = new throwClass()
-        let deleteThrows = await throws.destroyRows(playerID)
+        let deleteThrows = await NewThrow.destroyRows(playerID)
 
-        res.send(deleteThrows)
+        res.status(200)
+        res.json(deleteThrows)
 
     })
     // GET player's throws
     .get(async (req, res) => {
         let playerID = req.params.id
-        const throws = new throwClass()
-        let throwList = await throws.getThrows(playerID)
+        let throwList = await NewThrow.getThrows(playerID)
         
         res.json(throwList)
-    })*/
+    })
 
 
 module.exports = router

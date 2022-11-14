@@ -19,7 +19,7 @@ class Throws {
 
     async getThrows(playerID) {
         try {
-            let throwList = await throwdb.findAll({where:{player_id: playerID}})
+            let throwList = await throwdb.findAll({where:{playerId: playerID}})
             return throwList
         }
         catch (err){return err}
