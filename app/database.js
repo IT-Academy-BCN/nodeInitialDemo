@@ -6,7 +6,7 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Ou3gdvrr",
+  password: "password",
 });
 
 // Run create database statement
@@ -19,7 +19,7 @@ connection.query(
     );
   
 // change second root to sql computer password
-const sequelize = new Sequelize('sprint4_2', 'root', 'Ou3gdvrr', {
+const sequelize = new Sequelize('sprint4_2', 'root', 'password', {
     host: 'localhost',
     dialect: 'mysql'
 });
