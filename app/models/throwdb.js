@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../database');
 
-const Throws = sequelize.define('player', {
+const Throws = sequelize.define('throws', {
     first_dice: {
         type: Sequelize.INTEGER,
         allowNull: false

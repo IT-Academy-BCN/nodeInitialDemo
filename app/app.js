@@ -10,7 +10,7 @@ const sequelize = require('./database');
 const playerdb = require('./models/playerdb')
 const throwdb = require('./models/throwdb')
 
-playerdb.hasOne(throwdb)
+playerdb.hasMany(throwdb)
 throwdb.belongsTo(playerdb)
 
 sequelize
@@ -18,11 +18,14 @@ sequelize
     .then((result) => console.log(result))
     .catch((err) => console.log(err))
 
+    const playerRoute = require('./routes/playerRoute');
+    app.use('/players', playerRoute)
+
 /*const gamesRouter = require('./routes/games');
-const playersRouter = require('./routes/players');
+
 const rankingRouter = require('./routes/ranking');
 
-app.use('/players', playersRouter)
+
 app.use('/game', gamesRouter)
 app.use('/ranking', rankingRouter)*/
 
