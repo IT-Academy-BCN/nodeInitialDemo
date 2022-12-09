@@ -98,6 +98,80 @@ const confirmScreen = async () => {
   return pause;
 };
 
+const readInput = async (message) => {
+  const { description } = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'description',
+      message: message,
+      validate(value) {
+        if (value.length === 0) {
+          return 'Please enter a message';
+        }
+        return true;
+      },
+    },
+  ]);
+  return description;
+};
+
+const listToDelete = async (tasks) => {
+  const choices = tasks.map((task, i) => {
+    const index = `${i + 1}`.green;
+    return {
+      value: task.id,
+      name: `${index}. ${task.desc}`,
+    };
+  });
+  choices.push({
+    value: '0',
+    name: `${'0.'.green} Cancel`,
+  });
+  const questions = [
+    {
+      type: 'list',
+      name: 'id',
+      message: 'Delete',
+      choices,
+    },
+  ];
+  const { id } = await inquirer.prompt(questions);
+  return id;
+};
+
+const confirm = async (message) => {
+  const { confirm } = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'confirm',
+      message: message,
+    },
+  ]);
+  return confirm;
+};
+
+const listToComplete = async (tasks) => {
+  const choices = tasks.map((task, i) => {
+    const index = `${i + 1}`.green;
+    return {
+      value: task.id,
+      name: `${index}. ${task.desc}`,
+      checked: task.completedOn ? true : false,
+    };
+  });
+
+  const questions = [
+    {
+      type: 'checkbox',
+      name: 'ids',
+      message: 'Choose the task(s) to complete',
+      choices,
+    },
+  ];
+  const { ids } = await inquirer.prompt(questions);
+  return ids;
+};
+
 const testing = async () => {
   let user;
   let option;
@@ -109,4 +183,13 @@ const testing = async () => {
 };
 // testing();
 
-module.exports = { loginMenu, loginScreen, confirmScreen, inquirerMenu };
+module.exports = {
+  loginMenu,
+  loginScreen,
+  confirmScreen,
+  inquirerMenu,
+  readInput,
+  listToDelete,
+  confirm,
+  listToComplete,
+};
