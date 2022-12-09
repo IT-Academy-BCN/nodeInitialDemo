@@ -43,11 +43,12 @@ const loginScreen = async () => {
 
 // CREATING MAIN MENU
 const inquirerMenu = async (user) => {
+  console.clear();
   console.log('================================'.cyan);
   console.log(`   Choose an option, ${user}    `);
   console.log('================================\n'.cyan);
 
-  const option = await inquirer.prompt([
+  const { option } = await inquirer.prompt([
     {
       type: 'list',
       name: 'option',
@@ -55,31 +56,31 @@ const inquirerMenu = async (user) => {
       choices: [
         {
           value: '1',
-          name: `${'1.'.blue} Create a task`,
+          name: `${'1.'.red} Create a task`,
         },
         {
           value: '2',
-          name: `${'2.'.blue} List task(s)`,
+          name: `${'2.'.red} List task(s)`,
         },
         {
           value: '3',
-          name: `${'3.'.blue} List completed task(s)`,
+          name: `${'3.'.red} List completed task(s)`,
         },
         {
           value: '4',
-          name: `${'4.'.blue} List pending task(s)`,
+          name: `${'4.'.red} List pending task(s)`,
         },
         {
           value: '5',
-          name: `${'5.'.blue} Complete task(s)`,
+          name: `${'5.'.red} Complete task(s)`,
         },
         {
           value: '6',
-          name: `${'6.'.blue} Delete task(s)`,
+          name: `${'6.'.red} Delete task(s)`,
         },
         {
           value: '0',
-          name: `${'0.'.blue} Exit`,
+          name: `${'0.'.red} Exit`,
         },
       ],
     },
@@ -98,6 +99,7 @@ const confirmScreen = async () => {
   return pause;
 };
 
+// CREATION OF A NEW TASK MENU
 const readInput = async (message) => {
   const { description } = await inquirer.prompt([
     {
@@ -115,6 +117,7 @@ const readInput = async (message) => {
   return description;
 };
 
+// LIST THAT SHOWS WHEN DELETING TASKS
 const listToDelete = async (tasks) => {
   const choices = tasks.map((task, i) => {
     const index = `${i + 1}`.green;
@@ -139,6 +142,7 @@ const listToDelete = async (tasks) => {
   return id;
 };
 
+// SCREEN THAT CONFIRMS IF YOU WANT TO DELETE
 const confirm = async (message) => {
   const { confirm } = await inquirer.prompt([
     {
@@ -150,6 +154,7 @@ const confirm = async (message) => {
   return confirm;
 };
 
+//SCREEN THAT SHOWS THE LIST TO COMPLETE OR PEND TASKS
 const listToComplete = async (tasks) => {
   const choices = tasks.map((task, i) => {
     const index = `${i + 1}`.green;
@@ -160,28 +165,16 @@ const listToComplete = async (tasks) => {
     };
   });
 
-  const questions = [
+  const { ids } = await inquirer.prompt([
     {
       type: 'checkbox',
       name: 'ids',
       message: 'Choose the task(s) to complete',
       choices,
     },
-  ];
-  const { ids } = await inquirer.prompt(questions);
+  ]);
   return ids;
 };
-
-const testing = async () => {
-  let user;
-  let option;
-  let login;
-  login = await loginMenu();
-  user = await loginScreen();
-  option = await inquirerMenu(user);
-  // await confirmScreen();
-};
-// testing();
 
 module.exports = {
   loginMenu,

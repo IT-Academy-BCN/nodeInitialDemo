@@ -11,7 +11,7 @@ const {
   loginScreen,
 } = require('./helpers/inquirer');
 const Tasks = require('./models/Tasks');
-// const { saveDB, readDB } = require('./helpers/save-file');
+const { saveDB, readDB } = require('./helpers/save-file');
 
 const main = async () => {
   let option;
@@ -20,22 +20,18 @@ const main = async () => {
   const taskList = new Tasks();
   const tasksDB = readDB();
 
-  // login = await loginMenu();
-  // if (login === '1') {
-  //   user = await loginScreen();
-  // }
+  console.clear();
+
+  login = await loginMenu();
+  if (login === '1') {
+    user = await loginScreen();
+  }
 
   if (tasksDB) {
     taskList.loadTasks(tasksDB);
   }
 
   do {
-    console.clear();
-    login = await loginMenu();
-    if (login === '1') {
-      user = await loginScreen();
-    }
-
     option = await inquirerMenu(user);
 
     switch (option) {
