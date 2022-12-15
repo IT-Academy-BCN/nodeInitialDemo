@@ -1,5 +1,6 @@
+# Node Initial Demo Omar
 
-# Node Initial Project
+Aquest repo l'estic fent servir per ensenyar com s'han de fer les entregues per pull request (14/3/22).
 
 ### Project Structure
 
@@ -25,22 +26,24 @@ Extras:
 ### Import project for use with Visual Studio Code
 
 Follow the steps below:
-* Clone the project from the Github Platform. Execute:
+* Fork the project from https://github.com/IT-Academy-BCN/nodeInitialDemo
+* Clone your fork of the project from the Github Platform. Execute:
   ```
-  git clone [url project]
+  git clone https://github.com/your_username_here/nodeInitialDemo
   ```
-* Open the project downloaded.
+* Open the project downloaded
   ![Open Project](img/VSC_open.png)
 
 
 ### Import project for use with WebStorm
 
 Follow the steps below:
-* Clone the project from the Github Platform. Execute:
+* Fork the project from https://github.com/IT-Academy-BCN/nodeInitialDemo
+* Clone your fork of the project from the Github Platform. Execute:
   ```
-  git clone [url project]
+  git clone https://github.com/your_username_here/nodeInitialDemo
   ```
-* Open the project downloaded.
+* Open the project downloaded
 ![Open Project](img/webstorm_open.png)
 
 
