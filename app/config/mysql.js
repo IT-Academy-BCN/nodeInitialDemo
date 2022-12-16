@@ -11,8 +11,7 @@ const host = process.env.DB_HOST;
 
 const sequelize = new Sequelize( database, username, password, {
   host,
-  dialect: "mysql",
-  frozenTableName: true,
+  dialect: "mysql"
 } );
 
 
