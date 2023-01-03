@@ -13,3 +13,13 @@ Content-Type: application/json
 Accept: application/json
 
 ###
+PUT http://localhost:3000/players/update/4
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "testUpdatedToo",
+  "password": "testPassword"
+}
+
+###
