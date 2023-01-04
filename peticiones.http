@@ -1,9 +1,10 @@
+
 POST http://localhost:3000/players/create
 Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "test",
+  "username": "perrete",
   "password": "testPassword"
 }
 

@@ -4,8 +4,19 @@ import User from "../models/users.js";
 export const createUser = async ( req, res ) => {
   try {
     const { username, password } = req.body;
-    const user = await User.create( { username, password } );
-    res.status( 201 ).json( user );
+    if ( username === "" ) {
+      const date = new Date();
+      const username = `Anònim-${ date.getTime() }`;
+      await User.create( { username, password } );
+      return res.status( 201 ).json( { message: "Player created correctly" } );
+    }
+    const user = await User.findOne( { where: { username } } );
+    if ( user ) {
+      res.status( 409 ).json( { message: "User already exists" } );
+    } else {
+      await User.create( { username, password } );
+      res.status( 201 ).json( { message: "Player created correctly" } );
+    }
   } catch ( error ) {
     res.status( 500 ).json( error );
   }
