@@ -28,5 +28,40 @@ export const tiradaJugador = async ( req, res ) => {
       msg: 'Error inesperado'
     } );
   }
-}
+};
 
+
+export const getTiradas = async ( req, res ) => {
+  const { id } = req.params;
+
+  try {
+    const games = await Game.find( { jugadorId: id } );
+
+    res.status( 200 ).json( {
+      games
+    } );
+
+  } catch ( error ) {
+    res.status( 500 ).json( {
+      msg: 'Error inesperado'
+    } );
+  }
+};
+
+
+export const deleteTiradas = async ( req, res ) => {
+  const { id } = req.params;
+
+  try {
+    await Game.deleteMany( { jugadorId: id } );
+
+    res.status( 200 ).json( {
+      msg: 'Tiradas eliminadas'
+    } );
+
+  } catch ( error ) {
+    res.status( 500 ).json( {
+      msg: 'Error inesperado'
+    } );
+  }
+};

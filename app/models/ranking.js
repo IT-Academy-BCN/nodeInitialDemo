@@ -15,6 +15,13 @@ const Ranking = sequelize.define( 'ranking', {
       key: 'id'
     }
   },
+  gameId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Game,
+      key: 'id'
+    }
+  }
 }, { timestamps: false } );
 
 await Ranking.sync( {
