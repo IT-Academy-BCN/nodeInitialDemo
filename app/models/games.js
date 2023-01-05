@@ -9,11 +9,11 @@ const Game = sequelize.define( 'games', {
     primaryKey: true,
     allowNull: false
   },
-  resultado1: {
+  dado1: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  resultado2: {
+  dado2: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -24,6 +24,11 @@ const Game = sequelize.define( 'games', {
       key: 'id'
     }
   },
+  winner: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  }
+
 
 }, { timestamps: true } );
 
