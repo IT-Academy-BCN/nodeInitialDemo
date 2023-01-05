@@ -1,5 +1,5 @@
 import express from "express";
-import { tiradaJugador, getTiradas, deleteTiradas } from "../controllers/games";
+import { tiradaJugador, getTiradas, deleteTiradas } from "../controllers/games.js";
 
 const router = express.Router();
 

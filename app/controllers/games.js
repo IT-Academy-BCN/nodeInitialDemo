@@ -35,7 +35,7 @@ export const getTiradas = async ( req, res ) => {
   const { id } = req.params;
 
   try {
-    const games = await Game.find( { jugadorId: id } );
+    const games = await Game.findOne( { jugadorId: id } );
 
     res.status( 200 ).json( {
       games
@@ -43,7 +43,7 @@ export const getTiradas = async ( req, res ) => {
 
   } catch ( error ) {
     res.status( 500 ).json( {
-      msg: 'Error inesperado'
+      msg: error.message
     } );
   }
 };

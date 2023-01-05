@@ -4,9 +4,9 @@ import { createUser, getUsers, updateUser } from "../controllers/users.js";
 const router = express.Router();
 
 
-router.post( '/create', createUser );
+router.post( '/', createUser );
 router.get( '/', getUsers );
-router.put( '/update/:id', updateUser );
+router.put( '/:id', updateUser );
 
 
 export default router;
