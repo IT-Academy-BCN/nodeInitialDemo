@@ -9,14 +9,14 @@ export const createUser = async ( req, res ) => {
       const date = new Date();
       const username = `Anònim-${ date.getTime() }`;
       await User.create( { username, password } );
-      return res.status( 201 ).json( { message: "Player created correctly" } );
+      return res.status( 201 ).json( { message: "Player created correctly as 'Anònim' user" } );
     }
     const user = await User.findOne( { where: { username } } );
     if ( user ) {
       res.status( 409 ).json( { message: "User already exists" } );
     } else {
       await User.create( { username, password } );
-      res.status( 201 ).json( { message: "Player created correctly" } );
+      res.status( 201 ).json( { message: `Player created correctly with the username of ${ username }` } );
     }
   } catch ( error ) {
     res.status( 500 ).json( error );
@@ -55,5 +55,4 @@ export const updateUser = async ( req, res ) => {
 };
 
 
-// consigue el porcentaje de éxito de un jugador
 
