@@ -6,6 +6,7 @@ import gamesRouter from "./routes/games.js";
 import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 import { dbConnectMysql } from "./config/mysql.js";
+import { error404 } from "./routes/error404.js";
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( '/players', usersRouter );
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
+
+app.use( error404 );
 
 
 const PORT = process.env.PORT || 3000;
