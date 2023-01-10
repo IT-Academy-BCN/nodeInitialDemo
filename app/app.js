@@ -4,7 +4,9 @@ import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 import { dbConnectMysql } from "./config/mysql.js";
 import { error404 } from "./routes/error404.js";
-import rutas from "./routes/enrutador.js";
+import usersRouter from "./routes/user.js";
+import rankingRouter from "./routes/ranking.js";
+import gamesRouter from "./routes/games.js";
 
 dotenv.config();
 
@@ -12,11 +14,14 @@ const app = express();
 
 app.use( fileUpload() );
 
+app.use('/users', usersRouter);
+app.use('/ranking', rankingRouter);
+app.use('/games', gamesRouter);
+
 app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 
-app.use(rutas)
 
 app.use( error404 );
 
