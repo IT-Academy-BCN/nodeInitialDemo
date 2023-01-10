@@ -1,11 +1,15 @@
 import { Schema, model } from "mongoose";
 
 const GameSchema = Schema( {
-  titulo: { type: String, required: true },
-  contenido: { type: String, required: true },
-  fecha: { type: Date, default: Date.now },
-  imagen: { type: String },
-} );
+  dado1: { type: Number, required: true },
+  dado2: { type: Number, required: true },
+  jugador: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  winner: { type: Boolean, required: true },
+},
+  {
+    timestamps: true,
+  }
+);
 
 
 export default model( 'Game', GameSchema );
