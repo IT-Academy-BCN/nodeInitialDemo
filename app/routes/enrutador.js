@@ -1,9 +1,15 @@
 import usersRouter from "./routes/user.js";
 import rankingRouter from "./routes/ranking.js";
 import gamesRouter from "./routes/games.js";
+import express from "express";
 
-app.use( '/players', usersRouter );
-app.use( '/ranking', rankingRouter );
-app.use( '/games', gamesRouter );
+const routers = express.Router();
 
-export default rutas;
+
+routers.use( "/users", usersRouter );
+routers.use( "/ranking", rankingRouter );
+routers.use( "/games", gamesRouter );
+
+export default routers;
+
+
