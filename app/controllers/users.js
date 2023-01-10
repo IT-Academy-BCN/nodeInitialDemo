@@ -47,12 +47,16 @@ export const updateUser = async ( req, res ) => {
   try {
     const { username } = req.body;
     const { id } = req.params;
-    await User.update( { username }, { where: { id } } );
+    const user = await User.findOne( { where: { id } } );
+    if ( !user ) {
+      return res.status( 404 ).json( { message: "User not found" } );
+    }
+
+    await User.updateOne( { username }, { where: { id } } );
     res.status( 200 ).json( { message: "Player updated correctly" } );
   } catch ( error ) {
     res.status( 500 ).json( error );
   }
 };
-
 
 
