@@ -5,10 +5,12 @@ import rankingRouter from "./routes/ranking.js";
 import gamesRouter from "./routes/games.js";
 import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
-import { dbConnectMysql } from "./config/mysql.js";
 import { error404 } from "./routes/error404.js";
+import  conexion  from "./config/mongoConfig.js";
 
 dotenv.config();
+
+conexion();
 
 const app = express();
 
@@ -30,4 +32,3 @@ const PORT = process.env.PORT || 3000;
 app.listen( PORT, () => console.log( `Server is running on http://localhost:${ PORT }` ) );
 
 
-dbConnectMysql();
