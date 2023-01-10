@@ -20,7 +20,7 @@ app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 
-app.use( '/players', usersRouter );
+app.use( '/players', usersRouter ); // TODO - CREAR ENRUTADOR
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
 
