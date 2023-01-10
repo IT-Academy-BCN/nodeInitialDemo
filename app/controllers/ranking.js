@@ -3,11 +3,11 @@ import User from "../models/users.js";
 
 export const getRanking = async ( req, res ) => {
   try {
-    const users = await User.findAll();
+    const users = await User.find();
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.findAll( { where: { jugadorId: user.id } } );
+      const games = await Game.find( { where: { jugadorId: user.id } } );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;
@@ -36,11 +36,11 @@ export const getRanking = async ( req, res ) => {
 
 export const getLoser = async ( req, res ) => {
   try {
-    const users = await User.findAll();
+    const users = await User.find();
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.findAll( { where: { jugadorId: user.id } } );
+      const games = await Game.find( { where: { jugadorId: user.id } } );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;
@@ -65,11 +65,11 @@ export const getLoser = async ( req, res ) => {
 
 export const getWinner = async ( req, res ) => {
   try {
-    const users = await User.findAll();
+    const users = await User.find();
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.findAll( { where: { jugadorId: user.id } } );
+      const games = await Game.find( { where: { jugadorId: user.id } } );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;

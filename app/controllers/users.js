@@ -25,11 +25,11 @@ export const createUser = async ( req, res ) => {
 
 export const getUsers = async ( req, res ) => {
   try {
-    const users = await User.findAll();
+    const users = await User.find();
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.findAll( { where: { jugadorId: user.id } } );
+      const games = await Game.find( { where: { jugadorId: user.id } } );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;
@@ -38,7 +38,9 @@ export const getUsers = async ( req, res ) => {
     }
     res.status( 200 ).json( usersList );
   } catch ( error ) {
-    res.status( 500 ).json( error );
+    res.status( 500 ).json( {
+      message: error.message
+    } );
   }
 };
 
@@ -47,7 +49,7 @@ export const updateUser = async ( req, res ) => {
   try {
     const { username } = req.body;
     const { id } = req.params;
-    await User.update( { username }, { where: { id } } );
+    await User.updateOne( { username }, { where: { id } } );
     res.status( 200 ).json( { message: "Player updated correctly" } );
   } catch ( error ) {
     res.status( 500 ).json( error );
