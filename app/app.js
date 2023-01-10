@@ -18,7 +18,7 @@ app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 
-app.use( '/players', usersRouter );
+app.use( '/players', usersRouter ); // Todo - crear enrutador
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
 
