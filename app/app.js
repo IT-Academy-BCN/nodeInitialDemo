@@ -25,6 +25,7 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( '/players', usersRouter );
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
+
 app.use( error404 );
 
 

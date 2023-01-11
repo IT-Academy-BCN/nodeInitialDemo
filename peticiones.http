@@ -8,12 +8,11 @@ Accept: application/json
 }
 
 ###
-GET http://localhost:3000/players
-Content-Type: application/json
+GET http://localhost:3000/players/
 Accept: application/json
 
 ###
-PUT http://localhost:3000/players/4
+PUT http://localhost:3000/players/
 Content-Type: application/json
 Accept: application/json
 
@@ -23,13 +22,13 @@ Accept: application/json
 
 ###
 
-POST http://localhost:3000/games/63bd2660710c5f254dcee111
+POST http://localhost:3000/games/63bead9885c186047925301a
 Content-Type: application/json
 Accept: application/json
 
 ###
 
-GET http://localhost:3000/games/63bd2660710c5f254dcee111
+GET http://localhost:3000/games/63bead9885c186047925301a
 Content-Type: application/json
 Accept: application/json
 
