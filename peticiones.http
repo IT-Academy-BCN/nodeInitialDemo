@@ -18,8 +18,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "testUpdatedToo",
-  "password": "testPassword"
+  "username": "testUpdatedToo"
 }
 
 ###
@@ -30,7 +29,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:3000/games/49
+GET http://localhost:3000/games/63bd2660710c5f254dcee111
 Content-Type: application/json
 Accept: application/json
 
