@@ -21,6 +21,7 @@ app.use( fileUpload() );
 app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
+
 app.use( '/players', usersRouter );
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
