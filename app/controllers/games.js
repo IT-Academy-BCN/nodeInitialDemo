@@ -19,6 +19,13 @@ export const tiradaJugador = async ( req, res ) => {
       winner
     } );
 
+    await userGame.save();
+
+    res.status( 200 ).json( {
+      userGame
+    } );
+
+
   } catch ( error ) {
     res.status( 500 ).json( {
       msg: 'Error inesperado'

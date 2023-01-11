@@ -24,7 +24,7 @@ Accept: application/json
 
 ###
 
-POST http://localhost:3000/games/49
+POST http://localhost:3000/games/63bd2660710c5f254dcee111
 Content-Type: application/json
 Accept: application/json
 
