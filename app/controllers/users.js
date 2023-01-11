@@ -1,4 +1,3 @@
-import Game from "../models/games.js";
 import User from "../models/users.js";
 
 
@@ -19,7 +18,9 @@ export const createUser = async ( req, res ) => {
       res.status( 201 ).json( { message: `Player created correctly with the username of ${ username }` } );
     }
   } catch ( error ) {
-    res.status( 500 ).json( error );
+    res.status( 500 ).json(
+      console.log( error)
+     );
   }
 };
 
@@ -29,7 +30,7 @@ export const getUsers = async ( req, res ) => {
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.find( { where: { jugadorId: user.id } } );
+      const games = await User.findById( user.id ).select( 'games' );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;

@@ -1,11 +1,11 @@
 
-POST http://localhost:3000/players/
+POST http://localhost:3000/players
 Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "pepin",
-  "password": "testPassword"
+  "username": "SarcasticoMartinez",
+  "password": "sarcasticousuario"
 }
 
 ###

@@ -1,4 +1,3 @@
-import Game from "../models/games.js";
 import User from "../models/users.js";
 
 export const getRanking = async ( req, res ) => {
@@ -7,16 +6,14 @@ export const getRanking = async ( req, res ) => {
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.find( { where: { jugadorId: user.id } } );
-      if ( games.length > 0 ) {
-        const wins = games.filter( ( game ) => game.winner === true );
-        const percentage = ( wins.length / games.length ) * 100;
-        user.percentage = Math.round( percentage * 100 ) / 100;
+      const games = await User.findById( user.id ).select( 'games' );
+      if ( games.games.length > 0 ) {
+        const wins = games.games.filter( ( game ) => game.winner === true );
+        user.percentage = Math.round( ( wins.length / games.games.length ) * 100 ) / 100;
       } else {
         user.percentage = 0;
       }
     }
-    // calcula el percentatge mig de tots els jugadors
     const totalPercentage = usersList.reduce( ( acc, user ) => acc + user.percentage, 0 );
     const averagePercentage = Math.round( ( totalPercentage / usersList.length ) * 100 ) / 100;
     usersList.sort( ( a, b ) => b.percentage - a.percentage );
@@ -40,7 +37,7 @@ export const getLoser = async ( req, res ) => {
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.find( { where: { jugadorId: user.id } } );
+      const games = await User.findById( user.id ).select( 'games' );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;
@@ -69,7 +66,7 @@ export const getWinner = async ( req, res ) => {
     const usersList = users.map( ( { id, username } ) => ( { id, username } ) );
 
     for ( const user of usersList ) {
-      const games = await Game.find( { where: { jugadorId: user.id } } );
+      const games = await User.findById( user.id ).select( 'games' );
       if ( games.length > 0 ) {
         const wins = games.filter( ( game ) => game.winner === true );
         const percentage = ( wins.length / games.length ) * 100;

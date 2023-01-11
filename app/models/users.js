@@ -1,8 +1,15 @@
 import { Schema, model } from "mongoose";
 
-const UserSchema = Schema( { // TODO - Incrustar Games aquí
+const UserSchema = Schema( {
   username: { type: String, required: true },
   password: { type: String, required: true },
+  games: [
+    {
+      dado1: { type: Number },
+      dado2: { type: Number },
+      winner: { type: Boolean, default: false },
+    }
+  ]
 },
   {
     timestamps: true

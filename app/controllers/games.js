@@ -1,5 +1,4 @@
-import Game from "../models/games.js";
-
+import User from "../models/users.js";
 
 export const tiradaJugador = async ( req, res ) => {
   const { id } = req.params;
@@ -9,18 +8,15 @@ export const tiradaJugador = async ( req, res ) => {
   const winner = dado1 + dado2 >= 7 ? true : false;
 
   try {
-    const game = new Game( {
+   const userGame = await User
+      .findById
+      ( id )
+      .select( 'games' );
+
+    userGame.games.push( {
       dado1,
       dado2,
-      jugadorId: id,
       winner
-    } );
-
-    await game.save();
-
-    res.status( 201 ).json( {
-      msg: 'Tirada guardada',
-      game
     } );
 
   } catch ( error ) {
@@ -35,17 +31,21 @@ export const getTiradas = async ( req, res ) => {
   const { id } = req.params;
 
   try {
-    const games = await Game.findOne( { jugadorId: id } );
+    const userGame = await User
+      .findById
+      ( id )
+      .select( 'games' );
 
     res.status( 200 ).json( {
-      games
+      userGame
     } );
 
   } catch ( error ) {
     res.status( 500 ).json( {
-      msg: error.message
+      msg: 'Error inesperado'
     } );
   }
+
 };
 
 
@@ -53,10 +53,17 @@ export const deleteTiradas = async ( req, res ) => {
   const { id } = req.params;
 
   try {
-    await Game.deleteMany( { jugadorId: id } );
+    const userGame = await User
+      .findById
+      ( id )
+      .select( 'games' );
+
+    userGame.games = [];
+
+    await userGame.save();
 
     res.status( 200 ).json( {
-      msg: 'Tiradas eliminadas'
+      userGame
     } );
 
   } catch ( error ) {
