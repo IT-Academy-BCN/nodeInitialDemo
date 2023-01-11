@@ -9,7 +9,8 @@ Un cop es clona, les úniques ordres que caldrà executar són `npm install`per 
 
 ### Descripció de les rutes per l'sprint 4.2
 
-
+| METHOD | ROUTE | FUNCTIONALITY |
+| ------- | ----- | ------------- |
 | *POST* | ```/players/``` | _Registrar un nou jugador_|
 | *POST* | ```/games/{player_id}``` | _Fer una jugada pel jugador indicat amb la id_|
 | *PUT* | ```/players/{player_id}``` |  _Actualitzar username del jugador indicat amb la id_|
