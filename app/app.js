@@ -7,6 +7,7 @@ import { error404 } from "./routes/error.404.js";
 import usersRouter from "./routes/user.js";
 import rankingRouter from "./routes/ranking.js";
 import gamesRouter from "./routes/games.js";
+import loginRouter from "./routes/login.js";
 
 
 
@@ -22,6 +23,7 @@ app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 
+app.use( '/login', loginRouter );
 app.use( '/players', usersRouter );
 app.use( '/ranking', rankingRouter );
 app.use( '/games', gamesRouter );
