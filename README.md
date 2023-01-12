@@ -14,6 +14,7 @@ Un cop es clona, les úniques ordres que caldrà executar són `npm install`per 
 | ------- | ----- | ------------- |
 | *POST* | ```/players/``` | _Registrar un nou jugador_|
 | *POST* | ```/games/{player_id}``` | _Fer una jugada pel jugador indicat amb la id_|
+| *POST* | ```/login``` | _Obtenir token pel superUser_|
 | *PUT* | ```/players/{player_id}``` |  _Actualitzar username del jugador indicat amb la id_|
 | *GET* | ```/players/``` | _Llistat de tots els jugadors_|
 | *GET* | ```/games/{player_id}``` | _Llistat de les jugades d'un jugador_|
