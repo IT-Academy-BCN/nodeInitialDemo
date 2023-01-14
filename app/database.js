@@ -1,17 +1,18 @@
 const Sequelize = require('sequelize');
 const mysql = require("mysql2");
+require('dotenv').config('../.env')
 
 // Open the connection to MySQL server
 // change password to sql computer password
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
 });
 
 // Run create database statement
 connection.query(
-      `CREATE DATABASE sprint4_2`,
+      `CREATE DATABASE ` + process.env.DATABASE_NAME,
       function (err, results) {
         console.log(results);
         console.log(err);
@@ -19,7 +20,7 @@ connection.query(
     );
   
 // change second root to sql computer password
-const sequelize = new Sequelize('sprint4_2', 'root', 'password', {
+const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql'
 });

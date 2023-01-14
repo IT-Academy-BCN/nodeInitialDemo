@@ -1,51 +1,23 @@
+## Com arrancar:
+1. Desde NodeInitialDemo fes `npm install` això instalarà automáticament express, dotenv, sequelize i mysql2
+2. Desde NodeInitialDemo canvia `.env-teamplate` per `.env`
+3. Modifica els apartats del `.env` per a que coincideixin amb el access del teu `MySQL`.
+4. Inicia la aplicació amb `node app.js` desde dins la carpeta app
 
-# Node Initial Project
+## construcció:
+Has de tenir en compte els següents detalls de construcció:
 
-### Project Structure
+[POST] /players: crea un jugador/a.
+[PUT] /players/{id}: modifica el nom del jugador/a.
+[GET] /players: retorna el llistat de tots els jugadors/es del sistema amb el seu percentatge d’èxits.
+[POST] /games/{id}: un jugador/a específic realitza una tirada.
+[DELETE] /games/{id}: elimina les tirades del jugador/a.
+[GET] /games/{id}: retorna el llistat de jugades per un jugador/a.
+[GET] /ranking: retorna un ranking de jugadors/es ordenat per percentatge d'èxits i el percentatge d’èxits mig del conjunt de tots els jugadors/es.
+[GET] /ranking/loser: retorna el jugador/a amb pitjor percentatge d’èxit.
+[GET] /ranking/winner: retorna el jugador/a amb millor percentatge d’èxit.
 
-Main structure of node.js project. Folders / files:
-
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-
-### Import project for use with Visual Studio Code
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
-
-
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
-
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+About game:
+You play with 2 dices, 6 faces
+You win when sum of 2 dices = 7
+Level 1: About SQL: - Sequalize as ORM - Must register as player: unique identifier, register date, name must be unique - Player can check: their throws (face number + total number), their winning rating and success % - If no name, name = “ANÒNIM”, there can be more than 1 “ANÒNIM” - You cannot delete a game but you can delete a players throw list - You can check all player's name list, player success % and average success %
