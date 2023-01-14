@@ -3,28 +3,33 @@ const router = express.Router()
 
 const multer = require("multer");
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './views/images');
+    cb(null, '../views/images');
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    console.log(file)
+    return cb(null, file.originalname)
   }
-});
+});*/
 
-let fileFilter = function (req, file, cb) {
-  let fileType = 'image/jpg' | 'image/png' | 'image/gif'
-    
-  if (file.mimetype === 'image/jpg' | file.mimetype === 'image/png' | file.mimetype === 'image/gif') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
+let checkFile  = function (req, file, cb) {
+  if (file.mimetype == 'image/jpg'|| file.mimetype == 'image/jpeg' || file.mimetype == 'image/png' || file.mimetype == 'image/gif') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
 }
 
-const upload = multer({
+const storage = multer.diskStorage({ 
+  destination: './views/images',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({ 
   storage: storage,
-  fileFilter: fileFilter
+  fileFilter: checkFile
 })
 
 router.get('/', function (req, res) {
@@ -33,11 +38,11 @@ router.get('/', function (req, res) {
 
 router.post('/', upload.single('file-send'), (req, res) => {
   try {
-    console.log(req.file);
-    res.status(201).send(`Document ${req.file.originalname} guardat correctament`)
+    console.log(req.file)
+    res.status(201).json(`Document ${req.file.originalname} guardat correctament`)
   } catch (err) {
     console.log(err)
-    res.status(400).send(`Document no enviat, prova amb jpg, png o gif`)
+    res.status(400).json(`Document no enviat, prova amb jpg, png o gif`)
   }
 })
 

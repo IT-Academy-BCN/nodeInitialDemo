@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "31d23eb5-3073-4c75-a050-b7aad455db21",
+		"name": "Sprint4-2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24160226"
+	},
+	"item": [
+		{
+			"name": "'/' get",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "'/user' GET",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "'/upload' GET",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "'/upload' POST",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
