@@ -24,10 +24,11 @@ async function playerNewThrow(req, res) {
 async function getThrows(req, res) {
   try {
     const { id } = req.params;
-    if (!id) {
-      return res.status(404).json({ success: false, msg: 'id not found' });
-    }
-    const throws = await Game.findAll({ playerID: id });
+    const throws = await Game.findAll({
+      where: {
+        PlayerID: id,
+      },
+    });
     res.status(200).json({ throws });
   } catch (err) {
     res.status(500).json({ success: false, msg: err.message });
