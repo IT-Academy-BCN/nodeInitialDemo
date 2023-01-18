@@ -1,17 +1,22 @@
-const { Game } = require('../db/db.connect');
+const { Game, User } = require('../db/db.connect');
+
+const ranNum = () => {
+  return Math.floor(Math.random() * 6) + 1;
+};
 
 async function playerNewThrow(req, res) {
   try {
     const { id } = req.params;
-    const user = await Game.findOne({
-      where: { PlayerID: id },
+    const user = await User.findOne({
+      where: { id },
     });
+    console.log(user);
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }
 
-    const dice1 = Math.floor(Math.random() * 6) + 1;
-    const dice2 = Math.floor(Math.random() * 6) + 1;
+    const dice1 = ranNum();
+    const dice2 = ranNum();
 
     const didWin = dice1 + dice2 === 7 ? true : false;
 
@@ -31,9 +36,13 @@ async function playerNewThrow(req, res) {
 async function getThrows(req, res) {
   try {
     const { id } = req.params;
-    const user = await Game.findOne({
-      where: { PlayerID: id },
+    console.log(id);
+    const user = await User.findOne({
+      where: {
+        id,
+      },
     });
+    console.log(user.toJSON());
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }
@@ -50,8 +59,8 @@ async function getThrows(req, res) {
 async function deleteThrows(req, res) {
   try {
     const { id } = req.params;
-    const user = await Game.findOne({
-      where: { PlayerID: id },
+    const user = await User.findOne({
+      where: { id },
     });
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
