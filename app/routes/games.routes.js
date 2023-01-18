@@ -4,7 +4,7 @@ const {
   getThrows,
   playerNewThrow,
   deleteThrows,
-} = require('../controllers/game.controller');
+} = require('../controllers/game.controllers');
 
 const router = express.Router();
 
