@@ -9,6 +9,7 @@ async function playerNewThrow(req, res) {
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }
+
     const dice1 = Math.floor(Math.random() * 6) + 1;
     const dice2 = Math.floor(Math.random() * 6) + 1;
 
@@ -37,10 +38,9 @@ async function getThrows(req, res) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }
     const throws = await Game.findAll({
-      where: {
-        PlayerID: id,
-      },
+      where: { PlayerID: id },
     });
+
     res.status(200).json({ throws });
   } catch (err) {
     res.status(500).json({ success: false, msg: err.message });
@@ -58,9 +58,7 @@ async function deleteThrows(req, res) {
     }
 
     await Game.destroy({
-      where: {
-        playerID: id,
-      },
+      where: { playerID: id },
     });
     res.status(200).json({ success: true, msg: 'throws deleted' });
   } catch (err) {
