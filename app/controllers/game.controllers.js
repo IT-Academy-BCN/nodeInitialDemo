@@ -10,7 +10,6 @@ async function playerNewThrow(req, res) {
     const user = await User.findOne({
       where: { id },
     });
-    console.log(user);
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }
@@ -36,7 +35,6 @@ async function playerNewThrow(req, res) {
 async function getThrows(req, res) {
   try {
     const { id } = req.params;
-    console.log(id);
     const user = await User.findOne({
       where: {
         id,
