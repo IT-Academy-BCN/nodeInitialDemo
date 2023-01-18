@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 const userModel = require('../models/Users.model');
+const gameModel = require('../models/Game.model');
 
 const sequelize = new Sequelize(
   process.env.DATABASE_NAME,
@@ -13,9 +14,10 @@ const sequelize = new Sequelize(
 );
 
 const User = userModel(sequelize, Sequelize);
+const Game = gameModel(sequelize, Sequelize);
 
 sequelize.sync({ force: false }).then(() => {
   console.log('tables sync');
 });
 
-module.exports = User;
+module.exports = { User, Game };
