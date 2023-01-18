@@ -1,4 +1,5 @@
 const { User } = require('../db/db.connect');
+const getPercentage = require('./win-percent.controller');
 
 async function createUser(req, res) {
   try {
@@ -24,4 +25,13 @@ async function createUser(req, res) {
   }
 }
 
-module.exports = { createUser };
+async function getUsers(req, res) {
+  try {
+    const playerList = await getPercentage();
+    res.status(200).json(playerList);
+  } catch (err) {
+    res.status(500).json({ success: false, msg: err.message });
+  }
+}
+
+module.exports = { createUser, getUsers };
