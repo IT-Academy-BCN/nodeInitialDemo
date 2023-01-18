@@ -17,7 +17,7 @@ async function getPercentage() {
     // filter when a user has won, and divide the lengths
     const amountWins = games.filter((game) => game.win === true);
     const percent = (amountWins.length / games.length) * 100;
-    user.winPercent = games.length > 0 ? `${percent}%` : 'player has no throws';
+    user.winPercent = games.length > 0 ? percent : 0;
   }
   return list;
 }

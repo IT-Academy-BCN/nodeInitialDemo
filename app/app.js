@@ -3,6 +3,7 @@ const express = require('express');
 
 const gameRouter = require('./routes/games.routes');
 const userRouter = require('./routes/users.routes');
+const rankingRouter = require('./routes/ranking.routes');
 const pageNotFound = require('./middlewares/not-found');
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
+app.use('/api/ranking', rankingRouter);
 
 app.use(pageNotFound);
 
