@@ -34,4 +34,23 @@ async function getUsers(req, res) {
   }
 }
 
-module.exports = { createUser, getUsers };
+async function modifyPlayer(req, res) {
+  try {
+    const { id } = req.params;
+    const newUser = req.body;
+    const user = await User.findOne({
+      where: { id },
+    });
+    if (!user) {
+      res.status(404).json({ success: false, msg: 'user not found' });
+    }
+    await User.update(newUser, {
+      where: { id },
+    });
+    res.status(200).json({ success: true, msg: 'username updated' });
+  } catch (err) {
+    res.status(500).json({ success: false, msg: err.message });
+  }
+}
+
+module.exports = { createUser, getUsers, modifyPlayer };
