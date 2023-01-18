@@ -27,7 +27,7 @@ async function getWinner(req, res) {
 
 async function getLoser(req, res) {
   try {
-    const sortedList = sortRanking();
+    const sortedList = await sortRanking();
     const loser = sortedList.at(-1);
     res.status(200).json(loser);
   } catch (err) {
