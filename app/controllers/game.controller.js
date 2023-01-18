@@ -6,13 +6,13 @@ async function playerNewThrow(req, res) {
     const dice1 = Math.floor(Math.random() * 6) + 1;
     const dice2 = Math.floor(Math.random() * 6) + 1;
 
-    const winner = dice1 + dice2 === 7 ? true : false;
+    const didWin = dice1 + dice2 === 7 ? true : false;
 
     const game = new Game({
       diceOne: dice1,
       diceTwo: dice2,
       playerID: id,
-      win: winner,
+      win: didWin,
     });
     await game.save();
     res.status(201).json({ success: true, msg: 'attempt saved' });
