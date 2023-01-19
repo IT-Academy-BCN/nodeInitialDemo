@@ -1,11 +1,11 @@
-const { User } = require('../db/db.connect');
+const { User, Game } = require('../db/db.connect');
 const getPercentage = require('./win-percent.controller');
 
 async function createUser(req, res) {
   try {
     let { username } = req.body;
     if (!username) {
-      username = `Anon_${Date.now()}`;
+      username = `Anon_${Math.floor(Math.random() * 10000)}`;
       await User.create({ username });
       return res.status(201).json({ username, msg: 'user created' });
     }
@@ -27,8 +27,8 @@ async function createUser(req, res) {
 
 async function getUsers(req, res) {
   try {
-    const playerList = await getPercentage();
-    res.status(200).json(playerList);
+    const userList = await getPercentage('id', 'username', 'winPercent');
+    res.status(200).json(userList);
   } catch (err) {
     res.status(500).json({ success: false, msg: err.message });
   }

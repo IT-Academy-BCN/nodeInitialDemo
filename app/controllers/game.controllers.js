@@ -40,7 +40,6 @@ async function getThrows(req, res) {
         id,
       },
     });
-    console.log(user.toJSON());
     if (!user) {
       return res.status(404).json({ success: false, msg: 'user not found' });
     }

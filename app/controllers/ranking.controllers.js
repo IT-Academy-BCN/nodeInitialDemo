@@ -1,8 +1,25 @@
 const getPercentage = require('./win-percent.controller');
+const { Game } = require('../db/db.connect');
 
 async function sortRanking() {
-  const list = await getPercentage();
-  list.sort((a, b) => b.winPercent - a.winPercent);
+  const list = await getPercentage(
+    'id',
+    'username',
+    'winPercent',
+    'globalPercent'
+  );
+
+  for (user of list) {
+    const globalWins = await Game.count({
+      where: { win: true },
+    });
+    const globalThrows = await Game.count();
+    const globalPercentage = (globalWins / globalThrows) * 100;
+    console.log(globalPercentage);
+    list.sort((a, b) => b.winPercent - a.winPercent);
+    user.globalPercent = +globalPercentage.toFixed(2);
+  }
+
   return list;
 }
 
