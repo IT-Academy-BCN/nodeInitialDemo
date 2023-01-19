@@ -6,6 +6,9 @@ const pageNotFound = require('./middleware/not-found.middleware');
 
 const app = express();
 
+// app.use('/api/users')
+// app.use('/api/games')
+
 app.use(pageNotFound);
 const PORT = process.env.PORT || 3000;
 const startServer = async () => {
