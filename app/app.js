@@ -1,11 +1,13 @@
 const express = require('express');
 
 const userRouter = require('./routes/user.routes');
+const uploadRouter = require('./routes/upload.routes');
 const pageNotFound = require('./middlewares/not-found.middleware');
 
 const app = express();
 
 app.use('/user', userRouter);
+app.use('/upload', uploadRouter);
 
 app.use(pageNotFound);
 
