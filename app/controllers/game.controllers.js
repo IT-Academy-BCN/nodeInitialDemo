@@ -47,7 +47,7 @@ async function getThrows(req, res) {
       where: { PlayerID: id },
     });
 
-    res.status(200).json({ throws });
+    res.status(200).json({ nbHits: throws.length, throws });
   } catch (err) {
     res.status(500).json({ success: false, msg: err.message });
   }
@@ -64,7 +64,7 @@ async function deleteThrows(req, res) {
     }
 
     await Game.destroy({
-      where: { playerID: id },
+      where: { PlayerID: id },
     });
     res.status(200).json({ success: true, msg: 'throws deleted' });
   } catch (err) {

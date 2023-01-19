@@ -7,10 +7,7 @@ module.exports = (sequelize, type) => {
       allowNull: false,
     },
     username: type.STRING,
-    winPercent: {
-      type: type.INTEGER,
-      default: 0,
-    },
-    globalPercent: type.INTEGER,
+    winPercent: type.VIRTUAL,
+    globalPercent: type.VIRTUAL,
   });
 };

@@ -17,8 +17,10 @@ const sequelize = new Sequelize(
 const User = userModel(sequelize, Sequelize);
 const Game = gameModel(sequelize, Sequelize);
 
-sequelize.sync({ force: false }).then(() => {
-  console.log('tables sync');
-});
+const connectDB = async () => {
+  sequelize.sync({ force: false }).then(() => {
+    console.log('tables sync');
+  });
+};
 
-module.exports = { User, Game };
+module.exports = { User, Game, connectDB };
