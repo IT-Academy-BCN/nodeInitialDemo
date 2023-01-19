@@ -1,54 +1,39 @@
-# Node Initial Demo Omar
+# Sprint 4.2 Level 1
 
-Aquest repo l'estic fent servir per ensenyar com s'han de fer les entregues per pull request (14/3/22).
+## About the App
 
-### Project Structure
+This app is the backend server of a dice game. The goal of the game is to throw two dice and get the sum of 7.
+<br>
+To be able to play, you need to first create a user, if no username is provided, 'anon' will be created to represent that player. Later you can modify with the PATCH method.
+<br>
+The user will be able to throw as many times as they want, and see the list of all their throws. Since many users can play, a ranking is also provided. With each user's win percentage and the global percentage.
+<br>
+I hope you enjoy.
+<br>
+<br>
+Any questions, you can contact me at `gsvalient@gmail.com`
 
-Main structure of node.js project. Folders / files:
+## How to Initialize the APP
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
+### Pre-requisites
 
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
+- Have NodeJS and NPM installed
+- Have access to MySQL
+- Know your PORT, USERNAME and PASSWORD
+- Create a schema in MySQL (remember the name it will be used in a few steps)
+- Have access to Postman
 
-### Import project for use with Visual Studio Code
+## INSTRUCTIONS
 
-Follow the steps below:
-* Fork the project from https://github.com/IT-Academy-BCN/nodeInitialDemo
-* Clone your fork of the project from the Github Platform. Execute:
-  ```
-  git clone https://github.com/your_username_here/nodeInitialDemo
-  ```
-* Open the project downloaded
-  ![Open Project](img/VSC_open.png)
+1. Clone the repo on your machine
+2. Enter the app directory
+3. Enter the `.env.template` file and add your proper values. It is important to rename this to `.env`
+4. If the step above produces an error, enter the `db/db.connect.js` file. Follow the comment examples. Remember to use ''.
+5. Head back to the root folder `sprint4.2Nivel1`, and run `npm i`. This will install all the dependencies.
+6. run `npm start` to run the app
 
+## POSTMAN
 
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Fork the project from https://github.com/IT-Academy-BCN/nodeInitialDemo
-* Clone your fork of the project from the Github Platform. Execute:
-  ```
-  git clone https://github.com/your_username_here/nodeInitialDemo
-  ```
-* Open the project downloaded
-![Open Project](img/webstorm_open.png)
-
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+1. There is a directory called `postman` in the root folder.
+2. In postman, import the json file found in step 1.
+3. Now you will find all the queries required to use the app.
