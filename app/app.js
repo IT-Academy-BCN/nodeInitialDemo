@@ -2,11 +2,14 @@ require('dotenv').config();
 const express = require('express');
 
 const connectDB = require('./db/db.connect');
+const userRouter = require('./routes/user.routes');
 const pageNotFound = require('./middleware/not-found.middleware');
 
 const app = express();
 
-// app.use('/api/users')
+app.use(express.json());
+
+app.use('/api/users', userRouter);
 // app.use('/api/games')
 
 app.use(pageNotFound);
