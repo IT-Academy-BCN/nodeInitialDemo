@@ -4,11 +4,11 @@ const userModel = require('../models/Users.model');
 const gameModel = require('../models/Game.model');
 
 const sequelize = new Sequelize(
-  process.env.DATABASE_NAME,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
+  process.env.DATABASE_NAME, //REPLACE THIS WITH YOUR DATABASE NAME: 'diceGame',
+  process.env.DATABASE_USER, //REPLACE THIS WITH YOUR DATABASE USER: 'root'
+  process.env.DATABASE_PASSWORD, //REPLACE THIS WITH YOUR DATABASE PASSWORD: 'toor'
   {
-    host: process.env.DATABASE_HOST,
+    host: process.env.DATABASE_HOST, //REPLACE THIS WITH YOUR SERVER IP
     dialect: 'mysql',
     logging: false,
   }
@@ -17,10 +17,7 @@ const sequelize = new Sequelize(
 const User = userModel(sequelize, Sequelize);
 const Game = gameModel(sequelize, Sequelize);
 
-const connectDB = async () => {
-  sequelize.sync({ force: false }).then(() => {
-    console.log('tables sync');
-  });
-};
+sequelize.sync({ force: false });
+console.log('tables in sync');
 
-module.exports = { User, Game, connectDB };
+module.exports = { User, Game };
