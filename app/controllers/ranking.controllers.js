@@ -18,6 +18,7 @@ async function sortRanking() {
     list.sort((a, b) => b.winPercent - a.winPercent);
     user.globalPercent = +globalPercentage.toFixed(2);
   }
+  return list;
 }
 
 async function getRanking(req, res) {
@@ -29,4 +30,24 @@ async function getRanking(req, res) {
   }
 }
 
-module.exports = { getRanking };
+async function getWinner(req, res) {
+  try {
+    const sortedList = await sortRanking();
+    const winner = sortedList[0];
+    res.status(200).json(winner);
+  } catch (err) {
+    res.status(500).json({ success: false, msg: err.message });
+  }
+}
+
+async function getLoser(req, res) {
+  try {
+    const sortedList = await sortRanking();
+    const loser = sortedList.at(-1);
+    res.status(200).json(loser);
+  } catch (err) {
+    res.status(500).json({ success: false, msg: err.message });
+  }
+}
+
+module.exports = { getRanking, getWinner, getLoser };

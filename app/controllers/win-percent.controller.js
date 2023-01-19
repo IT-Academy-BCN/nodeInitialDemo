@@ -12,7 +12,7 @@ async function getPercentage(...args) {
       where: { playerID: user.id, win: true },
     });
     const percent = (totalWins / totalThrows) * 100;
-    user.winPercent = +percent.toFixed(2);
+    user.winPercent = percent ? +percent.toFixed(2) : 0;
   }
   return userList;
 }
