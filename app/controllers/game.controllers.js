@@ -52,7 +52,31 @@ async function getThrows(req, res) {
   }
 }
 
+async function deleteThrows(req, res) {
+  try {
+    const { id } = req.params;
+    const user = await User.findOne({
+      where: { id },
+    });
+    if (!user) {
+      return res.status(404).json({ success: false, msg: 'user not found' });
+    }
+    await Game.destroy({
+      where: { playerID: id },
+    });
+    res
+      .status(200)
+      .json({
+        success: true,
+        msg: `${user.username}'s throws have been deleted`,
+      });
+  } catch (err) {
+    res.status(500).json({ success: false, msg: err.message });
+  }
+}
+
 module.exports = {
   userNewThrow,
   getThrows,
+  deleteThrows,
 };
