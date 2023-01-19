@@ -5,7 +5,7 @@
 ### Exercise 1
 
 - Create a server with Express
-- Create an endpoint that sends a json with my name age and URL
+- Create a /user endpoint that GETs a json with my name age and URL
 
 ### Exercise 2
 
