@@ -6,6 +6,8 @@ const pageNotFound = require('./middlewares/not-found.middleware');
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/user', userRouter);
 app.use('/upload', uploadRouter);
 

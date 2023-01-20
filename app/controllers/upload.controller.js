@@ -26,7 +26,14 @@ const upload = multer({
 });
 
 const sendFile = (req, res) => {
-  res.status(200).json({ success: true, msg: 'file uploaded', PATH });
+  try {
+    res.status(200).json({
+      status: 'Success',
+      data: 'File was uploaded',
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err });
+  }
 };
 
 module.exports = { upload, sendFile };
