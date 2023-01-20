@@ -18,6 +18,7 @@ _commands to be ran on your terminal of choice_
 3. Once postman is ready, go to the root directory and run `npm i` to install all necessary dependencies
 4. To initialize the app, run `npm start` in your terminal
 5. Once the app is running, head to postman and run the query provided in the file that was imported in step 2
+6. The app takes either the pokemon number or name!
 
 <br>
 
