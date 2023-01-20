@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "f32f22fe-89a6-4f72-9613-6ac4378acb6c",
+		"name": "Sprint4 Nivel1.3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25185283"
+	},
+	"item": [
+		{
+			"name": "get pokemon by ID or Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pokemon/6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokemon",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
