@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "7930be56-3c13-49fb-934a-5b97fd7dcf9b",
+		"name": "Sprint4 Nivel1.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25185283"
+	},
+	"item": [
+		{
+			"name": "Post with credentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"gabriel\",\n    \"password\":\"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/time",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post without credentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"gabriel\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/time",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
