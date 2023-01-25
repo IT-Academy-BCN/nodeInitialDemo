@@ -10,8 +10,13 @@ router.get('/', async (req, res) => {
         const Player = new playerClass()
         const playerList = await Player.getPlayers()
 
-        res.status(200)
-        res.json(playerList)
+        console.log(playerList)
+
+        if(!playerList.length) {
+            res.status(400).json('No players registered yet!')
+        } else {
+            res.status(200).json(playerList)
+        }
     } catch (err) { console.log(err), res.send(500) }
 });
 
@@ -23,8 +28,11 @@ router.post('/', async (req, res) => {
         const Player = new playerClass(newUsername)
         const userConfirmation = await Player.createPlayer()
         
-        res.status(200)
-        res.send(userConfirmation)
+        if(userConfirmation) {
+            res.status(200).json(userConfirmation)
+        } else {
+            res.status(400).json(`${newUsername} already registered`)
+        }
 
     } catch (err) { console.log(err), res.send(500)}
 });

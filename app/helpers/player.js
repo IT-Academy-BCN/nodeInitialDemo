@@ -4,19 +4,14 @@ const sequelize = require('../database');
 
 class Player {
     constructor(username) {
-        this.username = username.toLowerCase()
+        this.username = username
     };
 
     async getPlayers() {
         let playerList = await playerInfo.findAll({})
 
         console.log(playerList)
-
-        if (playerList.length == 0) {
-            return `0 jugadors registrats`
-        } else {
-            return playerList
-        }
+        return playerList
     }
 
 
@@ -38,8 +33,7 @@ class Player {
                 register_date: user.register_date
             }
         } else {
-            console.log(`${username} està ja registrat, prova amb un altre`)
-            return userConfirmation = `${username} està ja registrat, prova amb un altre`
+            return undefined
         }
     };
 

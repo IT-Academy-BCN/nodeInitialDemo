@@ -1,6 +1,6 @@
 ## Com arrancar:
 1. Desde NodeInitialDemo fes `npm install` això instalarà automáticament express, dotenv, sequelize i mysql2
-2. Desde NodeInitialDemo canvia `.env-teamplate` per `.env`
+2. Desde NodeInitialDemo canvia `.env-template` per `.env` i insereix-ho dins la carpeta app
 3. Modifica els apartats del `.env` per a que coincideixin amb el access del teu `MySQL`.
 4. Inicia la aplicació amb `node app.js` desde dins la carpeta app
 
