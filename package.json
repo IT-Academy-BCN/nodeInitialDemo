@@ -1,20 +1,19 @@
 {
-  "name": "nodeinitialdemo",
+  "name": "sprint4.2",
   "version": "1.0.0",
-  "description": "sample project for node",
-  "main": "app.js",
+  "description": "Solución bicéfala para que Omar pueda corregir el Sprint 4.2",
   "scripts": {
-    "start": "node app/app.js",
-    "dev": "nodemon app/app.js",
-    "test": "jest"
+    "sequelize": "cd sequelize && npm install && npm start",
+    "mongoose": "cd mongoose && npm install && npm start"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^9.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7",
-    "jest": "^28.1.1"
-  }
+  "keywords": [
+    "Api",
+    "Rest",
+    "MongoDB",
+    "SQL",
+    "Express",
+    "Node"
+  ],
+  "author": "Iván Legrán",
+  "license": "MIT"
 }

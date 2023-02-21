@@ -1,51 +1,21 @@
+# Alocado setup bicéfalo para que Omar pueda corregir el Sprint 4.2
 
-# Node Initial Project
+Este repositorio contiene dos subcarpetas: `sequelize` y `mongoose`, cada una con una versión diferente de la API REST creada con Node.js y Express.js.
 
-### Project Structure
+Para ejecutar la versión con Sequelize, sigue estos pasos:
 
-Main structure of node.js project. Folders / files:
+1. Abre una terminal y navega hasta la raíz del repositorio.
+2. Ejecuta el siguiente comando:
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
+    npm run sequelize
 
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
+3. Este comando ejecutará el script `"sequelize"` definido en el archivo `package.json`que contiene ambas subcarpetas. Este script primero navegará hasta la subcarpeta `sequelize` con el comando `cd sequelize`, luego instalará las dependencias de esta versión de la API con `npm install`, y finalmente iniciará la API con `npm start`.
 
-### Import project for use with Visual Studio Code
+Para ejecutar la versión con Mongoose, sigue estos pasos:
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+1. Abre una terminal y navega hasta la raíz del repositorio.
+2. Ejecuta el siguiente comando:
 
+    npm run mongoose
 
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
-
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+3. Este comando ejecutará el script `"mongoose"` definido en el archivo `package.json`que, como hemos indicado antes, contiene ambas subcarpetas. Este script primero navegará hasta la subcarpeta `mongoose` con el comando `cd mongoose`, luego instalará las dependencias de esta versión de la API con `npm install`, y finalmente iniciará la API con `npm start`.
