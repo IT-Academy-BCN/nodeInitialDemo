@@ -31,3 +31,11 @@ enviar desde postman:
 #### Tutorial multer con ejemplo imagen
 
 - https://www.youtube.com/watch?v=wsn6PyQLtfY min 20 aprox
+
+# Entrega 4.2
+
+- npm i sequelize sqlite3
+- npm i mysql2
+- npm i sequelize-cli
+- npm i fs
+- npm i path

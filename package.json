@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "test": "jest"
+    "entrega42": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +16,14 @@
     "dotenv": "^9.0.2",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
+    "fs": "^0.0.1-security",
     "mongodb": "^5.1.0",
     "multer": "^1.4.5-lts.1",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.29.1",
+    "sequelize-cli": "^6.6.0",
+    "sqlite3": "^5.1.4"
   },
   "devDependencies": {
     "jest": "^28.1.1",
