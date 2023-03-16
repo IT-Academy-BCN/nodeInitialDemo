@@ -1,1 +1,2 @@
-console.log('Hello World');
+const config = require('./config/config')
+
