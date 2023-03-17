@@ -1,0 +1,13 @@
+LListat de tasques
+Afegir tasques
+llister tasques
+mostrar estat (pendents, execucio, acabades)
+hora inici tasca i final
+usuari -> tasca
+
+
+-------crear tasca
+-------update tasca
+-------esborrar tasca
+-------llistar totes
+-------llistar una especifica
