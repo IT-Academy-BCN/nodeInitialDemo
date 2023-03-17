@@ -19,7 +19,7 @@ const secondQuestion = {
     ],
 }
 
-async function initProgram(){
+async function initProgram(db, services){
     let exit = false
     const firstAnswer = await inquirer.prompt([firstQuestion])
     console.log(firstAnswer)
@@ -32,5 +32,5 @@ async function initProgram(){
 
 }
 
-initProgram()
+module.exports = initProgram
 
