@@ -25,11 +25,13 @@ class Mysql extends Database{
      * @returns sequelize connection
      */
     async init() {
+        console.log(this.envs)
         this.connection = new Sequelize(
         this.envs.dbName,
         this.envs.dbUser,
         this.envs.dbPass,
             {
+            port: this.envs.dbPort, 
             host: this.envs.dbHost,
             dialect: 'mysql'
             }
@@ -39,4 +41,4 @@ class Mysql extends Database{
 
 }
 
-mnodule.exports = Mysql
+module.exports = Mysql

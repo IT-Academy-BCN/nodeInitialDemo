@@ -12,4 +12,4 @@ class Database {
     }
 }
 
-mnodule.exports = Database
+module.exports = Database

@@ -2,4 +2,4 @@ class Mongo {
     // TODO
 }
 
-mnodule.exports = Mongos
+module.exports = Mongo

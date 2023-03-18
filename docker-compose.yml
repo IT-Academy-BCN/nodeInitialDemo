@@ -1,0 +1,50 @@
+version: '3.8'
+volumes: 
+  db:
+networks:
+  mynw:
+    external: true
+services:
+  mysqldb:
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file: ./.env
+    container_name: mysqldb-container
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+    networks:
+        - mynw
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DATABASE_PASSWORD
+      - MYSQL_DATABASE=$DATABASE_NAME
+    ports:
+      - $DATABASE_PORT:$MYSQL_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    build: ./
+    restart: unless-stopped
+    env_file: ./.env
+    container_name: node-container
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$DATABASE_USER
+      - DB_PASSWORD=$DATABASE_PASSWORD
+      - DB_NAME=$DATABASE_NAME
+      - DB_PORT=$MYSQL_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    networks:
+      - mynw
+    volumes:
+        - type: bind
+          source: .
+          target: /app
+
