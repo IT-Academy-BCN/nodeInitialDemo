@@ -1,27 +1,21 @@
 const inquirer = require('inquirer');
+const UserController = require('../users/controller')
 
-const firstQuestion ={
-    type: 'input',
-    name: 'name',
-    message: "What's your  name",
-}
-const secondQuestion = {
-    type: 'list',
-    name: 'menu',
-    message: 'What do you want to do?',
-    choices: [
-      'Create a new task',
-      'Update a task',
-      'Delete a task',
-      'Show all tasks',
-      'Show specific task',
-      'Exit'
-    ],
-}
 
-async function initProgram(db, services){
+const {
+    firstQuestion,
+    secondQuestion
+} = require('./questions')
+
+
+async function initProgram(dbType){
+    const uc = new UserController(dbType)
+
     let exit = false
+
     const firstAnswer = await inquirer.prompt([firstQuestion])
+    const user = await uc.create({name: firstAnswer.name })
+
     console.log(firstAnswer)
     while(!exit){
         const secondAnswer = await inquirer.prompt([secondQuestion])

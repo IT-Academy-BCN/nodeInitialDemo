@@ -1,5 +1,5 @@
 class TaskSerivice{
-    create(task, db){
+    async create(task, db){
 
     }
 }

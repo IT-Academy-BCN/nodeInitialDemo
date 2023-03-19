@@ -2,7 +2,7 @@ const config = require('./config')
 const Mysql = require('./db/mysql')
 
 
-
+//init db
 let databaseInstance = getDbInstance(config.envs.db)
 
 function getDbInstance(dbType){
