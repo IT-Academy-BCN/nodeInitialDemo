@@ -3,7 +3,7 @@ const Mysql = require('./db/mysql')
 
 
 //init db
-let databaseInstance = getDbInstance(config.envs.db)
+let databaseInstance = getDbInstance(config.envs.dbType)
 
 function getDbInstance(dbType){
     let database;
@@ -13,10 +13,10 @@ function getDbInstance(dbType){
             mysql.init()
             database = mysql
             break;
-        case 'mongodb':
+        case 'mongo':
             // TODO
             break;
-        case 'jsondb':
+        case 'json':
             // TODO
             break;
         default:

@@ -1,12 +1,14 @@
 require('dotenv').config()
 
 const env = {
-    dbHost: process.env.DATABASE_HOST,		
+    mysqlDbHost: process.env.MYSQL_DATABASE_HOST,
+    mysqlDbPort: process.env.MYSQL_DATABASE_PORT,
+    mongoDbHost: process.env.MONGO_DATABASE_HOST,
+    mongoDbPort: process.env.MONGO_DATABASE_PORT,	
     dbUser: process.env.DATABASE_USER,
     dbPass: process.env.DATABASE_PASSWORD,
-    dbPort: process.env.DATABASE_PORT,
     dbName: process.env.DATABASE_NAME,
-    db: process.env.DATABASE
+    dbType: process.env.DATABASE
 }
 
 module.exports = {

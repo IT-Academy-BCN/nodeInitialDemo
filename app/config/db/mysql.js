@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize")
-const Database = require('./database')
+const Database = require('./base')
 
 class Mysql extends Database{
     constructor(envs){
@@ -37,8 +37,8 @@ class Mysql extends Database{
         this.envs.dbUser,
         this.envs.dbPass,
             {
-            port: this.envs.dbPort,
-            host: this.envs.dbHost,
+            port: this.envs.mysqlDbPort,
+            host: this.envs.mysqlDbHost,
             dialect: 'mysql',
             logging: false
             }

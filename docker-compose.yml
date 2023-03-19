@@ -5,6 +5,26 @@ networks:
   mynw:
     external: true
 services:
+  mongodb:
+      image: mongo:latest
+      container_name: mongodb-container
+      restart: unless-stopped
+      healthcheck:
+        test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        start_period: 40s
+      env_file: ./.env
+      networks:
+        - mynw
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=$DATABASE_USER
+        - MONGO_INITDB_ROOT_PASSWORD=$DATABASE_PASSWORD
+      ports:
+        - $MONGO_DATABASE_PORT:$MONGO_DOCKER_PORT
+      volumes:
+        - db:/data/db
   mysqldb:
     image: mysql:8.0
     restart: unless-stopped
@@ -12,20 +32,24 @@ services:
     container_name: mysqldb-container
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 5s
-      retries: 10
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
     networks:
         - mynw
     environment:
       - MYSQL_ROOT_PASSWORD=$DATABASE_PASSWORD
       - MYSQL_DATABASE=$DATABASE_NAME
     ports:
-      - $DATABASE_PORT:$MYSQL_DOCKER_PORT
+      - $MYSQL_DATABASE_PORT:$MYSQL_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
   app:
     depends_on:
       mysqldb:
+        condition: service_healthy
+      mongodb:
         condition: service_healthy
     build: ./
     restart: unless-stopped
@@ -34,7 +58,8 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     environment:
-      - DATABASE_HOST=mysqldb
+      - MYSQL_DATABASE_HOST=mysqldb
+      - MONGO_DATABASE_HOST=mongodb
     stdin_open: true
     tty: true
     networks:
