@@ -3,14 +3,15 @@ const Mysql = require('./db/mysql')
 
 
 
-const databaseInstance = getDbInstance(config.envs.db)
+let databaseInstance = getDbInstance(config.envs.db)
 
-async function getDbInstance(dbType){
+function getDbInstance(dbType){
     let database;
     switch (dbType) {
         case 'mysql':
-            const mysql = new Mysql(config)
-            database = await mysql.init()
+            const mysql = new Mysql(config.envs)
+            mysql.init()
+            database = mysql
             break;
         case 'mongodb':
             // TODO
@@ -26,5 +27,5 @@ async function getDbInstance(dbType){
 
 
 module.exports = {
-    Database: databaseInstance
+    database: databaseInstance
 }

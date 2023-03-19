@@ -10,5 +10,5 @@ const env = {
 }
 
 module.exports = {
-    envs : env
+    envs: env
 }

@@ -34,11 +34,7 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     environment:
-      - DB_HOST=mysqldb
-      - DB_USER=$DATABASE_USER
-      - DB_PASSWORD=$DATABASE_PASSWORD
-      - DB_NAME=$DATABASE_NAME
-      - DB_PORT=$MYSQL_DOCKER_PORT
+      - DATABASE_HOST=mysqldb
     stdin_open: true
     tty: true
     networks:

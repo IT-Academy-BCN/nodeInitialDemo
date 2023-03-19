@@ -19,24 +19,31 @@ class Mysql extends Database{
         return this._instance
     }
 
+    /**
+     * 
+     * @returns return db connection
+     */
+    getConnection() {
+        return this.connection
+    }
 
     /**
      * Inits connection with database
      * @returns sequelize connection
      */
-    async init() {
-        console.log(this.envs)
+    init() {
         this.connection = new Sequelize(
         this.envs.dbName,
         this.envs.dbUser,
         this.envs.dbPass,
             {
-            port: this.envs.dbPort, 
+            port: this.envs.dbPort,
             host: this.envs.dbHost,
-            dialect: 'mysql'
+            dialect: 'mysql',
+            logging: false
             }
         )
-        return await this.connection.authenticate()
+        return this.connection
     }
 
 }
