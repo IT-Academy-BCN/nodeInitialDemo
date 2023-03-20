@@ -1,0 +1,5 @@
+//command to run in mongo container 
+mongosh "mongodb://127.0.0.1:27017" --username root --authenticationDatabase admin
+//command to run in mysql container
+mysql -u root -p
+///// password is : 1234

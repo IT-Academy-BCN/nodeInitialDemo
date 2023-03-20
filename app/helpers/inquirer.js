@@ -9,7 +9,9 @@ const {
     secondQuestion
 } = require('./questions')
 
-
+/**
+ * Initialization of main program
+ */
 async function initProgram(){
 
     const db = await inquirer.prompt([dbSelection])
@@ -30,6 +32,8 @@ async function initProgram(){
             exit = true
     }
 
+    
+    process.exit(0)
 }
 
 module.exports = initProgram

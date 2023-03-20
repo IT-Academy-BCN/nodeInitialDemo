@@ -6,6 +6,11 @@ class UserController {
         this.type = dbType
     }
 
+    /**
+     * Creates a user and saves it in db
+     * @param {Object} user 
+     * @returns user created in db with id
+     */
     async create(user){
         let u;
         switch (this.type){
