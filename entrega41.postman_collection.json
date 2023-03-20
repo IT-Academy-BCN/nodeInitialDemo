@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "7720bd7b-bf25-452b-b7f4-29f7a95f313d",
+		"name": "entrega41",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20592362"
+	},
+	"item": [
+		{
+			"name": "Nivell1Exercici1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nivell1Exercici2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/C:/Users/mimot/Desktop/BACKEND/Node_Sprint4/server/img/mario.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/img",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"img"
+					],
+					"query": [
+						{
+							"key": "imagen",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nivell2Exercici1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nivell3Exercici1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/pokemon/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"pokemon",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

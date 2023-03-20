@@ -11,7 +11,10 @@
 - npm run start para ejecutar server
 - npm run dev para ejecutar server con nodemon
 
-## Configuracion POSTMAN
+## POSTMAN COLLECTION
+
+- importar archivo desde postman: entrega41.postman_collection.json
+- acceder desde enlace: https://api.postman.com/collections/20592362-7720bd7b-bf25-452b-b7f4-29f7a95f313d?access_key=PMAT-01GV2WSC233BAQYFYHT7A29KGD
 
 #### Nivell 1 exercicis 1 y 2 help:
 
