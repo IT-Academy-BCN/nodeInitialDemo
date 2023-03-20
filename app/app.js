@@ -1,5 +1,14 @@
-const {envs} = require('./config/config')
+const env = require('./config/config')
 const init = require('./helpers/inquirer')
+const Mongo = require('./config/db/mongo');
+const Mysql = require('./config/db/mysql')
 
-//init terminal task program
-init(envs.dbType)
+//init db's
+const mysqlInstance = new Mysql(env)
+mysqlInstance.init()
+
+const mongoInstance = new Mongo(env)
+mongoInstance.init()
+
+//init program
+init()

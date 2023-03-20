@@ -2,13 +2,16 @@ version: '3.8'
 volumes: 
   db:
 networks:
-  mynw:
+  initialnw:
     external: true
 services:
   mongodb:
       image: mongo:latest@sha256:4d83a39114f27870a413ee8e4393bf4e5db853082e515e1513b64d37ec1dfcde
       container_name: mongodb-container
       restart: unless-stopped
+      depends_on:
+        mysqldb:
+          condition: service_healthy
       healthcheck:
         test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
         interval: 10s
@@ -17,7 +20,7 @@ services:
         start_period: 40s
       env_file: ./.env
       networks:
-        - mynw
+        - initialnw
       environment:
         - MONGO_INITDB_ROOT_USERNAME=$DATABASE_USER
         - MONGO_INITDB_ROOT_PASSWORD=$DATABASE_PASSWORD
@@ -37,7 +40,7 @@ services:
       retries: 5
       start_period: 40s
     networks:
-        - mynw
+        - initialnw
     environment:
       - MYSQL_ROOT_PASSWORD=$DATABASE_PASSWORD
       - MYSQL_DATABASE=$DATABASE_NAME
@@ -63,7 +66,7 @@ services:
     stdin_open: true
     tty: true
     networks:
-      - mynw
+      - initialnw
     volumes:
         - type: bind
           source: .

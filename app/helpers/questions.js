@@ -1,3 +1,13 @@
+const dbSelection = {
+    type: 'list',
+    name: 'dbType',
+    message: 'What database do you want to use?',
+    choices: [
+      'Json',
+      'Mongo',
+      'Mysql',
+    ],
+}
 const firstQuestion ={
     type: 'input',
     name: 'name',
@@ -18,6 +28,7 @@ const secondQuestion = {
 }
 
 module.exports = {
+    dbSelection,
     firstQuestion,
     secondQuestion
 }

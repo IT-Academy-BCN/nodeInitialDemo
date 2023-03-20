@@ -7,16 +7,16 @@ class UserSerivice {
         const u = UserMysqlModel.build(user)
         await u.save()
         return u
-
     }
 
     async createMongo(user){
-        console.log('service ', user)
-        //const u = new UserMongoModel(user)
-        //u.save()
-        //return u
-        console.log(await UserMongoModel.find({}))
+        const u = new UserMongoModel(user)
+        await u.save()
+        return u
+    }
 
+    async createJson(Task){
+        //TODO
     }
 }
 

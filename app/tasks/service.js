@@ -1,6 +1,12 @@
 class TaskSerivice{
-    async create(task, db){
-
+    async createMongo(Task){
+        //TODO
+    }
+    async createMysql(Task){
+        //TODO
+    }
+    async createJson(Task){
+        //TODO
     }
 }
 
