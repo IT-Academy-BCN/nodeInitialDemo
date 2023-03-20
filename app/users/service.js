@@ -1,4 +1,5 @@
 const UserMysqlModel = require('./models/user.mysql.model')
+const UserMongoModel = require('./models/user.mongo.model')
 
 class UserSerivice {
 
@@ -10,7 +11,12 @@ class UserSerivice {
     }
 
     async createMongo(user){
-        // TO IMPLEMENT
+        console.log('service ', user)
+        //const u = new UserMongoModel(user)
+        //u.save()
+        //return u
+        console.log(await UserMongoModel.find({}))
+
     }
 }
 

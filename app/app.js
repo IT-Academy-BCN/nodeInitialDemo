@@ -1,6 +1,5 @@
-const server = require('./config/server')
+const {envs} = require('./config/config')
 const init = require('./helpers/inquirer')
 
 //init terminal task program
-init(server.database.getType())
-
+init(envs.dbType)

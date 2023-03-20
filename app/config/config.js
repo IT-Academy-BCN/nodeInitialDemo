@@ -1,5 +1,9 @@
 require('dotenv').config()
 
+const Mongo = require('./db/mongo');
+const Mysql = require('./db/mysql')
+
+
 const env = {
     mysqlDbHost: process.env.MYSQL_DATABASE_HOST,
     mysqlDbPort: process.env.MYSQL_DATABASE_PORT,
@@ -11,6 +15,16 @@ const env = {
     dbType: process.env.DATABASE
 }
 
+
+const mysqlInstance = new Mysql(env)
+mysqlInstance.init()
+
+const mongoInstance = new Mongo(env)
+mongoInstance.init()
+
+
 module.exports = {
-    envs: env
+    envs: env,
+    mysql: mysqlInstance,
+    mongo: mongoInstance
 }

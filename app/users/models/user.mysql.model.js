@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const server = require('../../config/server')
+const { mysql } = require('../../config/config')
 
 class User extends Model {}
 
@@ -9,7 +9,7 @@ User.init({
         allowNull: false
     }
     }, {
-    sequelize: server.database.getConnection(),
+    sequelize: mysql.getConnection(),
     modelName: 'User',
     freezeTableName: true,
 });
