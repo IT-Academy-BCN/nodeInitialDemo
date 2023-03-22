@@ -6,7 +6,7 @@ networks:
     external: true
 services:
   mongodb:
-      image: mongo:latest@sha256:4d83a39114f27870a413ee8e4393bf4e5db853082e515e1513b64d37ec1dfcde
+      image: mongo:latest
       container_name: mongodb-container
       restart: unless-stopped
       depends_on:
