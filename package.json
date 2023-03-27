@@ -4,8 +4,8 @@
   "description": "sample project for node",
   "main": "app.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js",
+    "start": "node app/app.js",
+    "dev": "nodemon app/app.js",
     "entrega42": "jest"
   },
   "author": "",

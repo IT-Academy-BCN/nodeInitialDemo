@@ -3,14 +3,14 @@ const path = require("path")
 const mymetypes = ["image/jpg", "image/png", "image/gif"]
 
 const storage = multer.diskStorage({
-  destination: "server/upload",
+  destination: "app/upload",
   filename: (req, file, cb) => {
     cb(null, Date.now() + file.originalname)
   },
 })
 
 const uploadImg = multer({
-  dest: "server/upload",
+  dest: "app/upload",
   storage: storage,
   fileFilter: (req, file, cb) => {
     // cb = callback
