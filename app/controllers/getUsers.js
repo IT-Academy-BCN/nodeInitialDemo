@@ -1,7 +1,5 @@
-const users = require("../users/user.json")
-
 const getUsers = (req, res) => {
-  res.send([users, `Request url: ${req.url}`])
+  res.send([{ name: "David", age: 37, pass: 123 }, `Request url: ${req.url}`])
 }
 
 module.exports = {
