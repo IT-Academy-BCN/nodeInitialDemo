@@ -1,19 +1,20 @@
 const express = require("express")
-const multer = require("multer")
+const app = express()
+const fileUpload = require("express-fileupload")
 
 const userRouter = require("./routes/users")
-const imgRouter = require("./routes/imgRoute")
+const imgRouter = require("./routes/imgRouter")
 const timeRouter = require("./routes/timeRouter")
 const pokemonRouter = require("./routes/pokemonRouter")
 const middle = require("./middlewares/nivell2exercici1")
-const { uploadImg } = require("./middlewares/multerImg")
 
-const app = express()
+app.use(fileUpload())
+
 app.use(express.json())
 
 app.use(userRouter) // nivell 1 exercici 1
 
-app.use(uploadImg.single("imagen"), imgRouter) // nivell 1 exercici 2
+app.use(imgRouter) // nivell 1 exercici 2
 
 app.use(middle, timeRouter) /// NIVELL 2
 
