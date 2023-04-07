@@ -2,19 +2,16 @@
 
 ## Requiere instalar dependencias:
 
-- npm i express
-- npm i multer
-- npm i axios
-
+ 
 ## Funcionamiento
 
-- npm run start para ejecutar la aplicación
+- npm i --> para instalar dependencias
+
+- npm run --> start para ejecutar la aplicación
 
 ## POSTMAN COLLECTION
 
 - importar archivo desde postman: entrega41.postman_collection.json
-
-
 
 
 
