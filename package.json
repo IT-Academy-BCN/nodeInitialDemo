@@ -4,6 +4,7 @@
   "description": "sample project for node",
   "main": "app.js",
   "scripts": {
+    "dev": "ts-node-dev app/app.ts",
     "start": "nodemon build/app.js",
     "entrega42": "jest"
   },
@@ -19,6 +20,7 @@
     "mongodb": "^5.1.0",
     "node-fetch": "^3.3.0",
     "path": "^0.12.7",
+    "save-dev": "^0.0.1-security",
     "sequelize": "^6.29.1",
     "sequelize-cli": "^6.6.0",
     "sqlite3": "^5.1.4",
@@ -28,6 +30,7 @@
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.11",
     "jest": "^28.1.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "ts-node-dev": "^2.0.0"
   }
 }
