@@ -1,7 +1,7 @@
 const mymetypes = ["image/jpg", "image/png", "image/gif"]
 const dirname = "./app/upload/"
 
-const postImg = (req, res) => {
+const postImg = (req: any, res: any): Response => {
   if (!req.files) {
     return res.status(400).send("No file attached")
   }
@@ -11,4 +11,4 @@ const postImg = (req, res) => {
   } else return res.status(400).send("JPG/PNG/GIF Only")
 }
 
-module.exports = { postImg }
+export default postImg
