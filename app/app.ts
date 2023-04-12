@@ -7,7 +7,6 @@ import imgRouter from "./routes/imgRouter"
 import timeRouter from "./routes/timeRouter"
 import pokemonRouter from "./routes/pokemonRouter"
 
-
 app.use(fileUpload())
 app.use(express.json())
 app.use(userRouter) // nivell 1 exercici 1

@@ -5,7 +5,8 @@ const middle = (req: Request, res: Response, next: NextFunction) => {
   if (!req.body.password) {
     res.status(401).send('Req.body no contiene password')    
   }
-  next()
+  if(req.body.password){next()}
+  
 }
 
 export default middle
